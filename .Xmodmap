@@ -54,7 +54,7 @@ keycode  60 = period greater kana_RU kana_fullstop
 keycode  61 = slash question kana_ME kana_conjunctive
 keycode  62 = Shift_R NoSymbol Shift_R
 keycode  63 = KP_Multiply KP_Multiply KP_Multiply KP_Multiply KP_Multiply KP_Multiply XF86ClearGrab KP_Multiply KP_Multiply XF86ClearGrab
-keycode  64 = Alt_L Meta_L Alt_L Meta_L
+keycode  64 = Alt_L
 keycode  65 = space NoSymbol space
 keycode  66 = Escape NoSymbol Escape
 keycode  67 = F1 XF86KbdBrightnessDown F1 XF86KbdBrightnessDown F1 XF86Switch_VT_1 F1 XF86Switch_VT_1
@@ -122,7 +122,7 @@ keycode 128 = XF86LaunchA NoSymbol XF86LaunchA
 keycode 129 = KP_Decimal KP_Decimal KP_Decimal KP_Decimal
 keycode 130 = Eisu_toggle NoSymbol Eisu_toggle
 keycode 131 = Hiragana_Katakana NoSymbol Hiragana_Katakana
-keycode 132 = yen bar prolongedsound
+keycode 132 = backslash bar prolongedsound
 keycode 133 = Control_L NoSymbol Control_L
 keycode 134 = Super_R NoSymbol Super_R
 keycode 135 = Menu NoSymbol Menu
@@ -252,4 +252,4 @@ clear Control
 clear Mod1
 clear Mod4
 add control = Control_L Control_R
-add Mod1 = Super_L Escape Meta_L
+add Mod4 = Super_L Escape
