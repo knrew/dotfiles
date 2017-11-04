@@ -116,21 +116,25 @@ if ! shopt -oq posix; then
   fi
 fi
 
-#i3wm
-alias i3config='(nvim ~/.config/i3/config)'
 
 #neovim
-alias vi='nvim'
-export XDG_CONFIG_HOME=$HOME/.config
+XDG_CONFIG_HOME=$HOME/.config
 
 #ROS
 source /opt/ros/kinetic/setup.bash
 source ~/catkin_ws/devel/setup.bash
-alias catkin_make='cd ~/catkin_ws && catkin_make'
+
+#stm32plus
+export PATH=/usr/local/arm-cs-tools/bin:$PATH
 
 #eclipse
 PATH=/usr/local/eclipse:$PATH
-export PATH=/usr/local/arm-cs-tools/bin:$PATH
 
-#CLion
+#alias
+alias vi='nvim'
+alias bashrc='(nvim ~/.bashrc && source ~/.bashrc)'
+alias vimrc='(nvim ~/.vimrc)'
+alias i3config='(nvim ~/.config/i3/config)'
+alias cm='cd ~/catkin_ws && catkin_make'
+alias lm="latexmk -pvc -halt-on-error"
 alias clion='(sh /usr/local/clion-2017.2.3/bin/clion.sh)'
