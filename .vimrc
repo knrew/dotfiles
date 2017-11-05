@@ -63,6 +63,10 @@ endif
 let g:seoul256_background = 253
 colo seoul256
 
+set expandtab
+set tabstop=4
+set shiftwidth=4
+
 "let g:clang_snippets=1
 "let g:clang_snippets_engine='ultisnips'
 "let g:clang_conceal_snippets=1

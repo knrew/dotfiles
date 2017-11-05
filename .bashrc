@@ -138,3 +138,5 @@ alias i3config='(nvim ~/.config/i3/config)'
 alias cm='cd ~/catkin_ws && catkin_make'
 alias lm="latexmk -pvc -halt-on-error"
 alias clion='(sh /usr/local/clion-2017.2.3/bin/clion.sh)'
+alias backup_dotfiles='(cp ~/.bashrc ~/dotfiles && cp ~/.vimrc ~/dotfiles && cp ~/.config/i3/config ~/dotfiles/.config/i3 && cp ~/.Xmodmap ~/dotfiles/ && cp ~/.latexmkrc ~/dotfiles)'
+source ~/.bashrc_temporary
