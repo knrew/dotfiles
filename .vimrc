@@ -39,9 +39,10 @@ if dein#load_state('~/.vim/dein/')
 
   call dein#add('lervag/vimtex')
   
-  "call dein#add('justmao945/vim-clang',{'on_ft' : 'cpp'})
+  call dein#add('justmao945/vim-clang',{'on_ft' : 'cpp'})
   "call dein#add('Rip-Rip/clang_complete', {'on_ft' : 'cpp'})
 
+  call dein#add('junegunn/seoul256.vim')
 
   " Required:
   call dein#end()
@@ -58,3 +59,14 @@ if dein#check_install()
 endif
 
 "End dein Scripts-------------------------
+
+let g:seoul256_background = 253
+colo seoul256
+
+"let g:clang_snippets=1
+"let g:clang_snippets_engine='ultisnips'
+"let g:clang_conceal_snippets=1
+"let g:clang_trailing_placeholder=1
+"let g:clang_make_default_keymappings=1
+"let g:clang_debug=1
+"let g:clang_use_library=1
