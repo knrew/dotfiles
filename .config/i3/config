@@ -165,4 +165,6 @@ exec --no-startup-id synclient HorizEdgeScroll=1 HorizTwoFingerScroll=1 VertScro
 exec --no-startup-id xmodmap /home/ryunosuke/.Xmodmap
 
 #mozc
-#/usr/bin/ibus-daemon -xlim --replace
+exec --no-startup-id /usr/bin/ibus-daemon --replace
+
+exec --no-startup-id nm-applet
