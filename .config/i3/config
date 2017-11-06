@@ -167,4 +167,5 @@ exec --no-startup-id xmodmap /home/ryunosuke/.Xmodmap
 #mozc
 exec --no-startup-id /usr/bin/ibus-daemon --replace
 
+#Wi-Fi
 exec --no-startup-id nm-applet
