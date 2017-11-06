@@ -252,4 +252,4 @@ clear Control
 clear Mod1
 clear Mod4
 add control = Control_L Control_R
-add Mod4 = Super_L Escape
+add Mod4 = Super_L Escape Super_R
