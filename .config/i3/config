@@ -31,6 +31,7 @@ floating_modifier $mod
 
 # start a terminal
 bindsym $mod+Return exec i3-sensible-terminal
+bindsym Control+Mod1+t exec i3-sensible-terminal 
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -51,10 +52,10 @@ bindsym $mod+l focus up
 bindsym $mod+semicolon focus right
 
 # alternatively, you can use the cursor keys:
-bindsym $mod+Left focus left
-bindsym $mod+Down focus down
-bindsym $mod+Up focus up
-bindsym $mod+Right focus right
+bindsym Control+Mod1+Left focus left
+bindsym Control+Mod1+Down focus down
+bindsym Control+Mod1+Up focus up
+bindsym Control+Mod1+Right focus right
 
 # move focused window
 bindsym $mod+Shift+j move left
@@ -63,10 +64,10 @@ bindsym $mod+Shift+l move up
 bindsym $mod+Shift+semicolon move right
 
 # alternatively, you can use the cursor keys:
-bindsym $mod+Shift+Left move left
-bindsym $mod+Shift+Down move down
-bindsym $mod+Shift+Up move up
-bindsym $mod+Shift+Right move right
+#bindsym $mod+Shift+Left move left
+#bindsym $mod+Shift+Down move down
+#bindsym $mod+Shift+Up move up
+#bindsym $mod+Shift+Right move right
 
 # split in horizontal orientation
 bindsym $mod+h split h
@@ -105,6 +106,8 @@ bindsym $mod+7 workspace 7
 bindsym $mod+8 workspace 8
 bindsym $mod+9 workspace 9
 bindsym $mod+0 workspace 10
+bindsym $mod+Left workspace prev
+bindsym $mod+Right workspace next
 
 # move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace 1
@@ -117,6 +120,8 @@ bindsym $mod+Shift+7 move container to workspace 7
 bindsym $mod+Shift+8 move container to workspace 8
 bindsym $mod+Shift+9 move container to workspace 9
 bindsym $mod+Shift+0 move container to workspace 10
+bindsym $mod+Shift+Left move container to workspace prev;workspace prev
+bindsym $mod+Shift+Right move container to workspace next;workspace next
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
@@ -158,14 +163,10 @@ bar {
         tray_output primary
 }
 
-#natural scrolling
-exec --no-startup-id synclient HorizEdgeScroll=1 HorizTwoFingerScroll=1 VertScrollDelta=-237 HorizScrollDelta=-237
 
-#keymap
-exec --no-startup-id xmodmap /home/ryunosuke/.Xmodmap
-
-#mozc
-exec --no-startup-id /usr/bin/ibus-daemon --replace
-
-#Wi-Fi
-exec --no-startup-id nm-applet
+#auto start
+exec --no-startup-id synclient HorizEdgeScroll=1 HorizTwoFingerScroll=1 VertScrollDelta=-237 HorizScrollDelta=-237 #natural scrolling
+exec --no-startup-id xmodmap /home/ryunosuke/.Xmodmap #keymap
+exec --no-startup-id /usr/bin/ibus-daemon --replace #mozc
+exec --no-startup-id nm-applet #Wi-Fi
+exec google-chrome #Google Chrome
