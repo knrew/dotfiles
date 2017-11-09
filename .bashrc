@@ -136,7 +136,13 @@ alias bashrc='(nvim ~/.bashrc && source ~/.bashrc)'
 alias vimrc='(nvim ~/.vimrc)'
 alias i3config='(nvim ~/.config/i3/config)'
 alias cm='cd ~/catkin_ws && catkin_make'
+alias mk='(make)'
+alias fl='(make flash)'
+alias mf='(make && make flash)'
 alias lm="latexmk -pvc -halt-on-error"
+alias screen0='sudo screen /dev/ttyUSB0 115200'
+alias screen1='sudo screen /dev/ttyUSB1 115200'
 alias clion='(sh /usr/local/clion-2017.2.3/bin/clion.sh)'
-alias backup_dotfiles='(cp ~/.bashrc ~/dotfiles && cp ~/.vimrc ~/dotfiles && cp ~/.config/i3/config ~/dotfiles/.config/i3 && cp ~/.Xmodmap ~/dotfiles/ && cp ~/.latexmkrc ~/dotfiles)'
+alias backup_dotfiles='(cp ~/.bashrc ~/dotfiles && cp ~/.vimrc ~/dotfiles && cp ~/.config/i3/config ~/dotfiles/.config/i3 && cp ~/.Xmodmap ~/dotfiles/ && cp ~/.latexmkrc ~/dotfiles && cp ~/.screenrc ~/dotfiles)'
+
 source ~/.bashrc_temporary

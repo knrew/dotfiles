@@ -1,0 +1,4 @@
+logfile "/home/ryunosuke/log/screen-%Y%m%d.log"
+log on
+deflog on
+
