@@ -132,6 +132,9 @@ PATH=/usr/local/eclipse:$PATH
 
 #alias
 alias vi='nvim'
+alias vim='nvim'
+alias emacs='nvim'
+alias nano='nvim'
 alias bashrc='(nvim ~/.bashrc && source ~/.bashrc)'
 alias vimrc='(nvim ~/.vimrc)'
 alias i3config='(nvim ~/.config/i3/config)'

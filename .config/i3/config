@@ -31,7 +31,7 @@ floating_modifier $mod
 
 # start a terminal
 bindsym $mod+Return exec i3-sensible-terminal
-bindsym Control+Mod1+t exec i3-sensible-terminal 
+#bindsym Control+Mod1+t exec i3-sensible-terminal 
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -52,10 +52,10 @@ bindsym $mod+l focus up
 bindsym $mod+semicolon focus right
 
 # alternatively, you can use the cursor keys:
-bindsym Control+Mod1+Left focus left
-bindsym Control+Mod1+Down focus down
-bindsym Control+Mod1+Up focus up
-bindsym Control+Mod1+Right focus right
+bindsym $mod+Mod1+Left focus left
+bindsym $mod+Mod1+Down focus down
+bindsym $mod+Mod1+Up focus up
+bindsym $mod+Mod1+Right focus right
 
 # move focused window
 bindsym $mod+Shift+j move left
@@ -64,10 +64,10 @@ bindsym $mod+Shift+l move up
 bindsym $mod+Shift+semicolon move right
 
 # alternatively, you can use the cursor keys:
-bindsym Control+Mod1+Shift+Left move left
-bindsym Control+Mod1+Shift+Down move down
-bindsym Control+Mod1+Shift+Up move up
-bindsym Control+Mod1+Shift+Right move right
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Right move right
 
 # split in horizontal orientation
 bindsym $mod+h split h
@@ -120,8 +120,8 @@ bindsym $mod+Shift+7 move container to workspace 7
 bindsym $mod+Shift+8 move container to workspace 8
 bindsym $mod+Shift+9 move container to workspace 9
 bindsym $mod+Shift+0 move container to workspace 10
-bindsym $mod+Shift+Left move container to workspace prev;workspace prev
-bindsym $mod+Shift+Right move container to workspace next;workspace next
+#bindsym $mod+Shift+Left move container to workspace prev;workspace prev
+#bindsym $mod+Shift+Right move container to workspace next;workspace next
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
@@ -167,10 +167,10 @@ set $mode_system System (l) lock, (e) logout, (s) suspend, (h) hibernate, (r) re
 mode "$mode_system" {
     bindsym l exec --no-startup-id exec i3lock, mode "default"
     bindsym e exec --no-startup-id exec i3-msg exit, mode "default"
-    bindsym s exec --no-startup-id exec i3lock; exec systemctl suspend; exec echo "`date "+%Y%m%d"`" > ~/suspend.txt, mode "default"
-    bindsym h exec --no-startup-id exec i3lock; exec systemctl hibernate; exec echo "`date "+%Y%m%d"`" > ~/hibernate.txt, mode "default"
-    bindsym r exec --no-startup-id exec reboot; exec echo "`date "+%Y%m%d"`" > ~/reboot.txt, mode "default"
-    bindsym Shift+s exec --no-startup-id exec systemctl poweroff; exec echo "`date "+%Y%m%d"`" > ~/poweroff.txt, mode "default"
+    bindsym s exec --no-startup-id exec i3lock; exec systemctl suspend; exec echo "`date "+%Y%m%d-%k%M%S"`" >> ~/log/suspend.txt, mode "default"
+    bindsym h exec --no-startup-id exec i3lock; exec systemctl hibernate; exec echo "`date "+%Y%m%d-%k%M%S"`" >> ~/log/hibernate.txt, mode "default"
+    bindsym r exec --no-startup-id exec reboot; exec echo "`date "+%Y%m%d-%k%M%S"`" >> ~/log/reboot.txt, mode "default"
+    bindsym Shift+s exec --no-startup-id exec systemctl poweroff; exec echo "`date "+%Y%m%d-%k%M%S"`" >> ~/log/poweroff.txt, mode "default"
 
     # back to normal: Enter or Escape
     bindsym Return mode "default"
@@ -180,9 +180,8 @@ bindsym $mod+shift+e mode "$mode_system"
 
 #auto start
 exec --no-startup-id synclient HorizEdgeScroll=1 HorizTwoFingerScroll=1 VertScrollDelta=-237 HorizScrollDelta=-237 #natural scrolling
-exec --no-startup-id xmodmap /home/ryunosuke/.Xmodmap #keymap
+exec --no-startup-id xmodmap ~/.Xmodmap #keymap
 exec --no-startup-id /usr/bin/ibus-daemon --replace #mozc
 exec --no-startup-id nm-applet #Wi-Fi
-exec google-chrome --proxy-auto-detect #Google Chrome
-
-bindsym Control+Mod1+l exec i3lock
+exec --no-startup-id volumeicon
+exec google-chrome --proxy-auto-detect #Google Chrome1
