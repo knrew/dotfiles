@@ -133,8 +133,6 @@ PATH=/usr/local/eclipse:$PATH
 #alias
 alias vi='nvim'
 alias vim='nvim'
-alias emacs='nvim'
-alias nano='nvim'
 alias bashrc='(nvim ~/.bashrc)'
 alias vimrc='(nvim ~/.vimrc)'
 alias i3config='(nvim ~/.config/i3/config)'
@@ -145,6 +143,7 @@ alias mf='(make && make flash)'
 alias lm="latexmk -pvc -halt-on-error"
 alias screen0='sudo screen /dev/ttyUSB0 115200'
 alias screen1='sudo screen /dev/ttyUSB1 115200'
+alias wifi='sudo service network-manager restart'
 alias clion='(sh /usr/local/clion-2017.2.3/bin/clion.sh)'
 alias backup_dotfiles='(cp ~/.bashrc ~/dotfiles && cp ~/.vimrc ~/dotfiles && cp ~/.config/i3/config ~/dotfiles/.config/i3 && cp ~/.Xmodmap ~/dotfiles/ && cp ~/.latexmkrc ~/dotfiles && cp ~/.screenrc ~/dotfiles)'
 
