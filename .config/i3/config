@@ -30,6 +30,7 @@ font pango:monospace 8
 floating_modifier $mod
 
 assign [class="Google-chrome"] 2:web
+assign [class="Vivaldi-stable"] 2:web
 assign [class="jetbrains-clion"] 5:code
 assign [class="MATLAB*"] 6:matlab
 assign [class="GitKraken"] 9
@@ -165,10 +166,16 @@ mode "$mode_system" {
 }
 bindsym $mod+shift+e mode "$mode_system"
 
+#increase / decrease screen brightness
+bindsym XF86MonBrightnessUp exec xbacklight -inc 10
+bindsym XF86MonBrightnessDown exec xbacklight -dec 10
+
 #auto start
 exec --no-startup-id synclient HorizEdgeScroll=1 HorizTwoFingerScroll=1 VertScrollDelta=-237 HorizScrollDelta=-237 #natural scrolling
 exec --no-startup-id xmodmap ~/.Xmodmap #keymap
 exec --no-startup-id /usr/bin/ibus-daemon --replace #mozc
 exec --no-startup-id nm-applet #Wi-Fi
-exec --no-startup-id google-chrome --proxy-auto-detect #Google Chrome
+exec --no-startup-id volumeicon
+#exec --no-startup-id google-chrome --proxy-auto-detect #Google Chrome
+exec --no-startup-id vivaldi
 exec i3-sensible-terminal
