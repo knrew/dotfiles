@@ -33,6 +33,7 @@ assign [class="Google-chrome"] 2:web
 assign [class="Vivaldi-stable"] 2:web
 assign [class="jetbrains-clion"] 5:code
 assign [class="MATLAB*"] 6:matlab
+assign [class="Slack"] 9
 assign [class="GitKraken"] 9
 
 # start a terminal
@@ -96,8 +97,8 @@ bindsym $mod+7 workspace 7
 bindsym $mod+8 workspace 8
 bindsym $mod+9 workspace 9
 bindsym $mod+0 workspace 10:ex
-bindsym $mod+a workspace prev
-bindsym $mod+semicolon workspace next
+#bindsym $mod+a workspace prev
+#bindsym $mod+semicolon workspace next
 
 # move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace 1
@@ -176,6 +177,7 @@ exec --no-startup-id xmodmap ~/.Xmodmap #keymap
 exec --no-startup-id /usr/bin/ibus-daemon --replace #mozc
 exec --no-startup-id nm-applet #Wi-Fi
 exec --no-startup-id volumeicon
-#exec --no-startup-id google-chrome --proxy-auto-detect #Google Chrome
-exec --no-startup-id vivaldi
+exec --no-startup-id google-chrome --proxy-auto-detect #Google Chrome
+#exec --no-startup-id vivaldi
 exec i3-sensible-terminal
+exec --no-startup-id slack
