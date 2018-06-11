@@ -150,5 +150,3 @@ alias arduino='(cd /usr/local/arduino-1.8.5 && sudo ./arduino)'
 alias backup_dotfiles='(cp ~/.bashrc ~/dotfiles && cp ~/.vimrc ~/dotfiles && cp ~/.config/i3/config ~/dotfiles/.config/i3 && cp ~/.Xmodmap ~/dotfiles/ && cp ~/.latexmkrc ~/dotfiles && cp ~/.screenrc ~/dotfiles)'
 
 source ~/.bashrc_temporary
-
-alias cml='cd ~/catkin_ws && catkin_make ransac_localization && rosrun carrier_lrf ransac_localization'
