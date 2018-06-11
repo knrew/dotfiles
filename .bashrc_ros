@@ -1,0 +1,6 @@
+#ROS                                                                      
+source /opt/ros/kinetic/setup.bash                                        
+source ~/catkin_ws/devel/setup.bash
+
+alias cm='cd ~/catkin_ws && catkin_make'
+#alias catkin_make='(cd ~/catkin_ws && catkin_make)'
