@@ -128,8 +128,8 @@ alias vimrc='(nvim ~/.vimrc)'
 alias i3config='(nvim ~/.config/i3/config)'
 alias lm="latexmk -pvc -halt-on-error"
 alias wifi='sudo service network-manager restart'
-alias clion='(sh /usr/local/clion-2018.1.1/bin/clion.sh)'
-alias backup_dotfiles='(cp ~/.bashrc ~/dotfiles && cp ~/.vimrc ~/dotfiles && cp ~/.config/i3/config ~/dotfiles/.config/i3 && cp ~/.config/i3status/config ~/dotfiles/.config/i3status && cp ~/.Xmodmap ~/dotfiles/ && cp ~/.latexmkrc ~/dotfiles && cp ~/.screenrc ~/dotfiles && cp ~/.bashrc_ros ~/dotfiles && cp ~/.bashrc_stm ~/dotfiles)'
+alias clion='(sh /usr/local/clion-2018.1.3/bin/clion.sh)'
+alias backup_dotfiles='(cp ~/.bash_profile ~/dotfiles && cp ~/.bashrc ~/dotfiles && cp ~/.vimrc ~/dotfiles && cp ~/.config/i3/config ~/dotfiles/.config/i3 && cp ~/.config/i3status/config ~/dotfiles/.config/i3status && cp ~/.Xmodmap ~/dotfiles/ && cp ~/.latexmkrc ~/dotfiles && cp ~/.screenrc ~/dotfiles && cp ~/.bashrc_ros ~/dotfiles && cp ~/.bashrc_stm ~/dotfiles)'
 
 source ~/.bashrc_ros
 source ~/.bashrc_stm

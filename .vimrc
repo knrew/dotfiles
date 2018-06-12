@@ -33,7 +33,7 @@ if dein#load_state('~/.vim/dein/')
   call dein#add('Shougo/unite-outline')
   call dein#add('Shougo/neomru.vim')
   call dein#add('Shougo/tabpagebuffer.vim')
-  call dein#add('kannokanno/unite-dwm')
+  " call dein#add('kannokanno/unite-dwm')
   call dein#add('osyo-manga/unite-quickfix')
   " }}}
 

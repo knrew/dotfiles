@@ -171,6 +171,9 @@ bindsym $mod+shift+e mode "$mode_system"
 bindsym XF86MonBrightnessUp exec xbacklight -inc 10
 bindsym XF86MonBrightnessDown exec xbacklight -dec 10
 
+exec --no-startup-id feh --bg-fill $HOME/Pictures/aobuta.jpg
+exec --no-startup-id compton -cbm 0.75
+
 #auto start
 exec --no-startup-id synclient HorizEdgeScroll=1 HorizTwoFingerScroll=1 VertScrollDelta=-237 HorizScrollDelta=-237 #natural scrolling
 exec --no-startup-id xmodmap ~/.Xmodmap #keymap
