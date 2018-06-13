@@ -12,14 +12,23 @@ general {
 }
 
 #order += "ipv6"
-order += "disk /"
+#order += "disk /"
+#order += "cpu_usage"
 #order += "run_watch DHCP"
 #order += "run_watch VPN"
 order += "wireless _first_"
 #order += "ethernet _first_"
+order += "cpu_usage"
 order += "battery 0"
 #order += "load"
 order += "tztime local"
+
+cpu_usage {
+        #format = "all: %usage CPU_0: %cpu0 CPU_1: %cpu1 CPU_2: %cpu2 CPU_3: %cpu3"
+        format = "cpu: %usage"
+        #max_threshold = 95
+        #degraded_threshold = 90
+}
 
 wireless _first_ {
         format_up = "W: (%quality at %essid) %ip"
@@ -33,7 +42,15 @@ ethernet _first_ {
 }
 
 battery 0 {
-        format = "%status %percentage %remaining"
+        format = "battery: %status %percentage %remaining"
+        #format = "%status %percentage %remaining %emptytime"
+        format_down = "No battery"
+        status_chr = "⚡ CHR"
+        status_bat = "🔋 BAT"
+        #status_unk = "? UNK"
+        status_full = "☻ FULL"
+        path = "/sys/class/power_supply/BAT%d/uevent"
+        low_threshold = 10
 }
 
 run_watch DHCP {
@@ -53,5 +70,5 @@ load {
 }
 
 disk "/" {
-        format = "%avail"
+        format = "disk: %avail"
 }

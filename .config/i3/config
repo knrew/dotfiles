@@ -171,7 +171,7 @@ bindsym $mod+shift+e mode "$mode_system"
 bindsym XF86MonBrightnessUp exec xbacklight -inc 10
 bindsym XF86MonBrightnessDown exec xbacklight -dec 10
 
-exec --no-startup-id feh --bg-fill $HOME/Pictures/aobuta.jpg
+exec --no-startup-id feh --bg-fill $HOME/.config/i3/wallpaper.jpg
 exec --no-startup-id compton -cbm 0.75
 
 #auto start
