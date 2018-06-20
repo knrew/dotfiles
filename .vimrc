@@ -60,8 +60,8 @@ endif
 
 "End dein Scripts-------------------------
 
-let g:seoul256_background = 253
-colo seoul256
+"let g:seoul256_background = 253
+"colo seoul256
 
 set expandtab
 set tabstop=4
