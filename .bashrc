@@ -124,10 +124,12 @@ XDG_CONFIG_HOME=$HOME/.config
 alias vi='nvim'
 alias vim='nvim'
 alias bashrc='(nvim ~/.bashrc)'
+alias source_bashrc='(source ~/.bashrc)'
 alias vimrc='(nvim ~/.vimrc)'
 alias i3config='(nvim ~/.config/i3/config)'
 alias lm="latexmk -pvc -halt-on-error"
 alias wifi='sudo service network-manager restart'
+
 alias clion='(nohup sh /usr/local/clion-2018.1.3/bin/clion.sh &)'
 alias matlab='(nohup matlab &)'
 
