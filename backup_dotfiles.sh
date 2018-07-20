@@ -10,3 +10,4 @@ cp ~/.latexmkrc ~/dotfiles
 cp ~/.screenrc ~/dotfiles 
 cp ~/.bashrc_ros ~/dotfiles
 cp ~/.bashrc_stm ~/dotfiles
+cp ~/.gitconfig ~/dotfiles
