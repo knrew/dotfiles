@@ -116,6 +116,10 @@ if ! shopt -oq posix; then
   fi
 fi
 
+if type trash-put &> /dev/null
+then
+    alias rm=trash-put
+fi
 
 #neovim
 XDG_CONFIG_HOME=$HOME/.config
