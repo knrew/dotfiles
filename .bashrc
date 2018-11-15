@@ -131,7 +131,7 @@ alias vimrc='(nvim ~/.vimrc)'
 alias i3config='(nvim ~/.config/i3/config)'
 alias lm="latexmk -pvc -halt-on-error"
 alias wifi='sudo service network-manager restart'
-alias clion='(nohup sh /usr/local/clion-2018.2.4/bin/clion.sh &)'
+alias clion='(cd ~ && nohup sh /usr/local/clion-2018.2.4/bin/clion.sh &)'
 alias gollum='gollum --allow-uploads --show-all --mathjax --live-preview'
 #alias matlab='(nohup matlab &)'
 
