@@ -175,6 +175,8 @@ bindsym XF86MonBrightnessDown exec xbacklight -dec 10
 bindsym $mod+XF86LaunchB exec gnome-screenshot --area
 bindsym $mod+XF86LaunchA exec gnome-screenshot
 
+bindsym $mod+n exec nautilus --no-desktop
+
 exec --no-startup-id feh --bg-fill $HOME/.config/i3/wallpaper1.jpg
 exec --no-startup-id compton -cbm 0.75
 
