@@ -36,6 +36,8 @@ assign [class="MATLAB*"] 6:matlab
 assign [class="Slack"] 9
 assign [class="GitKraken"] 9
 
+workspace 10 output HDMI1
+
 # start a terminal
 bindsym $mod+Return exec i3-sensible-terminal
 #bindsym Control+Mod1+t exec i3-sensible-terminal 
