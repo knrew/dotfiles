@@ -38,7 +38,8 @@ if dein#load_state('~/.vim/dein/')
   " }}}
 
   call dein#add('lervag/vimtex')
-  
+  call dein#add('thinca/vim-quickrun')
+
   call dein#add('justmao945/vim-clang',{'on_ft' : 'cpp'})
   "call dein#add('Rip-Rip/clang_complete', {'on_ft' : 'cpp'})
 
@@ -74,3 +75,8 @@ set shiftwidth=4
 "let g:clang_make_default_keymappings=1
 "let g:clang_debug=1
 "let g:clang_use_library=1
+
+if !exists('g:neocomplete#sources#omni#input_patterns')
+    let g:neocomplete#sources#omni#input_patterns = {}
+endif
+let g:neocomplete#sources#omni#input_patterns.tex = g:vimtex#re#neocomplete

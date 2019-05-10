@@ -180,6 +180,7 @@ bindsym $mod+XF86LaunchA exec gnome-screenshot
 bindsym $mod+n exec nautilus --no-desktop
 
 exec --no-startup-id feh --bg-fill $HOME/.config/i3/wallpaper1.jpg
+#exec --no-startup-id feh --bg-fill $HOME/Pictures/light-blue-ubuntu.jpg
 exec --no-startup-id compton -cbm 0.75
 
 #auto start

@@ -8,4 +8,5 @@ $pdf_previewer = "start evince";
 $pdf_update_method = 0;
 $ENV{TEXINPUTS} = "$ENV{PWD}:";
 
-
+$aux_dir          = "build/";
+$out_dir          = "build/";
