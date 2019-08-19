@@ -125,15 +125,16 @@ fi
 XDG_CONFIG_HOME=$HOME/.config
 
 #alias
-#alias python='python3'
 alias vi='nvim'
 alias vim='nvim'
+alias py3='python3'
 alias vimrc='(nvim ~/.vimrc)'
 alias i3config='(nvim ~/.config/i3/config)'
 alias lm="latexmk -pvc -halt-on-error"
 alias renet='(sudo service network-manager restart)'
 alias gollum='gollum --allow-uploads --show-all --mathjax --live-preview'
 alias clion='(sh /usr/local/clion-2019.1.3/bin/clion.sh)'
+alias pycharm='(sh /usr/local/pycharm-2019.2/bin/pycharm.sh)'
 
 source ~/.bashrc_ros
 source ~/.bashrc_stm
