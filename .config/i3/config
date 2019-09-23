@@ -31,6 +31,7 @@ floating_modifier $mod
 
 assign [class="Google-chrome"] 2:web
 assign [class="Vivaldi-stable"] 2:web
+assign [class="Firefox"] 2:web
 assign [class="jetbrains-clion"] 5:code
 assign [class="jetbrains-pycharm"] 5:code
 assign [class="MATLAB*"] 6:matlab

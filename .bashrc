@@ -133,10 +133,11 @@ alias i3config='(nvim ~/.config/i3/config)'
 alias lm="latexmk -pvc -halt-on-error"
 alias renet='(sudo service network-manager restart)'
 alias gollum='gollum --allow-uploads --show-all --mathjax --live-preview'
-alias clion='(sh /usr/local/clion-2019.1.3/bin/clion.sh)'
+alias clion='(sh /usr/local/clion-2019.2.1/bin/clion.sh)'
 alias pycharm='(sh /usr/local/pycharm-2019.2/bin/pycharm.sh)'
 
+source ~/.cargo/env
 #source ~/.bashrc_ros
-#source ~/.bashrc_stm
+source ~/.bashrc_stm
 
 sh ~/dotfiles/backup_dotfiles.sh
