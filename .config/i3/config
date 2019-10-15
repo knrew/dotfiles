@@ -171,18 +171,18 @@ mode "$mode_system" {
 }
 bindsym $mod+shift+e mode "$mode_system"
 
-#increase / decrease screen brightness
-bindsym XF86MonBrightnessUp exec xbacklight -inc 10
-bindsym XF86MonBrightnessDown exec xbacklight -dec 10
+#increase / decrease screen brightness 
+bindsym XF86MonBrightnessUp exec (rbacklight -inc 10)
+bindsym XF86MonBrightnessDown exec (rbacklight -dec 10)
 
 # take screenshot
-bindsym $mod+XF86LaunchB exec gnome-screenshot --area
-bindsym $mod+XF86LaunchA exec gnome-screenshot
+bindsym $mod+XF86LaunchB exec (gnome-screenshot --area)
+bindsym $mod+XF86LaunchA exec (gnome-screenshot)
 
 bindsym $mod+n exec nautilus --no-desktop
 
-#exec --no-startup-id feh --bg-fill $HOME/Pictures/IMG_3677.JPG
-exec --no-startup-id feh --bg-fill $HOME/Pictures/light-blue-ubuntu.jpg
+exec --no-startup-id feh --bg-fill $HOME/Pictures/shoko.jpeg
+#exec --no-startup-id feh --bg-fill $HOME/Pictures/light-blue-ubuntu.jpg
 exec --no-startup-id compton -cbm 0.75
 
 #auto start

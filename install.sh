@@ -1,15 +1,19 @@
 #!/bin/bash
 
-cp ~/dotfiles/.bashrc ~/
-cp ~/dotfiles/.bash_profile ~/
-cp ~/dotfiles/.bashrc_ros ~/
-cp ~/dotfiles/.bashrc_stm ~/
-cp ~/dotfiles/.Xmodmap ~/
-cp ~/dotfiles/.vimrc ~/
-cp ~/dotfiles/.screenrc ~/
-cp ~/dotfiles/.latexmkrc ~/
-mkdir -p ~/.config/i3/
-mkdir -p ~/.config/i3status
-cp ~/dotfiles/.config/i3/config ~/.config/i3/
-cp ~/dotfiles/.config/i3status/config ~/.config/i3status/
-cp ~/dotfiles/.gitconfig ~/
+DOTFILES_DIR=$(cd $(dirname $0);pwd)
+
+mkdir -p ${HOME}/.config/i3/
+mkdir -p ${HOME}/.config/i3status
+
+cp ${DOTFILES_DIR}/.bash_profile ${HOME}
+cp ${DOTFILES_DIR}/.bashrc ${HOME}
+cp ${DOTFILES_DIR}/.config/i3/config ${HOME}/.config/i3
+cp ${DOTFILES_DIR}/.config/i3status/config ${HOME}/.config/i3status 
+cp ${DOTFILES_DIR}/.gitconfig ${HOME}
+cp ${DOTFILES_DIR}/.latexmkrc ${HOME}
+cp ${DOTFILES_DIR}/.vimrc ${HOME}
+cp ${DOTFILES_DIR}/.Xmodmap ${HOME}
+cp ${DOTFILES_DIR}/.bashrc_ros ${HOME} 
+cp ${DOTFILES_DIR}/.bashrc_stm ${HOME}
+cp ${DOTFILES_DIR}/.screenrc ${HOME}
+

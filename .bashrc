@@ -116,6 +116,7 @@ if ! shopt -oq posix; then
   fi
 fi
 
+#rm->trash-put
 if type trash-put &> /dev/null
 then
     alias rm=trash-put
@@ -124,20 +125,18 @@ fi
 #neovim
 XDG_CONFIG_HOME=$HOME/.config
 
+#Rust
+source ~/.cargo/env
+
 #alias
 alias vi='nvim'
 alias vim='nvim'
-alias py3='python3'
 alias vimrc='(nvim ~/.vimrc)'
 alias i3config='(nvim ~/.config/i3/config)'
 alias lm="latexmk -pvc -halt-on-error"
 alias renet='(sudo service network-manager restart)'
-alias gollum='gollum --allow-uploads --show-all --mathjax --live-preview'
-alias clion='(sh /usr/local/clion-2019.2.1/bin/clion.sh)'
-alias pycharm='(sh /usr/local/pycharm-2019.2/bin/pycharm.sh)'
+alias gollum='gollum --allow-uploads --show-all --mathjax --live-preview --css'
+alias clion='(sh /usr/local/clion-2019.2.3/bin/clion.sh)'
 
-source ~/.cargo/env
 #source ~/.bashrc_ros
-source ~/.bashrc_stm
-
-sh ~/dotfiles/backup_dotfiles.sh
+#source ~/.bashrc_stm
