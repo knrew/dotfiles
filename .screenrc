@@ -1,4 +1,3 @@
-logfile "/home/ryunosuke/Documents/screen_log/screen-%Y%m%d-%02c:%s.log"
+logfile "${HOME}/Documents/screen_log/screen-%Y%m%d-%02c:%s.log"
 log on
 deflog on
-

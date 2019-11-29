@@ -13,6 +13,4 @@ cp ${HOME}/.gitconfig ${DOTFILES_DIR}
 cp ${HOME}/.latexmkrc ${DOTFILES_DIR}
 cp ${HOME}/.vimrc ${DOTFILES_DIR}
 cp ${HOME}/.Xmodmap ${DOTFILES_DIR}
-cp ${HOME}/.bashrc_ros ${DOTFILES_DIR} 
-cp ${HOME}/.bashrc_stm ${DOTFILES_DIR}
 cp ${HOME}/.screenrc ${DOTFILES_DIR}

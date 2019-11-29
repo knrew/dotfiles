@@ -1,8 +1,0 @@
-# arm
-export PATH=/usr/local/arm-cs-tools/bin:$PATH
-
-#alias mk='(make all)'                                                     
-#alias fl='(make flash)'                                                   
-#alias mf='(make all && make flash)' 
-alias screen0='sudo screen /dev/ttyUSB0 115200'
-alias screen1='sudo screen /dev/ttyUSB1 115200'

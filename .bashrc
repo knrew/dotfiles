@@ -116,7 +116,7 @@ if ! shopt -oq posix; then
   fi
 fi
 
-#rm->trash-put
+#rm -> trash-put
 if type trash-put &> /dev/null
 then
     alias rm=trash-put
@@ -126,17 +126,14 @@ fi
 XDG_CONFIG_HOME=$HOME/.config
 
 #Rust
-source ~/.cargo/env
+#source ~/.cargo/env
 
 #alias
 alias vi='nvim'
 alias vim='nvim'
-alias vimrc='(nvim ~/.vimrc)'
-alias i3config='(nvim ~/.config/i3/config)'
+alias vimrc='(nvim $HOME/.vimrc)'
+alias i3config='(nvim $HOME/.config/i3/config)'
 alias lm="latexmk -pvc -halt-on-error"
 alias renet='(sudo service network-manager restart)'
-alias gollum='gollum --allow-uploads --show-all --mathjax --live-preview --css'
-alias clion='(sh /usr/local/clion-2019.2.3/bin/clion.sh)'
-
-#source ~/.bashrc_ros
-#source ~/.bashrc_stm
+alias gitit='gitit -f gitit.conf'
+alias slide='$HOME/wiki/uploads/code/slide.sh'
