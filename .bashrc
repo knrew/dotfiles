@@ -126,7 +126,7 @@ fi
 XDG_CONFIG_HOME=$HOME/.config
 
 #Rust
-#source ~/.cargo/env
+source ~/.cargo/env
 
 #alias
 alias vi='nvim'
