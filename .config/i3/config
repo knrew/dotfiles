@@ -192,6 +192,14 @@ bindsym $mod+n exec nautilus --no-desktop
 #exec --no-startup-id feh --bg-fill $HOME/Pictures/shoko.jpeg
 exec --no-startup-idfeh --bg-fill /usr/share/backgrounds/ubuntu-default-greyscale-wallpaper.png
 
+#increase / decrease screen brightness 
+bindsym F12 exec (rbacklight -inc 50)
+bindsym F11 exec (rbacklight -dec 50)
+
+# take screenshot
+bindsym $mod+Print exec (gnome-screenshot --area)
+bindsym $mod+Shift+Print exec (gnome-screenshot)
+
 # auto start
 exec --no-startup-id xmodmap ~/.Xmodmap #keymap
 exec --no-startup-id /usr/bin/ibus-daemon --replace #mozc
