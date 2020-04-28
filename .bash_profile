@@ -1,3 +1,7 @@
-source ${HOME}/.bashrc
+#
+# ~/.bash_profile
+#
 
-export PATH="$HOME/.cargo/bin:$PATH"
+[[ -f ~/.bashrc ]] && . ~/.bashrc
+
+[[ -z $DISPLAY && $XDG_VTNR -eq 1 ]] && exec startx

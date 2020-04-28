@@ -3,7 +3,7 @@
 	name = Ryunosuke
 
 [https]
-	proxy = http://proxy.cis.kit.ac.jp:8080
+#	proxy = http://proxy.cis.kit.ac.jp:8080
 
 [http]
-	proxy = http://proxy.cis.kit.ac.jp:8080
+#	proxy = http://proxy.cis.kit.ac.jp:8080
