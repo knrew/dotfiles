@@ -14,5 +14,6 @@ git push
 ```
 
 ## 歴史
-~2019年11月 : MacBookAir
-2019年11月~ : Latitude
+- ~2019年11月 : Ubuntu - MacBookAir
+- 2019年11月~ : Ubuntu - Latitude
+- 2020年4月~ : ArchLinux - Latitude
