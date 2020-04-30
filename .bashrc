@@ -6,7 +6,7 @@
 [[ $- != *i* ]] && return
 
 alias ls='ls --color=auto'
-PS1='[\u@\h \w]\$ '
+PS1='\u@\h \w \$ '
 
 # some more ls aliases
 alias ll='ls -alF'
@@ -29,3 +29,5 @@ alias vi='nvim'
 alias vim='nvim'
 alias swiki='(cd wiki && gitit -f gitit.conf)'
 alias i3config='nvim ~/.config/i3/config'
+
+cd ~

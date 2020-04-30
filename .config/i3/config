@@ -165,9 +165,10 @@ bindsym $mod+r mode "resize"
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
-        status_command i3status
-        tray_output primary
+    status_command i3status
+    tray_output primary
 }
+
 
 # auto start
 exec --no-startup-id synclient HorizEdgeScroll=0 HorizTwoFingerScroll=0 VertScrollDelta=-66 HorizScrollDelta=-66 #natural scrolling
