@@ -27,4 +27,5 @@ XDG_CONFIG_HOME=$HOME/.config
 #alias
 alias vi='nvim'
 alias vim='nvim'
-alias gitit='gitit -f gitit.conf'
+alias swiki='(cd wiki && gitit -f gitit.conf)'
+alias i3config='nvim ~/.config/i3/config'
