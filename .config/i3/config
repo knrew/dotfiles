@@ -31,7 +31,7 @@ floating_modifier $mod
 
 #workspace 10 output HDMI1
 
-assign [class="Firefox"] 2:web
+assign [class="firefox"] 2:web
 assign [class="jetbrains-clion"] 5:code
 assign [class="jetbrains-pycharm"] 5:code
 assign [class="MATLAB*"] 5:code

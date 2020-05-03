@@ -26,13 +26,13 @@ order += "tztime local"
 
 cpu_usage {
         #format = "all: %usage CPU_0: %cpu0 CPU_1: %cpu1 CPU_2: %cpu2 CPU_3: %cpu3"
-        format = "cpu: %usage"
+        format = "cpu:%usage"
         #max_threshold = 95
         #degraded_threshold = 90
 }
 
 wireless _first_ {
-        format_up = "wifi: (%quality at %essid) %ip"
+        format_up = "wifi:(%quality at %essid) %ip"
         format_down = "wifi: down"
 }
 
@@ -43,7 +43,7 @@ ethernet _first_ {
 }
 
 battery 0 {
-        format = "battery: %percentage %remaining"
+        format = "battery:%percentage %remaining"
         #format = "%status %percentage %remaining %emptytime"
         format_down = "No battery"
         status_chr = "⚡ CHR"
@@ -76,6 +76,7 @@ disk "/" {
 
 volume master {
         format = "sound:%volume"
+        format_muted = "sound:muted(%volume)"
         device = "default"
         mixer = "Master"
         mixer_idx = 0
