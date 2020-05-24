@@ -21,13 +21,16 @@ fi
 
 export PATH=$PATH:$HOME/.local/bin
 
-#neovim
-XDG_CONFIG_HOME=$HOME/.config
-
-#alias
+# neovim
+#XDG_CONFIG_HOME=$HOME/.config
 alias vi='nvim'
 alias vim='nvim'
-alias swiki='(cd wiki && gitit -f gitit.conf)'
-alias i3config='nvim ~/.config/i3/config'
+alias vimrc='(nvim $HOME/.config/nvim/init.vim)' 
+alias vieuc='vi -c ":e ++enc=euc-jp"'
 
-cd ~
+# tex
+alias lm="latexmk -pvc -halt-on-error"
+
+alias swiki='(cd wiki && gitit -f gitit.conf)'
+alias bashrc='(nvim $HOME/.bashrc)'
+alias i3config='(nvim $HOME/.config/i3/config)'

@@ -1,5 +1,6 @@
 #!/bin/perl
 $latex         = 'platex -synctex=1 -halt-on-error -shell-escape %O %S';
+#$latex         = 'platex -kanji=euc-jp -synctex=1 -halt-on-error -shell-escape %O %S'; #euc-jp
 $xelatex       = 'xelatex -synctex=1 %O %S';
 $bibtex        = 'pbibtex %O %B';
 $dvipdf        = 'dvipdfmx %O %S';
