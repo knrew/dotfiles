@@ -11,4 +11,3 @@ $ENV{TEXINPUTS} = "$ENV{PWD}:";
 
 $aux_dir          = "build/";
 $out_dir          = "build/";
-

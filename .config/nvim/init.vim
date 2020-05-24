@@ -16,10 +16,17 @@ if dein#load_state('~/.cache/dein')
 
 
   " Add or remove my plugins:
+  call dein#add('Shougo/denite.nvim')
   call dein#add('Shougo/deoplete.nvim') "complate
+ 
+  " snippet
+  call dein#add('Shougo/neosnippet.vim')
+  "call dein#add('Shougo/neosnippet-snippets')
+  "call dein#add('honza/vim-snippets')
+
+  call dein#add('Shougo/deol.nvim') "shell
 
   "call dein#add('Shougo/defx.nvim')
-  "call dein#add('Shougo/denite.nvim')
   "call dein#add('Shougo/vimproc.vim', {'build' : 'make'})  
 
   call dein#add('lervag/vimtex')
@@ -40,11 +47,24 @@ set expandtab
 set tabstop=4
 set shiftwidth=4
 
+" complete (),{},[] 
+inoremap { {}<Left>
+inoremap [ []<Left>
+inoremap ( ()<Left>
+
+" deoplete
 let g:deoplete#enable_at_startup = 1
+set completeopt=menuone,noinsert
+
+" neosnippet
+let g:neosnippet#enable_snipmate_compatibility = 1
 
 " vimtex
+let g:latex_latexmk_options = '-pvc -halt-on-error'
 let g:vimtex_view_method='zathura'
-let g:latex_latexmk_continuous = 1
+let g:vimtex_quickfix_mode=0
+let g:vimtex_fold_enabled=0
+call deoplete#custom#var('omni', 'input_patterns', {'tex': g:vimtex#re#deoplete})
 
 " last
 filetype plugin indent on
