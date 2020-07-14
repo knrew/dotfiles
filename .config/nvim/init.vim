@@ -64,6 +64,7 @@ let g:latex_latexmk_options = '-pvc -halt-on-error'
 let g:vimtex_view_method='zathura'
 let g:vimtex_quickfix_mode=0
 let g:vimtex_fold_enabled=0
+let g:vimtex_view_enabled=0
 call deoplete#custom#var('omni', 'input_patterns', {'tex': g:vimtex#re#deoplete})
 
 " last
