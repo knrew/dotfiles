@@ -29,8 +29,6 @@ font pango:monospace 8
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
-#workspace 10 output HDMI1
-
 assign [class="firefox"] 2:web
 assign [class="jetbrains-clion"] 5:code
 assign [class="jetbrains-pycharm"] 5:code
@@ -169,11 +167,24 @@ bar {
     tray_output primary
 }
 
+# multi-display
+#workspace "1" output eDP1
+#workspace "2:web" output DP1-3
+#workspace "3" output eDP1
+#workspace "4:wiki" output eDP1
+#workspace "5:code" output eDP1
+#workspace "6" output eDP1
+#workspace "7" output eDP1
+#workspace "8" output eDP1
+#workspace "9" output DP1-3
+#workspace "10:ex" output eDP1
+
 
 # auto start
+#exec --no-startup-id xrandr --output DP1-3 --auto --above eDP1
 exec --no-startup-id synclient HorizEdgeScroll=0 HorizTwoFingerScroll=0 VertScrollDelta=-66 HorizScrollDelta=-66 #natural scrolling
 exec --no-startup-id xmodmap ~/.Xmodmap
 exec --no-startup-id fcitx
 exec --no-startup-id nm-applet
-exec firefox
+exec --no-startup-id firefox
 exec sleep 0.5; termite

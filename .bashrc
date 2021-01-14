@@ -31,6 +31,11 @@ alias vieuc='vi -c ":e ++enc=euc-jp"'
 # tex
 alias lm="latexmk -pvc -halt-on-error"
 
-alias swiki='(cd wiki && gitit -f gitit.conf)'
+# Rust
+source $HOME/.cargo/env
+
+alias swiki='(cd $HOME/wiki && gitit -f gitit.conf)'
 alias bashrc='(nvim $HOME/.bashrc)'
 alias i3config='(nvim $HOME/.config/i3/config)'
+
+alias pycharm='(sh /usr/local/pycharm-community-2020.1.2/bin/pycharm.sh)'
