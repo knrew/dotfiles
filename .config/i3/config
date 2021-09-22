@@ -168,11 +168,25 @@ bar {
     tray_output primary
 }
 
+
+# multi-display
+workspace "1" output DP1-3
+workspace "2:web" output DP1-3 
+workspace "3" output DP1-3
+workspace "4:wiki" output DP1-3
+workspace "5:code" output DP1-3
+workspace "6" output DP1-3
+workspace "7" output DP1-3
+workspace "8" output eDP1
+workspace "9" output eDP1
+workspace "10:bg" output eDP1
+exec --no-startup-id xrandr --output DP1-3 --auto --output eDP1 --auto --left-of DP1-3 
+
 # auto start
 exec --no-startup-id exec amixer -q set Master 0 mute
-exec --no-startup-id synclient HorizEdgeScroll=0 HorizTwoFingerScroll=0 VertScrollDelta=-66 HorizScrollDelta=-66 #natural scrolling
+exec --no-startup-id synclient HorizEdgeScroll=0 HorizTwoFingerScroll=1 VertScrollDelta=-66 HorizScrollDelta=-66 #natural scrolling
 exec --no-startup-id xmodmap ~/.Xmodmap
 exec --no-startup-id fcitx
 exec --no-startup-id nm-applet
 exec --no-startup-id firefox
-exec sleep 0.5; termite
+exec sleep 0.5; #termite

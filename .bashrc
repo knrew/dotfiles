@@ -40,5 +40,3 @@ alias enas='(xset s on +dpms)' # enable auto sleep
 
 alias pacmanls='pacman -Qqen'
 alias yayls='pacman -Qqem'
-
-alias pycharm='(sh /usr/local/bin/pycharm)'

@@ -7,7 +7,7 @@ mkdir -p ${HOME}/.config/i3/
 mkdir -p ${HOME}/.config/i3status/
 mkdir -p ${HOME}/.config/termite/
 mkdir -p ${HOME}/Pictures/screenshot/
-#mkdir -p ${HOME}/Documents/screen_log
+mkdir -p ${HOME}/.screen_log
 
 cp ${DOTFILES_DIR}/.bash_profile ${HOME}
 cp ${DOTFILES_DIR}/.bashrc ${HOME}
