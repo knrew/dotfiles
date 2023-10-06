@@ -29,15 +29,25 @@ font pango:monospace 8
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
+# define workspace
+set $WS1 1
+set $WS2 2:web
+set $WS3 3
+set $WS4 4:web
+set $WS5 5:code
+set $WS6 6
+set $WS7 7
+set $WS8 8
+set $WS9 9
+set $WS10 10:bg
+
 assign [class="firefox"] 2:web
-assign [class="jetbrains-clion"] 5:code
-assign [class="jetbrains-pycharm"] 5:code
-assign [class="MATLAB*"] 5:code
-assign [class="Slack"] 9
+assign [class="google-chrome"] 2:web
+assign [class="Google-chrome"] 2:web
 
 #increase / decrease screen brightness 
-bindsym F12 exec (xbacklight -inc 10)
-bindsym F11 exec (xbacklight -dec 10)
+bindsym F5 exec (light -A 5)
+bindsym F4 exec (light -U 5)
 
 # volume
 bindsym F3 exec amixer -q set Master 2%+ unmute
@@ -49,7 +59,7 @@ bindsym $mod+Print exec --no-startup-id scrot 'screenshot_%Y%m%d_%I%M%S.png' -e 
 bindsym $mod+Shift+Print exec sleep 0.2 && exec scrot -s 'screenshot_%Y%m%d_%I%M%S.png' -e 'mv $f ~/Pictures/screenshot/'
 
 # start a terminal
-bindsym $mod+Return exec termite
+bindsym $mod+Return exec alacritty
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -92,29 +102,28 @@ bindsym $mod+o focus parent
 bindsym $mod+i focus child
 
 # switch to workspace
-bindsym $mod+1 workspace 1
-bindsym $mod+2 workspace 2:web
-bindsym $mod+3 workspace 3
-bindsym $mod+4 workspace 4:wiki
-bindsym $mod+5 workspace 5:code
-bindsym $mod+6 workspace 6
-bindsym $mod+7 workspace 7
-bindsym $mod+8 workspace 8
-bindsym $mod+9 workspace 9
-# bg : background
-bindsym $mod+0 workspace 10:bg
+bindsym $mod+1 workspace $WS1
+bindsym $mod+2 workspace $WS2
+bindsym $mod+3 workspace $WS3
+bindsym $mod+4 workspace $WS4
+bindsym $mod+5 workspace $WS5
+bindsym $mod+6 workspace $WS6
+bindsym $mod+7 workspace $WS7
+bindsym $mod+8 workspace $WS8
+bindsym $mod+9 workspace $WS9
+bindsym $mod+0 workspace $WS10
 
 # move focused container to workspace
-bindsym $mod+Shift+1 move container to workspace 1
-bindsym $mod+Shift+2 move container to workspace 2:web
-bindsym $mod+Shift+3 move container to workspace 3
-bindsym $mod+Shift+4 move container to workspace 4:wiki
-bindsym $mod+Shift+5 move container to workspace 5:code
-bindsym $mod+Shift+6 move container to workspace 6
-bindsym $mod+Shift+7 move container to workspace 7
-bindsym $mod+Shift+8 move container to workspace 8
-bindsym $mod+Shift+9 move container to workspace 9
-bindsym $mod+Shift+0 move container to workspace 10:bg
+bindsym $mod+Shift+1 move container to workspace $WS1
+bindsym $mod+Shift+2 move container to workspace $WS2
+bindsym $mod+Shift+3 move container to workspace $WS3
+bindsym $mod+Shift+4 move container to workspace $WS4
+bindsym $mod+Shift+5 move container to workspace $WS5
+bindsym $mod+Shift+6 move container to workspace $WS6
+bindsym $mod+Shift+7 move container to workspace $WS7
+bindsym $mod+Shift+8 move container to workspace $WS8
+bindsym $mod+Shift+9 move container to workspace $WS9
+bindsym $mod+Shift+0 move container to workspace $WS10
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
@@ -165,28 +174,29 @@ bindsym $mod+r mode "resize"
 # finds out, if available)
 bar {
     status_command i3status
-    tray_output primary
+    #tray_output primary
 }
 
-
 # multi-display
-workspace "1" output DP1-3
-workspace "2:web" output DP1-3 
-workspace "3" output DP1-3
-workspace "4:wiki" output DP1-3
-workspace "5:code" output DP1-3
-workspace "6" output DP1-3
-workspace "7" output DP1-3
-workspace "8" output eDP1
-workspace "9" output eDP1
-workspace "10:bg" output eDP1
-exec --no-startup-id xrandr --output DP1-3 --auto --output eDP1 --auto --left-of DP1-3 
+#workspace $WS1 output HDMI-A-0
+#workspace $WS2 output HDMI-A-0 
+#workspace $WS3 output HDMI-A-0
+#workspace $WS4 output HDMI-A-0
+#workspace $WS5 output HDMI-A-0
+#workspace $WS6 output HDMI-A-0
+#workspace $WS7 output HDMI-A-0
+#workspace $WS8 output eDP
+#workspace $WS9 output eDP
+#workspace $WS10 output eDP
+#exec --no-startup-id xrandr --output HDMI-A-0 --auto --output eDP --auto --left-of HDMI-A-0 
 
 # auto start
+#exec --no-startup-id ~/.fehbg
 exec --no-startup-id exec amixer -q set Master 0 mute
-exec --no-startup-id synclient HorizEdgeScroll=0 HorizTwoFingerScroll=1 VertScrollDelta=-66 HorizScrollDelta=-66 #natural scrolling
+#exec --no-startup-id synclient HorizEdgeScroll=0 HorizTwoFingerScroll=1 VertScrollDelta=-66 HorizScrollDelta=-66 #natural scrolling
 exec --no-startup-id xmodmap ~/.Xmodmap
 exec --no-startup-id fcitx
 exec --no-startup-id nm-applet
-exec --no-startup-id firefox
-exec sleep 0.5; #termite
+exec --no-startup-id google-chrome-stable
+exec sleep 0.5;
+exec alacritty

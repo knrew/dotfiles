@@ -32,14 +32,15 @@ cpu_usage {
 }
 
 wireless _first_ {
-        format_up = "wifi:(%quality at %essid) %ip"
+        #format_up = "wifi:(%quality at %essid) %ip"
+        format_up = "wifi:%essid(%quality)"
         format_down = "wifi: down"
 }
 
 ethernet _first_ {
         # if you use %speed, i3status requires root privileges
-        format_up = "E: %ip (%speed)"
-        format_down = "E: down"
+        format_up = "ether: %ip (%speed)"
+        format_down = "ether: down"
 }
 
 battery 0 {
@@ -50,7 +51,7 @@ battery 0 {
         status_bat = "🔋 BAT"
         #status_unk = "? UNK"
         status_full = "☻ FULL"
-        path = "/sys/class/power_supply/BAT%d/uevent"
+        path = "/sys/class/power_supply/BATT/uevent"
         low_threshold = 10
 }
 

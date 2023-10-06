@@ -12,6 +12,6 @@
 	pager = LESSCHARSET=utf-8 less
     quotepath = false
 
-[url "github:"]
-    InsteadOf = https://github.com/
-    InsteadOf = git@github.com:
+#[url "github:"]
+#    InsteadOf = https://github.com/
+#   InsteadOf = git@github.com:

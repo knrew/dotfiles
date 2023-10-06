@@ -13,7 +13,7 @@ alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
 
-#rm -> trash-put
+# rm -> trash-put
 if type trash-put &> /dev/null
 then
     alias rm=trash-put
@@ -40,3 +40,7 @@ alias enas='(xset s on +dpms)' # enable auto sleep
 
 alias pacmanls='pacman -Qqen'
 alias yayls='pacman -Qqem'
+
+#alias python=python3.8
+
+#bash $HOME/Applications/manju.sh today true

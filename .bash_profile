@@ -6,4 +6,5 @@
 
 [[ -z $DISPLAY && $XDG_VTNR -eq 1 ]] && exec startx
 
-source "$HOME/.cargo/env"
+#. "$HOME/.cargo/env"
+
