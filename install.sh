@@ -2,7 +2,7 @@
 
 HOME_DIR="$HOME/"
 DOTFILES_DIR="$HOME_DIR/dotfiles/"
-BACKUP_DIR="$HOME_DIR/dotfiles_backup/"
+BACKUP_DIR="$HOME_DIR/.dotfiles_backup/"
 
 make_link() {
   if [ -f "$DOTFILES_DIR/$1" ]; then 
@@ -35,5 +35,8 @@ make_link ".config/zathura/zathurarc"
 make_link ".config/Code/User/settings.json"
 make_link ".config/Code/User/keybindings.json"
 make_link ".config/alacritty/alacritty.toml"
+make_link ".config/polybar/config.ini"
+make_link ".Xresources"
 
+command echo "backup_dir: $BACKUP_DIR"
 command echo -e "\e[1;36m Install completed! \e[m"

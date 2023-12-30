@@ -172,10 +172,21 @@ bindsym $mod+r mode "resize"
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
-bar {
-    status_command i3status
-    #tray_output primary
-}
+# bar {
+#     status_command polybar
+#     tray_output primary
+# }
+exec --no-startup-id polybar
+
+# Theme colors
+# client.focused #d9d6ca #1c1c22 #d9d6ca #5c828d #5c828d
+# client.focused_inactive #d9d6ca #1c1c22 #d9d6ca #3e646f #3e646f
+# client.unfocused #d9d6ca #1c1c22 #d9d6ca #3e646f #3e646f
+# client.urgent #d9d6ca #1c1c22 #d9d6ca #3e646f #3e646f
+# client.placeholder #d9d6ca #1c1c22 #d9d6ca #3e646f #3e646f
+# client.background #1c1c22
+
+
 
 # multi-display
 #workspace $WS1 output HDMI-A-0
