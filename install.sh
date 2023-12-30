@@ -34,5 +34,6 @@ make_link ".config/nvim/init.vim"
 make_link ".config/zathura/zathurarc"
 make_link ".config/Code/User/settings.json"
 make_link ".config/Code/User/keybindings.json"
+make_link ".config/alacritty/alacritty.toml"
 
 command echo -e "\e[1;36m Install completed! \e[m"
