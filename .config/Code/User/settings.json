@@ -1,0 +1,12 @@
+{
+    "workbench.colorTheme": "Quiet Light",
+    "files.autoSave": "afterDelay",
+    "window.zoomLevel": 2,
+    "terminal.integrated.enableMultiLinePasteWarning": false,
+    "[python]": {
+        "editor.formatOnType": true
+    },
+    "cmake.configureOnOpen": true,
+    "editor.tabSize": 2,
+    "cmake.options.statusBarVisibility": "visible"
+}

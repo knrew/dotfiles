@@ -1,7 +1,7 @@
 #!/bin/sh
 
 HOME_DIR="$HOME/"
-DOTFILES_DIR="$HOME_DIR/.dotfiles/"
+DOTFILES_DIR="$HOME_DIR/dotfiles/"
 BACKUP_DIR="$HOME_DIR/dotfiles_backup/"
 
 make_link() {
@@ -32,5 +32,7 @@ make_link ".config/i3/config"
 make_link ".config/i3status/config"
 make_link ".config/nvim/init.vim"
 make_link ".config/zathura/zathurarc"
+make_link ".config/Code/User/settings.json"
+make_link ".config/Code/User/keybindings.json"
 
 command echo -e "\e[1;36m Install completed! \e[m"
