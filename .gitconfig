@@ -1,12 +1,10 @@
 [user]
 	email = rew.7cc.12.1f@gmail.com
-	name = Ryunosuke
+	name = SUGAWARA Ryunosuke
 
 [https]
-#	proxy = http://proxy.cis.kit.ac.jp:8080
 
 [http]
-#	proxy = http://proxy.cis.kit.ac.jp:8080
 
 [core]
 	pager = LESSCHARSET=utf-8 less

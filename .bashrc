@@ -41,6 +41,5 @@ alias enas='(xset s on +dpms)' # enable auto sleep
 alias pacmanls='pacman -Qqen'
 alias yayls='pacman -Qqem'
 
-#alias python=python3.8
-
-#bash $HOME/Applications/manju.sh today true
+alias cb='cargo build'
+alias cr='cargo run'

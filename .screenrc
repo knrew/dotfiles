@@ -1,3 +1,0 @@
-logfile "${HOME}/.screen_log/screen%n_%Y%m%d_%02c:%s.log"
-log on
-deflog on
