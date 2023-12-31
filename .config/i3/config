@@ -22,19 +22,19 @@ floating_modifier $mod
 
 # define workspace
 set $WS1 1
-set $WS2 2:web
+set $WS2 2
 set $WS3 3
-set $WS4 4:wiki
-set $WS5 5:code
+set $WS4 4
+set $WS5 5
 set $WS6 6
 set $WS7 7
 set $WS8 8
 set $WS9 9
-set $WS10 10:bg
+set $WS10 10
 
-assign [class="firefox"] 2:web
-assign [class="google-chrome"] 2:web
-assign [class="Google-chrome"] 2:web
+assign [class="firefox"] $WS2
+assign [class="google-chrome"] $WS2
+assign [class="Google-chrome"] $WS2
 
 #increase / decrease screen brightness 
 bindsym F5 exec (light -A 5)
@@ -162,6 +162,12 @@ mode "resize" {
 }
 bindsym $mod+r mode "resize"
 
+# save all workspace layouts
+bindsym $mod+Shift+comma exec "sh $HOME/dotfiles/.config/i3/resurrect_save.sh"
+
+# restore all workspaces and windows
+bindsym $mod+Shift+period exec "sh $HOME/dotfiles/.config/i3/resurrect_restore.sh"
+
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 # bar {
@@ -182,7 +188,7 @@ exec --no-startup-id $HOME/.config/polybar/polybar_launch.sh
 # auto start
 #exec --no-startup-id ~/.fehbg
 exec --no-startup-id exec amixer -q set Master 0 mute
-exec --no-startup-id xmodmap $HOME/.Xmodmap
+#exec --no-startup-id xmodmap $HOME/.Xmodmap
 exec --no-startup-id fcitx
 exec --no-startup-id "nm-applet --indicator"
 exec --no-startup-id google-chrome-stable
