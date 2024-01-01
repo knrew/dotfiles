@@ -18,6 +18,7 @@ make_link() {
     fi
   fi
 
+  command mkdir -p $(dirname "$HOME/$1")
   command ln -snf "$DOTFILES_DIR/$1" "$HOME/$1"
   command echo "installed: $1"
   return 0
@@ -34,7 +35,9 @@ make_link ".xinitrc"
 make_link ".Xmodmap"
 make_link ".gitconfig"
 make_link ".config/i3/config"
-make_link ".config/i3/wiki_launch.sh"
+make_link ".config/i3/scripts/wiki_launch.sh"
+make_link ".config/i3/scripts/resurrect_save.sh"
+make_link ".config/i3/scripts/resurrect_restore.sh"
 make_link ".config/i3status/config"
 make_link ".config/i3-resurrect/config.json"
 make_link ".config/nvim/init.vim"

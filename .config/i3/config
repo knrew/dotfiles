@@ -46,8 +46,8 @@ bindsym F2 exec amixer -q set Master 2%- unmute
 bindsym F1 exec amixer -q set Master toggle
 
 # screenshot
-bindsym $mod+Print exec --no-startup-id scrot 'screenshot_%Y%m%d_%I%M%S.png' -e 'mv $f ~/Pictures/screenshot/'
-bindsym $mod+Shift+Print exec sleep 0.2 && exec scrot -s 'screenshot_%Y%m%d_%I%M%S.png' -e 'mv $f ~/Pictures/screenshot/'
+bindsym $mod+Print exec --no-startup-id scrot 'screenshot_%Y%m%d_%I%M%S.png' -e 'mv $f $HOME/Pictures/screenshot/'
+bindsym $mod+Shift+Print exec sleep 0.2 && exec scrot -s 'screenshot_%Y%m%d_%I%M%S.png' -e 'mv $f $HOME/Pictures/screenshot/'
 
 # start a terminal
 bindsym $mod+Return exec alacritty
@@ -163,8 +163,8 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 # save/restore all workspace layouts
-bindsym $mod+Shift+comma exec "sh $HOME/dotfiles/.config/i3/resurrect_save.sh"
-bindsym $mod+Shift+period exec "sh $HOME/dotfiles/.config/i3/resurrect_restore.sh"
+bindsym $mod+Shift+comma exec "sh $HOME/.config/i3/scripts/resurrect_save.sh"
+bindsym $mod+Shift+period exec "sh $HOME/.config/i3/scripts/resurrect_restore.sh"
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
@@ -189,4 +189,4 @@ exec --no-startup-id nm-applet
 exec --no-startup-id google-chrome-stable
 exec sleep 0.5
 exec --no-startup-id feh --no-fehbg --bg-scale "$HOME/Pictures/wallpaper.png"
-# exec --no-startup-id exec "sh $HOME/.config/i3/wiki_launch.sh"
+exec --no-startup-id $HOME/.config/i3/wiki_launch.sh
