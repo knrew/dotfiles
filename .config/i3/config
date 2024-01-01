@@ -32,9 +32,10 @@ set $WS8 8
 set $WS9 9
 set $WS10 10
 
-assign [class="firefox"] $WS2
-assign [class="google-chrome"] $WS2
 assign [class="Google-chrome"] $WS2
+assign [class="google-chrome"] $WS2
+assign [class="Code"] $WS4
+assign [class="code"] $WS4
 
 #increase / decrease screen brightness 
 bindsym F5 exec (light -A 5)
@@ -46,8 +47,9 @@ bindsym F2 exec amixer -q set Master 2%- unmute
 bindsym F1 exec amixer -q set Master toggle
 
 # screenshot
-bindsym $mod+Print exec "mkdir -p $HOME/Pictures/screenshot/ && scrot 'screenshot_%Y%m%d_%I%M%S.png' -e 'mv $f \$HOME/Pictures/screenshot/'"
-bindsym $mod+Shift+Print exec "mkdir -p $HOME/Pictures/screenshot/ && sleep 0.2 && scrot -s 'screenshot_\%Y\%m\%d_\%I\%M\%S.png' -e 'mv $f \$HOME/Pictures/screenshot/'"
+set $screenshot_dir $HOME/Pictures/screenshot/
+bindsym $mod+Print exec "mkdir -p $screenshot_dir && scrot 'screenshot_%Y%m%d_%I%M%S.png' -e 'mv $f \$screenshot_dir'"
+bindsym $mod+Shift+Print exec "mkdir -p $screenshot_dir && sleep 0.2 && scrot -s 'screenshot_\%Y\%m\%d_\%I\%M\%S.png' -e 'mv $f \$screenshot_dir'"
 
 # start a terminal
 bindsym $mod+Return exec alacritty
@@ -189,4 +191,4 @@ exec --no-startup-id nm-applet
 exec --no-startup-id google-chrome-stable
 # exec sleep 0.5
 exec --no-startup-id feh --no-fehbg --bg-scale "$HOME/Pictures/wallpaper.png"
-exec --no-startup-id $HOME/.config/i3/wiki_launch.sh
+exec --no-startup-id "sh $HOME/.config/i3/scripts/wiki_launch.sh"

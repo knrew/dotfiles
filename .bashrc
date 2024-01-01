@@ -21,7 +21,12 @@ fi
 
 export PATH=$PATH:$HOME/.local/bin
 
-source $HOME/.cargo/env # Rust
+# Rust
+if [ -f "$HOME/.cargo/env" ]; then
+    source $HOME/.cargo/env
+    alias cb='cargo build'
+    alias cr='cargo run'
+fi
 
 # neovim
 alias vi='nvim'
@@ -40,6 +45,3 @@ alias enas='(xset s on +dpms)' # enable auto sleep
 
 alias pacmanls='pacman -Qqen'
 alias yayls='pacman -Qqem'
-
-alias cb='cargo build'
-alias cr='cargo run'

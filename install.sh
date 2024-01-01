@@ -26,8 +26,6 @@ make_link() {
 
 command mkdir -p $BACKUP_DIR
 
-command mkdir -p "$HOME/Pictures/screenshot"
-
 make_link ".bash_profile"
 make_link ".bashrc"
 make_link ".latexmkrc"
