@@ -162,10 +162,8 @@ mode "resize" {
 }
 bindsym $mod+r mode "resize"
 
-# save all workspace layouts
+# save/restore all workspace layouts
 bindsym $mod+Shift+comma exec "sh $HOME/dotfiles/.config/i3/resurrect_save.sh"
-
-# restore all workspaces and windows
 bindsym $mod+Shift+period exec "sh $HOME/dotfiles/.config/i3/resurrect_restore.sh"
 
 # Start i3bar to display a workspace bar (plus the system information i3status
@@ -175,7 +173,6 @@ bindsym $mod+Shift+period exec "sh $HOME/dotfiles/.config/i3/resurrect_restore.s
 #       tray_output primary
 # }
 exec --no-startup-id $HOME/.config/polybar/polybar_launch.sh
-# exec --no-startup-id polybar
 
 # Theme colors
 # client.focused #d9d6ca #1c1c22 #d9d6ca #5c828d #5c828d
@@ -186,10 +183,10 @@ exec --no-startup-id $HOME/.config/polybar/polybar_launch.sh
 # client.background #1c1c22
 
 # auto start
-#exec --no-startup-id ~/.fehbg
 exec --no-startup-id exec amixer -q set Master 0 mute
-#exec --no-startup-id xmodmap $HOME/.Xmodmap
 exec --no-startup-id fcitx
-exec --no-startup-id "nm-applet --indicator"
+exec --no-startup-id nm-applet
 exec --no-startup-id google-chrome-stable
 exec sleep 0.5
+exec --no-startup-id feh --no-fehbg --bg-scale "$HOME/Pictures/wallpaper.png"
+# exec --no-startup-id exec "sh $HOME/.config/i3/wiki_launch.sh"
