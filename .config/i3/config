@@ -49,8 +49,8 @@ bindsym F1 exec amixer -q set Master toggle
 
 # screenshot
 set $screenshot_dir $HOME/Pictures/screenshot/
-bindsym $mod+Print exec "mkdir -p $screenshot_dir && scrot 'screenshot_%Y%m%d_%I%M%S.png' -e 'mv $f \$screenshot_dir'"
-bindsym $mod+Shift+Print exec "mkdir -p $screenshot_dir && sleep 0.2 && scrot -s 'screenshot_\%Y\%m\%d_\%I\%M\%S.png' -e 'mv $f \$screenshot_dir'"
+bindsym $mod+Print exec "mkdir -p $screenshot_dir && scrot 'screenshot_%Y%m%d_%H%M%S.png' -e 'mv $f \$screenshot_dir'"
+bindsym $mod+Shift+Print exec "mkdir -p $screenshot_dir && sleep 0.2 && scrot -s 'screenshot_\%Y\%m\%d_\%H\%M\%S.png' -e 'mv $f \$screenshot_dir'"
 
 # start a terminal
 bindsym $mod+Return exec alacritty
