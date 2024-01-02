@@ -1,7 +1,7 @@
 #!/bin/sh
 
 DOTFILES_DIR="$HOME/dotfiles"
-BACKUP_DIR="$HOME/.backup_dotfiles_$(date +%Y%m%d_%H%M%S)"
+BACKUP_DIR="$HOME/.backup_dotfiles/$(date +%Y%m%d_%H%M%S)"
 
 make_link() {
   if [ ! -f "$DOTFILES_DIR/$1" ]; then 
@@ -30,6 +30,7 @@ make_link ".bash_profile"
 make_link ".bashrc"
 make_link ".latexmkrc"
 make_link ".xinitrc"
+make_link ".Xmodmap"
 make_link ".Xresources"
 make_link ".config/i3/config"
 make_link ".config/i3/scripts/wiki_launch.sh"
