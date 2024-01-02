@@ -45,3 +45,5 @@ alias enas='(xset s on +dpms)' # enable auto sleep
 
 alias pacmanls='pacman -Qqen'
 alias yayls='pacman -Qqem'
+
+eval "$(starship init bash)"

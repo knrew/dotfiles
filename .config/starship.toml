@@ -1,0 +1,7 @@
+add_newline = true
+
+#format = '$user$directory$character'
+
+[character] 
+success_symbol = '[>](bold green)'
+

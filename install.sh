@@ -46,6 +46,7 @@ make_link ".config/alacritty/alacritty.toml"
 make_link ".config/polybar/config.ini"
 make_link ".config/polybar/polybar_launch.sh"
 make_link ".config/rofi/config.rasi"
+make_link ".config/starship.toml"
 
 if [ -z "$(command ls -A $BACKUP_DIR)" ]; then
   command rm -r $BACKUP_DIR
