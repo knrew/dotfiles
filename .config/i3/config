@@ -35,8 +35,8 @@ set $WS10 10
 
 assign [class="Google-chrome"] $WS2
 assign [class="google-chrome"] $WS2
-assign [class="Code"] $WS4
-assign [class="code"] $WS4
+# assign [class="Code"] $WS4
+# assign [class="code"] $WS4
 
 #increase / decrease screen brightness 
 bindsym F5 exec (light -A 5)
