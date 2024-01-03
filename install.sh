@@ -1,57 +1,70 @@
 #!/bin/sh
 
+set -eu
+
 DOTFILES_DIR="$HOME/dotfiles"
 BACKUP_DIR="$HOME/.backup_dotfiles/$(date +%Y%m%d_%H%M%S)"
+HOME_DIR=$HOME
 
-make_link() {
-  if [ ! -f "$DOTFILES_DIR/$1" ]; then 
-    command echo -e "\e[31mnot exist: $DOTFILES_DIR/$1\e[m"
-    return -1
-  fi
+stack=()
+stack_top_index=0
+stack_bottom_index=0
 
-  if [ -f "$HOME/$1" ]; then 
-    if [ -L "$HOME/$1" ]; then
-      command rm "$HOME/$1"
+function link() {
+  if [ -f "$HOME_DIR/$1" ]; then 
+    if [ -L "$HOME_DIR/$1" ]; then
+      command rm "$HOME_DIR/$1"
     else
       command mkdir -p $(dirname "$BACKUP_DIR/$1")
-      command mv "$HOME/$1" "$BACKUP_DIR/$1"
+      command mv "$HOME_DIR/$1" "$BACKUP_DIR/$1"
     fi
   fi
 
-  command mkdir -p $(dirname "$HOME/$1")
-  command ln -snf "$DOTFILES_DIR/$1" "$HOME/$1"
+  command mkdir -p $(dirname "$HOME_DIR/$1")
+  command ln -snf "$DOTFILES_DIR/$1" "$HOME_DIR/$1"
   command echo "installed: $1"
-  return 0
 }
 
-command mkdir -p $BACKUP_DIR
+function link_or_stack() {
+  if [ -d $1 ]; then
+      stack[$stack_bottom_index]=$1
+      stack_bottom_index=$(($stack_bottom_index + 1))
+    else
+      link ${1#$DOTFILES_DIR/}
+  fi
+}
 
-make_link ".bash_profile"
-make_link ".bashrc"
-make_link ".latexmkrc"
-make_link ".xinitrc"
-make_link ".Xmodmap"
-make_link ".Xresources"
-make_link ".config/i3/config"
-make_link ".config/i3/scripts/wiki_launch.sh"
-make_link ".config/i3/scripts/resurrect_save.sh"
-make_link ".config/i3/scripts/resurrect_restore.sh"
-make_link ".config/i3status/config"
-make_link ".config/i3-resurrect/config.json"
-make_link ".config/nvim/init.vim"
-make_link ".config/zathura/zathurarc"
-make_link ".config/Code/User/settings.json"
-make_link ".config/Code/User/keybindings.json"
-make_link ".config/alacritty/alacritty.toml"
-make_link ".config/polybar/config.ini"
-make_link ".config/polybar/polybar_launch.sh"
-make_link ".config/rofi/config.rasi"
-make_link ".config/starship.toml"
+function scan_dir() {
+  for entry in $1/.??*; do
+    [[ `basename $entry` == ".git" ]] && continue
+    [[ `basename $entry` == ".??*" ]] && continue
+    link_or_stack $entry
+  done
 
-if [ -z "$(command ls -A $BACKUP_DIR)" ]; then
-  command rm -r $BACKUP_DIR
-else
-  command echo "backup_dir: $BACKUP_DIR"
-fi
+  if [ $1 == $DOTFILES_DIR ]; then
+    return 0
+  fi
 
-command echo -e "\e[1;36m Install completed! \e[m"
+  for entry in $1/??*; do
+    [[ `basename $entry` == "??*" ]] && continue
+    link_or_stack $entry
+  done
+}
+
+function main() {
+  echo "installing dotfiles..."
+
+  stack[0]=$DOTFILES_DIR
+  stack_bottom_index=1
+
+  while [ $stack_top_index != $stack_bottom_index ]; do
+    top=${stack[$stack_top_index]}
+    stack_top_index=$(($stack_top_index + 1))
+
+    scan_dir $top
+  done
+
+  command echo -e "\e[1;36m Install completed! \e[m"
+}
+
+main
