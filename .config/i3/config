@@ -193,4 +193,6 @@ exec --no-startup-id nm-applet
 exec --no-startup-id google-chrome-stable
 # exec sleep 0.5
 exec --no-startup-id feh --no-fehbg --bg-scale "$HOME/Pictures/wallpaper.png"
-exec --no-startup-id "sh $HOME/.config/i3/scripts/wiki_launch.sh"
+# exec --no-startup-id "sh $HOME/.config/i3/scripts/wiki_launch.sh"
+exec --no-startup-id "cd $HOME/wiki && gitit -f $HOME/wiki/gitit_files/gitit.conf"
+

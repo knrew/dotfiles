@@ -1,5 +1,7 @@
 #!/bin/sh
 
+set -eu
+
 # pkill gitit
 
 if [ -d "$HOME/wiki" ]; then

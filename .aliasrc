@@ -28,9 +28,9 @@ alias cr='cargo run'
 # TeX
 alias lm="latexmk -pvc -halt-on-error"
 
-# enable/disenable backlight auto off
-alias enas='(xset s on +dpms)' 
-alias dias='(xset s off -dpms)'
+# enable/disable backlight auto off
+alias eoff='(xset s on +dpms)' 
+alias doff='(xset s off -dpms)'
 
 # pacman
 alias pacmanls='pacman -Qqen'

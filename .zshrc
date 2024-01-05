@@ -1,4 +1,3 @@
-# Created by newuser for 5.9
 [[ $- != *i* ]] && return
 
 # Rust
