@@ -83,20 +83,19 @@ white = '#ACB0BE' # surface2
 size = 11
 
 [font.normal]
-family = "Source Code Pro"
+family = "SauceCodeProNerdFont"
 style = "Regular"
 
 [font.bold]
-family = "Source Code Pro"
+family = "SauceCodeProNerdFont"
 style = "Bold"
 
 [font.italic]
-family = "Source Code Pro"
+family = "SauceCodeProNerdFont"
 style = "Italic"
 
 [font.bold_italic]
-family = "Source Code Pro"
+family = "SauceCodeProNerdFont"
 style = "Bold Italic"
-
 
 
