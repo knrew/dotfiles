@@ -3,7 +3,7 @@
 set -eu
 
 DOTFILES_DIR="$HOME/dotfiles"
-BACKUP_DIR="$HOME/.backup_dotfiles/$(date +%Y%m%d_%H%M%S)"
+BACKUP_DIR="$HOME/.backup_dotfiles/$(date +%Y%m%d_%H%M)"
 HOME_DIR=$HOME
 
 stack=()
@@ -52,7 +52,7 @@ function scan_dir() {
 }
 
 function main() {
-  echo "installing dotfiles..."
+  command echo "installing dotfiles..."
 
   stack[0]=$DOTFILES_DIR
   stack_bottom_index=1

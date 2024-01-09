@@ -12,6 +12,6 @@ if [ $1 == "save" ]; then
 elif [ $1 == "restore" ]; then
   i3-resurrect ls -d $I3_RESURRECT_DIR | sed -n '/programs/!p' | awk '{print $2}' | xargs -n1 i3-resurrect restore -d $I3_RESURRECT_DIR -w
 else
-  echo "argument: \"save\" or \"restore\""
+  command echo "argument: \"save\" or \"restore\""
   exit 1
 fi

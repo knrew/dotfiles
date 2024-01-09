@@ -1,37 +1,37 @@
 # ls
-alias ls='ls --color=auto'
-alias ll='ls -alF'
-alias la='ls -A'
-alias l='ls -CF'
+alias ls="ls --color=auto"
+alias ll="ls -alF"
+alias la="ls -A"
+alias l="ls -CF"
 
 # rm -> trash-put
 if type trash-put &> /dev/null; then
-    alias rm=trash-put
+  alias rm=trash-put
 fi
 
 # editor
 if type nvim &> /dev/null; then
-    alias vi='nvim'
-    alias vim='nvim'
+  alias vi=nvim
+  alias vim=nvim
 fi
 
 # config
-alias bashrc='(vim $HOME/.bashrc)'
-alias zshrc='(vim $HOME/.zshrc)'
-alias i3config='(vim $HOME/.config/i3/config)'
-alias vimrc='(vim $HOME/.config/nvim/init.vim)' 
+alias bashrc="(vim $HOME/.bashrc)"
+alias zshrc="(vim $HOME/.zshrc)"
+alias i3config="(vim $HOME/.config/i3/config)"
+alias vimrc="(vim $HOME/.config/nvim/init.vim)"
 
 # Rust
-alias cb='cargo build'
-alias cr='cargo run'
+alias cb="cargo build"
+alias cr="cargo run"
 
 # TeX
 alias lm="latexmk -pvc -halt-on-error"
 
 # enable/disable backlight auto off
-alias eoff='(xset s on +dpms)' 
-alias doff='(xset s off -dpms)'
+alias eoff="(xset s on +dpms)"
+alias doff="(xset s off -dpms)"
 
 # pacman
-alias pacmanls='pacman -Qqen'
-alias yayls='pacman -Qqem'
+alias pacmanls="pacman -Qqen"
+alias yayls="pacman -Qqem"

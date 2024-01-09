@@ -7,6 +7,6 @@ fi
 
 export PATH=$PATH:$HOME/.local/bin
 
-source "$HOME/.aliasrc"
+source $HOME/.aliasrc
 
 eval "$(starship init zsh)"

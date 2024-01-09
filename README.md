@@ -1,9 +1,9 @@
 # dotfiles
 
 ## Install
-```bash
+```sh
 cd ~
-git clone https://github.com/kn-rew/dotfiles.git 
+git clone https://github.com/knrew/dotfiles.git 
 cd dotfiles
 sh install.sh
 ```
