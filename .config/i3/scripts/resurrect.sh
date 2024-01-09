@@ -2,7 +2,9 @@
 
 set -eu
 
-I3_RESURRECT_DIR="$HOME/.cache/i3-resurrect/"
+I3_RESURRECT_DIR="$HOME/.cache/i3-resurrect"
+
+command mkdir -p $I3_RESURRECT_DIR
 
 if [ $1 == "save" ]; then
   if [ -n "$(ls $I3_RESURRECT_DIR)" ]; then
