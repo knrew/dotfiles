@@ -8,5 +8,6 @@
     },
     "cmake.configureOnOpen": true,
     "editor.tabSize": 2,
-    "cmake.options.statusBarVisibility": "visible"
+    "cmake.options.statusBarVisibility": "visible",
+    "editor.fontFamily": "'Droid Sans Mono', 'monospace', monospace, 'JetBrainsMono Nerd Font'"
 }
