@@ -29,8 +29,8 @@ alias cr="cargo run"
 alias lm="latexmk -pvc -halt-on-error"
 
 # enable/disable backlight auto off
-alias eoff="(xset s on +dpms)"
-alias doff="(xset s off -dpms)"
+alias ensleep="(xset s on +dpms)"
+alias disleep="(xset s off -dpms)"
 
 # pacman
 alias pacmanls="pacman -Qqen"
