@@ -1,13 +1,13 @@
 import = [
-  "~/.config/alacritty/catppuccin_latte.toml",
+  #"~/.config/alacritty/catppuccin_latte.toml",
   #"~/.config/alacritty/gruvbox_light.toml",
   #"~/.config/alacritty/gruvbox_material_medium_light.toml",
-  #"~/.config/alacritty/gruvbox_material_dark_medium.toml",
+  "~/.config/alacritty/gruvbox_material_dark_medium.toml",
   #"~/.config/alacritty/colors.toml",
 ]
 
 [window]
-opacity = 1.0
+opacity = 0.5
 
 [font]
 size = 10
