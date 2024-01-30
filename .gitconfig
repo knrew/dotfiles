@@ -7,8 +7,8 @@
 [http]
 
 [core]
-	pager = LESSCHARSET=utf-8 less
-    quotepath = false
+  #pager = LESSCHARSET=utf-8 less
+  #quotepath = false
 
 #[url "github:"]
 #    InsteadOf = https://github.com/

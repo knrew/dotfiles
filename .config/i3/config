@@ -1,14 +1,8 @@
 set $mod Mod4
-
-#font pango:monospace 8
-#font pango:Source Code Pro 8
-#font pango:Hack 8
-font pango:HackNerdFont 8
-
 floating_modifier $mod
 
+include $HOME/.config/i3/config.d/font.conf
+include $HOME/.config/i3/config.d/colors.conf
 include $HOME/.config/i3/config.d/workspace.conf
 include $HOME/.config/i3/config.d/keybind.conf
-include $HOME/.config/i3/config.d/color.conf
-include $HOME/.config/i3/config.d/assign.conf
 include $HOME/.config/i3/config.d/startup.conf
