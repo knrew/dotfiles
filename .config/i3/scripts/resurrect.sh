@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/env sh
 
 set -eu
 
@@ -15,5 +15,4 @@ elif [ $1 == "restore" ]; then
   i3-resurrect ls -d $I3_RESURRECT_DIR | sed -n '/programs/!p' | awk '{print $2}' | xargs -n1 i3-resurrect restore -d $I3_RESURRECT_DIR -w
 else
   command echo "argument: \"save\" or \"restore\""
-  exit 1
 fi
