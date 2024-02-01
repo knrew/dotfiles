@@ -8,7 +8,7 @@ import = [
 ]
 
 [window]
-opacity = 0.50
+opacity = 0.80
 
 [font]
 size = 10
