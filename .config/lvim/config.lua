@@ -9,7 +9,5 @@ require("keymaps")
 lvim.format_on_save = true
 lvim.colorscheme = "catppuccin"
 
-local plugins = {}
-table.insert(plugins, require("plugins.catppuccin"))
-
-lvim.plugins = plugins
+lvim.plugins = {}
+table.insert(lvim.plugins, require("plugins.catppuccin"))
