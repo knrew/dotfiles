@@ -10,11 +10,14 @@ if type trash-put &> /dev/null; then
 fi
 
 # editor
-if type nvim &> /dev/null; then
-  alias v=nvim
-  alias vi=nvim
-  alias vim=nvim
+if type lvim &> /dev/null; then
+  alias vi=lvim
+elif type nvim &> /dev/null; then
+  alias vi=nvim 
 fi
+
+alias v=vi
+alias vim=vi
 
 # enable/disable backlight auto off
 alias ensleep="(xset s on +dpms)"
@@ -29,7 +32,7 @@ alias pbcopy="xclip -selection c"
 
 # cpp
 function cb() { (cd build && cmake .. && ([[ $# > 0 ]] && echo $1) | xargs make) }
-function cr() { [[ $# = 1 ]] && cb $1 && ./build/$1 }
+function cr() { [[ $# > 0 ]] && cb $1 && ./build/$1 ${@:2} }
 
 # rust
 alias rb="cargo build"
