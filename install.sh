@@ -1,14 +1,14 @@
-#!/bin/sh
+#!/bin/env sh
 
 set -eu
 
-DOTFILES_DIR="$HOME/dotfiles"
+SCRIPT_DIR=$(cd "$(dirname $0)" && pwd -P)
+DOTFILES_DIR=$SCRIPT_DIR
 BACKUP_DIR="$HOME/.backup_dotfiles/$(date +%Y%m%d_%H%M)"
 HOME_DIR=$HOME
 
-stack=()
-stack_top_index=0
-stack_bottom_index=0
+scanning_dirs=() # queue
+scanning_dirs_top_index=0
 
 function link() {
   if [ -f "$HOME_DIR/$1" ]; then 
@@ -25,10 +25,9 @@ function link() {
   command echo "installed: $1"
 }
 
-function link_or_stack() {
+function link_or_push() {
   if [ -d $1 ]; then
-      stack[$stack_bottom_index]=$1
-      stack_bottom_index=$(($stack_bottom_index + 1))
+      scanning_dirs[${#scanning_dirs[@]}]=$1 #push
     else
       link ${1#$DOTFILES_DIR/}
   fi
@@ -38,33 +37,30 @@ function scan_dir() {
   for entry in $1/.??*; do
     [[ `basename $entry` == ".git" ]] && continue
     [[ `basename $entry` == ".??*" ]] && continue
-    link_or_stack $entry
+    link_or_push $entry
   done
 
-  if [ $1 == $DOTFILES_DIR ]; then
-    return 0
-  fi
-
+  [[ $1 == $DOTFILES_DIR ]] && return 0
+ 
   for entry in $1/??*; do
     [[ `basename $entry` == "??*" ]] && continue
-    link_or_stack $entry
+    link_or_push $entry
   done
 }
 
 function main() {
   command echo "installing dotfiles..."
 
-  stack[0]=$DOTFILES_DIR
-  stack_bottom_index=1
+  scanning_dirs[0]=$DOTFILES_DIR
+  scanning_dirs_top_index=0
 
-  while [ $stack_top_index != $stack_bottom_index ]; do
-    top=${stack[$stack_top_index]}
-    stack_top_index=$(($stack_top_index + 1))
-
+  while [ $scanning_dirs_top_index != ${#scanning_dirs[@]} ]; do
+    top=${scanning_dirs[$scanning_dirs_top_index]}
+    scanning_dirs_top_index=$(($scanning_dirs_top_index + 1)) #pop
     scan_dir $top
   done
 
-  command echo -e "\e[1;36m Install completed! \e[m"
+  command echo -e "\e[1;36mInstall completed! \e[m"
 }
 
 main
