@@ -36,6 +36,7 @@ function link_or_push() {
 function scan_dir() {
   for entry in $1/.??*; do
     [[ `basename $entry` == ".git" ]] && continue
+    [[ `basename $entry` == ".gitignore" ]] && continue
     [[ `basename $entry` == ".??*" ]] && continue
     link_or_push $entry
   done

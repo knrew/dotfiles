@@ -1,0 +1,2 @@
+#!/bin/env sh
+feh --no-fehbg --bg-scale "$HOME/Pictures/wallpaper.png"

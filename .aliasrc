@@ -9,6 +9,11 @@ if type trash-put &> /dev/null; then
   alias rm=trash-put
 fi
 
+# grep -> ripgrep
+if type rg &> /dev/null; then
+  alias grep=rg
+fi
+
 # editor
 if type lvim &> /dev/null; then
   alias vi=lvim
