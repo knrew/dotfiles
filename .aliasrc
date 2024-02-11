@@ -11,22 +11,10 @@ fi
 
 # editor
 if type nvim &> /dev/null; then
+  alias v=nvim
   alias vi=nvim
   alias vim=nvim
 fi
-
-# config
-alias bashrc="(vim $HOME/.bashrc)"
-alias zshrc="(vim $HOME/.zshrc)"
-alias i3config="(vim $HOME/.config/i3/config)"
-alias vimrc="(vim $HOME/.config/nvim/init.vim)"
-
-# Rust
-alias cb="cargo build"
-alias cr="cargo run"
-
-# TeX
-alias lm="latexmk -pvc -halt-on-error"
 
 # enable/disable backlight auto off
 alias ensleep="(xset s on +dpms)"
@@ -35,3 +23,17 @@ alias disleep="(xset s off -dpms)"
 # pacman
 alias pacmanls="pacman -Qqen"
 alias yayls="pacman -Qqem"
+
+# clipboard
+alias pbcopy="xclip -selection c"
+
+# cpp
+function cb() { (cd build && cmake .. && ([[ $# > 0 ]] && echo $1) | xargs make) }
+function cr() { [[ $# = 1 ]] && cb $1 && ./build/$1 }
+
+# rust
+alias rb="cargo build"
+alias rr="cargo run"
+
+# tex
+alias lm="latexmk -pvc -halt-on-error"
