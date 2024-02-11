@@ -4,6 +4,7 @@
 -- Discord: https://discord.com/invite/Xb9B4Ny
 
 require("options")
+require("keymaps")
 
 lvim.format_on_save = true
 lvim.colorscheme = "catppuccin"
