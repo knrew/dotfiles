@@ -1,13 +1,24 @@
--- local opts = { noremap = true, silent = true }
--- local term_opts = { silent = true }
--- local keymap = vim.api.nvim_set_keymap
--- keymap("i", ",", ",<Space>", opts)
+-- buffer
+lvim.keys.normal_mode["<C-PageDown>"] = ":BufferLineCycleNext<CR>"
+lvim.keys.normal_mode["<C-PageUp>"] = ":BufferLineCyclePrev<CR>"
+lvim.keys.normal_mode["<C-q>"] = ":BufferKill<CR>"
 
-lvim.keys.normal_mode["f"] = ":w<cr>"
-lvim.keys.normal_mode["<Esc>"] = ":w<cr>"
-lvim.keys.normal_mode["<C-a>"] = "ggv<S-g>yy"
-lvim.keys.normal_mode["dl"] = "yy<cr>p"
+-- window
+lvim.keys.normal_mode["ss"] = ":split<CR><C-w>w"
+lvim.keys.normal_mode["sv"] = ":vsplit<CR><C-w>w"
 
--- lvim.keys.insert_mode["<leader>f"] = "<Esc>:w<cr>"
-lvim.keys.insert_mode["<Esc>"] = "<Esc>:w<cr>"
+-- lsp
+lvim.keys.normal_mode["f"] = ":lua require('lvim.lsp.utils').format()<CR>"
+lvim.keys.normal_mode["<leader>lr"] = ":lua vim.lsp.buf.rename()<CR>"
+
+-- tree
+lvim.keys.normal_mode["<leader>t"] = ":NeoTreeFocusToggle<CR>"
+lvim.keys.normal_mode["<leader>e"] = ":NeoTreeFocus<CR>"
+lvim.keys.normal_mode["<leader>c"] = ":NeoTreeClose<CR>"
+
+-- misc
 lvim.keys.insert_mode[","] = ",<Space>"
+lvim.keys.normal_mode["<Esc>"] = ":w<CR>"
+
+-- remove
+lvim.keys.normal_mode["<space>c"] = false

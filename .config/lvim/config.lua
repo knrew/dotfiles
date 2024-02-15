@@ -7,7 +7,14 @@ require("options")
 require("keymaps")
 
 lvim.format_on_save = true
+lvim.builtin.treesitter.rainbow.enable = true
+lvim.builtin.nvimtree.active = false -- NOTE: using neo-tree
+lvim.builtin.terminal.direction = "horizontal"
+lvim.lsp.automatic_servers_installation = false
 lvim.colorscheme = "catppuccin"
+lvim.builtin.lualine.options.theme = "catppuccin"
 
 lvim.plugins = {}
 table.insert(lvim.plugins, require("plugins.catppuccin"))
+table.insert(lvim.plugins, require("plugins.neo-tree"))
+table.insert(lvim.plugins, { "mrjones2014/nvim-ts-rainbow" })

@@ -22,11 +22,12 @@ local options = {
   number = true,
   relativenumber = false,
   wrap = true,
+  splitbelow = false,
+  splitright = false,
 }
 
-vim.opt.shortmess:append("c")
+-- vim.opt.shortmess:append("c")
 
 for k, v in pairs(options) do
   vim.opt[k] = v
 end
-
