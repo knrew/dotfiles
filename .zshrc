@@ -1,11 +1,11 @@
 [[ $- != *i* ]] && return
 
+export PATH=$PATH:$HOME/.local/bin
+
 # rust
 if [ -f $HOME/.cargo/env ]; then
   source $HOME/.cargo/env
 fi
-
-export PATH=$PATH:$HOME/.local/bin
 
 if [ -f $HOME/.aliasrc ]; then
   source $HOME/.aliasrc

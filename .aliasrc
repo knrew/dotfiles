@@ -14,6 +14,11 @@ if type rg &> /dev/null; then
   alias grep=rg
 fi
 
+# cat -> bat
+if type bat &> /dev/null; then
+  alias cat=bat
+fi
+
 # editor
 if type lvim &> /dev/null; then
   alias vi=lvim
@@ -42,6 +47,7 @@ function cr() { [[ $# > 0 ]] && cb $1 && ./build/$1 ${@:2} }
 # rust
 alias rb="cargo build"
 alias rr="cargo run"
+alias rrb="cargo run --bin"
 
 # tex
 alias lm="latexmk -pvc -halt-on-error"

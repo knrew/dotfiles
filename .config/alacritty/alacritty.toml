@@ -8,10 +8,10 @@ import = [
 ]
 
 [window]
-opacity = 0.80
+opacity = 1.0
 
 [font]
-size = 10
+size = 9
 
 [font.normal]
 family = "SauceCodeProNerdFont"
