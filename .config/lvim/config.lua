@@ -9,10 +9,10 @@ require("keymaps")
 lvim.format_on_save = true
 lvim.builtin.treesitter.rainbow.enable = true
 lvim.builtin.nvimtree.active = false -- NOTE: using neo-tree
-lvim.builtin.terminal.direction = "horizontal"
+lvim.builtin.terminal.direction = "float"
 lvim.lsp.automatic_servers_installation = false
 lvim.colorscheme = "catppuccin"
-lvim.builtin.lualine.options.theme = "catppuccin"
+-- lvim.builtin.lualine.options.theme = "catppuccin"
 
 lvim.plugins = {}
 table.insert(lvim.plugins, require("plugins.catppuccin"))
