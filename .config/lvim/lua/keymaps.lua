@@ -9,7 +9,7 @@ local keymaps_normal = {
   ["sv"] = ":vsplit<CR><C-w>w",
 
   -- -- lsp
-  ["f"] = ":lua require('lvim.lsp.utils').format()<CR>",
+  ["f"] = ":lua require('lvim.lsp.utils').format()<CR>:w<CR>",
   ["<leader>lr"] = ":lua vim.lsp.buf.rename()<CR>",
 
   -- -- tree
@@ -20,7 +20,7 @@ local keymaps_normal = {
   -- -- misc
   ["<Esc>"] = ":w<CR>",
   ["<leader>rr"] = ":LvimReload<CR>",
-  ["<C-a>"] = "gg0v<S-g>#",
+  ["<C-a>"] = "gg0v<S-g>",
 }
 
 local keymaps_insert = {

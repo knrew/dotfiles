@@ -1,8 +1,15 @@
+# ls -> eza
+if type eza &> /dev/null; then
+  alias ls=eza
+else
+  alias ls="ls --color=auto"
+fi
+
 # ls
-alias ls="ls --color=auto"
 alias ll="ls -alF"
 alias la="ls -A"
-alias l="ls -CF"
+alias l=ls
+# alias l="ls -CF"
 
 # rm -> trash-put
 if type trash-put &> /dev/null; then
@@ -46,8 +53,11 @@ function cr() { [[ $# > 0 ]] && cb $1 && ./build/$1 ${@:2} }
 
 # rust
 alias rb="cargo build"
+alias rbr="cargo build --release"
 alias rr="cargo run"
+alias rrr="cargo run --release"
 alias rrb="cargo run --bin"
+alias rrbr="cargo run --release --bin"
 
 # tex
 alias lm="latexmk -pvc -halt-on-error"
