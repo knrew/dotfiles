@@ -1,6 +1,13 @@
 # dotfiles
+## rs
+```sh
+cd ~
+git clone https://github.com/knrew/dotfiles.git 
+cd dotfiles
+sh rsinstall.sh
+```
 
-## Install
+## sh
 ```sh
 cd ~
 git clone https://github.com/knrew/dotfiles.git 
