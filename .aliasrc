@@ -48,16 +48,28 @@ alias yayls="pacman -Qqem"
 alias pbcopy="xclip -selection c"
 
 # cpp
-function cb() { (cd build && cmake .. && ([[ $# > 0 ]] && echo $1) | xargs make) }
-function cr() { [[ $# > 0 ]] && cb $1 && ./build/$1 ${@:2} }
+# function cb() {
+#   command mkdir -p build
+#   cmake -GNinja -B build -S .
+#   cmake --build build -- $1 
+# }
+
+# function cr() {
+#   if [ $# = 0 ]; then
+#     command echo "Error: Specify target"
+#     return
+#   fi
+#   cb $1
+#   build/$1 ${@:2}
+# }
 
 # rust
-alias rb="cargo build"
-alias rbr="cargo build --release"
-alias rr="cargo run"
-alias rrr="cargo run --release"
-alias rrb="cargo run --bin"
-alias rrbr="cargo run --release --bin"
+# alias rb="cargo build"
+# alias rbr="cargo build --release"
+# alias rr="cargo run"
+# alias rrr="cargo run --release"
+# alias rrb="cargo run --bin"
+# alias rrbr="cargo run --release --bin"
 
 # tex
 alias lm="latexmk -pvc -halt-on-error"

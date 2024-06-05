@@ -11,7 +11,7 @@ lvim.builtin.treesitter.rainbow.enable = true
 lvim.builtin.nvimtree.active = false -- NOTE: using neo-tree
 lvim.builtin.terminal.direction = "float"
 -- lvim.lsp.automatic_servers_installation = true
-lvim.lsp.installer.setup.automatic_installation = true;
+lvim.lsp.installer.setup.automatic_installation = false;
 
 lvim.colorscheme = "catppuccin"
 -- lvim.builtin.lualine.options.theme = "catppuccin"
@@ -19,4 +19,5 @@ lvim.colorscheme = "catppuccin"
 lvim.plugins = {}
 table.insert(lvim.plugins, require("plugins.catppuccin"))
 table.insert(lvim.plugins, require("plugins.neo-tree"))
-table.insert(lvim.plugins, { "mrjones2014/nvim-ts-rainbow" })
+table.insert(lvim.plugins, require("plugins.nvim-ts-rainbow"))
+table.insert(lvim.plugins, require("plugins.vimtex"))
