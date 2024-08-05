@@ -163,8 +163,9 @@ style = "bg:mauve"
 format = '[[ $symbol( $context) ](fg:text bg:mauve)]($style)'
 
 [cmd_duration]
-min_time = 500
-#style = "bg:mauve"
+min_time = 1
+# show_notifications = true
+# style = "bg:mauve"
 format = '[[ 󰔛 $duration ](fg:crust bg:mauve)]($style)'
 
 [time]
