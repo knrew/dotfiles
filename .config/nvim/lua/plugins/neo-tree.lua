@@ -1,12 +1,12 @@
 local keymaps_normal = {
-  ["<leader>t"] = ":Neotree toggle<CR>",
+  ["<C-t>"] = ":Neotree toggle<CR>",
   -- ["<leader>e"] = ":Neotree open<CR>",
   -- ["<leader>c"] = ":Neotree close<CR>",
 }
 
 local setup = function()
   require("neo-tree").setup({
-    close_if_last_window = true,
+    close_if_last_window = false,
     window = {
       width = 30,
     },
@@ -32,6 +32,14 @@ local setup = function()
         },
       },
     },
+    event_handlers = {
+      {
+        event = "file_open_requested",
+        handler = function()
+          require("neo-tree.command").execute({ action = "close" })
+        end
+      },
+    }
   })
 
   for k, v in pairs(keymaps_normal) do

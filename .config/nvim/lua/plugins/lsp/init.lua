@@ -5,8 +5,8 @@ local language_servers = {
   "lua_ls",
   "vimls",
   "bashls",
-  "pylsp",
-  "ruff",
+  -- "pylsp",
+  -- "ruff",
 }
 
 local keymaps_normal = {
@@ -32,8 +32,7 @@ local keymaps_normal = {
   },
 
   ["f"] = { ":lua require(\"plugins.lsp.utils\").format()<CR>:w<CR>", "Format" },
-  ["<leader>lr"] = { ":lua vim.lsp.buf.rename()<CR>", "Rename" },
-
+  ["lr"] = { ":lua vim.lsp.buf.rename()<CR>", "Rename" },
 }
 
 local options = {
@@ -96,29 +95,14 @@ local setup = function()
   })
 
   -- for k, v in pairs(options) do
-  --   vim.api.nvim_set_option_value(k, v, { buf = true })
+  --   vim.api.nvim_set_option_value(k, v, {})
   -- end
 
   vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = "single" })
   vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = "single" })
   require("lspconfig.ui.windows").default_options.border = "single"
 
-
-
-  local status_ok, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
-  if status_ok then
-    return cmp_nvim_lsp.default_capabilities()
-  end
-
-  local capabilities = vim.lsp.protocol.make_client_capabilities()
-  capabilities.textDocument.completion.completionItem.snippetSupport = true
-  capabilities.textDocument.completion.completionItem.resolveSupport = {
-    properties = {
-      "documentation",
-      "detail",
-      "additionalTextEdits",
-    },
-  }
+  require("plugins.lsp.null-ls").setup()
 end
 
 return {

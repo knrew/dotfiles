@@ -9,7 +9,7 @@ local setup = function()
     show_end_of_buffer = false,    -- shows the '~' characters after the end of buffers
     term_colors = true,            -- sets terminal colors (e.g. `g:terminal_color_0`)
     dim_inactive = {
-      enabled = false,             -- dims the background color of inactive window
+      enabled = true,              -- dims the background color of inactive window
       shade = "dark",
       percentage = 0.15,           -- percentage of the shade to apply to the inactive window
     },
@@ -59,15 +59,28 @@ local setup = function()
       nvimtree = true,
       neotree = true,
       treesitter = true,
+      treesitter_context = true,
       notify = true,
       mini = {
         enabled = true,
         indentscope_color = "",
       },
       rainbow_delimiters = true,
-      ts_rainbow = true,
+      -- ts_rainbow = true,
       mason = true,
-      -- For more plugins integrations please scroll down (https://github.com/catppuccin/nvim#integrations)
+      navic = {
+        enabled = true,
+        custom_bg = "NONE", -- "lualine" will set background to mantle
+      },
+      illuminate = {
+        enabled = true,
+        lsp = true,
+      },
+      indent_blankline = {
+        enabled = true,
+        scope_color = "",
+        colored_indent_levels = true,
+      },
     },
   })
 
