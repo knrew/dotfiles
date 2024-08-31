@@ -11,5 +11,9 @@
     "cmake.options.statusBarVisibility": "visible",
     "editor.fontFamily": "'Droid Sans Mono', 'monospace', monospace, 'JetBrainsMono Nerd Font'",
     "catppuccin.italicKeywords": false,
-    "workbench.iconTheme": "catppuccin-latte"
+    "workbench.iconTheme": "catppuccin-latte",
+    "cmake.pinnedCommands": [
+        "workbench.action.tasks.configureTaskRunner",
+        "workbench.action.tasks.runTask"
+    ]
 }

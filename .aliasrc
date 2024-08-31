@@ -27,12 +27,9 @@ if type bat &> /dev/null; then
 fi
 
 # editor
-if type lvim &> /dev/null; then
-  alias vi=lvim
-elif type nvim &> /dev/null; then
+if type nvim &> /dev/null; then
   alias vi=nvim 
 fi
-
 alias v=vi
 alias vim=vi
 
