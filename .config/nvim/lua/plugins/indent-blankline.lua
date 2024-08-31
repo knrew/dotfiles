@@ -1,34 +1,46 @@
 local setup = function()
   local icons = require("utils.icons")
 
-  local highlight = {
-    "RainbowRed",
-    "RainbowYellow",
-    "RainbowBlue",
-    "RainbowOrange",
-    "RainbowGreen",
-    "RainbowViolet",
-    "RainbowCyan",
-  }
-
   require("ibl").setup({
     indent = {
-      -- highlight = highlight,
-      -- char = icons.ui.LineLeft,
+      char = icons.ui.LineLeft,
+    },
+    scope = {
+      enabled = true,
+      char = icons.ui.LineLeft,
+      show_start = false,
+      show_end = false,
     },
     whitespace = {
       remove_blankline_trail = false
     },
-    scope = {
-      enabled = true,
-      highlight = highlight,
-      char = icons.ui.LineLeft,
+    exclude = {
+      buftypes = {
+        "terminal",
+        "nofile",
+        "quickfix",
+        "prompt",
+      },
+      filetypes = {
+        "lspinfo",
+        "packer",
+        "checkhealth",
+        "help",
+        "man",
+        "gitcommit",
+        "TelescopePrompt",
+        "TelescopeResults",
+        "''",
+        "lazy",
+      },
     },
-    exclude = {}
   })
 
-  -- local hooks = require("ibl.hooks")
-  -- hooks.register(hooks.type.SCOPE_HIGHLIGHT, hooks.builtin.scope_highlight_from_extmark)
+  local hooks = require("ibl.hooks")
+  hooks.register(
+    hooks.type.WHITESPACE,
+    hooks.builtin.hide_first_space_indent_level
+  )
 end
 
 return {
@@ -38,5 +50,5 @@ return {
   config = function()
     setup()
   end,
-  event = { "User FileOpened", "BufReadPost", "VimEnter" }
+  -- event = { "User FileOpened", "BufReadPost", "VimEnter" }
 }

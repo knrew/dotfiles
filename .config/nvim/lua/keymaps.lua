@@ -12,6 +12,7 @@ local keymaps_normal = {
   ["<C-PageUp>"] = ":BufferLineCyclePrev<CR>",
   ["<C-q>"] = ":bd<CR>",
   ["<C-u>"] = ":BufferLineCloseOthers<CR>",
+  -- ["<C-p>"] = ":BufferLinePick<CR>",
 
   -- window
   ["ss"] = ":split<CR><C-w>w",
@@ -25,7 +26,7 @@ local keymaps_normal = {
   ["<C-t>"] = ":Neotree toggle<CR>",
 
   -- comment
-  ["//"] = ":lua require(\"Comment.api\").toggle.linewise.current()<CR>",
+  ["<leader>/"] = ":lua require(\"Comment.api\").toggle.linewise.current()<CR>",
 
   -- misc
   ["<Esc>"] = ":w<CR>",
@@ -40,7 +41,7 @@ local keymaps_insert = {
 
 local keymaps_visual = {
   -- comment
-  ["//"] = ":lua require(\"Comment.api\").toggle.linewise(vim.fn.visualmode())<CR>",
+  ["<leader>/"] = ":lua require(\"Comment.api\").toggle.linewise(vim.fn.visualmode())<CR>",
 }
 
 local keymaps_terminal = {}

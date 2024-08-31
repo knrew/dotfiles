@@ -4,7 +4,6 @@ local setup = function()
     clipboard = "unnamedplus",
     cmdheight = 1,
     completeopt = { "menuone", "noselect" },
-    -- completeopt = { "menu,menuone,noselect" },
     conceallevel = 0,
     encoding = "utf-8",
     fileencoding = "utf-8",

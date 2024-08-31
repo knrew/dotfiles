@@ -3,10 +3,12 @@ local language_servers = {
   "clangd",
   "cmake",
   "lua_ls",
+  -- "stylua",
   "vimls",
   "bashls",
   -- "pylsp",
   -- "ruff",
+  "texlab"
 }
 
 local keymaps_normal = {

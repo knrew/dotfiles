@@ -45,9 +45,10 @@ local setup = function()
 
   require("mason-lspconfig").setup({ ensure_installed = language_servers })
 
+  local lspconfig = require("lspconfig")
   require("mason-lspconfig").setup_handlers {
     function(server_name)
-      require("lspconfig")[server_name].setup(opts)
+      lspconfig[server_name].setup(opts)
     end,
   }
 

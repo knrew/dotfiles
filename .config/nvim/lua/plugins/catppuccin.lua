@@ -69,7 +69,7 @@ local setup = function()
       -- ts_rainbow = true,
       mason = true,
       navic = {
-        enabled = true,
+        enabled = false,
         custom_bg = "NONE", -- "lualine" will set background to mantle
       },
       illuminate = {
@@ -78,7 +78,7 @@ local setup = function()
       },
       indent_blankline = {
         enabled = true,
-        scope_color = "",
+        scope_color = "sapphire",
         colored_indent_levels = true,
       },
     },
