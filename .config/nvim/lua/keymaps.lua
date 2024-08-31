@@ -16,18 +16,22 @@ local keymaps_normal = {
   -- window
   ["ss"] = ":split<CR><C-w>w",
   ["sv"] = ":vsplit<CR><C-w>w",
-
-  -- Resize with arrows
   ["<S-Up>"] = ":resize -2<CR>",
   ["<S-Down>"] = ":resize +2<CR>",
   ["<S-Left>"] = ":vertical resize -2<CR>",
   ["<S-Right>"] = ":vertical resize +2<CR>",
 
+  -- tree
+  ["<C-t>"] = ":Neotree toggle<CR>",
+
+  -- comment
+  ["//"] = ":lua require(\"Comment.api\").toggle.linewise.current()<CR>",
+
   -- misc
   ["<Esc>"] = ":w<CR>",
-  -- ["<C-a>"] = "gg0v<S-g><S-$>",
-
-  ["//"] = ":lua require(\"Comment.api\").toggle.linewise.current()<CR>",
+  ["<C-a>"] = "gg0v<S-g><S-$>",
+  ["<leader>h"] = ":nohlsearch<CR>",
+  ["<leader>H"] = ":set hlsearch<CR>",
 }
 
 local keymaps_insert = {
@@ -35,23 +39,32 @@ local keymaps_insert = {
 }
 
 local keymaps_visual = {
+  -- comment
   ["//"] = ":lua require(\"Comment.api\").toggle.linewise(vim.fn.visualmode())<CR>",
 }
 
 local keymaps_terminal = {}
 
-for k, v in pairs(keymaps_normal) do
-  vim.api.nvim_set_keymap("n", k, v, { noremap = true, silent = true })
+local default_opts = { noremap = true, silent = true }
+
+local setup = function()
+  for k, v in pairs(keymaps_normal) do
+    vim.api.nvim_set_keymap("n", k, v, default_opts)
+  end
+
+  for k, v in pairs(keymaps_insert) do
+    vim.api.nvim_set_keymap("i", k, v, default_opts)
+  end
+
+  for k, v in pairs(keymaps_visual) do
+    vim.api.nvim_set_keymap("v", k, v, default_opts)
+  end
+
+  for k, v in pairs(keymaps_terminal) do
+    vim.api.nvim_set_keymap("t", k, v, default_opts)
+  end
 end
 
-for k, v in pairs(keymaps_insert) do
-  vim.api.nvim_set_keymap("i", k, v, { noremap = true, silent = true })
-end
-
-for k, v in pairs(keymaps_visual) do
-  vim.api.nvim_set_keymap("v", k, v, { noremap = true, silent = true })
-end
-
-for k, v in pairs(keymaps_terminal) do
-  vim.api.nvim_set_keymap("t", k, v, { silent = true })
-end
+return {
+  setup = setup,
+}

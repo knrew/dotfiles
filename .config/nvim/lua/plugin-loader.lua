@@ -6,11 +6,14 @@ local plugins = {
   require("plugins.bufferline"),
   require("plugins.lsp"),
   require("plugins.cmp"),
-  require("plugins.indent-blankline"),
-  require("plugins.treesitter"),
-  require("plugins.rainbow-delimiters"),
-  require("plugins.illuminate"),
+  -- require("plugins.indent-blankline"),
+  -- require("plugins.treesitter"),
+  -- require("plugins.rainbow-delimiters"),
+  -- require("plugins.illuminate"),
   require("plugins.comment"),
+  -- require("plugins.lir"),
+  -- require("plugins.navic"),
+  -- gitsigns dap
 }
 
 -- Bootstrap lazy.nvim
@@ -36,3 +39,5 @@ require("lazy").setup({
   ui = { border = "single" },
   checker = { enabled = true },
 })
+
+

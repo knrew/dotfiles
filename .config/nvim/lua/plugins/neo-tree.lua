@@ -1,9 +1,3 @@
-local keymaps_normal = {
-  ["<C-t>"] = ":Neotree toggle<CR>",
-  -- ["<leader>e"] = ":Neotree open<CR>",
-  -- ["<leader>c"] = ":Neotree close<CR>",
-}
-
 local setup = function()
   require("neo-tree").setup({
     close_if_last_window = false,
@@ -41,10 +35,6 @@ local setup = function()
       },
     }
   })
-
-  for k, v in pairs(keymaps_normal) do
-    vim.api.nvim_set_keymap("n", k, v, { noremap = true, silent = true })
-  end
 end
 
 return {

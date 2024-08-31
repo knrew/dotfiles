@@ -45,7 +45,6 @@ local setup = function()
     laststatus = 3,
   }
 
-
   vim.opt.spelllang:append("cjk")
   vim.opt.shortmess:append("c")
   vim.opt.shortmess:append("I")
@@ -87,4 +86,6 @@ local setup = function()
   end
 end
 
-setup()
+return {
+  setup = setup,
+}
