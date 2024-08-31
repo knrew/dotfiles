@@ -90,7 +90,6 @@ end
 return {
   "catppuccin/nvim",
   name = "catppuccin",
-  version = "v1.9.0",
   priority = 1000,
   config = function()
     setup()

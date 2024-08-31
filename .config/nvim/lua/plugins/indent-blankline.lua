@@ -50,5 +50,4 @@ return {
   config = function()
     setup()
   end,
-  -- event = { "User FileOpened", "BufReadPost", "VimEnter" }
 }

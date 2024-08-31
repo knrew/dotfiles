@@ -86,7 +86,7 @@ local setup = function()
       end
     },
     experimental = {
-      ghost_text = true,
+      ghost_text = false,
       native_menu = false,
     },
     window = {

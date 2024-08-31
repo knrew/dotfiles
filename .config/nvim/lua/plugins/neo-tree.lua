@@ -39,8 +39,7 @@ end
 
 return {
   "nvim-neo-tree/neo-tree.nvim",
-  -- branch = "v3.x"
-  version = "3.26",
+  branch = "v3.x",
   dependencies = {
     "nvim-lua/plenary.nvim",
     "nvim-tree/nvim-web-devicons",

@@ -41,7 +41,6 @@ end
 
 return {
   "akinsho/bufferline.nvim",
-  version = "v4.7.0",
   after = "catppuccin",
   config = function()
     setup()

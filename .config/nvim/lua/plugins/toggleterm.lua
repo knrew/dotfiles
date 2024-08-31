@@ -15,7 +15,6 @@ end
 
 return {
   "akinsho/toggleterm.nvim",
-  version = "v2.11.0",
   config  = function()
     setup()
   end,

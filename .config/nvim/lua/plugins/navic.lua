@@ -214,9 +214,5 @@ return {
   config = function()
     setup()
   end,
-  dependencies = {
-    -- "neovim/nvim-lspconfig"
-  },
-  -- event = "User FileOpened",
   enabled = true,
 }
