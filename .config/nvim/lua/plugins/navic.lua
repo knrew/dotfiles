@@ -163,8 +163,8 @@ local create_winbar = function()
 end
 
 local setup = function()
+  -- create_winbar()
   local navic = require("nvim-navic")
-  create_winbar()
   navic.setup({
     icons = {
       Array = icons.kind.Array .. " ",
@@ -202,7 +202,7 @@ local setup = function()
       Value = icons.kind.Value .. " ",
       Variable = icons.kind.Variable .. " ",
     },
-    highlight = true,
+    highlight = false,
     separator = " " .. icons.ui.ChevronRight .. " ",
     depth_limit = 0,
     depth_limit_indicator = "..",

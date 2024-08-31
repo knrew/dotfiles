@@ -31,8 +31,6 @@ local keymaps_normal = {
     end,
     "Show line diagnostics",
   },
-  ["f"] = { ":lua require(\"plugins.lsp.formatter\").format()<CR>:w<CR>", "Format" },
-  ["lr"] = { ":lua vim.lsp.buf.rename()<CR>", "Rename" },
 }
 
 local buffer_options = {

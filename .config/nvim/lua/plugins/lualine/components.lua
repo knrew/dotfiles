@@ -3,7 +3,7 @@ local icons = require("utils.icons")
 local lsp_format = function()
   local buf_clients = vim.lsp.get_clients { bufnr = 0 }
   if #buf_clients == 0 then
-    return "lsp inactive"
+    return "[lsp inactive]"
   end
 
   local buf_ft = vim.bo.filetype
@@ -31,9 +31,32 @@ local lsp_format = function()
 end
 
 return {
-  mode = { "mode" },
+  mode = {
+    function()
+      return string.upper(vim.api.nvim_get_mode().mode)
+    end
+  },
   branch = { "branch", icon = icons.git.branch },
-  filename = { "filename", path = 2, },
+  filename_full = {
+    "filename",
+    file_status = true,
+    new_file_status = false,
+    path = 3,
+    shorting_target = 40,
+    symbols = {
+      modified = "[+]",
+      readonly = "[-]",
+      unnamed = "[No Name]",
+      newfile = "[New]",
+    }
+  },
+  filename_simple = {
+    "filename",
+    file_status = false,
+    new_file_status = false,
+    path = 0,
+    shorting_target = 40,
+  },
   location = { "location" },
   progress = {
     "progress",
@@ -46,18 +69,17 @@ return {
   diff = {
     "diff",
     -- source = diff_source,
-    -- symbols = {
-    --   added = icons.git.LineAdded .. " ",
-    --   modified = icons.git.LineModified .. " ",
-    --   removed = icons.git.LineRemoved .. " ",
-    -- },
+    symbols = {
+      added = icons.git.LineAdded .. " ",
+      modified = icons.git.LineModified .. " ",
+      removed = icons.git.LineRemoved .. " ",
+    },
     -- padding = { left = 2, right = 1 },
     -- diff_color = {
-    -- added = { fg = colors.green },
-    -- modified = { fg = colors.yellow },
-    -- removed = { fg = colors.red },
+    -- added = { fg = "green" },
+    -- modified = { fg = "yellow" },
+    -- removed = { fg = "red" },
     -- },
-    -- cond = nil,
   },
   spaces = {
     function()
@@ -67,4 +89,10 @@ return {
     padding = 1,
   },
   lsp = { lsp_format },
+  datetime = {
+    "datetime",
+    style = "%H:%M:%S",
+  },
+  windows = { "windows" },
+  navic = { "navic" },
 }

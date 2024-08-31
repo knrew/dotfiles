@@ -17,26 +17,24 @@ end
 
 local setup = function()
   local options = {
-    options = {
-      numbers = "none",
-      show_buffer_icons = true,
-      diagnostics = "nvim_lsp",
-      diagnostics_update_in_insert = false,
-      diagnostics_indicator = diagnostics_indicator,
-      -- groups = {
-      --   items = {
-      --     require("bufferline.groups").builtin.pinned:with({ icon = "󰐃 " })
-      --   }
-      -- }
-    }
+    numbers = "none",
+    show_buffer_icons = true,
+    diagnostics = "nvim_lsp",
+    diagnostics_update_in_insert = false,
+    diagnostics_indicator = diagnostics_indicator,
   }
+
+  local highlights = nil
 
   local status_ok, catppuccin = pcall(require, "catppuccin.groups.integrations.bufferline")
   if status_ok then
-    options.highlights = catppuccin.get()
+    highlights = catppuccin.get()
   end
 
-  require("bufferline").setup(options)
+  require("bufferline").setup({
+    options = options,
+    highlights = highlights
+  })
 end
 
 return {
