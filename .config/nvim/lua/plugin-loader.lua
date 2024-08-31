@@ -10,7 +10,6 @@ local plugins = {
   require("plugins.rainbow-delimiters"),
   require("plugins.treesitter"),
   require("plugins.indent-blankline"),
-  -- require("plugins.illuminate"),
   -- require("plugins.lir"),
   require("plugins.navic"),
   require("plugins.web-devicons")

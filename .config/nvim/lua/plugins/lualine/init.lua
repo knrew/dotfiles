@@ -69,9 +69,9 @@ local setup = function()
       },
       lualine_c = { components.navic },
       lualine_x = {
-        -- function()
-        -- return " "
-        -- end
+        function()
+          return " "
+        end
       }
     },
     inactive_winbar = {},
