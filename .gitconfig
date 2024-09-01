@@ -6,10 +6,28 @@
 
 [http]
 
-[core]
-  #pager = LESSCHARSET=utf-8 less
-  #quotepath = false
 
-#[url "github:"]
-#    InsteadOf = https://github.com/
-#   InsteadOf = git@github.com:
+; [include]
+	; path = ~/.config/delta/themes/catppuccin.gitconfig
+
+[delta]
+  ; features = catppuccin-latte
+  navigate = true
+
+[core]
+  pager = delta --light --show-syntax-themes
+
+[interactive]
+  diffFilter = delta --color-only
+
+[merge]
+  conflictstyle = diff3
+
+[diff]
+  colorMoved = default
+
+; [url "github:"]
+;   InsteadOf = https://github.com/
+;   InsteadOf = git@github.com:
+
+

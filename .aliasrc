@@ -26,12 +26,17 @@ if type bat &> /dev/null; then
   alias cat=bat
 fi
 
+# lazygit
+if type lazygit &> /dev/null; then
+  alias lg=lazygit
+fi
+
 # editor
 if type nvim &> /dev/null; then
-  alias vi=nvim 
-fi
-alias v=vi
-alias vim=vi
+  alias vim=nvim
+ fi
+alias v=vim
+alias vi=vim
 
 # enable/disable backlight auto off
 alias ensleep="(xset s on +dpms)"
@@ -45,28 +50,20 @@ alias yayls="pacman -Qqem"
 alias pbcopy="xclip -selection c"
 
 # cpp
-# function cb() {
-#   command mkdir -p build
-#   cmake -GNinja -B build -S .
-#   cmake --build build -- $1 
-# }
+function cbuild() {
+  command mkdir -p build
+  cmake -GNinja -B build -S .
+  cmake --build build -- $1 
+}
 
-# function cr() {
-#   if [ $# = 0 ]; then
-#     command echo "Error: Specify target"
-#     return
-#   fi
-#   cb $1
-#   build/$1 ${@:2}
-# }
-
-# rust
-# alias rb="cargo build"
-# alias rbr="cargo build --release"
-# alias rr="cargo run"
-# alias rrr="cargo run --release"
-# alias rrb="cargo run --bin"
-# alias rrbr="cargo run --release --bin"
+function crun() {
+  if [ $# = 0 ]; then
+    command echo "Error: Specify target"
+    return
+  fi
+  cb $1
+  build/$1 ${@:2}
+}
 
 # tex
 alias lm="latexmk -pvc -halt-on-error"
