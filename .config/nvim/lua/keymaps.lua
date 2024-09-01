@@ -11,6 +11,7 @@ local keymaps_normal = {
   ["<C-PageDown>"] = "<cmd>BufferLineCycleNext<CR>",
   ["<C-PageUp>"] = "<cmd>BufferLineCyclePrev<CR>",
   ["<C-q>"] = "<cmd>bd<CR>",
+  ["<C-S-q>"] = "<cmd>bd!<CR>",
   ["<C-u>"] = "<cmd>BufferLineCloseOthers<CR>",
   -- ["<C-p>"] = ":BufferLinePick<CR>",
 
@@ -32,6 +33,12 @@ local keymaps_normal = {
   -- comment
   ["<leader>/"] = "<cmd>lua require(\"Comment.api\").toggle.linewise.current()<CR>",
 
+  -- terminal
+  ["<leader>t"] = "<cmd>terminal<cr>",
+
+  -- lazygit
+  ["lg"] = "<cmd>terminal lazygit<cr>i",
+
   -- misc
   ["<Esc>"] = "<cmd>w<CR>",
   ["<C-a>"] = "gg0v<S-g><S-$>",
@@ -45,7 +52,9 @@ local keymaps_insert = {
 
 local keymaps_visual = {}
 
-local keymaps_terminal = {}
+local keymaps_terminal = {
+  -- ["<ESC>"] = "<C-\\><C-n>",
+}
 
 local default_opts = { noremap = true, silent = true, }
 
@@ -66,7 +75,7 @@ local setup = function()
     vim.api.nvim_set_keymap("t", k, v, default_opts)
   end
 
-  -- comment(visual mode)
+  -- comment(select)
   vim.keymap.set("x",
     "<leader>/",
     function()

@@ -36,7 +36,7 @@ return {
     version = "v2.*",
     lazy = true,
     config = function()
-      require("luasnip.loaders.from_vscode").lazy_load()
+      require("plugins.cmp.luasnip").setup()
     end,
     build = "make install_jsregexp",
     dependencies = { "rafamadriz/friendly-snippets" },

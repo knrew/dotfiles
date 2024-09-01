@@ -12,7 +12,8 @@ local plugins = {
   require("plugins.indent-blankline"),
   -- require("plugins.lir"),
   require("plugins.navic"),
-  require("plugins.web-devicons")
+  require("plugins.web-devicons"),
+  -- require("plugins.gitsigns"),
   -- gitsigns dap
 }
 
