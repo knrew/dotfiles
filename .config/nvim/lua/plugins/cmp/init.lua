@@ -9,6 +9,7 @@ return {
       "cmp-buffer",
       "cmp-path",
       "cmp-cmdline",
+      "cmp-calc"
     },
   },
   {
@@ -29,6 +30,10 @@ return {
   },
   {
     "hrsh7th/cmp-cmdline",
+    lazy = true,
+  },
+  {
+    "hrsh7th/cmp-calc",
     lazy = true,
   },
   {
