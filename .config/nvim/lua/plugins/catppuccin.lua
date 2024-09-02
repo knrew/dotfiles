@@ -81,6 +81,9 @@ local setup = function()
         scope_color = "sapphire",
         colored_indent_levels = true,
       },
+      telescope = {
+        enabled = true,
+      }
     },
   })
 

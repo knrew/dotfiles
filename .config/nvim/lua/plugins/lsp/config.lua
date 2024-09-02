@@ -8,7 +8,8 @@ local language_servers = {
   "bashls",
   -- "pylsp",
   -- "ruff",
-  "texlab"
+  "texlab",
+  "marksman",
 }
 
 local keymaps_normal = {

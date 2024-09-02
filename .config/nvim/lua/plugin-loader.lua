@@ -10,11 +10,11 @@ local plugins = {
   require("plugins.rainbow-delimiters"),
   require("plugins.treesitter"),
   require("plugins.indent-blankline"),
-  -- require("plugins.lir"),
   require("plugins.navic"),
   require("plugins.web-devicons"),
-  -- require("plugins.gitsigns"),
-  -- gitsigns dap
+  require("plugins.telescope"),
+  require("plugins.diffview"),
+  require("plugins.obsidian-bridge"),
 }
 
 -- Bootstrap lazy.nvim

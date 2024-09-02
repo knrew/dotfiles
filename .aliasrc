@@ -38,6 +38,8 @@ if type nvim &> /dev/null; then
 alias v=vim
 alias vi=vim
 
+alias vf="v \$(fzf)"
+
 # enable/disable backlight auto off
 alias ensleep="(xset s on +dpms)"
 alias disleep="(xset s off -dpms)"

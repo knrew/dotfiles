@@ -8,42 +8,66 @@ local keymaps_normal = {
   ["<C-Up>"] = "<C-w>j",
   ["<C-Down>"] = "<C-w>k",
   ["<C-Right>"] = "<C-w>l",
-  ["<C-PageDown>"] = "<cmd>BufferLineCycleNext<CR>",
-  ["<C-PageUp>"] = "<cmd>BufferLineCyclePrev<CR>",
-  ["<C-q>"] = "<cmd>bd<CR>",
-  ["<C-S-q>"] = "<cmd>bd!<CR>",
-  ["<C-u>"] = "<cmd>BufferLineCloseOthers<CR>",
-  -- ["<C-p>"] = ":BufferLinePick<CR>",
+  ["<C-PageDown>"] = "<cmd>BufferLineCycleNext<cr>",
+  ["<C-PageUp>"] = "<cmd>BufferLineCyclePrev<cr>",
+  ["<C-q>"] = "<cmd>bd<cr>",
+  ["<C-S-q>"] = "<cmd>bd!<cr>",
+  ["<C-u>"] = "<cmd>BufferLineCloseOthers<cr>",
+  -- ["<C-p>"] = ":BufferLinePick<cr>",
 
   -- window
-  ["ss"] = "<cmd>split<CR><C-w>w",
-  ["sv"] = "<cmd>vsplit<CR><C-w>w",
-  ["<C-S-Up>"] = "<cmd>resize -2<CR>",
-  ["<C-S-Down>"] = "<cmd>resize +2<CR>",
-  ["<C-S-Left>"] = "<cmd>vertical resize -2<CR>",
-  ["<C-S-Right>"] = "<cmd>vertical resize +2<CR>",
+  ["ss"] = "<cmd>split<cr><C-w>w",
+  ["sv"] = "<cmd>vsplit<cr><C-w>w",
+  ["<C-S-Up>"] = "<cmd>resize -2<cr>",
+  ["<C-S-Down>"] = "<cmd>resize +2<cr>",
+  ["<C-S-Left>"] = "<cmd>vertical resize -2<cr>",
+  ["<C-S-Right>"] = "<cmd>vertical resize +2<cr>",
 
   -- lsp
-  ["f"] = "<cmd>lua require(\"plugins.lsp.formatter\").format()<CR>:w<CR>",
-  ["lr"] = "<cmd>lua vim.lsp.buf.rename()<CR>",
+  ["f"] = "<cmd>Format<cr><cmd>w<CR>",
+  ["rn"] = "<cmd>Rename<cr>",
 
   -- tree
-  ["<C-t>"] = "<cmd>Neotree toggle<CR>",
+  ["<C-t>"] = "<cmd>Neotree toggle<cr>",
+
+  -- telescope
+  ["<C-f>"] = "<cmd>Telescope find_files<cr>",
 
   -- comment
-  ["<leader>/"] = "<cmd>lua require(\"Comment.api\").toggle.linewise.current()<CR>",
+  ["<leader>/"] = "<cmd>ToggleCommentNormal<cr>",
 
   -- terminal
-  ["<leader>t"] = "<cmd>terminal<cr>",
+  -- ["<leader>t"] = "<cmd>terminal<cr>",
 
   -- lazygit
   ["lg"] = "<cmd>terminal lazygit<cr>i",
 
-  -- misc
-  ["<Esc>"] = "<cmd>w<CR>",
+  -- diffview
+  ["df"] = "<cmd>DiffviewOpen<cr><cmd>DiffviewToggleFiles<cr>",
+
+  -- delete without yank
+  ["x"] = "\"_d",
+  ["xx"] = "\"_dd",
+  ["X"] = "\"_D",
+
+  -- select all
   ["<C-a>"] = "gg0v<S-g><S-$>",
-  ["<leader>h"] = "<cmd>nohlsearch<CR>",
-  ["<leader>H"] = "<cmd>set hlsearch<CR>",
+
+  -- search highlight
+  ["<leader>h"] = "<cmd>nohlsearch<cr>",
+  ["<leader>H"] = "<cmd>set hlsearch<cr>",
+
+  -- ESC to save
+  ["<esc>"] = "<cmd>w<cr>",
+
+  -- undo/redo
+  ["z"] = "u",
+  ["<S-z>"] = "<C-r>",
+  ["u"] = "<nop>",
+
+  -- suspend vim
+  ["<C-z>"] = "<nop>",
+  ["<C-M-q>"] = "<C-z>",
 }
 
 local keymaps_insert = {
@@ -51,6 +75,13 @@ local keymaps_insert = {
 }
 
 local keymaps_visual = {}
+
+local keymaps_select = {
+  ["<leader>/"] = "<cmd>ToggleCommentSelect<cr>",
+
+  -- delete without yank
+  ["x"] = "\"_d",
+}
 
 local keymaps_terminal = {
   -- ["<ESC>"] = "<C-\\><C-n>",
@@ -60,31 +91,24 @@ local default_opts = { noremap = true, silent = true, }
 
 local setup = function()
   for k, v in pairs(keymaps_normal) do
-    vim.api.nvim_set_keymap("n", k, v, default_opts)
+    vim.keymap.set("n", k, v, default_opts)
   end
 
   for k, v in pairs(keymaps_insert) do
-    vim.api.nvim_set_keymap("i", k, v, default_opts)
+    vim.keymap.set("i", k, v, default_opts)
   end
 
   for k, v in pairs(keymaps_visual) do
-    vim.api.nvim_set_keymap("v", k, v, default_opts)
+    vim.keymap.set("v", k, v, default_opts)
+  end
+
+  for k, v in pairs(keymaps_select) do
+    vim.keymap.set("x", k, v, default_opts)
   end
 
   for k, v in pairs(keymaps_terminal) do
-    vim.api.nvim_set_keymap("t", k, v, default_opts)
+    vim.keymap.set("t", k, v, default_opts)
   end
-
-  -- comment(select)
-  vim.keymap.set("x",
-    "<leader>/",
-    function()
-      local esc = vim.api.nvim_replace_termcodes("<ESC>", true, false, true)
-      vim.api.nvim_feedkeys(esc, "nx", false)
-      require("Comment.api").toggle.linewise(vim.fn.visualmode())
-    end,
-    default_opts
-  )
 end
 
 return {
