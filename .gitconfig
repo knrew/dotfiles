@@ -7,7 +7,7 @@
 [http]
 
 
-; [include]
+[include]
 	; path = ~/.config/delta/themes/catppuccin.gitconfig
 
 [delta]
@@ -15,7 +15,7 @@
   navigate = true
 
 [core]
-  pager = delta --light --show-syntax-themes
+  pager = delta --light  
 
 [interactive]
   diffFilter = delta --color-only
