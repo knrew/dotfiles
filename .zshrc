@@ -16,5 +16,5 @@ if [ -f $HOME/.zshrc_local ]; then
 fi
 
 # starship
-export STARSHIP_CONFIG=$HOME/.config/starship/starship.toml
+export STARSHIP_CONFIG=$HOME/.config/starship/starship2.toml
 eval "$(starship init zsh)"
