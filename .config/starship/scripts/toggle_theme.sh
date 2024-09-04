@@ -1,1 +1,0 @@
-/home/rew/dotfiles/.config/starship/scripts/toggle_theme.sh
