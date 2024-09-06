@@ -25,6 +25,18 @@ local commands = {
       require("Comment.api").toggle.linewise(vim.fn.visualmode())
     end
   },
+  {
+    name = "ToggleInlayHint",
+    fn = function()
+      if vim.lsp.inlay_hint then
+        if vim.lsp.inlay_hint.is_enabled() then
+          vim.lsp.inlay_hint.enable(false, { 0 })
+        else
+          vim.lsp.inlay_hint.enable(true, { 0 })
+        end
+      end
+    end
+  }
 }
 
 local setup = function()

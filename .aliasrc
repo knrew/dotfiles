@@ -63,7 +63,7 @@ function crun() {
     command echo "Error: Specify target"
     return
   fi
-  cb $1
+  cbuild $1
   build/$1 ${@:2}
 }
 

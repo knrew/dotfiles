@@ -129,7 +129,7 @@ local common_capabilities = function()
   return capabilities
 end
 
-local get_common_options = function()
+local default_opts = function()
   return {
     on_attach = common_on_attach,
     on_init = common_on_init,
@@ -138,6 +138,46 @@ local get_common_options = function()
   }
 end
 
+local lua_ls_opts = function()
+  local opts = default_opts();
+
+  opts.settings = {
+    Lua = {
+      runtime = {
+        version = "LuaJIT",
+        pathStrict = true,
+        path = { "?.lua", "?/init.lua" },
+      },
+      workspace = {
+        library = vim.list_extend(vim.api.nvim_get_runtime_file("lua", true), {
+          "${3rd}/luv/library",
+          "${3rd}/busted/library",
+          "${3rd}/luassert/library",
+        }),
+        checkThirdParty = "Disable",
+      },
+    },
+  }
+
+  return opts
+end
+
+local rust_analyzer_opts = function()
+  local opts = default_opts();
+
+  opts.settings = {
+    ["rust-analyzer"] = {
+      inlayHints = {
+        enable = true,
+      },
+    }
+  }
+
+  return opts
+end
+
 return {
-  default_options = get_common_options(),
+  default_opts = default_opts(),
+  lua_ls_opts = lua_ls_opts(),
+  rust_analyzer_opts = rust_analyzer_opts(),
 }

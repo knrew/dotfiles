@@ -34,12 +34,12 @@ local setup = function()
   })
 
   pcall(function()
-    require("nlspsettings").setup({})
+    require("nlspsettings").setup()
   end)
 
-  local opts = require("plugins.lsp.utils").default_options
+  local lsp_options = require("plugins.lsp.options")
 
-  require("null-ls").setup(opts)
+  require("null-ls").setup(lsp_options.default_opts)
 
   local language_servers = require("plugins.lsp.config").language_servers
 
@@ -48,6 +48,14 @@ local setup = function()
   local lspconfig = require("lspconfig")
   require("mason-lspconfig").setup_handlers {
     function(server_name)
+      local opts = {}
+      if server_name == "lua_ls" then
+        opts = lsp_options.lua_ls_opts
+      elseif server_name == "rust_analyzer" then
+        opts = lsp_options.rust_analyzer_opts
+      else
+        opts = lsp_options.default_opts
+      end
       lspconfig[server_name].setup(opts)
     end,
   }

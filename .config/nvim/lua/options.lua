@@ -83,6 +83,11 @@ local setup = function()
   for _, sign in ipairs(vim.tbl_get(vim.diagnostic.config(), "signs", "values") or {}) do
     vim.fn.sign_define(sign.name, { texthl = sign.name, text = sign.text, numhl = sign.name })
   end
+
+
+  -- if vim.lsp.inlay_hint then
+  --   vim.lsp.inlay_hint.enable(true, { 0 })
+  -- end
 end
 
 return {

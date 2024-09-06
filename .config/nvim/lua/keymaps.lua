@@ -24,8 +24,9 @@ local keymaps_normal = {
   ["<C-S-Right>"] = "<cmd>vertical resize +2<cr>",
 
   -- lsp
-  ["f"] = "<cmd>Format<cr><cmd>w<CR>",
+  ["f"] = "<cmd>Format<cr><cmd>w<cr>",
   ["rn"] = "<cmd>Rename<cr>",
+  ["<leader>h"] = "<cmd>ToggleInlayHint<cr>",
 
   -- tree
   ["<C-t>"] = "<cmd>Neotree toggle<cr>",
@@ -54,8 +55,8 @@ local keymaps_normal = {
   ["<C-a>"] = "gg0v<S-g><S-$>",
 
   -- search highlight
-  ["<leader>h"] = "<cmd>nohlsearch<cr>",
-  ["<leader>H"] = "<cmd>set hlsearch<cr>",
+  -- ["<leader>h"] = "<cmd>nohlsearch<cr>",
+  -- ["<leader>H"] = "<cmd>set hlsearch<cr>",
 
   -- ESC to save
   ["<esc>"] = "<cmd>w<cr>",
