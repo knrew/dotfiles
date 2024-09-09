@@ -3,7 +3,7 @@ return {
   config = function()
     require("gitsigns").setup()
   end,
-  -- event = "User FileOpened",
-  -- cmd = "Gitsigns",
+  cmd = "Gitsigns",
   enabled = true,
+  lazy = true,
 }

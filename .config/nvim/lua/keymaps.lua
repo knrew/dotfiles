@@ -1,5 +1,5 @@
 local keymaps_normal = {
-  -- buffer
+  -- move window
   ["<C-h>"] = "<C-w>h",
   ["<C-j>"] = "<C-w>j",
   ["<C-k>"] = "<C-w>k",
@@ -8,20 +8,21 @@ local keymaps_normal = {
   ["<C-Up>"] = "<C-w>j",
   ["<C-Down>"] = "<C-w>k",
   ["<C-Right>"] = "<C-w>l",
+  -- resize window
+  ["<C-S-Up>"] = "<cmd>resize -2<cr>",
+  ["<C-S-Down>"] = "<cmd>resize +2<cr>",
+  ["<C-S-Left>"] = "<cmd>vertical resize -2<cr>",
+  ["<C-S-Right>"] = "<cmd>vertical resize +2<cr>",
+  -- split window
+  ["ss"] = "<cmd>split<cr><C-w>w",
+  ["sv"] = "<cmd>vsplit<cr><C-w>w",
+
+  -- buffer
   ["<C-PageDown>"] = "<cmd>BufferLineCycleNext<cr>",
   ["<C-PageUp>"] = "<cmd>BufferLineCyclePrev<cr>",
   ["<C-q>"] = "<cmd>bd<cr>",
   ["<C-S-q>"] = "<cmd>bd!<cr>",
   ["<C-u>"] = "<cmd>BufferLineCloseOthers<cr>",
-  -- ["<C-p>"] = ":BufferLinePick<cr>",
-
-  -- window
-  ["ss"] = "<cmd>split<cr><C-w>w",
-  ["sv"] = "<cmd>vsplit<cr><C-w>w",
-  ["<C-S-Up>"] = "<cmd>resize -2<cr>",
-  ["<C-S-Down>"] = "<cmd>resize +2<cr>",
-  ["<C-S-Left>"] = "<cmd>vertical resize -2<cr>",
-  ["<C-S-Right>"] = "<cmd>vertical resize +2<cr>",
 
   -- lsp
   ["f"] = "<cmd>Format<cr><cmd>w<cr>",
@@ -75,7 +76,9 @@ local keymaps_insert = {
   [","] = ",<Space>",
 }
 
-local keymaps_visual = {}
+local keymaps_visual = {
+  ["<leader>/"] = "<cmd>ToggleCommentNormal<cr>",
+}
 
 local keymaps_select = {
   ["<leader>/"] = "<cmd>ToggleCommentSelect<cr>",

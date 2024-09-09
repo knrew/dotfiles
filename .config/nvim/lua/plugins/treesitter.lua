@@ -16,7 +16,7 @@ local setup = function()
       "latex",
     },
     sync_install = false,
-    auto_install = false,
+    auto_install = true,
     highlight = {
       enable = true,
       disable = function(lang, buf)
@@ -57,7 +57,7 @@ return {
     config = function()
       setup()
     end,
-    event = "User FileOpened",
+    -- event = "User FileOpened",
     enabled = true,
   },
   {

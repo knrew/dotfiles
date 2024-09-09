@@ -32,11 +32,11 @@ local setup = function()
   })
 end
 
-
 return {
   "sindrets/diffview.nvim",
   config = function()
     setup()
   end,
-  -- lazy = true,
+  cmd = { "DiffviewOpen" },
+  lazy = true,
 }

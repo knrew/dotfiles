@@ -98,10 +98,6 @@ return {
     config = function()
       setup()
     end,
-    dependencies = {
-      "nvim-lua/plenary.nvim",
-      "telescope-fzf-native.nvim"
-    },
     lazy = true,
     cmd = "Telescope",
     enabled = true,
@@ -110,6 +106,5 @@ return {
     "nvim-telescope/telescope-fzf-native.nvim",
     build = "make",
     lazy = true,
-    enabled = true
   },
 }

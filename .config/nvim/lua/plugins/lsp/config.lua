@@ -3,7 +3,6 @@ local language_servers = {
   "clangd",
   "cmake",
   "lua_ls",
-  -- "stylua",
   "vimls",
   "bashls",
   -- "pylsp",
@@ -22,7 +21,6 @@ local keymaps_normal = {
   ["gl"] = {
     function()
       local float = vim.diagnostic.config().float
-
       if float then
         local config = type(float) == "table" and float or {}
         config.scope = "line"

@@ -42,5 +42,5 @@ return {
   after = "catppuccin",
   config = function()
     setup()
-  end
+  end,
 }

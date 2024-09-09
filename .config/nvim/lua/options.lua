@@ -85,9 +85,9 @@ local setup = function()
   end
 
 
-  -- if vim.lsp.inlay_hint then
-  --   vim.lsp.inlay_hint.enable(true, { 0 })
-  -- end
+  if vim.lsp.inlay_hint then
+    vim.lsp.inlay_hint.enable(true, { 0 })
+  end
 end
 
 return {

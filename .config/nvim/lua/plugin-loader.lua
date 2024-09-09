@@ -15,6 +15,7 @@ local plugins = {
   require("plugins.telescope"),
   require("plugins.diffview"),
   require("plugins.obsidian-bridge"),
+  require("plugins.plenary"),
 }
 
 -- Bootstrap lazy.nvim
@@ -38,5 +39,5 @@ vim.opt.rtp:prepend(lazypath)
 require("lazy").setup({
   spec = { plugins },
   ui = { border = "single" },
-  checker = { enabled = true },
+  checker = { enabled = false },
 })

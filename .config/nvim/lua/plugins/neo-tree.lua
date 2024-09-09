@@ -49,5 +49,4 @@ return {
   config = function()
     setup()
   end,
-  enabled = true,
 }
