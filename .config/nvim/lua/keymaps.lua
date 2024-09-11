@@ -24,6 +24,22 @@ local keymaps_normal = {
   ["<C-S-q>"] = "<cmd>bd!<cr>",
   ["<C-u>"] = "<cmd>BufferLineCloseOthers<cr>",
 
+  -- select all
+  ["<C-a>"] = "gg0v<S-g><S-$>",
+  -- ESC to save
+  ["<esc>"] = "<cmd>w<cr>",
+  -- delete without yank
+  ["x"] = "\"_d",
+  ["xx"] = "\"_dd",
+  ["X"] = "\"_D",
+  -- undo/redo
+  ["z"] = "u",
+  ["<S-z>"] = "<C-r>",
+  ["u"] = "<nop>",
+  -- suspend vim
+  ["<C-M-q>"] = "<C-z>",
+  ["<C-z>"] = "<nop>",
+
   -- lsp
   ["f"] = "<cmd>Format<cr><cmd>w<cr>",
   ["rn"] = "<cmd>Rename<cr>",
@@ -47,29 +63,8 @@ local keymaps_normal = {
   -- diffview
   ["df"] = "<cmd>DiffviewOpen<cr><cmd>DiffviewToggleFiles<cr>",
 
-  -- delete without yank
-  ["x"] = "\"_d",
-  ["xx"] = "\"_dd",
-  ["X"] = "\"_D",
-
-  -- select all
-  ["<C-a>"] = "gg0v<S-g><S-$>",
-
-  -- search highlight
-  -- ["<leader>h"] = "<cmd>nohlsearch<cr>",
-  -- ["<leader>H"] = "<cmd>set hlsearch<cr>",
-
-  -- ESC to save
-  ["<esc>"] = "<cmd>w<cr>",
-
-  -- undo/redo
-  ["z"] = "u",
-  ["<S-z>"] = "<C-r>",
-  ["u"] = "<nop>",
-
-  -- suspend vim
-  ["<C-z>"] = "<nop>",
-  ["<C-M-q>"] = "<C-z>",
+  -- markdown preview
+  ["md"] = "<cmd>MarkdownPreview<cr>",
 }
 
 local keymaps_insert = {
@@ -91,7 +86,7 @@ local keymaps_terminal = {
   -- ["<ESC>"] = "<C-\\><C-n>",
 }
 
-local default_opts = { noremap = true, silent = true, }
+local default_opts = { noremap = true, silent = true, desc = "defined in keymaps.lua" }
 
 local setup = function()
   for k, v in pairs(keymaps_normal) do

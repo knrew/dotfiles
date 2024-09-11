@@ -15,8 +15,8 @@ local plugins = {
   require("plugins.telescope"),
   require("plugins.diffview"),
   require("plugins.obsidian-bridge"),
+  require("plugins.markdown-preview"),
   require("plugins.plenary"),
-  require("plugins.copilot"),
 }
 
 -- Bootstrap lazy.nvim

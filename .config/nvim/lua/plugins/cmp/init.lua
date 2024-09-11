@@ -64,4 +64,26 @@ return {
     lazy = true,
     event = "InsertEnter",
   },
+  {
+    "github/copilot.vim",
+    lazy = true,
+    cmd = { "Copilot" },
+  },
+  {
+    "zbirenbaum/copilot-cmp",
+    event = "InsertEnter",
+    config = function()
+      local status_ok, copilot = pcall(require, "copilot")
+      if status_ok then
+        copilot.setup()
+        require("copilot_cmp").setup()
+
+        -- vim.defer_fn(function()
+        --   copilot.setup()
+        --   require("copilot_cmp").setup()
+        -- end, 100)
+      end
+    end,
+    dependencies = { "zbirenbaum/copilot.lua" },
+  },
 }
