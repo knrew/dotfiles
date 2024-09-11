@@ -84,7 +84,6 @@ local setup = function()
     vim.fn.sign_define(sign.name, { texthl = sign.name, text = sign.text, numhl = sign.name })
   end
 
-
   if vim.lsp.inlay_hint then
     vim.lsp.inlay_hint.enable(true, { 0 })
   end

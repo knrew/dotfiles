@@ -14,6 +14,7 @@ local setup = function()
     ignore_install = {
       "tex",
       "latex",
+      "go",
     },
     sync_install = false,
     auto_install = true,

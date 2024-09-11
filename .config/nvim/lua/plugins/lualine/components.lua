@@ -6,26 +6,22 @@ local lsp_format = function()
     return "[lsp inactive]"
   end
 
-  local buf_ft = vim.bo.filetype
   local buf_client_names = {}
-  local copilot_active = false
 
   for _, client in pairs(buf_clients) do
-    if client.name ~= "null-ls" and client.name ~= "copilot" then
+    if client.name == "GitHub Copilot" then
+      table.insert(buf_client_names, "copilot")
+    else
       table.insert(buf_client_names, client.name)
     end
+  end
 
-    if client.name == "copilot" then
-      copilot_active = true
-    end
+  if #buf_client_names == 0 then
+    table.insert(buf_client_names, "lsp inactive")
   end
 
   local unique_client_names = table.concat(buf_client_names, ", ")
   local language_servers = string.format("[%s]", unique_client_names)
-
-  if copilot_active then
-    language_servers = language_servers .. "%#SLCopilot#" .. " " .. lvim.icons.git.Octoface .. "%*"
-  end
 
   return language_servers
 end

@@ -9,7 +9,8 @@ return {
       "cmp-buffer",
       "cmp-path",
       "cmp-cmdline",
-      "cmp-calc"
+      "cmp-calc",
+      -- "cmp-copilot",
     },
   },
   {
@@ -36,6 +37,10 @@ return {
     "hrsh7th/cmp-calc",
     lazy = true,
   },
+  -- {
+  --   "hrsh7th/cmp-copilot",
+  --   lazy = true,
+  -- },
   {
     "L3MON4D3/LuaSnip",
     version = "v2.*",
