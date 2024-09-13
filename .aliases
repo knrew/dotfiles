@@ -53,9 +53,10 @@ alias pbcopy="xclip -selection c"
 
 # cpp
 function cbuild() {
-  command mkdir -p build
-  cmake -GNinja -B build -S .
-  cmake --build build -- $1 
+  # command mkdir -p build
+  # cmake -GNinja -B build -S .
+  cmake -B build -S .
+  cmake --build build -- $1
 }
 
 function crun() {

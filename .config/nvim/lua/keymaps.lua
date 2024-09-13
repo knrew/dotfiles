@@ -26,6 +26,7 @@ local keymaps_normal = {
 
   -- select all
   ["<C-a>"] = "gg0v<S-g><S-$>",
+  ["<C-S-a>"] = "v<S-g><S-$>",
   -- ESC to save
   ["<esc>"] = "<cmd>w<cr>",
   -- delete without yank
