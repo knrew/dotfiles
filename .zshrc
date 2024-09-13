@@ -7,8 +7,8 @@ if [ -f $HOME/.cargo/env ]; then
   source $HOME/.cargo/env
 fi
 
-if [ -f $HOME/.aliasrc ]; then
-  source $HOME/.aliasrc
+if [ -f $HOME/.aliases ]; then
+  source $HOME/.aliases
 fi
 
 if [ -f $HOME/.zshrc_local ]; then
