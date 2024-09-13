@@ -11,6 +11,14 @@ alias la="ls -A"
 alias l=ls
 # alias l="ls -CF"
 
+# editor
+if type nvim &> /dev/null; then
+  alias vim=nvim
+ fi
+alias v=vim
+alias vi=vim
+alias vf="v \$(fzf)"
+
 # rm -> trash-put
 if type trash-put &> /dev/null; then
   alias rm=trash-put
@@ -27,18 +35,7 @@ if type bat &> /dev/null; then
 fi
 
 # lazygit
-if type lazygit &> /dev/null; then
-  alias lg=lazygit
-fi
-
-# editor
-if type nvim &> /dev/null; then
-  alias vim=nvim
- fi
-alias v=vim
-alias vi=vim
-
-alias vf="v \$(fzf)"
+alias lg=lazygit
 
 # enable/disable backlight auto off
 alias ensleep="(xset s on +dpms)"
@@ -58,7 +55,6 @@ function cbuild() {
   cmake -B build -S .
   cmake --build build -- $1
 }
-
 function crun() {
   if [ $# = 0 ]; then
     command echo "Error: Specify target"
