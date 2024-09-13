@@ -1,15 +1,16 @@
 # dotfiles
 ## インストール
-dotfiles以下のファイルのシンボリックリンクを作成する．
+ホームディレクトリにdotfiles内のファイルのシンボリックリンクを作成する(例: `dotfiles/.config/i3/config -> ~/.config/i3/config`)．
 
 次のファイルはインストールされない．
-- `/.git`
-- `/.gitignore`
-- `/README.md`
-- `/ex/`以下のファイル
+- `dotfiles/.git`
+- `dotfiles/.gitignore`
+- `dotfiles/README.md`
+- `dotfiles/ex/`以下に置かれたファイル
+    - インストールしないファイルは`ex`以下に置くようにする．
 
 [dotfiles_manager](https://github.com/knrew/dotfiles_manager)を用いる．
-あらかじめRustをインストールする．
+あらかじめRustをインストールしておく．
 
 ```sh
 cd ~
