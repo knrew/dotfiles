@@ -10,7 +10,7 @@ local lsp_format = function()
 
   for _, client in pairs(buf_clients) do
     if client.name == "GitHub Copilot" then
-      table.insert(buf_client_names, "copilot")
+      table.insert(buf_client_names, "Copilot")
     else
       table.insert(buf_client_names, client.name)
     end

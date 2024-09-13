@@ -2,9 +2,9 @@
 
 set -eu
 
-# if ! type dotfiles-manager &> /dev/null; then
+if ! type dotfiles-manager &> /dev/null; then
   cargo install --git https://github.com/knrew/dotfiles_manager.git --force 
-# fi
+fi
 
 SCRIPT_DIR=$(cd "$(dirname $0)" && pwd -P)
 DOTFILES_DIR=${SCRIPT_DIR}/../
