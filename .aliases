@@ -14,7 +14,7 @@ alias l=ls
 # editor
 if type nvim &> /dev/null; then
   alias vim=nvim
- fi
+fi
 alias v=vim
 alias vi=vim
 alias vf="v \$(fzf)"
@@ -43,7 +43,7 @@ alias disleep="(xset s off -dpms)"
 
 # pacman
 alias pacmanls="pacman -Qqen"
-alias yayls="pacman -Qqem"
+alias aurls="pacman -Qqem"
 
 # clipboard
 alias pbcopy="xclip -selection c"
