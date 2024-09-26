@@ -35,6 +35,12 @@
             "key": "├─󰏖",
             "keyColor": "blue"
         },
+                {
+            "type": "wm",
+            "key": "├─",
+            "format": "{pretty-name}",
+            "keyColor": "blue"
+        },
         {
             "type": "shell",
             "key": "├─",
@@ -42,20 +48,15 @@
         },
         {
             "type": "terminal",
-            "key": "├─",
+            "key": "╰─",
             "keyColor": "blue"
         },
-        {
-            "type": "wm",
-            "key": "├─",
-            "keyColor": "blue"
-        },
-        
-        {
-            "type": "uptime",
-            "key": "╰─󰅐",
-            "keyColor": "blue"
-        },
+
+        // {
+        //     "type": "uptime",
+        //     "key": "╰─󰅐",
+        //     "keyColor": "blue"
+        // },
         "break", 
         {
             "type": "host",
@@ -70,6 +71,7 @@
         {
             "type": "gpu",
             "key": "├─󰍛",
+            "format": "{vendor} {name}",
             "keyColor": "yellow"
         },
         {
@@ -83,41 +85,41 @@
             "key": "├─󰑭",
             "keyColor": "yellow"
         },
-        {
-            "type": "swap",
-            "key": "├─󰓡",
-            "keyColor": "yellow"
-        },
+        // {
+        //     "type": "swap",
+        //     "key": "├─󰓡",
+        //     "keyColor": "yellow"
+        // },
         {
             "type": "display",
-            "key": "├─󰍹",
+            "key": "╰─󰍹",
             "keyColor": "yellow"
         },
-        {
-            "type": "brightness",
-            "key": "├─󰃞",
-            "keyColor": "yellow"
-        },
-        {
-            "type": "battery",
-            "key": "├─",
-            "keyColor": "yellow"
-        },
-        {
-            "type": "poweradapter",
-            "key": "├─",
-            "keyColor": "green"
-        },
-        {
-            "type": "bluetooth",
-            "key": "├─",
-            "keyColor": "yellow"
-        },
-        {
-            "type": "sound",
-            "key": "╰─",
-            "keyColor": "yellow"
-        },
+        // {
+        //     "type": "brightness",
+        //     "key": "├─󰃞",
+        //     "keyColor": "yellow"
+        // },
+        // {
+        //     "type": "battery",
+        //     "key": "├─",
+        //     "keyColor": "yellow"
+        // },
+        // {
+        //     "type": "poweradapter",
+        //     "key": "├─",
+        //     "keyColor": "green"
+        // },
+        // {
+        //     "type": "bluetooth",
+        //     "key": "├─",
+        //     "keyColor": "yellow"
+        // },
+        // {
+        //     "type": "sound",
+        //     "key": "╰─",
+        //     "keyColor": "yellow"
+        // },
         "break", 
         {
             "type": "custom",
