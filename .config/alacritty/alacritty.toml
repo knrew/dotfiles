@@ -1,3 +1,4 @@
+[general]
 import = [
   "~/.config/alacritty/catppuccin_latte.toml",
   #"~/.config/alacritty/gruvbox_light.toml",
@@ -28,5 +29,6 @@ style = "Italic"
 [font.bold_italic]
 family = "SauceCodeProNerdFont"
 style = "Bold Italic"
+
 
 
