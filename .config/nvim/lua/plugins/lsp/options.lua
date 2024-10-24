@@ -170,6 +170,30 @@ local rust_analyzer_opts = function()
       inlayHints = {
         enable = true,
       },
+      cargo = {
+        features = "all",
+        buildScripts = {
+          overrideCommand = {
+            "cargo",
+            "check",
+            "--quiet",
+            "--workspace",
+            "--message-format=json",
+            "--all-targets",
+          }
+        },
+      },
+      check = {
+        overrideCommand = {
+          "cargo",
+          "check",
+          "--quiet",
+          "--workspace",
+          "--message-format=json",
+          "--all-targets",
+        },
+      },
+      procMacro = { attributes = { enable = true } }
     }
   }
 

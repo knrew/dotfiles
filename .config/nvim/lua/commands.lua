@@ -36,7 +36,21 @@ local commands = {
         end
       end
     end
-  }
+  },
+  {
+    name = "ToDo",
+    fn = function()
+      vim.api.nvim_command("edit ~/wiki/workspace/TODO.md")
+    end
+  },
+  {
+    name = "Dialy",
+    fn = function()
+      local d = os.date("%Y%m%d")
+      local file = "~/wiki/dailylog/" .. d .. ".md"
+      vim.api.nvim_command("edit " .. file)
+    end
+  },
 }
 
 local setup = function()

@@ -5,8 +5,15 @@ return {
   config = function()
     vim.g.mkdp_auto_start = 1
   end,
-  build = function()
-    vim.fn["mkdp#util#install"]()
+  build =
+  -- "cd app && yarn install"
+      function()
+        vim.cmd [[Lazy load markdown-preview.nvim]]
+        vim.fn["mkdp#util#install"]()
+      end
+  ,
+  init = function()
+    vim.g.mkdp_filetypes = { "markdown" }
   end,
   lazy = true,
 }

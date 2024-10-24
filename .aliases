@@ -46,7 +46,7 @@ alias pacmanls="pacman -Qqen"
 alias aurls="pacman -Qqem"
 
 # clipboard
-alias pbcopy="xclip -selection c"
+alias clip="xclip -selection c"
 
 # cpp
 function cbuild() {
