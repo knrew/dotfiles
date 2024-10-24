@@ -19,6 +19,6 @@ home_dir=$HOME
 # ~/.backup_dotfiles/
 backup_dir=${home_dir}/.backup_dotfiles/
 
-dotfiles-manager install $dotfiles_dir $home_dir $backup_dir
+dotfiles-manager install $dotfiles_dir $home_dir -b $backup_dir
 # cd ~/codes/dotfiles_manager/ 
-cargo run --release -- install $dotfiles_dir $home_dir $backup_dir
+# cargo run --release -- install $dotfiles_dir $home_dir $backup_dir
