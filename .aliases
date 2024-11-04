@@ -17,7 +17,9 @@ if type nvim &> /dev/null; then
 fi
 alias v=vim
 alias vi=vim
+
 alias vf="v \$(fzf)"
+alias vd="v -c Daily"
 
 # rm -> trash-put
 if type trash-put &> /dev/null; then

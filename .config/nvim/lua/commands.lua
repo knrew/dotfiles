@@ -44,7 +44,7 @@ local commands = {
     end
   },
   {
-    name = "Dialy",
+    name = "Daily",
     fn = function()
       local d = os.date("%Y%m%d")
       local file = "~/wiki/dailylog/" .. d .. ".md"
