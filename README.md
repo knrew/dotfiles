@@ -9,11 +9,11 @@
 - `dotfiles/ex/`以下に置かれたファイル
     - インストールしないファイルは`ex`以下に置くようにする．
 
-[dotfiles_manager](https://github.com/knrew/dotfiles_manager)を用いる．
+[dotfiles-manager](https://github.com/knrew/dotfiles-manager)を用いる．
 あらかじめRustをインストールしておく．
 
 ```sh
 cd ~
 git clone https://github.com/knrew/dotfiles.git .dotfiles 
-sh ~/.dotfiles/ex/install.sh
+~/.dotfiles/ex/install.sh
 ```
