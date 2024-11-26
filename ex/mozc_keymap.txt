@@ -59,12 +59,7 @@ DirectInput	Henkan	IMEOn
 Precomposition	Henkan	IMEOn
 Composition	Henkan	IMEOn
 Conversion	Henkan	IMEOn
-Composition	Hiragana	CancelAndIMEOff
-Conversion	Hiragana	CancelAndIMEOff
-Precomposition	Hiragana	CancelAndIMEOff
 Conversion	Insert	Cancel
-Composition	Kana	ToggleAlphanumericMode
-Precomposition	Kana	ToggleAlphanumericMode
 Composition	Left	MoveCursorLeft
 Conversion	Left	SegmentWidthShrink
 DirectInput	Muhenkan	IMEOff
