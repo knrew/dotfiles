@@ -2,6 +2,17 @@
 
 export PATH=$PATH:$HOME/.local/bin
 
+export HISTFILE=${HOME}/.zsh_history
+export HISTSIZE=1000
+export SAVEHIST=10000
+setopt hist_ignore_dups
+setopt EXTENDED_HISTORY
+setopt incappendhistory
+
+# autoload -Uz compinit promptinit
+# compinit
+# promptinit
+
 # rust
 if [ -f $HOME/.cargo/env ]; then
   source $HOME/.cargo/env
