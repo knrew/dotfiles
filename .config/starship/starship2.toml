@@ -55,7 +55,8 @@ crust = "#dce0e8"
 style = "fg:mantle bg:sky"
 symbol = ""
 format = "[$symbol $version ]($style)"
-detect_extensions = ["c", "h", "cpp", "hpp","cc"]
+detect_extensions = ["c", "h", "cpp", "hpp", "cc"]
+detect_files = ["CMakeLists.txt"]
 
 [cmake]
 symbol = ""
@@ -93,6 +94,7 @@ format = "[$symbol ]($style)"
 
 [os.symbols]
 Arch = "󰣇"
+Ubuntu = "󰕈"
 
 [directory]
 truncation_length = 100
@@ -117,4 +119,3 @@ format = "[  $time ]($style)"
 disabled = false
 success_symbol = "[[](fg:green bg:sapphire)](green)"
 error_symbol = "[[](fg:red bg:sapphire)](red)"
-vimcmd_symbol = "[󰄛 ❮](subtext1)" 
