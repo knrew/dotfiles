@@ -1,11 +1,35 @@
 # source zsh
 alias loadrc="source $HOME/.zshrc"
 
+# ls -> eza
+if type eza &> /dev/null; then
+  alias ls=eza
+else
+  alias ls="ls --color=auto"
+fi
+
 # ls
 alias ll="ls -alF"
 alias la="ls -A"
 alias l=ls
 # alias l="ls -CF"
+
+# nvim
+if type nvim &> /dev/null; then
+  export EDITOR=nvim
+  alias vim=nvim
+  alias vi=nvim
+  alias v=nvim
+fi
+
+# rm -> trash-put
+ type trash-put &> /dev/null && alias rm=trash-put
+
+# grep -> ripgrep
+ type rg &> /dev/null && alias grep=rg
+
+# cat -> bat
+type bat &> /dev/null && alias cat=bat
 
 # clipboard
 alias clip="xclip -selection c"
@@ -18,8 +42,8 @@ alias enable_sleep="(xset s on +dpms)"
 alias disable_sleep="(xset s off -dpms)"
 
 # package manager
-alias pacmanls="pacman -Q"
-alias aurls="pacman -Qm"
+# fzf functions for package manager are difined in fzf.zsh
+alias pacman_update="sudo pacman -Syy" # pacman update
 
 #
 # tex

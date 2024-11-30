@@ -1,13 +1,9 @@
-#
 # completion
-#
 autoload -Uz compinit promptinit
 compinit
 promptinit
 
-#
 # history
-#
 export HISTFILE=${HOME}/.zsh_history
 export HISTSIZE=1000
 export SAVEHIST=10000
@@ -17,10 +13,10 @@ setopt incappendhistory
 
 export PATH=$PATH:$HOME/.local/bin
 
-[[ -f $HOME/.cargo/env ]] && source $HOME/.cargo/env # rust
+# rust
+[[ -f $HOME/.cargo/env ]] && source $HOME/.cargo/env 
 
 ZSHDIR=$HOME/.config/zsh
-[[ -f $ZSHDIR/command_replacements.zsh ]] && source $ZSHDIR/command_replacements.zsh
 [[ -f $ZSHDIR/aliases.zsh ]] && source $ZSHDIR/aliases.zsh
 [[ -f $ZSHDIR/fzf.zsh ]] && source $ZSHDIR/fzf.zsh
 [[ -f $ZSHDIR/config_local.zsh ]] && source $ZSHDIR/config_local.zsh
