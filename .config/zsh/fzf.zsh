@@ -1,82 +1,3 @@
-# ls -> eza
-if type eza &> /dev/null; then
-  alias ls=eza
-else
-  alias ls="ls --color=auto"
-fi
-
-# ls
-alias ll="ls -alF"
-alias la="ls -A"
-alias l=ls
-# alias l="ls -CF"
-
-# editor
-if type nvim &> /dev/null; then
-  export EDITOR=nvim
-  alias vim=nvim
-  alias vi=nvim
-  alias v=nvim
-fi
-
-# rm -> trash-put
-if type trash-put &> /dev/null; then
-  alias rm=trash-put
-fi
-
-# grep -> ripgrep
-if type rg &> /dev/null; then
-  alias grep=rg
-fi
-
-# cat -> bat
-if type bat &> /dev/null; then
-  alias cat=bat
-fi
-
-# lazygit
-alias lg=lazygit
-
-# enable/disable backlight auto off
-alias ensleep="(xset s on +dpms)"
-alias disleep="(xset s off -dpms)"
-
-# arch package manager
-alias pacmanls="pacman -Qqen"
-alias aurls="pacman -Qqem"
-
-# clipboard
-alias clip="xclip -selection c"
-
-# tex
-alias lm="latexmk -pvc -halt-on-error"
-
-# cpp
-# cpp build with cmake
-function cppb() {
-  if [ ! -f CMakeLists.txt ]; then
-    command echo "Error: No CMakeLists.txt"
-    return 1
-  fi
-  command mkdir -p build
-  # cmake -GNinja -B build -S .
-  cmake -B build -S .
-  cmake --build build -- $1
-}
-
-# cpp run(with build)
-function cppr() {
-  if [ $# = 0 ]; then
-    command echo "Error: Specify target"
-    return 1
-  fi
-  cppb $1 && build/$1 ${@:2}
-}
-
-#
-# fzf configs
-#
-
 export FZF_DEFAULT_OPTS=" \
 --reverse
 --color=bg+:#ccd0da,bg:#eff1f5,spinner:#dc8a78,hl:#d20f39 \
@@ -115,8 +36,8 @@ fdr() {
       get_parent_dirs $(dirname "$1")
     fi
   }
-  local DIR=$(get_parent_dirs $(realpath "${1:-$PWD}") | fzf-tmux --tac)
-  cd "$DIR"
+  local dir=$(get_parent_dirs $(realpath "${1:-$PWD}") | fzf-tmux --tac)
+  cd "$dir"
 }
 
 # cf - fuzzy cd from anywhere
@@ -124,14 +45,12 @@ fdr() {
 function cf() {
   local file
   file="$(locate -Ai -0 $@ | command grep -z -vE '~$' | fzf --read0 -0 -1)"
-  if [[ -n $file ]]
-  then
-     if [[ -d $file ]]
-     then
-        cd -- $file
-     else
-        cd -- ${file:h}
-     fi
+  if [[ -n $file ]]; then
+    if [[ -d $file ]]; then
+      cd -- $file
+    else
+      cd -- ${file:h}
+    fi
   fi
 }
 
@@ -149,30 +68,25 @@ function fea() {
   ${EDITOR:-vim} "$file"
 }
 
+# fuzzy vim from anywhere
 function vf() {
   local files
   files=(${(f)"$(locate -Ai -0 $@ | grep -z -vE '~$' | fzf --read0 -0 -1 -m)"})
-  if [[ -n $files ]]
-  then
+  if [[ -n $files ]]; then
      ${EDITOR:-vim} -- $files
      print -l $files[1]
   fi
 }
 
 # fzf kill processes
-fkill() {
+function fkill() {
     local pid 
     if [ "$UID" != "0" ]; then
         pid=$(ps -f -u $UID | sed 1d | fzf -m | awk '{print $2}')
     else
         pid=$(ps -ef | sed 1d | fzf -m | awk '{print $2}')
     fi 
-    if [ "x$pid" != "x" ]
-    then
+    if [ "x$pid" != "x" ]; then
         echo $pid | xargs kill -${1:-9}
     fi  
 }
-
-#
-# end fzf configs
-#
