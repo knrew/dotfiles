@@ -91,11 +91,15 @@ function fkill() {
     fi  
 }
 
-# installed packages ls
-alias pacmanls="pacman -Q | fzf --preview \"pacman -Qi {1}\""
+# ls installed packages
+alias pacmanls="pacman -Qn | fzf --preview \"pacman -Qi {1}\""
 alias aurls="pacman -Qm | fzf --preview \"pacman -Qi {1}\""
+
+# rm installed package
+alias pacmanrm="pacman -Qn | fzf --multi --preview \"pacman -Qi {1}\" | xargs -ro sudo pacman -Rns"
+alias aurrm="pacman -Qm | fzf --multi --preview \"pacman -Qi {1}\" | xargs -ro sudo pacman -Rns"
 
 # install package
 # alias pacman_install="pacman -Slq | fzf --multi --preview \"pacman -Si {1}\" | xargs -ro sudo pacman -S"
 alias pacman_install=paruz
-alias aur_install=paruz
+# alias aur_install=paruz

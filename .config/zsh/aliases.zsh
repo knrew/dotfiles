@@ -1,4 +1,4 @@
-# source zsh
+# source zshrc
 alias loadrc="source $HOME/.zshrc"
 
 # ls -> eza
@@ -41,9 +41,8 @@ alias lg=lazygit
 alias enable_sleep="(xset s on +dpms)"
 alias disable_sleep="(xset s off -dpms)"
 
-# package manager
-# fzf functions for package manager are difined in fzf.zsh
-alias pacman_update="sudo pacman -Syy" # pacman update
+# package manager(fzf functions for package manager are defined in fzf.zsh)
+alias pacman_update="sudo pacman -Syy" 
 
 #
 # tex
@@ -51,9 +50,9 @@ alias pacman_update="sudo pacman -Syy" # pacman update
 alias lm="latexmk -pvc -halt-on-error"
 
 #
-# cpp
+# c/cpp
 #
-function cppb() { # build(with cmake)
+function clangb() { # build(with cmake)
   if [ ! -f CMakeLists.txt ]; then
     command echo "Error: No CMakeLists.txt"
     return 1
@@ -63,7 +62,7 @@ function cppb() { # build(with cmake)
   cmake -B build -S .
   cmake --build build -- $1
 }
-function cppr() { # build and run target
+function clangr() { # build and run target
   if [ $# = 0 ]; then
     command echo "Error: Specify target"
     return 1

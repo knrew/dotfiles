@@ -5,7 +5,7 @@ promptinit
 
 # history
 export HISTFILE=${HOME}/.zsh_history
-export HISTSIZE=1000
+export HISTSIZE=10000
 export SAVEHIST=10000
 setopt hist_ignore_dups
 setopt extended_history
