@@ -52,7 +52,7 @@ alias lm="latexmk -pvc -halt-on-error"
 #
 # c/cpp
 #
-function clangb() { # build(with cmake)
+function cppb() { # build(with cmake)
   if [ ! -f CMakeLists.txt ]; then
     command echo "Error: No CMakeLists.txt"
     return 1
@@ -62,12 +62,14 @@ function clangb() { # build(with cmake)
   cmake -B build -S .
   cmake --build build -- $1
 }
-function clangr() { # build and run target
+function cppr() { # build and run target
   if [ $# = 0 ]; then
-    command echo "Error: Specify target"
-    return 1
+    # command echo "Error: Specify target"
+    # return 1
+    cppb main && build/main ${@:1}
+  else
+    cppb $1 && build/$1 ${@:2}
   fi
-  cppb $1 && build/$1 ${@:2}
 }
 
 #
