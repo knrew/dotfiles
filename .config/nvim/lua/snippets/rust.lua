@@ -24,6 +24,43 @@ return {
     }
   ),
 
+  -- クエリ
+  s(
+    { trig = "acquery" },
+    {
+      t({
+        "enum Query {",
+        "    Q1(usize),",
+        "    Q2(usize),",
+        "}",
+        "use Query::*;",
+        "",
+        "impl proconio::source::Readable for Query {",
+        "    type Output = Self;",
+        "    fn read<R: std::io::BufRead, S: proconio::source::Source<R>>(source: &mut S) -> Self::Output {",
+        "        match u8::read(source) {",
+        "            1 => {",
+        "                input! {",
+        "                    from source,",
+        "                    x: usize,",
+        "                }",
+        "                Q1(x)",
+        "            }",
+        "            2 => {",
+        "                input! {",
+        "                    from source,",
+        "                    x: usize,",
+        "                }",
+        "                Q2(x)",
+        "            }",
+        "            _ => unreachable!(),",
+        "        }",
+        "    }",
+        "}",
+      })
+    }
+  ),
+
   -- グリッド上の移動
   s(
     { trig = "acdij" },
@@ -39,27 +76,26 @@ return {
 
   -- グリッド上の隣接するマスを列挙するイテレータ
   s(
-    { trig = "acneighboriter" },
+    { trig = "acneighbor" },
     {
       t({
         "DIJ",
         "    .iter()",
-        "    .map(move |&[di, dj]| (i.wrapping_add(di), j.wrapping_add(dj)))",
-        "    .filter(move |&(i, j)| i < h && j < w)",
-        -- "    "
+        "    .map(move |&[di, dj]| [i.wrapping_add(di), j.wrapping_add(dj)])",
+        "    .filter(move |&[ni, nj]| ni < h && nj < w)",
       }),
     }
   ),
 
   -- グリッド状で隣接するマスに対するfor
   s(
-    { trig = "acneighborfor" },
+    { trig = "acneigborfor" },
     {
       t({
         "for (ni, nj) in DIJ",
         "    .iter()",
-        "    .map(move |&[di, dj]| (i.wrapping_add(di), j.wrapping_add(dj)))",
-        "    .filter(move |&(i, j)| i < h && j < w) {",
+        "    .map(move |&[di, dj]| [i.wrapping_add(di), j.wrapping_add(dj)])",
+        "    .filter(move |&[ni, nj]| ni < h && nj < w) {",
         "    "
       }),
       i(1),
@@ -72,7 +108,7 @@ return {
 
   -- 重みなしグラフ
   s(
-    { trig = "acgraph1" },
+    { trig = "acgraph" },
     {
       t({
         "let g = {",
@@ -89,7 +125,7 @@ return {
 
   -- 重みつきグラフ
   s(
-    { trig = "acgraph2" },
+    { trig = "acgraphw" },
     {
       t({
         "let g = {",
@@ -100,6 +136,74 @@ return {
         "    }",
         "    g",
         "};"
+      })
+    }
+  ),
+
+  -- モノイド(セグ木)
+  s(
+    { trig = "acseg" },
+    {
+      t({
+        "#[derive(Default)]",
+        "struct Op;",
+        "",
+        "impl Monoid for Op {",
+        "    type Value = todo!();",
+        "",
+        "    fn identity(&self) -> Self::Value {",
+        "        todo!()",
+        "    }",
+        "",
+        "    fn op(&self, x: &Self::Value, y: &Self::Value) -> Self::Value {",
+        "        todo!()",
+        "    }",
+        "}",
+      })
+    }
+  ),
+
+  -- モノイドアクション(遅延セグ木)
+  s(
+    { trig = "aclazyseg" },
+    {
+      t({
+        "#[derive(Default)]",
+        "struct Op;",
+        "",
+        "impl Monoid for Op {",
+        "    type Value = todo!();",
+        "",
+        "    fn identity(&self) -> Self::Value {",
+        "        todo!()",
+        "    }",
+        "",
+        "    fn op(&self, x: &Self::Value, y: &Self::Value) -> Self::Value {",
+        "        todo!()",
+        "    }",
+        "}",
+        "",
+        "#[derive(Default)]",
+        "struct Act;",
+        "",
+        "impl Monoid for Act {",
+        "    type Value = todo!();",
+        "",
+        "    fn identity(&self) -> Self::Value {",
+        "        todo!()",
+        "    }",
+        "",
+        "    // NOTE: gが後に作用する．g(f(x))",
+        "    fn op(&self, g: &Self::Value, f: &Self::Value) -> Self::Value {",
+        "        todo!()",
+        "    }",
+        "}",
+        "",
+        "impl Action<Op> for Act {",
+        "    fn act(&self, f: &Self::Value, x: &<Op as Monoid>::Value) -> <Op as Monoid>::Value {",
+        "        todo!()",
+        "    }",
+        "}",
       })
     }
   ),
