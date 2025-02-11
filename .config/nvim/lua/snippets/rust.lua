@@ -66,10 +66,10 @@ return {
     { trig = "acdij" },
     { t({
       "const DIJ: [[usize; 2]; 4] = [",
-      "    [1, 0],",
       "    [0, 1],",
-      "    [1usize.wrapping_neg(), 0],",
+      "    [1, 0],",
       "    [0, 1usize.wrapping_neg()],",
+      "    [1usize.wrapping_neg(), 0],",
       "];",
     }) }
   ),
@@ -92,7 +92,7 @@ return {
     { trig = "acneigborfor" },
     {
       t({
-        "for (ni, nj) in DIJ",
+        "for [ni, nj] in DIJ",
         "    .iter()",
         "    .map(move |&[di, dj]| [i.wrapping_add(di), j.wrapping_add(dj)])",
         "    .filter(move |&[ni, nj]| ni < h && nj < w) {",
@@ -142,10 +142,10 @@ return {
 
   -- モノイド(セグ木)
   s(
-    { trig = "acseg" },
+    { trig = "acmono" },
     {
       t({
-        "#[derive(Default)]",
+        "#[derive(Clone, Default)]",
         "struct Op;",
         "",
         "impl Monoid for Op {",
@@ -165,25 +165,10 @@ return {
 
   -- モノイドアクション(遅延セグ木)
   s(
-    { trig = "aclazyseg" },
+    { trig = "acact" },
     {
       t({
-        "#[derive(Default)]",
-        "struct Op;",
-        "",
-        "impl Monoid for Op {",
-        "    type Value = todo!();",
-        "",
-        "    fn identity(&self) -> Self::Value {",
-        "        todo!()",
-        "    }",
-        "",
-        "    fn op(&self, x: &Self::Value, y: &Self::Value) -> Self::Value {",
-        "        todo!()",
-        "    }",
-        "}",
-        "",
-        "#[derive(Default)]",
+        "#[derive(Clone, Default)]",
         "struct Act;",
         "",
         "impl Monoid for Act {",
