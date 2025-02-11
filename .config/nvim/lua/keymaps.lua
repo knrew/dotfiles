@@ -50,7 +50,8 @@ local keymaps_normal = {
   ["<C-t>"] = "<cmd>Neotree toggle<cr>",
 
   -- telescope
-  ["<C-f>"] = "<cmd>Telescope find_files<cr>",
+  ["<C-f>"] = "<cmd>Telescope find_files find_command=rg,--files,--no-ignore,--hidden<cr>",
+  ["<C-M-f>"] = "<cmd>Telescope find_files find_command=rg,--files<cr>",
 
   -- comment
   ["<leader>/"] = "<cmd>ToggleCommentNormal<cr>",

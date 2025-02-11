@@ -29,19 +29,23 @@ local setup = function()
       -- layout_strategy = nil,
       -- layout_config = {},
       vimgrep_arguments = {
+        -- NOTE: ここのオプションが効いてないのでkeymapで対処中
         "rg",
+        "--files",
         "--color=never",
         "--no-heading",
         "--with-filename",
         "--line-number",
         "--column",
         "--smart-case",
+        "--no-ignore-vcs",
         "--hidden",
         "--glob=!.git/",
       },
       mappings = mappings,
       file_ignore_patterns = {
-        ".git/"
+        ".git/",
+        "target/"
       },
       path_display = { "smart" },
       winblend = 0,
