@@ -24,9 +24,44 @@ return {
     }
   ),
 
+  -- procon template(proconioが使えないとき)
+  s(
+    { trig = "actemplate2" },
+    {
+      t({
+        "use std::io::{Read, Write};",
+        "",
+        "fn main() {",
+        "    let s = {",
+        "        let mut s = String::new();",
+        "        std::io::stdin().read_to_string(&mut s).unwrap();",
+        "        s",
+        "    };",
+        "    let mut stdin = s.split_whitespace();",
+        "    let mut stdout = std::io::BufWriter::new(std::io::stdout().lock());",
+        "",
+        "    ",
+      }),
+      i(1),
+      t({
+        "",
+        "}",
+        "",
+        "#[inline]",
+        "fn read<T>(iter: &mut std::str::SplitWhitespace<'_>) -> T",
+        "where",
+        "    T: std::str::FromStr,",
+        "    T::Err: std::fmt::Debug,",
+        "{",
+        "    iter.next().unwrap().parse::<T>().unwrap()",
+        "}",
+      }),
+    }
+  ),
+
   -- クエリ
   s(
-    { trig = "acquery" },
+    { trig = "query" },
     {
       t({
         "enum Query {",
@@ -63,7 +98,7 @@ return {
 
   -- グリッド上の移動
   s(
-    { trig = "acdij" },
+    { trig = "dij" },
     { t({
       "const DIJ: [[usize; 2]; 4] = [",
       "    [0, 1],",
@@ -76,7 +111,7 @@ return {
 
   -- グリッド上の隣接するマスを列挙するイテレータ
   s(
-    { trig = "acneighbor" },
+    { trig = "neighbor" },
     {
       t({
         "DIJ",
@@ -108,7 +143,7 @@ return {
 
   -- 重みなしグラフ
   s(
-    { trig = "acgraph" },
+    { trig = "graph" },
     {
       t({
         "let g = {",
@@ -125,7 +160,7 @@ return {
 
   -- 重みつきグラフ
   s(
-    { trig = "acgraphw" },
+    { trig = "graphw" },
     {
       t({
         "let g = {",
@@ -142,7 +177,7 @@ return {
 
   -- モノイド(セグ木)
   s(
-    { trig = "acmono" },
+    { trig = "mono" },
     {
       t({
         "#[derive(Clone, Default)]",
@@ -165,7 +200,7 @@ return {
 
   -- モノイドアクション(遅延セグ木)
   s(
-    { trig = "acact" },
+    { trig = "act" },
     {
       t({
         "#[derive(Clone, Default)]",
@@ -184,7 +219,7 @@ return {
         "    }",
         "}",
         "",
-        "impl Action<Op> for Act {",
+        "impl MonoidAction<Op> for Act {",
         "    fn act(&self, f: &Self::Value, x: &<Op as Monoid>::Value) -> <Op as Monoid>::Value {",
         "        todo!()",
         "    }",

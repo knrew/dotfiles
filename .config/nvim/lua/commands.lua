@@ -38,9 +38,9 @@ local commands = {
     end
   },
   {
-    name = "ToDo",
+    name = "Memo",
     fn = function()
-      vim.api.nvim_command("edit ~/wiki/workspace/TODO.md")
+      vim.api.nvim_command("edit ~/wiki/workspace/memo.md")
     end
   },
   {
