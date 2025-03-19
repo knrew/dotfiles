@@ -64,11 +64,9 @@ function cppb() { # build(with cmake)
 }
 function cppr() { # build and run target
   if [ $# = 0 ]; then
-    # command echo "Error: Specify target"
-    # return 1
-    cppb main && build/main ${@:1}
+    cppb main && ./build/main
   else
-    cppb $1 && build/$1 ${@:2}
+    cppb $1 && ./build/$1 ${@:2}
   fi
 }
 
