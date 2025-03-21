@@ -1,5 +1,4 @@
 {
-    "workbench.colorTheme": "Catppuccin Latte",
     "files.autoSave": "afterDelay",
     "window.zoomLevel": 2,
     "terminal.integrated.enableMultiLinePasteWarning": false,
@@ -15,5 +14,6 @@
     "cmake.pinnedCommands": [
         "workbench.action.tasks.configureTaskRunner",
         "workbench.action.tasks.runTask"
-    ]
+    ],
+    "workbench.colorTheme": "Catppuccin Latte"
 }
