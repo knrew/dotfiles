@@ -5,8 +5,8 @@ local language_servers = {
   "lua_ls",
   "vimls",
   "bashls",
-  -- "pylsp",
-  -- "ruff",
+  "pylsp",
+  "ruff",
   "texlab",
   "marksman",
 }
