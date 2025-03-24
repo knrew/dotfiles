@@ -69,6 +69,14 @@ function cppr() { # build and run target
     cppb $1 && ./build/$1 ${@:2}
   fi
 }
+function cppc() { # clean
+  if [ ! -f CMakeLists.txt ]; then
+    command echo "Error: No CMakeLists.txt"
+    return 1
+  fi
+  command rm -r build && echo "\"build\" has removed."
+}
+
 
 #
 # rust
