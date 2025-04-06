@@ -116,21 +116,21 @@ return {
       t({
         "DIJ",
         "    .iter()",
-        "    .map(move |&[di, dj]| [i.wrapping_add(di), j.wrapping_add(dj)])",
-        "    .filter(move |&[ni, nj]| ni < h && nj < w)",
+        "    .map(|&[di, dj]| [i.wrapping_add(di), j.wrapping_add(dj)])",
+        "    .filter(|&[ni, nj]| ni < h && nj < w)",
       }),
     }
   ),
 
   -- グリッド状で隣接するマスに対するfor
   s(
-    { trig = "acneigborfor" },
+    { trig = "neigborfor" },
     {
       t({
         "for [ni, nj] in DIJ",
         "    .iter()",
-        "    .map(move |&[di, dj]| [i.wrapping_add(di), j.wrapping_add(dj)])",
-        "    .filter(move |&[ni, nj]| ni < h && nj < w) {",
+        "    .map(|&[di, dj]| [i.wrapping_add(di), j.wrapping_add(dj)])",
+        "    .filter(|&[ni, nj]| ni < h && nj < w) {",
         "    "
       }),
       i(1),
