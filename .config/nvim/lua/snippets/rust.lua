@@ -6,7 +6,7 @@ local i = ls.insert_node
 return {
   -- procon template
   s(
-    { trig = "actemplate" },
+    { trig = "mainpr" },
     {
       t({
         "use proconio::input;",
@@ -26,7 +26,7 @@ return {
 
   -- procon template(proconioが使えないとき)
   s(
-    { trig = "actemplate2" },
+    { trig = "mainpr2" },
     {
       t({
         "use std::io::{Read, Write};",
@@ -198,7 +198,7 @@ return {
     }
   ),
 
-  -- モノイドアクション(遅延セグ木)
+  -- モノイド作用(遅延セグ木)
   s(
     { trig = "act" },
     {
@@ -219,7 +219,7 @@ return {
         "    }",
         "}",
         "",
-        "impl MonoidAction<Op> for Act {",
+        "impl Action<Op> for Act {",
         "    fn act(&self, f: &Self::Value, x: &<Op as Monoid>::Value) -> <Op as Monoid>::Value {",
         "        todo!()",
         "    }",
