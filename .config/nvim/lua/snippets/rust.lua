@@ -175,6 +175,26 @@ return {
     }
   ),
 
+  -- bfs
+  s(
+    { trig = "bfs" },
+    {
+      t({
+        "let bfs = Bfs::new(n, &s, |&v| v, |&v| g[v].iter().cloned());"
+      })
+    }
+  ),
+
+  -- dijkstra
+  s(
+    { trig = "dijkstra" },
+    {
+      t({
+        "let dijkstra = Dijkstra::new(n, &s, &0, |&v| v, |&v| g[v].iter().cloned());"
+      })
+    }
+  ),
+
   -- モノイド(セグ木)
   s(
     { trig = "mono" },
