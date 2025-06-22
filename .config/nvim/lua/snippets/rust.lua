@@ -116,7 +116,7 @@ return {
       t({
         "DIJ",
         "    .iter()",
-        "    .map(|&[di, dj]| [i.wrapping_add(di), j.wrapping_add(dj)])",
+        "    .map(move |&[di, dj]| [i.wrapping_add(di), j.wrapping_add(dj)])",
         "    .filter(|&[ni, nj]| ni < h && nj < w)",
       }),
     }
@@ -129,7 +129,7 @@ return {
       t({
         "for [ni, nj] in DIJ",
         "    .iter()",
-        "    .map(|&[di, dj]| [i.wrapping_add(di), j.wrapping_add(dj)])",
+        "    .map(move |&[di, dj]| [i.wrapping_add(di), j.wrapping_add(dj)])",
         "    .filter(|&[ni, nj]| ni < h && nj < w) {",
         "    "
       }),
@@ -200,7 +200,7 @@ return {
     { trig = "mono" },
     {
       t({
-        "#[derive(Clone, Default)]",
+        "#[derive(Default)]",
         "struct Op;",
         "",
         "impl Monoid for Op {",
@@ -210,7 +210,7 @@ return {
         "        todo!()",
         "    }",
         "",
-        "    fn op(&self, x: &Self::Value, y: &Self::Value) -> Self::Value {",
+        "    fn op(&self, lhs: &Self::Value, rhs: &Self::Value) -> Self::Value {",
         "        todo!()",
         "    }",
         "}",
@@ -223,7 +223,7 @@ return {
     { trig = "act" },
     {
       t({
-        "#[derive(Clone, Default)]",
+        "#[derive(Default)]",
         "struct Act;",
         "",
         "impl Monoid for Act {",

@@ -54,19 +54,19 @@ alias lm="latexmk -pvc -halt-on-error"
 #
 function cppb() { # build(with cmake)
   if [ ! -f CMakeLists.txt ]; then
-    command echo "Error: No CMakeLists.txt"
+    command echo "Error: No CMakeLists.txt" >&2
     return 1
   fi
-  command mkdir -p build
+  command mkdir -p build >&2
   # cmake -GNinja -B build -S .
-  cmake -B build -S .
-  cmake --build build -- $1
+  cmake -B build -S . >&2
+  cmake --build build -- $1 >&2
 }
 function cppr() { # build and run target
   if [ $# = 0 ]; then
-    cppb main && ./build/main
+    cppb main >&2 && ./build/main
   else
-    cppb $1 && ./build/$1 ${@:2}
+    cppb $1 >&2 && ./build/$1 ${@:2}
   fi
 }
 function cppc() { # clean

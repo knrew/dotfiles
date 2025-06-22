@@ -63,6 +63,7 @@ return {
     "windwp/nvim-autopairs",
     lazy = true,
     event = "InsertEnter",
+    enabled = true,
   },
   {
     "github/copilot.vim",
