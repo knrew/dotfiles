@@ -18,6 +18,7 @@ export PATH=$PATH:$HOME/.local/bin
 
 ZSHDIR=$HOME/.config/zsh
 [[ -f $ZSHDIR/aliases.zsh ]] && source $ZSHDIR/aliases.zsh
+[[ -f $ZSHDIR/functions.zsh ]] && source $ZSHDIR/functions.zsh
 [[ -f $ZSHDIR/fzf.zsh ]] && source $ZSHDIR/fzf.zsh
 [[ -f $ZSHDIR/config_local.zsh ]] && source $ZSHDIR/config_local.zsh
 
@@ -25,3 +26,7 @@ ZSHDIR=$HOME/.config/zsh
 STARSHIP_CONFIG=$HOME/.config/starship/starship2.toml
 [[ -f $STARSHIP_CONFIG ]] && export STARSHIP_CONFIG=$STARSHIP_CONFIG
 type starship &> /dev/null && eval "$(starship init zsh)"
+
+# Show warning if battery level is below 20%
+typeset -f alert_low_battery &>/dev/null && alert_low_battery 20
+
