@@ -86,5 +86,6 @@ return {
       end
     end,
     dependencies = { "zbirenbaum/copilot.lua" },
+    enabled = false,
   },
 }
