@@ -20,7 +20,7 @@ ZSHDIR=$HOME/.config/zsh
 [[ -f $ZSHDIR/aliases.zsh ]] && source $ZSHDIR/aliases.zsh
 [[ -f $ZSHDIR/functions.zsh ]] && source $ZSHDIR/functions.zsh
 [[ -f $ZSHDIR/fzf.zsh ]] && source $ZSHDIR/fzf.zsh
-[[ -f $ZSHDIR/config_local.zsh ]] && source $ZSHDIR/config_local.zsh
+[[ -f $ZSHDIR/local.zsh ]] && source $ZSHDIR/local.zsh
 
 # starship
 STARSHIP_CONFIG=$HOME/.config/starship/starship2.toml
