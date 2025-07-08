@@ -10,7 +10,6 @@ return {
       "cmp-path",
       "cmp-cmdline",
       "cmp-calc",
-      -- "cmp-copilot",
     },
   },
   {
@@ -37,16 +36,27 @@ return {
     "hrsh7th/cmp-calc",
     lazy = true,
   },
-  -- {
-  --   "hrsh7th/cmp-copilot",
-  --   lazy = true,
-  -- },
   {
     "L3MON4D3/LuaSnip",
     version = "v2.*",
     lazy = true,
     config = function()
-      require("plugins.cmp.luasnip").setup()
+      local mysnippets_dir = (function()
+        local config_dir = vim.call("stdpath", "config")
+        return config_dir .. "/lua/snippets/"
+      end)()
+
+      local snippets_dirs = {
+        mysnippets_dir,
+      }
+
+      local paths = {}
+      for _, dir in pairs(snippets_dirs) do
+        paths[#paths + 1] = dir
+      end
+
+      require("luasnip.loaders.from_lua").lazy_load({ paths = paths })
+      require("luasnip.loaders.from_vscode").lazy_load()
     end,
     build = "make install_jsregexp",
     dependencies = { "rafamadriz/friendly-snippets" },
@@ -69,6 +79,7 @@ return {
     "github/copilot.vim",
     lazy = true,
     cmd = { "Copilot" },
+    enabled = false,
   },
   {
     "zbirenbaum/copilot-cmp",

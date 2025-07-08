@@ -11,12 +11,9 @@ local plugins = {
   require("plugins.treesitter"),
   require("plugins.indent-blankline"),
   require("plugins.navic"),
-  require("plugins.web-devicons"),
   require("plugins.telescope"),
   require("plugins.diffview"),
-  require("plugins.obsidian-bridge"),
   require("plugins.markdown-preview"),
-  require("plugins.plenary"),
 }
 
 -- Bootstrap lazy.nvim
@@ -41,4 +38,5 @@ require("lazy").setup({
   spec = { plugins },
   ui = { border = "single" },
   checker = { enabled = false },
+  lockfile = vim.fn.stdpath("config") .. "/lazy-lock.json",
 })

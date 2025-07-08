@@ -2,7 +2,7 @@ local commands = {
   {
     name = "Format",
     fn = function()
-      require("plugins.lsp.formatter").format()
+      require("config.lsp.commands").format()
     end,
   },
   {
@@ -61,6 +61,7 @@ local setup = function()
   end
 end
 
-return {
-  setup = setup
-}
+setup()
+-- return {
+-- setup = setup
+-- }

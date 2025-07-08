@@ -98,13 +98,12 @@ end
 return {
   {
     "nvim-telescope/telescope.nvim",
-    branch = "0.1.x",
+    tag = "0.1.8",
     config = function()
       setup()
     end,
     lazy = true,
     cmd = "Telescope",
-    enabled = true,
   },
   {
     "nvim-telescope/telescope-fzf-native.nvim",

@@ -112,6 +112,7 @@ local setup = function()
   end
 end
 
-return {
-  setup = setup,
-}
+setup()
+-- return {
+--   setup = setup,
+-- }

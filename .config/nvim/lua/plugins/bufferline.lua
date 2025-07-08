@@ -26,8 +26,8 @@ local setup = function()
 
   local highlights = nil
 
-  local status_ok, catppuccin = pcall(require, "catppuccin.groups.integrations.bufferline")
-  if status_ok then
+  local ok, catppuccin = pcall(require, "catppuccin.groups.integrations.bufferline")
+  if ok then
     highlights = catppuccin.get()
   end
 

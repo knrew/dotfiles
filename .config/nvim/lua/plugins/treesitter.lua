@@ -16,8 +16,8 @@ local setup = function()
       "latex",
       "go",
     },
-    sync_install = false,
-    auto_install = true,
+    sync_install = true,
+    auto_install = false,
     highlight = {
       enable = true,
       disable = function(lang, buf)
@@ -36,20 +36,20 @@ local setup = function()
     indent = { enable = true, disable = { "yaml", "python" } },
   })
 
-  require("ts_context_commentstring").setup({
-    enable = true,
-    enable_autocmd = false,
-    config = {
-      -- Languages that have a single comment style
-      typescript = "// %s",
-      css = "/* %s */",
-      scss = "/* %s */",
-      html = "<!-- %s -->",
-      svelte = "<!-- %s -->",
-      vue = "<!-- %s -->",
-      json = "",
-    }
-  })
+  -- require("ts_context_commentstring").setup({
+  --   enable = true,
+  --   enable_autocmd = false,
+  --   config = {
+  --     -- Languages that have a single comment style
+  --     typescript = "// %s",
+  --     css = "/* %s */",
+  --     scss = "/* %s */",
+  --     html = "<!-- %s -->",
+  --     svelte = "<!-- %s -->",
+  --     vue = "<!-- %s -->",
+  --     json = "",
+  --   }
+  -- })
 end
 
 return {
@@ -61,8 +61,8 @@ return {
     -- event = "User FileOpened",
     enabled = true,
   },
-  {
-    "JoosepAlviste/nvim-ts-context-commentstring",
-    lazy = true,
-  },
+  -- {
+  --   "JoosepAlviste/nvim-ts-context-commentstring",
+  --   lazy = true,
+  -- },
 }
