@@ -31,9 +31,25 @@ local commands = {
       if vim.lsp.inlay_hint then
         if vim.lsp.inlay_hint.is_enabled() then
           vim.lsp.inlay_hint.enable(false, { 0 })
+          print("Inlay Hint enabled.")
         else
           vim.lsp.inlay_hint.enable(true, { 0 })
+          print("Inlay Hint disabled.")
         end
+      end
+    end
+  },
+  {
+    name = "ToggleCmp",
+    fn = function()
+      local cmp = require("cmp")
+      local enabled = cmp.get_config().enabled
+      if enabled == false or (type(enabled) == "function" and not enabled()) then
+        cmp.setup({ enabled = true })
+        print("Completion enabled.")
+      else
+        cmp.setup({ enabled = false })
+        print("Completion disabled.")
       end
     end
   },

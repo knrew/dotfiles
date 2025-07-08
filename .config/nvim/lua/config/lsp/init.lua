@@ -50,6 +50,8 @@ local setup = function()
       opts = lsp_options.lua_ls_options
     elseif server_name == "rust_analyzer" then
       opts = lsp_options.rust_analyzer_options
+    elseif server_name == "clangd" then
+      opts = lsp_options.clangd_options
     else
       opts = lsp_options.default_options
     end

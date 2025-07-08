@@ -154,12 +154,21 @@ local common_capabilities = function()
 end
 
 local default_opts = function()
-  return {
-    on_attach = common_on_attach,
-    on_init = common_on_init,
-    on_exit = common_on_exit,
-    capabilities = common_capabilities(),
-  }
+  -- return {
+  --   on_attach = common_on_attach,
+  --   on_init = common_on_init,
+  --   on_exit = common_on_exit,
+  --   capabilities = common_capabilities(),
+  -- }
+
+  local opts = {}
+  opts.on_attach = function(_, bufnr)
+    for key, remap in pairs(keymaps_normal) do
+      local key_opts = { buffer = bufnr, desc = remap[2], noremap = true, silent = true }
+      vim.keymap.set("n", key, remap[1], key_opts)
+    end
+  end
+  return opts
 end
 
 local lua_ls_opts = function()
@@ -188,6 +197,13 @@ end
 
 local rust_analyzer_opts = function()
   local opts = default_opts();
+
+  opts.on_attach = function(_, bufnr)
+    for key, remap in pairs(keymaps_normal) do
+      local key_opts = { buffer = bufnr, desc = remap[2], noremap = true, silent = true }
+      vim.keymap.set("n", key, remap[1], key_opts)
+    end
+  end
 
   opts.settings = {
     ["rust-analyzer"] = {
@@ -224,8 +240,15 @@ local rust_analyzer_opts = function()
   return opts
 end
 
+local clangd_options = function()
+  local opts = default_opts()
+
+  return opts
+end
+
 return {
   default_options = default_opts(),
   lua_ls_options = lua_ls_opts(),
   rust_analyzer_options = rust_analyzer_opts(),
+  clangd_options = clangd_options(),
 }

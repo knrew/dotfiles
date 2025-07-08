@@ -45,6 +45,7 @@ local keymaps_normal = {
   ["f"] = "<cmd>Format<cr><cmd>w<cr>",
   ["rn"] = "<cmd>Rename<cr>",
   ["<leader>h"] = "<cmd>ToggleInlayHint<cr>",
+  ["<leader>c"] = "<cmd>ToggleCmp<cr>",
 
   -- tree
   ["<C-t>"] = "<cmd>Neotree toggle<cr>",
