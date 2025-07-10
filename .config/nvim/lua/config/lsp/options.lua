@@ -110,17 +110,7 @@ local add_lsp_buffer_options = function(bufnr)
   end
 end
 
-local common_on_attach = function(client, bufnr)
-  setup_document_highlight(client, bufnr)
-  setup_codelens_refresh(client, bufnr)
-  add_lsp_buffer_keybindings(bufnr)
-  add_lsp_buffer_options(bufnr)
-  setup_document_symbols(client, bufnr)
-end
-
-local common_on_init = function(_, _)
-end
-
+-- for on_exit
 local clear_augroup = function(name)
   vim.schedule(function()
     pcall(function()
@@ -129,12 +119,23 @@ local clear_augroup = function(name)
   end)
 end
 
-local common_on_exit = function(_, _)
+local on_attach = function(client, bufnr)
+  setup_document_highlight(client, bufnr)
+  -- setup_codelens_refresh(client, bufnr)
+  add_lsp_buffer_keybindings(bufnr)
+  -- add_lsp_buffer_options(bufnr)
+  -- setup_document_symbols(client, bufnr)
+end
+
+local on_init = function(_, _)
+end
+
+local on_exit = function(_, _)
   clear_augroup("lsp_document_highlight")
   clear_augroup("lsp_code_lens_refresh")
 end
 
-local common_capabilities = function()
+local capabilities = function()
   local status_ok, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
   if status_ok then
     return cmp_nvim_lsp.default_capabilities()
@@ -153,26 +154,17 @@ local common_capabilities = function()
   return capabilities
 end
 
-local default_opts = function()
-  -- return {
-  --   on_attach = common_on_attach,
-  --   on_init = common_on_init,
-  --   on_exit = common_on_exit,
-  --   capabilities = common_capabilities(),
-  -- }
-
-  local opts = {}
-  opts.on_attach = function(_, bufnr)
-    for key, remap in pairs(keymaps_normal) do
-      local key_opts = { buffer = bufnr, desc = remap[2], noremap = true, silent = true }
-      vim.keymap.set("n", key, remap[1], key_opts)
-    end
-  end
-  return opts
+local default_options = function()
+  return {
+    on_attach = on_attach,
+    on_init = on_init,
+    on_exit = on_exit,
+    capabilities = capabilities(),
+  }
 end
 
-local lua_ls_opts = function()
-  local opts = default_opts();
+local lua_ls_options = function()
+  local opts = default_options();
 
   opts.settings = {
     Lua = {
@@ -195,15 +187,8 @@ local lua_ls_opts = function()
   return opts
 end
 
-local rust_analyzer_opts = function()
-  local opts = default_opts();
-
-  opts.on_attach = function(_, bufnr)
-    for key, remap in pairs(keymaps_normal) do
-      local key_opts = { buffer = bufnr, desc = remap[2], noremap = true, silent = true }
-      vim.keymap.set("n", key, remap[1], key_opts)
-    end
-  end
+local rust_analyzer_options = function()
+  local opts = default_options();
 
   opts.settings = {
     ["rust-analyzer"] = {
@@ -241,14 +226,14 @@ local rust_analyzer_opts = function()
 end
 
 local clangd_options = function()
-  local opts = default_opts()
+  local opts = default_options()
 
   return opts
 end
 
 return {
-  default_options = default_opts(),
-  lua_ls_options = lua_ls_opts(),
-  rust_analyzer_options = rust_analyzer_opts(),
+  default_options = default_options(),
+  lua_ls_options = lua_ls_options(),
+  rust_analyzer_options = rust_analyzer_options(),
   clangd_options = clangd_options(),
 }

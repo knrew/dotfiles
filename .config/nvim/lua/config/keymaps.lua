@@ -58,7 +58,7 @@ local keymaps_normal = {
   ["<leader>/"] = "<cmd>ToggleCommentNormal<cr>",
 
   -- terminal
-  -- ["<leader>t"] = "<cmd>terminal<cr>",
+  ["<leader>t"] = "<cmd>terminal<cr>",
 
   -- lazygit
   ["lg"] = "<cmd>terminal lazygit<cr>i",
@@ -86,7 +86,7 @@ local keymaps_select = {
 }
 
 local keymaps_terminal = {
-  -- ["<ESC>"] = "<C-\\><C-n>",
+  ["<ESC>"] = "<C-\\><C-n>",
 }
 
 local default_opts = { noremap = true, silent = true, desc = "defined in keymaps.lua" }
