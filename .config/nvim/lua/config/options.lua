@@ -43,7 +43,7 @@ local options = {
   laststatus = 3,
 
   spelllang = "cjk",
-  shortmess = "cI",
+  shortmess = "cIF",
   whichwrap = "<,>,[,],h,l",
 }
 

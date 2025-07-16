@@ -218,7 +218,11 @@ local rust_analyzer_options = function()
           "--all-targets",
         },
       },
-      procMacro = { attributes = { enable = true } }
+      procMacro = {
+        attributes = {
+          enable = true
+        }
+      }
     }
   }
 
