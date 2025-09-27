@@ -39,10 +39,13 @@ local setup = function()
 
   local lsp_options = require("config.lsp.options")
 
-  require("null-ls").setup(lsp_options.default_options)
-
   local language_servers = require("config.lsp.language_servers")
   require("mason-lspconfig").setup({ ensure_installed = language_servers })
+
+
+  require("null-ls").setup(lsp_options.default_options)
+
+  require("mason-null-ls").setup({ ensure_installed = require("config.lsp.linter_tools") })
 
   for _, server_name in ipairs(language_servers) do
     local opts = {}

@@ -18,6 +18,14 @@ return {
     lazy = true
   },
   {
+    "jay-babu/mason-null-ls.nvim",
+    dependencies = {
+      "williamboman/mason.nvim",
+      "nvimtools/none-ls.nvim",
+    },
+    lazy = true,
+  },
+  {
     "williamboman/mason.nvim",
     build = function()
       pcall(function()
