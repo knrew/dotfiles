@@ -2,23 +2,20 @@
 
 set -eu
 
-# dotfiles-managerをインストールする
-if ! type dotfiles-manager &> /dev/null; then
-  cargo install --git https://github.com/knrew/dotfiles-manager.git --force 
+# dotfiles-managerをインストールする．
+if ! command -v dotfiles-manager > /dev/null 2>&1; then
+  cargo install --git https://github.com/knrew/dotfiles-manager.git --force
 fi
 
-script_dir=$(cd "$(dirname $0)" && pwd -P)
+SCRIPT_DIR=$(cd "$(dirname "$0")" && pwd -P)
 
 # ~/.dotfiles/
-dotfiles_dir=${script_dir}/../
+DOTFILES_DIR=${SCRIPT_DIR}/../
 
-# インストール先となるディレクトリ
-# ~/
-home_dir=$HOME
+# インストール先となるディレクトリ(~/)
+HOME_DIR=$HOME
 
 # ~/.backup_dotfiles/
-backup_dir=${home_dir}/.backup_dotfiles/
+BACKUP_DIR=${HOME_DIR}/.backup_dotfiles/
 
-dotfiles-manager install $dotfiles_dir $home_dir -b $backup_dir
-# cd ~/codes/dotfiles_manager/ 
-# cargo run --release -- install $dotfiles_dir $home_dir $backup_dir
+dotfiles-manager install "$DOTFILES_DIR" "$HOME_DIR" -b "$BACKUP_DIR"
