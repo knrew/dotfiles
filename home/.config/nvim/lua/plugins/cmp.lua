@@ -14,19 +14,19 @@ return {
   },
   {
     "hrsh7th/cmp-nvim-lsp",
-    lazy = true
+    lazy = true,
   },
   {
     "saadparwaiz1/cmp_luasnip",
-    lazy = true
+    lazy = true,
   },
   {
     "hrsh7th/cmp-buffer",
-    lazy = true
+    lazy = true,
   },
   {
     "hrsh7th/cmp-path",
-    lazy = true
+    lazy = true,
   },
   {
     "hrsh7th/cmp-cmdline",

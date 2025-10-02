@@ -17,12 +17,12 @@ local setup = function()
         hide_dotfiles = false,
         hide_gitignored = false,
         hide_by_name = {
-          "node_modules"
+          "node_modules",
         },
         never_show = {
           ".DS_Store",
           "thumbs.db",
-          ".git"
+          ".git",
         },
       },
     },
@@ -31,9 +31,9 @@ local setup = function()
         event = "file_open_requested",
         handler = function()
           require("neo-tree.command").execute({ action = "close" })
-        end
+        end,
       },
-    }
+    },
   })
 end
 

@@ -37,8 +37,8 @@ local excludes = function()
 end
 
 local get_filename = function()
-  local filename = vim.fn.expand "%:t"
-  local extension = vim.fn.expand "%:e"
+  local filename = vim.fn.expand("%:t")
+  local extension = vim.fn.expand("%:e")
 
   if isempty(filename) then
     return
@@ -77,7 +77,16 @@ local get_filename = function()
   local navic_text_hl = vim.api.nvim_get_hl(0, { name = "Normal" })
   vim.api.nvim_set_hl(0, "Winbar", { fg = navic_text_hl.fg })
 
-  return " " .. "%#" .. hl_group .. "#" .. file_icon .. "%*" .. " " .. "%#Winbar#" .. filename .. "%*"
+  return " "
+    .. "%#"
+    .. hl_group
+    .. "#"
+    .. file_icon
+    .. "%*"
+    .. " "
+    .. "%#Winbar#"
+    .. filename
+    .. "%*"
 end
 
 local get_gps = function()

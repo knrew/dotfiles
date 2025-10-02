@@ -67,7 +67,7 @@ local setup = function()
         [vim.diagnostic.severity.WARN] = icons.diagnostics.Warning,
         [vim.diagnostic.severity.INFO] = icons.diagnostics.Information,
         [vim.diagnostic.severity.HINT] = icons.diagnostics.Hint,
-      }
+      },
     },
     virtual_text = true,
     update_in_insert = false,

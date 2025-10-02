@@ -30,9 +30,9 @@ local keymaps_normal = {
   -- ESC to save
   ["<esc>"] = "<cmd>w<cr>",
   -- delete without yank
-  ["x"] = "\"_d",
-  ["xx"] = "\"_dd",
-  ["X"] = "\"_D",
+  ["x"] = '"_d',
+  ["xx"] = '"_dd',
+  ["X"] = '"_D',
   -- undo/redo
   ["z"] = "u",
   ["<S-z>"] = "<C-r>",
@@ -82,7 +82,7 @@ local keymaps_select = {
   ["<leader>/"] = "<cmd>ToggleCommentSelect<cr>",
 
   -- delete without yank
-  ["x"] = "\"_d",
+  ["x"] = '"_d',
 }
 
 local keymaps_terminal = {

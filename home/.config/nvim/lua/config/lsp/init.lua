@@ -42,7 +42,6 @@ local setup = function()
   local language_servers = require("config.lsp.language_servers")
   require("mason-lspconfig").setup({ ensure_installed = language_servers })
 
-
   require("null-ls").setup(lsp_options.default_options)
 
   require("mason-null-ls").setup({ ensure_installed = require("config.lsp.linter_tools") })
@@ -63,8 +62,10 @@ local setup = function()
 
   vim.lsp.enable(language_servers)
 
-  vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = "single" })
-  vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = "single" })
+  vim.lsp.handlers["textDocument/hover"] =
+    vim.lsp.with(vim.lsp.handlers.hover, { border = "single" })
+  vim.lsp.handlers["textDocument/signatureHelp"] =
+    vim.lsp.with(vim.lsp.handlers.signature_help, { border = "single" })
   require("lspconfig.ui.windows").default_options.border = "single"
 end
 

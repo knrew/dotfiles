@@ -26,7 +26,7 @@ local buffer_options = {
 
 local setup_document_highlight = function(client, bufnr)
   local status_ok, highlight_supported = pcall(function()
-    return client.supports_method "textDocument/documentHighlight"
+    return client.supports_method("textDocument/documentHighlight")
   end)
   if not status_ok or not highlight_supported then
     return
@@ -59,7 +59,7 @@ end
 
 local setup_codelens_refresh = function(client, bufnr)
   local status_ok, codelens_supported = pcall(function()
-    return client.supports_method "textDocument/codeLens"
+    return client.supports_method("textDocument/codeLens")
   end)
   if not status_ok or not codelens_supported then
     return
@@ -80,7 +80,7 @@ local setup_codelens_refresh = function(client, bufnr)
     group = group,
     buffer = bufnr,
     callback = function()
-      vim.lsp.codelens.refresh { bufnr = bufnr }
+      vim.lsp.codelens.refresh({ bufnr = bufnr })
     end,
   })
 end
@@ -94,7 +94,7 @@ end
 
 local setup_document_symbols = function(client, bufnr)
   vim.g.navic_silence = false
-  local symbols_supported = client.supports_method "textDocument/documentSymbol"
+  local symbols_supported = client.supports_method("textDocument/documentSymbol")
   if not symbols_supported then
     return
   end
@@ -114,7 +114,7 @@ end
 local clear_augroup = function(name)
   vim.schedule(function()
     pcall(function()
-      vim.api.nvim_clear_autocmds { group = name }
+      vim.api.nvim_clear_autocmds({ group = name })
     end)
   end)
 end
@@ -127,8 +127,7 @@ local on_attach = function(client, bufnr)
   -- setup_document_symbols(client, bufnr)
 end
 
-local on_init = function(_, _)
-end
+local on_init = function(_, _) end
 
 local on_exit = function(_, _)
   clear_augroup("lsp_document_highlight")
@@ -164,7 +163,7 @@ local default_options = function()
 end
 
 local lua_ls_options = function()
-  local opts = default_options();
+  local opts = default_options()
 
   opts.settings = {
     Lua = {
@@ -188,7 +187,7 @@ local lua_ls_options = function()
 end
 
 local rust_analyzer_options = function()
-  local opts = default_options();
+  local opts = default_options()
 
   opts.settings = {
     ["rust-analyzer"] = {
@@ -205,7 +204,7 @@ local rust_analyzer_options = function()
             "--workspace",
             "--message-format=json",
             "--all-targets",
-          }
+          },
         },
       },
       check = {
@@ -220,10 +219,10 @@ local rust_analyzer_options = function()
       },
       procMacro = {
         attributes = {
-          enable = true
-        }
-      }
-    }
+          enable = true,
+        },
+      },
+    },
   }
 
   return opts

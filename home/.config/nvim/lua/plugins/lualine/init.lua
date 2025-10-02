@@ -3,13 +3,13 @@ local setup = function()
 
   local default_sections = {
     lualine_a = {
-      components.mode
+      components.mode,
     },
     lualine_b = {
       components.filename_full,
     },
     lualine_c = {
-      components.diff
+      components.diff,
     },
     lualine_x = {
       components.diagnostics,
@@ -19,7 +19,7 @@ local setup = function()
     },
     lualine_z = {
       components.location,
-    }
+    },
   }
 
   local toggleterm_sections = {
@@ -28,7 +28,7 @@ local setup = function()
     lualine_c = { components.filename_simple },
     lualine_x = {},
     lualine_y = { components.datetime },
-    lualine_z = { components.location }
+    lualine_z = { components.location },
   }
 
   local neotree_sections = {
@@ -37,7 +37,7 @@ local setup = function()
     lualine_c = { components.filename_simple },
     lualine_x = {},
     lualine_y = { components.datetime },
-    lualine_z = { components.location }
+    lualine_z = { components.location },
   }
 
   require("lualine").setup({
@@ -58,7 +58,7 @@ local setup = function()
         statusline = 1000,
         tabline = 1000,
         winbar = 1000,
-      }
+      },
     },
     sections = default_sections,
     inactive_sections = {
@@ -66,14 +66,13 @@ local setup = function()
     },
     tabline = {},
     winbar = {
-      lualine_a = {
-      },
+      lualine_a = {},
       lualine_c = { components.navic },
       lualine_x = {
         function()
           return " "
-        end
-      }
+        end,
+      },
     },
     inactive_winbar = {},
     extensions = {

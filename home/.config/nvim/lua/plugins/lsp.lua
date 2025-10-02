@@ -11,11 +11,11 @@ return {
   },
   {
     "tamago324/nlsp-settings.nvim",
-    lazy = true
+    lazy = true,
   },
   {
     "nvimtools/none-ls.nvim",
-    lazy = true
+    lazy = true,
   },
   {
     "jay-babu/mason-null-ls.nvim",

@@ -9,18 +9,18 @@ local setup = function()
   local keymaps = {
     disable_defaults = false,
     view = {
-      { "n", "q",     actions.close,        { desc = "Close Diffview" } },
-      { "n", "<ESC>", actions.close,        { desc = "Close Diffview" } },
-      { "n", "t",     actions.toggle_files, { desc = "Toggle Panel" } },
+      { "n", "q", actions.close, { desc = "Close Diffview" } },
+      { "n", "<ESC>", actions.close, { desc = "Close Diffview" } },
+      { "n", "t", actions.toggle_files, { desc = "Toggle Panel" } },
     },
     diff1 = {},
     diff2 = {},
     diff3 = {},
     diff4 = {},
     file_panel = {
-      { "n", "q",     close_diffview_in_pannel, { desc = "Close DiffView" } },
+      { "n", "q", close_diffview_in_pannel, { desc = "Close DiffView" } },
       { "n", "<ESC>", close_diffview_in_pannel, { desc = "Close DiffView" } },
-      { "n", "t",     actions.toggle_files,     { desc = "Toggle Panel" } },
+      { "n", "t", actions.toggle_files, { desc = "Toggle Panel" } },
     },
     file_history_panel = {},
     option_panel = {},
@@ -28,7 +28,7 @@ local setup = function()
   }
 
   require("diffview").setup({
-    keymaps = keymaps
+    keymaps = keymaps,
   })
 end
 

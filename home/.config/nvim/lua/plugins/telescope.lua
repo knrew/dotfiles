@@ -12,10 +12,8 @@ local setup = function()
   }
 
   local buffers_mappings = {
-    i = {
-    },
-    n = {
-    },
+    i = {},
+    n = {},
   }
 
   require("telescope").setup({
@@ -45,7 +43,7 @@ local setup = function()
       mappings = mappings,
       file_ignore_patterns = {
         ".git/",
-        "target/"
+        "target/",
       },
       path_display = { "smart" },
       winblend = 0,

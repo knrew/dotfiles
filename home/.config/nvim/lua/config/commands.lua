@@ -9,13 +9,13 @@ local commands = {
     name = "Rename",
     fn = function()
       vim.lsp.buf.rename()
-    end
+    end,
   },
   {
     name = "ToggleCommentNormal",
     fn = function()
       require("Comment.api").toggle.linewise.current()
-    end
+    end,
   },
   {
     name = "ToggleCommentSelect",
@@ -23,7 +23,7 @@ local commands = {
       local esc = vim.api.nvim_replace_termcodes("<ESC>", true, false, true)
       vim.api.nvim_feedkeys(esc, "nx", false)
       require("Comment.api").toggle.linewise(vim.fn.visualmode())
-    end
+    end,
   },
   {
     name = "ToggleInlayHint",
@@ -37,7 +37,7 @@ local commands = {
           print("Inlay Hint disabled.")
         end
       end
-    end
+    end,
   },
   {
     name = "ToggleCmp",
@@ -51,13 +51,13 @@ local commands = {
         cmp.setup({ enabled = false })
         print("Completion disabled.")
       end
-    end
+    end,
   },
   {
     name = "Memo",
     fn = function()
       vim.api.nvim_command("edit ~/wiki/workspace/memo.md")
-    end
+    end,
   },
   {
     name = "Daily",
@@ -65,7 +65,7 @@ local commands = {
       local d = os.date("%Y%m%d")
       local file = "~/wiki/dailylog/" .. d .. ".md"
       vim.api.nvim_command("edit " .. file)
-    end
+    end,
   },
 }
 

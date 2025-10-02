@@ -1,7 +1,7 @@
 local icons = require("utils.icons")
 
 local lsp_format = function()
-  local buf_clients = vim.lsp.get_clients { bufnr = 0 }
+  local buf_clients = vim.lsp.get_clients({ bufnr = 0 })
   if #buf_clients == 0 then
     return "[lsp inactive]"
   end
@@ -30,7 +30,7 @@ return {
   mode = {
     function()
       return string.upper(vim.api.nvim_get_mode().mode)
-    end
+    end,
   },
   branch = { "branch", icon = icons.git.branch },
   filename_full = {
@@ -44,7 +44,7 @@ return {
       readonly = "[-]",
       unnamed = "[No Name]",
       newfile = "[New]",
-    }
+    },
   },
   filename_simple = {
     "filename",

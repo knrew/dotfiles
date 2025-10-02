@@ -33,7 +33,7 @@ local setup = function()
 
   require("bufferline").setup({
     options = options,
-    highlights = highlights
+    highlights = highlights,
   })
 end
 

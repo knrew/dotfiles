@@ -29,7 +29,7 @@ local setup_autopairs = function()
         check_comma = true,
         highlight = "Search",
         highlight_grey = "Comment",
-      }
+      },
     })
 
     pcall(function()
@@ -41,8 +41,6 @@ local setup_autopairs = function()
     end)
   end
 end
-
-
 
 local formatting = function()
   local icons = require("utils.icons")
@@ -106,7 +104,7 @@ local formatting = function()
     if truncated_label ~= label then
       vim_item.abbr = truncated_label .. icons.ui.Ellipsis
     elseif string.len(label) < min_width then
-      local padding = string.rep(' ', min_width - string.len(label))
+      local padding = string.rep(" ", min_width - string.len(label))
       vim_item.abbr = label .. padding
     end
 
@@ -129,7 +127,7 @@ local setup = function()
     snippet = {
       expand = function(args)
         require("luasnip").lsp_expand(args.body)
-      end
+      end,
     },
     experimental = {
       ghost_text = false,
@@ -142,20 +140,26 @@ local setup = function()
     mapping = cmp.mapping.preset.insert({
       ["<C-k>"] = cmp.mapping(cmp.mapping.select_prev_item(), { "i", "c" }),
       ["<C-j>"] = cmp.mapping(cmp.mapping.select_next_item(), { "i", "c" }),
-      ["<Down>"] = cmp.mapping(cmp.mapping.select_next_item { behavior = select_behavior.Select }, { "i" }),
-      ["<Up>"] = cmp.mapping(cmp.mapping.select_prev_item { behavior = select_behavior.Select }, { "i" }),
+      ["<Down>"] = cmp.mapping(
+        cmp.mapping.select_next_item({ behavior = select_behavior.Select }),
+        { "i" }
+      ),
+      ["<Up>"] = cmp.mapping(
+        cmp.mapping.select_prev_item({ behavior = select_behavior.Select }),
+        { "i" }
+      ),
       ["<C-d>"] = cmp.mapping.scroll_docs(-4),
       ["<C-f>"] = cmp.mapping.scroll_docs(4),
-      ["<C-y>"] = cmp.mapping {
-        i = cmp.mapping.confirm { behavior = confirm_behavior.Replace, select = false },
+      ["<C-y>"] = cmp.mapping({
+        i = cmp.mapping.confirm({ behavior = confirm_behavior.Replace, select = false }),
         c = function(fallback)
           if cmp.visible() then
-            cmp.confirm { behavior = confirm_behavior.Replace, select = false }
+            cmp.confirm({ behavior = confirm_behavior.Replace, select = false })
           else
             fallback()
           end
         end,
-      },
+      }),
       ["<Tab>"] = cmp.mapping(function(fallback)
         if cmp.visible() then
           cmp.select_next_item()
@@ -251,7 +255,6 @@ local setup = function()
       { name = "treesitter" },
       { name = "crates" },
       { name = "tmux" },
-
     }, {
       { name = "buffer" },
     }),
@@ -263,14 +266,14 @@ local setup = function()
     sources = {
       { name = "path" },
       { name = "cmdline" },
-    }
+    },
   })
 
   cmp.setup.cmdline({ "/", "?" }, {
     mapping = cmp.mapping.preset.cmdline(),
     sources = {
-      { name = "buffer" }
-    }
+      { name = "buffer" },
+    },
   })
 
   setup_autopairs()

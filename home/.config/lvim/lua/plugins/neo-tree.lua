@@ -21,14 +21,14 @@ return {
           hide_dotfiles = false,
           hide_gitignored = false,
           hide_by_name = {
-            "node_modules"
+            "node_modules",
           },
           never_show = {
             ".DS_Store",
-            "thumbs.db"
+            "thumbs.db",
           },
         },
       },
     })
-  end
+  end,
 }
