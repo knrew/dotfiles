@@ -1,0 +1,4 @@
+shell=sh
+color=always
+external-sources=true
+
