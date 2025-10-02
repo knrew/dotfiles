@@ -1,7 +1,5 @@
 [general]
-import = [
-  "~/.config/alacritty/catppuccin_latte.toml",
-]
+import = ["~/.config/alacritty/catppuccin_latte.toml"]
 
 [window]
 opacity = 1.0
@@ -11,19 +9,16 @@ size = 9
 
 [font.normal]
 family = "SauceCodeProNerdFont"
-style = "Regular"
+style  = "Regular"
 
 [font.bold]
 family = "SauceCodeProNerdFont"
-style = "Bold"
+style  = "Bold"
 
 [font.italic]
 family = "SauceCodeProNerdFont"
-style = "Italic"
+style  = "Italic"
 
 [font.bold_italic]
 family = "SauceCodeProNerdFont"
-style = "Bold Italic"
-
-
-
+style  = "Bold Italic"

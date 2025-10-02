@@ -1,77 +1,77 @@
 # Colors (catppuccin latte)
 
 [colors.primary]
-background = "#EFF1F5"
-foreground = "#4C4F69"
-dim_foreground = "#4C4F69"
+background        = "#EFF1F5"
 bright_foreground = "#4C4F69"
+dim_foreground    = "#4C4F69"
+foreground        = "#4C4F69"
 
 [colors.cursor]
-text = "#EFF1F5"
 cursor = "#DC8A78"
+text   = "#EFF1F5"
 
 [colors.vi_mode_cursor]
-text = "#EFF1F5"
 cursor = "#7287FD"
+text   = "#EFF1F5"
 
 [colors.search.matches]
-foreground = "#EFF1F5"
 background = "#6C6F85"
+foreground = "#EFF1F5"
 
 [colors.search.focused_match]
-foreground = "#EFF1F5"
 background = "#40A02B"
+foreground = "#EFF1F5"
 
 [colors.footer_bar]
-foreground = "#EFF1F5"
 background = "#6C6F85"
+foreground = "#EFF1F5"
 
 [colors.hints.start]
-foreground = "#EFF1F5"
 background = "#DF8E1D"
+foreground = "#EFF1F5"
 
 [colors.hints.end]
-foreground = "#EFF1F5"
 background = "#6C6F85"
+foreground = "#EFF1F5"
 
 [colors.selection]
-text = "#EFF1F5"
 background = "#DC8A78"
+text       = "#EFF1F5"
 
 [colors.normal]
-black = "#5C5F77"
-red = "#D20F39"
-green = "#40A02B"
-yellow = "#DF8E1D"
-blue = "#1E66F5"
+black   = "#5C5F77"
+blue    = "#1E66F5"
+cyan    = "#179299"
+green   = "#40A02B"
 magenta = "#EA76CB"
-cyan = "#179299"
-white = "#ACB0BE"
+red     = "#D20F39"
+white   = "#ACB0BE"
+yellow  = "#DF8E1D"
 
 [colors.bright]
-black = "#6C6F85"
-red = "#D20F39"
-green = "#40A02B"
-yellow = "#DF8E1D"
-blue = "#1E66F5"
+black   = "#6C6F85"
+blue    = "#1E66F5"
+cyan    = "#179299"
+green   = "#40A02B"
 magenta = "#EA76CB"
-cyan = "#179299"
-white = "#BCC0CC"
+red     = "#D20F39"
+white   = "#BCC0CC"
+yellow  = "#DF8E1D"
 
 [colors.dim]
-black = "#5C5F77"
-red = "#D20F39"
-green = "#40A02B"
-yellow = "#DF8E1D"
-blue = "#1E66F5"
+black   = "#5C5F77"
+blue    = "#1E66F5"
+cyan    = "#179299"
+green   = "#40A02B"
 magenta = "#EA76CB"
-cyan = "#179299"
-white = "#ACB0BE"
+red     = "#D20F39"
+white   = "#ACB0BE"
+yellow  = "#DF8E1D"
 
 [[colors.indexed_colors]]
-index = 16
 color = "#FE640B"
+index = 16
 
 [[colors.indexed_colors]]
-index = 17
 color = "#DC8A78"
+index = 17

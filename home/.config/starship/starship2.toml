@@ -17,105 +17,105 @@ $character
 [❯ ](peach)
 """
 
-palette = "catppuccin_latte"
 add_newline = true
+palette     = "catppuccin_latte"
 
 [line_break]
 disabled = true
 
 [palettes.catppuccin_latte]
+base      = "#eff1f5"
+blue      = "#1e66f5"
+crust     = "#dce0e8"
+flamingo  = "#dd7878"
+green     = "#40a02b"
+lavender  = "#7287fd"
+mantle    = "#e6e9ef"
+maroon    = "#e64553"
+mauve     = "#8839ef"
+overlay0  = "#9ca0b0"
+overlay1  = "#8c8fa1"
+overlay2  = "#7c7f93"
+peach     = "#fe640b"
+pink      = "#ea76cb"
+red       = "#d20f39"
 rosewater = "#dc8a78"
-flamingo = "#dd7878"
-pink = "#ea76cb"
-mauve = "#8839ef"
-red = "#d20f39"
-maroon = "#e64553"
-peach = "#fe640b"
-yellow = "#df8e1d"
-green = "#40a02b"
-teal = "#179299"
-sky = "#04a5e5"
-sapphire = "#209fb5"
-blue = "#1e66f5"
-lavender = "#7287fd"
-text = "#4c4f69"
-subtext1 = "#5c5f77"
-subtext0 = "#6c6f85"
-overlay2 = "#7c7f93"
-overlay1 = "#8c8fa1"
-overlay0 = "#9ca0b0"
-surface2 = "#acb0be"
-surface1 = "#bcc0cc"
-surface0 = "#ccd0da"
-base = "#eff1f5"
-mantle = "#e6e9ef"
-crust = "#dce0e8"
+sapphire  = "#209fb5"
+sky       = "#04a5e5"
+subtext0  = "#6c6f85"
+subtext1  = "#5c5f77"
+surface0  = "#ccd0da"
+surface1  = "#bcc0cc"
+surface2  = "#acb0be"
+teal      = "#179299"
+text      = "#4c4f69"
+yellow    = "#df8e1d"
 
 [c]
-style = "fg:mantle bg:sky"
-symbol = ""
-format = "[$symbol $version ]($style)"
-detect_extensions = ["c", "h", "cpp", "hpp", "cc"]
-detect_files = ["CMakeLists.txt"]
+detect_extensions = ["c", "cc", "cpp", "h", "hpp"]
+detect_files      = ["CMakeLists.txt"]
+format            = "[$symbol $version ]($style)"
+style             = "fg:mantle bg:sky"
+symbol            = ""
 
 [cmake]
-symbol = ""
-style = "fg:mantle bg:sky"
 format = "[$symbol $version ]($style)"
+style  = "fg:mantle bg:sky"
+symbol = ""
 
 [rust]
-symbol = ""
-style = "fg:mantle bg:sky"
 format = "[$symbol $version ]($style)"
+style  = "fg:mantle bg:sky"
+symbol = ""
 
 [python]
-symbol = ""
-style = "fg:mantle bg:sky"
 format = "[$symbol $version ]($style)"
+style  = "fg:mantle bg:sky"
+symbol = ""
 
 [lua]
-symbol = ""
-style = "fg:mantle bg:sky"
 format = "[$symbol $version ]($style)"
+style  = "fg:mantle bg:sky"
+symbol = ""
 
 [git_branch]
-symbol = ""
-style = "fg:mantle bg:blue"
 format = "[ $symbol $branch]($style)"
+style  = "fg:mantle bg:blue"
+symbol = ""
 
 [git_status]
-style = "fg:mantle bg:blue"
 format = "[$all_status$ahead_behind ]($style)"
+style  = "fg:mantle bg:blue"
 
 [os]
 disabled = false
-style = "fg:mantle bg:lavender"
-format = "[$symbol ]($style)"
+format   = "[$symbol ]($style)"
+style    = "fg:mantle bg:lavender"
 
 [os.symbols]
-Arch = "󰣇"
+Arch   = "󰣇"
 Ubuntu = "󰕈"
 
 [directory]
+format            = "[$path ]($style)"
+style             = "fg:mantle bg:lavender"
+truncate_to_repo  = false
 truncation_length = 100
-truncate_to_repo = false
 truncation_symbol = "…/"
-style = "fg:mantle bg:lavender"
-format = "[$path ]($style)"
 
 [cmd_duration]
-min_time = 1
+format             = "[ 󰔛 $duration ]($style)"
+min_time           = 1
 show_notifications = true
-style = "fg:mantle bg:sapphire"
-format = "[ 󰔛 $duration ]($style)"
+style              = "fg:mantle bg:sapphire"
 
 [time]
-disabled = false
+disabled    = false
+format      = "[  $time ]($style)"
+style       = "fg:mantle bg:teal"
 time_format = "%R"
-style = "fg:mantle bg:teal"
-format = "[  $time ]($style)"
 
 [character]
-disabled = false
+disabled       = false
+error_symbol   = "[[](fg:red bg:sapphire)](red)"
 success_symbol = "[[](fg:green bg:sapphire)](green)"
-error_symbol = "[[](fg:red bg:sapphire)](red)"
