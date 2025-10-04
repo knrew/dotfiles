@@ -8,7 +8,7 @@ env:
   CARGO_INCREMENTAL: 0
 
 jobs:
-  lua:
+  stylua:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
