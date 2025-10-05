@@ -15,3 +15,5 @@ jobs:
     uses: ./.github/workflows/yaml.yaml
   shell:
     uses: ./.github/workflows/shell.yaml
+  editorconfig:
+    uses: ./.github/workflows/editorconfig.yaml

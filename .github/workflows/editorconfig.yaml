@@ -1,0 +1,23 @@
+name: Check editorconfig
+
+on:
+  workflow_call:
+
+jobs:
+  editorconfig-checker:
+    runs-on: ubuntu-latest
+    env:
+      VERSION: "v3.4.0"
+      OS: "linux"
+      ARCH: "amd64"
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Download binary
+        run: |
+          curl -O -L -C - \
+            https://github.com/editorconfig-checker/editorconfig-checker/releases/download/${{ env.VERSION }}/ec-${{ env.OS }}-${{ env.ARCH }}.tar.gz
+          tar xzf ec-${{ env.OS }}-${{ env.ARCH }}.tar.gz
+
+      - name Run editorconfig-checker
+      - run: ./bin/ec-${{ env.OS }}-${{ env.ARCH }}
