@@ -6,18 +6,14 @@ on:
 jobs:
   editorconfig-checker:
     runs-on: ubuntu-latest
-    env:
-      VERSION: "v3.4.0"
-      OS: "linux"
-      ARCH: "amd64"
     steps:
       - uses: actions/checkout@v4
 
-      - name: Download binary
-        run: |
-          curl -O -L -C - \
-            https://github.com/editorconfig-checker/editorconfig-checker/releases/download/${{ env.VERSION }}/ec-${{ env.OS }}-${{ env.ARCH }}.tar.gz
-          tar xzf ec-${{ env.OS }}-${{ env.ARCH }}.tar.gz
+      - uses: actions/setup-go@v5
+        with:
+          go-version: "1.25.x"
 
-      - name: Run editorconfig-checker
-        run: ./bin/ec-${{ env.OS }}-${{ env.ARCH }} -format github-actions
+      - run: |
+          go install github.com/editorconfig-checker/editorconfig-checker/v3/cmd/editorconfig-checker@v3.4.0
+
+      - run: editorconfig-checker -format github-actions
