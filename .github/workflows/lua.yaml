@@ -8,6 +8,17 @@ env:
   CARGO_INCREMENTAL: 0
 
 jobs:
+  luacheck:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install luacheck
+        run: |
+          sudo apt update
+          sudo apt install -y luajit luarocks
+          sudo luarocks install luacheck
+      - run: luacheck --codes --ranges .
+
   stylua:
     runs-on: ubuntu-latest
     steps:
