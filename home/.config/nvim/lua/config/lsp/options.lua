@@ -19,10 +19,10 @@ local keymaps_normal = {
   },
 }
 
-local buffer_options = {
-  omnifunc = "v:lua.vim.lsp.omnifunc",
-  formatexpr = "v:lua.vim.lsp.formatexpr(#{timeout_ms:500})",
-}
+-- local buffer_options = {
+--   omnifunc = "v:lua.vim.lsp.omnifunc",
+--   formatexpr = "v:lua.vim.lsp.formatexpr(#{timeout_ms:500})",
+-- }
 
 local setup_document_highlight = function(client, bufnr)
   local status_ok, highlight_supported = pcall(function()
@@ -57,33 +57,33 @@ local setup_document_highlight = function(client, bufnr)
   })
 end
 
-local setup_codelens_refresh = function(client, bufnr)
-  local status_ok, codelens_supported = pcall(function()
-    return client.supports_method("textDocument/codeLens")
-  end)
-  if not status_ok or not codelens_supported then
-    return
-  end
-  local group = "lsp_code_lens_refresh"
-  local cl_events = { "BufEnter", "InsertLeave" }
-  local ok, cl_autocmds = pcall(vim.api.nvim_get_autocmds, {
-    group = group,
-    buffer = bufnr,
-    event = cl_events,
-  })
+-- local setup_codelens_refresh = function(client, bufnr)
+--   local status_ok, codelens_supported = pcall(function()
+--     return client.supports_method("textDocument/codeLens")
+--   end)
+--   if not status_ok or not codelens_supported then
+--     return
+--   end
+--   local group = "lsp_code_lens_refresh"
+--   local cl_events = { "BufEnter", "InsertLeave" }
+--   local ok, cl_autocmds = pcall(vim.api.nvim_get_autocmds, {
+--     group = group,
+--     buffer = bufnr,
+--     event = cl_events,
+--   })
 
-  if ok and #cl_autocmds > 0 then
-    return
-  end
-  vim.api.nvim_create_augroup(group, { clear = false })
-  vim.api.nvim_create_autocmd(cl_events, {
-    group = group,
-    buffer = bufnr,
-    callback = function()
-      vim.lsp.codelens.refresh({ bufnr = bufnr })
-    end,
-  })
-end
+--   if ok and #cl_autocmds > 0 then
+--     return
+--   end
+--   vim.api.nvim_create_augroup(group, { clear = false })
+--   vim.api.nvim_create_autocmd(cl_events, {
+--     group = group,
+--     buffer = bufnr,
+--     callback = function()
+--       vim.lsp.codelens.refresh({ bufnr = bufnr })
+--     end,
+--   })
+-- end
 
 local add_lsp_buffer_keybindings = function(bufnr)
   for key, remap in pairs(keymaps_normal) do
@@ -92,23 +92,23 @@ local add_lsp_buffer_keybindings = function(bufnr)
   end
 end
 
-local setup_document_symbols = function(client, bufnr)
-  vim.g.navic_silence = false
-  local symbols_supported = client.supports_method("textDocument/documentSymbol")
-  if not symbols_supported then
-    return
-  end
-  local status_ok, navic = pcall(require, "nvim-navic")
-  if status_ok then
-    navic.attach(client, bufnr)
-  end
-end
+-- local setup_document_symbols = function(client, bufnr)
+--   vim.g.navic_silence = false
+--   local symbols_supported = client.supports_method("textDocument/documentSymbol")
+--   if not symbols_supported then
+--     return
+--   end
+--   local status_ok, navic = pcall(require, "nvim-navic")
+--   if status_ok then
+--     navic.attach(client, bufnr)
+--   end
+-- end
 
-local add_lsp_buffer_options = function(bufnr)
-  for k, v in pairs(buffer_options) do
-    vim.api.nvim_set_option_value(k, v, { buf = bufnr })
-  end
-end
+-- local add_lsp_buffer_options = function(bufnr)
+--   for k, v in pairs(buffer_options) do
+--     vim.api.nvim_set_option_value(k, v, { buf = bufnr })
+--   end
+-- end
 
 -- for on_exit
 local clear_augroup = function(name)
@@ -167,6 +167,7 @@ local lua_ls_options = function()
 
   opts.settings = {
     Lua = {
+      diagnostics = { globals = { "vim" } },
       runtime = {
         version = "LuaJIT",
         pathStrict = true,

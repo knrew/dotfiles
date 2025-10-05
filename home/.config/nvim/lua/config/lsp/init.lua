@@ -47,25 +47,20 @@ local setup = function()
   require("mason-null-ls").setup({ ensure_installed = require("config.lsp.linter_tools") })
 
   for _, server_name in ipairs(language_servers) do
-    local opts = {}
-    if server_name == "lua_ls" then
-      opts = lsp_options.lua_ls_options
-    elseif server_name == "rust_analyzer" then
-      opts = lsp_options.rust_analyzer_options
-    elseif server_name == "clangd" then
-      opts = lsp_options.clangd_options
-    else
-      opts = lsp_options.default_options
-    end
+    local opts = ({
+      lua_ls = lsp_options.lua_ls_options,
+      rust_analyzer = lsp_options.rust_analyzer_options,
+      clangd = lsp_options.clangd_options,
+    })[server_name] or lsp_options.default_options
     vim.lsp.config(server_name, opts)
   end
 
   vim.lsp.enable(language_servers)
 
   vim.lsp.handlers["textDocument/hover"] =
-    vim.lsp.with(vim.lsp.handlers.hover, { border = "single" })
+      vim.lsp.with(vim.lsp.handlers.hover, { border = "single" })
   vim.lsp.handlers["textDocument/signatureHelp"] =
-    vim.lsp.with(vim.lsp.handlers.signature_help, { border = "single" })
+      vim.lsp.with(vim.lsp.handlers.signature_help, { border = "single" })
   require("lspconfig.ui.windows").default_options.border = "single"
 end
 
