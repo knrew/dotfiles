@@ -4,20 +4,13 @@ on:
   workflow_call:
 
 jobs:
-  setup:
+  shellcheck-and-shfmt:
     runs-on: ubuntu-latest
-    outputs:
-      shellcheck: shellcheck
-      shfmt: shfmt
-    steps:
-      - run: |
-        sudo apt intall -y shellcheck shfmt
-
-  shellscript:
-    runs-on: ubuntu-latest
-    needs: [setup]
     steps:
       - uses: actions/checkout@v4
-      - run:
+      - name: Setup
+        run: |
+          sudo apt update &&
+          sudo apt install -y shellcheck shfmt
+      - run: ./.github/scripts/lint_shell.sh
         shell: bash
-        run: ./.github/scripts/lint_shell.sh

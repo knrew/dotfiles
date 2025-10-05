@@ -14,4 +14,4 @@ jobs:
   yaml:
     uses: ./.github/workflows/yaml.yaml
   shell:
-    uses: ./.github/workflows/yaml.yaml
+    uses: ./.github/workflows/shell.yaml

@@ -14,13 +14,13 @@ setopt incappendhistory
 export PATH=$PATH:$HOME/.local/bin
 
 # rust
-[[ -f $HOME/.cargo/env ]] && source $HOME/.cargo/env
+[[ -f $HOME/.cargo/env ]] && source "$HOME/.cargo/env"
 
 ZSHDIR=$HOME/.config/zsh
-[[ -f $ZSHDIR/aliases.zsh ]] && source $ZSHDIR/aliases.zsh
-[[ -f $ZSHDIR/functions.zsh ]] && source $ZSHDIR/functions.zsh
-[[ -f $ZSHDIR/fzf.zsh ]] && source $ZSHDIR/fzf.zsh
-[[ -f $ZSHDIR/local.zsh ]] && source $ZSHDIR/local.zsh
+[[ -f $ZSHDIR/aliases.zsh ]] && "source $ZSHDIR/aliases.zsh"
+[[ -f $ZSHDIR/functions.zsh ]] && source "$ZSHDIR/functions.zsh"
+[[ -f $ZSHDIR/fzf.zsh ]] && source "$ZSHDIR/fzf.zsh"
+[[ -f $ZSHDIR/local.zsh ]] && source "$ZSHDIR/local.zsh"
 
 # starship
 STARSHIP_CONFIG=$HOME/.config/starship/starship2.toml

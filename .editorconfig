@@ -1,9 +1,17 @@
-[*.sh]
+root = true
+
+[*]
 indent_style = space
 indent_size = 2
-switch_case_indent = true
 trim_trailing_whitespace = true
 insert_final_newline = true
+
+[*.{sh,bash,bashrc}]
+switch_case_indent = true
 binary_next_line = false
 space_redirects = true
 keep_padding = false
+indent_size = 2
+
+[*.md]
+trim_trailing_whitespace = false

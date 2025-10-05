@@ -11,9 +11,7 @@ export PATH=$PATH:$HOME/.local/bin
 
 # Rust
 if [ -f "$HOME/.cargo/env" ]; then
-    source $HOME/.cargo/env
+  source "$HOME/.cargo/env"
 fi
-
-source ~/.aliasrc
 
 eval "$(starship init bash)"
