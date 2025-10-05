@@ -20,4 +20,4 @@ jobs:
           tar xzf ec-${{ env.OS }}-${{ env.ARCH }}.tar.gz
 
       - name: Run editorconfig-checker
-        run: ./bin/ec-${{ env.OS }}-${{ env.ARCH }}
+        run: ./bin/ec-${{ env.OS }}-${{ env.ARCH }} -format github-actions
