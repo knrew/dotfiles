@@ -17,5 +17,7 @@ jobs:
     uses: ./.github/workflows/shell.yaml
   markdown:
     uses: ./.github/workflows/markdown.yaml
+  json:
+    uses: ./.github/workflows/json.yaml
   editorconfig:
     uses: ./.github/workflows/editorconfig.yaml
