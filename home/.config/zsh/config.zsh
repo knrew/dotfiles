@@ -17,7 +17,7 @@ export PATH=$PATH:$HOME/.local/bin
 [[ -f $HOME/.cargo/env ]] && source "$HOME/.cargo/env"
 
 ZSHDIR=$HOME/.config/zsh
-[[ -f $ZSHDIR/aliases.zsh ]] && "source $ZSHDIR/aliases.zsh"
+[[ -f $ZSHDIR/aliases.zsh ]] && source "$ZSHDIR/aliases.zsh"
 [[ -f $ZSHDIR/functions.zsh ]] && source "$ZSHDIR/functions.zsh"
 [[ -f $ZSHDIR/fzf.zsh ]] && source "$ZSHDIR/fzf.zsh"
 [[ -f $ZSHDIR/local.zsh ]] && source "$ZSHDIR/local.zsh"

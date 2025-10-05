@@ -1,0 +1,4 @@
+[general]
+backup_dir = "todo"
+dotfiles   = "todo"
+home       = "todo"
