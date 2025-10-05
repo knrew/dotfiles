@@ -1,0 +1,23 @@
+name: Lint shell
+
+on:
+  workflow_call:
+
+jobs:
+  setup:
+    runs-on: ubuntu-latest
+    outputs:
+      shellcheck: shellcheck
+      shfmt: shfmt
+    steps:
+      - run: |
+        sudo apt intall -y shellcheck shfmt
+
+  shellscript:
+    runs-on: ubuntu-latest
+    needs: [setup]
+    steps:
+      - uses: actions/checkout@v4
+      - run:
+        shell: bash
+        run: ./.github/scripts/lint_shell.sh
