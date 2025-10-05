@@ -24,9 +24,18 @@ list_shell_files() {
 mapfile -d '' -t files < <(list_shell_files)
 
 if [[ ${#files[@]} -eq 0 ]]; then
-  echo "No shell files found."
+  printf "No shell files found.\n"
   exit 0
 fi
 
-shellcheck "${files[@]}" &&
-  shfmt -d "${files[@]}"
+for f in "${files[@]}"; do
+  printf "shellcheck: \"%s\" ... " "$f"
+  shellcheck "$f"
+  printf "done\n"
+done
+
+for f in "${files[@]}"; do
+  printf "shfmt: \"%s\" ... " "$f"
+  shfmt -d "$f"
+  printf "done\n"
+done
