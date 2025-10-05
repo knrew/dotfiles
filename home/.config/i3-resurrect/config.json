@@ -7,7 +7,5 @@
     }
   ],
   "window_swallow_criteria": {},
-  "terminals": [
-    "Alacritty"
-  ]
+  "terminals": ["Alacritty"]
 }
