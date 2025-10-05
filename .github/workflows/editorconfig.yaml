@@ -19,5 +19,5 @@ jobs:
             https://github.com/editorconfig-checker/editorconfig-checker/releases/download/${{ env.VERSION }}/ec-${{ env.OS }}-${{ env.ARCH }}.tar.gz
           tar xzf ec-${{ env.OS }}-${{ env.ARCH }}.tar.gz
 
-      - name Run editorconfig-checker
-      - run: ./bin/ec-${{ env.OS }}-${{ env.ARCH }}
+      - name: Run editorconfig-checker
+        run: ./bin/ec-${{ env.OS }}-${{ env.ARCH }}

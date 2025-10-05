@@ -1,6 +1,6 @@
 [user]
-	email = rew.7cc.12.1f@gmail.com
-	name = knrew
+  email = rew.7cc.12.1f@gmail.com
+  name = knrew
 
 [https]
 
@@ -8,7 +8,7 @@
 
 
 [include]
-	; path = ~/.config/delta/themes/catppuccin.gitconfig
+  ; path = ~/.config/delta/themes/catppuccin.gitconfig
 
 [delta]
   ; features = catppuccin-latte
