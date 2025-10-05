@@ -15,7 +15,7 @@
   navigate = true
 
 [core]
-  pager = delta --light  
+  pager = delta --light
 
 [interactive]
   diffFilter = delta --color-only

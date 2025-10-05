@@ -252,7 +252,7 @@ keycode 255 = XF86RFKill NoSymbol XF86RFKill
 !
 keycode  66 = Super_L NoSymbol Super_L
 keycode 101 = Super_L NoSymbol Super_L
-keycode 133 = 
+keycode 133 =
 pointer = 1 2 3 5 4 7 6 8 9 10 11 12
 !pointer = 1 2 3 4 5 6 7 8 9 10 11 12
 clear Lock
