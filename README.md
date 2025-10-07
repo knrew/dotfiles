@@ -13,22 +13,25 @@ $HOME側にはシンボリックリンクのみを置き，実体は`dotfiles/ho
 [dotkoke](https://github.com/knrew/dotkoke)をインストールする．
 
 dotfilesをクローンする．
+
 ```sh
 git clone git@github.com:knrew/dotfiles.git .dotfiles
 ```
 
 既存ファイルのバックアップ用ディレクトリを作成する．
+
 ```sh
 mkdir -p ~/.backup_dotfiles/
 ```
 
 `dotkoke_config.toml`を複製し，環境に合わせて編集する．
+
 ```sh
-cp ~/.dotfiles/home/.config/dotkoke/dotkoke_config_template.toml \
-   ~/.dotfiles/home/.config/dotkoke/dotkoke_config.toml
+cp ~/.dotfiles/home/.config/dotkoke/dotkoke_config_template.toml ~/.dotfiles/home/.config/dotkoke/dotkoke_config.toml
 ```
 
 インストールする．`dotfiles/home`以下のファイルが$HOMEに展開される．
+
 ```sh
 dotkoke install
 ```
