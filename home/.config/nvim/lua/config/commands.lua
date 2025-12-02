@@ -67,6 +67,12 @@ local commands = {
       vim.api.nvim_command("edit " .. file)
     end,
   },
+  {
+    name = "Tmp",
+    fn = function()
+      vim.api.nvim_command("edit ~/wiki/workspace/tmp.md")
+    end,
+  },
 }
 
 local setup = function()
