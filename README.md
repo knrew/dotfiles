@@ -30,10 +30,12 @@ mkdir -p ~/.backup_dotfiles/
 cp ~/.dotfiles/home/.config/dotkoke/dotkoke_config_template.toml ~/.dotfiles/home/.config/dotkoke/dotkoke_config.toml
 ```
 
-インストールする．`dotfiles/home`以下のファイルが$HOMEに展開される．
+インストールする．
+`dotfiles/home`以下のファイルが$HOMEに展開される．
+初回はまだdotkoke_configが展開されていないのでconfigの指定が必要．
 
 ```sh
-dotkoke install
+dotkoke install --config ~/.dotfiles/home/.config/dotkoke/dotkoke_config.toml
 ```
 
 ## 運用ルール
