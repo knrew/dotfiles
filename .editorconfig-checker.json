@@ -1,7 +1,7 @@
 {
   "Exclude": [
     "misc/logo.txt",
-    "misc/mozc_key_map.txt",
+    "misc/mozc_keymap.txt",
     "home/.config/nvim/lazy-lock.json"
   ]
 }
