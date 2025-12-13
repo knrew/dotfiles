@@ -5,11 +5,10 @@ on:
 
 jobs:
   shellcheck-and-shfmt:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     steps:
-      - uses: actions/checkout@v4
-      - name: Setup
-        run: |
+      - uses: actions/checkout@v6
+      - run: |
           sudo apt update &&
           sudo apt install -y shellcheck shfmt
       - run: ./.github/scripts/lint_shell.sh

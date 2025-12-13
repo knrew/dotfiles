@@ -10,6 +10,29 @@ local setup = function()
       },
     },
     filesystem = {
+      commands = {
+        -- Override delete to use trash instead of rm(with confirm)
+        delete = function(state)
+          local inputs = require("neo-tree.ui.inputs")
+
+          local node = state.tree:get_node()
+          if node.type == "message" then
+            return
+          end
+
+          local path = node.path
+          local _, name = require("neo-tree.utils").split_path(path)
+          local msg = string.format("Are you sure you want to trash '%s'?", name)
+
+          inputs.confirm(msg, function(confirmed)
+            if not confirmed then
+              return
+            end
+            vim.fn.system({ "trash", vim.fn.fnameescape(path) })
+            require("neo-tree.sources.manager").refresh(state)
+          end)
+        end,
+      },
       follow_current_file = {
         enabled = true,
       },

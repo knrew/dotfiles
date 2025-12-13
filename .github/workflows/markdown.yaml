@@ -5,18 +5,15 @@ on:
 
 jobs:
   markdownlint:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
 
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
 
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v6
         with:
-          node-version: "22"
-
-      - name: Install markdownlint-cli
-        run: npm i -g markdownlint-cli
+          node-version: 24
 
       - name: Run markdownlint
         run: |
-          find . -type f -name "*md" -print0 | xargs -0 markdownlint --config .markdownlint.json
+          find . -type f -name "*md" -print0 | xargs -0 npx markdownlint-cli2@0.20.0 --config .markdownlint.json
