@@ -28,8 +28,20 @@ local setup = function()
             if not confirmed then
               return
             end
-            vim.fn.system({ "trash", vim.fn.fnameescape(path) })
-            require("neo-tree.sources.manager").refresh(state)
+            if vim.fn.executable("trash") == 1 then
+              local result = vim.fn.system({ "trash", vim.fn.fnameescape(path) })
+              if vim.v.shell_error ~= 0 then
+                vim.notify("Failed to trash file: " .. path .. "\n" .. result, vim.log.levels.ERROR)
+                return
+              end
+
+              require("neo-tree.sources.manager").refresh(state)
+            else
+              vim.notify(
+                "The 'trash' command is not installed. Please install it to use this feature.",
+                vim.log.levels.ERROR
+              )
+            end
           end)
         end,
       },
