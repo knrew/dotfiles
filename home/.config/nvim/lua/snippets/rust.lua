@@ -42,7 +42,7 @@ return {
       "",
       "}",
       "",
-      "#[inline]",
+      "#[inline(always)]",
       "fn read<T>(iter: &mut std::str::SplitWhitespace<'_>) -> T",
       "where",
       "    T: std::str::FromStr,",
@@ -53,9 +53,16 @@ return {
     }),
   }),
 
+  s({ trig = "stdout" }, {
+    t({
+      "let mut out = std::io::BufWriter::new(std::io::stdout().lock());",
+    }),
+  }),
+
   -- クエリ
   s({ trig = "query" }, {
     t({
+      "#[derive(Debug, Clone)]",
       "enum Query {",
       "    Q1(usize),",
       "    Q2(usize),",
@@ -174,13 +181,13 @@ return {
       "struct Op;",
       "",
       "impl Monoid for Op {",
-      "    type Value = todo!();",
+      "    type Element = todo!();",
       "",
-      "    fn identity(&self) -> Self::Value {",
+      "    fn op(&self, lhs: &Self::Element, rhs: &Self::Element) -> Self::Element {",
       "        todo!()",
       "    }",
       "",
-      "    fn op(&self, lhs: &Self::Value, rhs: &Self::Value) -> Self::Value {",
+      "    fn id(&self) -> Self::Element {",
       "        todo!()",
       "    }",
       "}",
@@ -194,23 +201,29 @@ return {
       "struct Act;",
       "",
       "impl Monoid for Act {",
-      "    type Value = todo!();",
+      "    type Element = todo!();",
       "",
-      "    fn identity(&self) -> Self::Value {",
+      "    // NOTE: gが後に作用する．g(f(x))",
+      "    fn op(&self, g: &Self::Element, f: &Self::Element) -> Self::Element {",
       "        todo!()",
       "    }",
       "",
-      "    // NOTE: gが後に作用する．g(f(x))",
-      "    fn op(&self, g: &Self::Value, f: &Self::Value) -> Self::Value {",
+      "    fn id(&self) -> Self::Element {",
       "        todo!()",
       "    }",
       "}",
       "",
       "impl Action<Op> for Act {",
-      "    fn act(&self, f: &Self::Value, x: &<Op as Monoid>::Value) -> <Op as Monoid>::Value {",
+      "    fn act(&self, f: &Self::Element, x: &<Op as Monoid>::Element) -> <Op as Monoid>::Element {",
       "        todo!()",
       "    }",
       "}",
+    }),
+  }),
+
+  s({ trig = "rng" }, {
+    t({
+      "let mut rng = Xoroshiro128PlusPlus::seed_from_u64(0x42);",
     }),
   }),
 }

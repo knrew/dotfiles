@@ -39,6 +39,12 @@ alias clip="xclip -selection c"
 # lazygit
 alias lg=lazygit
 
+# opencode
+alias oc=opencode
+
+# codex
+alias cx=codex
+
 # enable/disable backlight auto off
 alias enable_sleep="(xset s on +dpms)"
 alias disable_sleep="(xset s off -dpms)"
