@@ -13,4 +13,4 @@ jobs:
         with:
           node-version: 24
 
-      - run: npx prettier@3.7.4 --check "**/*.{json,jsonc}"
+      - run: npx prettier@3.8.1 --check "**/*.{json,jsonc}"
