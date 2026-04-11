@@ -51,7 +51,7 @@ function M.setup()
   require("lspconfig.ui.windows").default_options.border = "single"
 
   if vim.lsp.inlay_hint then
-    vim.lsp.inlay_hint.enable(true, { bufnr = 0 })
+    vim.lsp.inlay_hint.enable(true)
   end
 end
 
