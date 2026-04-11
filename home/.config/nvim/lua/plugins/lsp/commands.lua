@@ -25,8 +25,8 @@ local function normalize_format_opts(opts)
   return normalized
 end
 
-local function format_filter(client)
-  local filetype = vim.bo.filetype
+local function format_filter(bufnr, client)
+  local filetype = vim.bo[bufnr].filetype
   local null_ls = require("null-ls")
   local sources = require("null-ls.sources")
   local method = null_ls.methods.FORMATTING
@@ -36,12 +36,15 @@ local function format_filter(client)
     return client.name == "null-ls"
   end
 
-  return client.supports_method("textDocument/formatting")
+  return client:supports_method("textDocument/formatting", bufnr)
 end
 
 function M.format(opts)
   opts = normalize_format_opts(opts)
-  opts.filter = opts.filter or format_filter
+  local bufnr = opts.bufnr or vim.api.nvim_get_current_buf()
+  opts.filter = opts.filter or function(client)
+    return format_filter(bufnr, client)
+  end
   return vim.lsp.buf.format(opts)
 end
 
