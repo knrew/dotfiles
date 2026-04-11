@@ -87,7 +87,11 @@ return {
           local filetype = vim.bo[bufnr].filetype
           local has_parser = pcall(vim.treesitter.get_parser, bufnr)
 
-          if has_parser and not highlight_disabled_filetypes[filetype] and not is_large_file(bufnr) then
+          if
+            has_parser
+            and not highlight_disabled_filetypes[filetype]
+            and not is_large_file(bufnr)
+          then
             pcall(vim.treesitter.start, bufnr)
           end
 
