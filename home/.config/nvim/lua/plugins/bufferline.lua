@@ -34,9 +34,9 @@ local setup = function()
 
   local highlights = nil
 
-  local ok, catppuccin = pcall(require, "catppuccin.groups.integrations.bufferline")
+  local ok, catppuccin = pcall(require, "catppuccin.special.bufferline")
   if ok then
-    highlights = catppuccin.get()
+    highlights = catppuccin.get_theme()
   end
 
   require("bufferline").setup({
@@ -49,7 +49,6 @@ end
 
 return {
   "akinsho/bufferline.nvim",
-  after = "catppuccin",
   config = function()
     setup()
   end,
