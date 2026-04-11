@@ -53,26 +53,6 @@ local commands = {
       end
     end,
   },
-  {
-    name = "Memo",
-    fn = function()
-      vim.api.nvim_command("edit ~/wiki/workspace/memo.md")
-    end,
-  },
-  {
-    name = "Daily",
-    fn = function()
-      local d = os.date("%Y%m%d")
-      local file = "~/wiki/dailylog/" .. d .. ".md"
-      vim.api.nvim_command("edit " .. file)
-    end,
-  },
-  {
-    name = "Tmp",
-    fn = function()
-      vim.api.nvim_command("edit ~/wiki/workspace/tmp.md")
-    end,
-  },
 }
 
 local setup = function()
