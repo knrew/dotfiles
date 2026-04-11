@@ -1,12 +1,24 @@
 local M = {}
 
+local function lsp_float_opts()
+  return { border = "single" }
+end
+
+local function show_hover()
+  vim.lsp.buf.hover(lsp_float_opts())
+end
+
+local function show_signature_help()
+  vim.lsp.buf.signature_help(lsp_float_opts())
+end
+
 local keymaps_normal = {
-  ["K"] = { "<cmd>lua vim.lsp.buf.hover()<cr>", "Show hover" },
+  ["K"] = { show_hover, "Show hover" },
   ["gd"] = { "<cmd>lua vim.lsp.buf.definition()<cr>", "Goto definition" },
   ["gD"] = { "<cmd>lua vim.lsp.buf.declaration()<cr>", "Goto Declaration" },
   ["gr"] = { "<cmd>lua vim.lsp.buf.references()<cr>", "Goto references" },
   ["gI"] = { "<cmd>lua vim.lsp.buf.implementation()<cr>", "Goto Implementation" },
-  ["gs"] = { "<cmd>lua vim.lsp.buf.signature_help()<cr>", "show signature help" },
+  ["gs"] = { show_signature_help, "show signature help" },
   ["gl"] = {
     function()
       local float = vim.diagnostic.config().float
@@ -19,6 +31,10 @@ local keymaps_normal = {
     end,
     "Show line diagnostics",
   },
+}
+
+local keymaps_insert_select = {
+  ["<C-S>"] = { show_signature_help, "show signature help" },
 }
 
 local function setup_document_highlight(client, bufnr)
@@ -59,6 +75,11 @@ local function add_lsp_buffer_keybindings(bufnr)
   for key, remap in pairs(keymaps_normal) do
     local opts = { buffer = bufnr, desc = remap[2], noremap = true, silent = true }
     vim.keymap.set("n", key, remap[1], opts)
+  end
+
+  for key, remap in pairs(keymaps_insert_select) do
+    local opts = { buffer = bufnr, desc = remap[2], noremap = true, silent = true }
+    vim.keymap.set({ "i", "s" }, key, remap[1], opts)
   end
 end
 
