@@ -45,17 +45,9 @@ return {
     {
       "<leader>/",
       function()
-        require("plugins.comment_commands").toggle_current()
-      end,
-      mode = "v",
-      desc = "Toggle comment",
-    },
-    {
-      "<leader>/",
-      function()
         require("plugins.comment_commands").toggle_visual()
       end,
-      mode = "x",
+      mode = { "x", "s" },
       desc = "Toggle comment for selection",
     },
   },
