@@ -18,11 +18,8 @@ local keymaps_normal = {
   ["sv"] = "<cmd>vsplit<cr><C-w>w",
 
   -- buffer
-  ["<C-PageDown>"] = "<cmd>BufferLineCycleNext<cr>",
-  ["<C-PageUp>"] = "<cmd>BufferLineCyclePrev<cr>",
   ["<C-q>"] = "<cmd>bd<cr>",
   ["<C-S-q>"] = "<cmd>bd!<cr>",
-  ["<C-u>"] = "<cmd>BufferLineCloseOthers<cr>",
 
   -- select all
   ["<C-a>"] = "gg0v<S-g><S-$>",
@@ -48,40 +45,18 @@ local keymaps_normal = {
   ["<leader>h"] = "<cmd>ToggleInlayHint<cr>",
   ["<leader>c"] = "<cmd>ToggleCmp<cr>",
 
-  -- tree
-  ["<C-t>"] = "<cmd>Neotree toggle<cr>",
-
-  -- telescope
-  ["<C-f>"] = "<cmd>Telescope find_files find_command=rg,--files,--no-ignore,--hidden<cr>",
-  ["<C-M-f>"] = "<cmd>Telescope find_files find_command=rg,--files<cr>",
-
-  -- comment
-  ["<leader>/"] = "<cmd>ToggleCommentNormal<cr>",
-
   -- terminal
   ["<leader>t"] = "<cmd>terminal<cr>",
 
   -- lazygit
   ["lg"] = "<cmd>terminal lazygit<cr>i",
-
-  -- diffview
-  ["df"] = "<cmd>DiffviewOpen<cr><cmd>DiffviewToggleFiles<cr>",
-
-  -- markdown preview
-  ["md"] = "<cmd>MarkdownPreview<cr>",
 }
 
 local keymaps_insert = {
   [","] = ",<Space>",
 }
 
-local keymaps_visual = {
-  ["<leader>/"] = "<cmd>ToggleCommentNormal<cr>",
-}
-
 local keymaps_select = {
-  ["<leader>/"] = "<cmd>ToggleCommentSelect<cr>",
-
   -- delete without yank
   ["x"] = '"_d',
 }
@@ -99,10 +74,6 @@ local setup = function()
 
   for k, v in pairs(keymaps_insert) do
     vim.keymap.set("i", k, v, default_opts)
-  end
-
-  for k, v in pairs(keymaps_visual) do
-    vim.keymap.set("v", k, v, default_opts)
   end
 
   for k, v in pairs(keymaps_select) do

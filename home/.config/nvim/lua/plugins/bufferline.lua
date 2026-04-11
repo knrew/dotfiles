@@ -15,6 +15,14 @@ local function diagnostics_indicator(_, _, diagnostics, _)
   return #result > 0 and result or ""
 end
 
+local function setup_keymaps()
+  local opts = { noremap = true, silent = true }
+
+  vim.keymap.set("n", "<C-PageDown>", "<cmd>BufferLineCycleNext<cr>", opts)
+  vim.keymap.set("n", "<C-PageUp>", "<cmd>BufferLineCyclePrev<cr>", opts)
+  vim.keymap.set("n", "<C-u>", "<cmd>BufferLineCloseOthers<cr>", opts)
+end
+
 local setup = function()
   local options = {
     numbers = "none",
@@ -35,6 +43,8 @@ local setup = function()
     options = options,
     highlights = highlights,
   })
+
+  setup_keymaps()
 end
 
 return {

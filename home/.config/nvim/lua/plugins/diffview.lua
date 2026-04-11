@@ -39,4 +39,15 @@ return {
   end,
   cmd = { "DiffviewOpen" },
   lazy = true,
+  keys = {
+    {
+      "df",
+      function()
+        vim.cmd("DiffviewOpen")
+        vim.cmd("DiffviewToggleFiles")
+      end,
+      mode = "n",
+      desc = "Open Diffview",
+    },
+  },
 }

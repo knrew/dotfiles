@@ -72,6 +72,13 @@ local setup = function()
   })
 end
 
+local function setup_keymaps()
+  vim.keymap.set("n", "<C-t>", "<cmd>Neotree toggle<cr>", {
+    noremap = true,
+    silent = true,
+  })
+end
+
 return {
   "nvim-neo-tree/neo-tree.nvim",
   branch = "v3.x",
@@ -86,5 +93,6 @@ return {
   },
   config = function()
     setup()
+    setup_keymaps()
   end,
 }

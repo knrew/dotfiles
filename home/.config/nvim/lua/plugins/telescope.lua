@@ -93,6 +93,20 @@ return {
     end,
     lazy = true,
     cmd = "Telescope",
+    keys = {
+      {
+        "<C-f>",
+        "<cmd>Telescope find_files find_command=rg,--files,--no-ignore,--hidden<cr>",
+        mode = "n",
+        desc = "Find files including hidden and ignored",
+      },
+      {
+        "<C-M-f>",
+        "<cmd>Telescope find_files find_command=rg,--files<cr>",
+        mode = "n",
+        desc = "Find files",
+      },
+    },
   },
   {
     "nvim-telescope/telescope-fzf-native.nvim",

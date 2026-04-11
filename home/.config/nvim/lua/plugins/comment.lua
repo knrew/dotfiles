@@ -36,5 +36,32 @@ return {
   config = function()
     setup()
   end,
-  keys = { { "gc", mode = { "n", "v" } }, { "gb", mode = { "n", "v" } } },
+  keys = {
+    { "gc", mode = { "n", "v" } },
+    { "gb", mode = { "n", "v" } },
+    {
+      "<leader>/",
+      function()
+        require("plugins.comment_commands").toggle_current()
+      end,
+      mode = "n",
+      desc = "Toggle comment",
+    },
+    {
+      "<leader>/",
+      function()
+        require("plugins.comment_commands").toggle_current()
+      end,
+      mode = "v",
+      desc = "Toggle comment",
+    },
+    {
+      "<leader>/",
+      function()
+        require("plugins.comment_commands").toggle_visual()
+      end,
+      mode = "x",
+      desc = "Toggle comment for selection",
+    },
+  },
 }

@@ -2,6 +2,14 @@ return {
   "iamcco/markdown-preview.nvim",
   cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
   ft = { "markdown" },
+  keys = {
+    {
+      "md",
+      "<cmd>MarkdownPreview<cr>",
+      mode = "n",
+      desc = "Markdown preview",
+    },
+  },
   config = function()
     vim.g.mkdp_auto_start = 1
   end,
