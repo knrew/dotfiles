@@ -4,7 +4,6 @@ return {
     lazy = false,
     dependencies = {
       "mason-org/mason-lspconfig.nvim",
-      "tamago324/nlsp-settings.nvim",
       "nvimtools/none-ls.nvim",
       "jay-babu/mason-null-ls.nvim",
       "mason-org/mason.nvim",
@@ -17,7 +16,6 @@ return {
     "mason-org/mason-lspconfig.nvim",
     lazy = true,
   },
-  { "tamago324/nlsp-settings.nvim", lazy = true },
   { "nvimtools/none-ls.nvim", lazy = true },
   { "jay-babu/mason-null-ls.nvim", lazy = true },
   {

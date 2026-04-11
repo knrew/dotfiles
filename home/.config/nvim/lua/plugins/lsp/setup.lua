@@ -35,10 +35,6 @@ function M.setup()
     },
   })
 
-  pcall(function()
-    require("nlspsettings").setup()
-  end)
-
   local common = require("plugins.lsp.common")
   local servers = require("plugins.lsp.servers")
 
