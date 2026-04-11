@@ -1,49 +1,54 @@
-local setup_autopairs = function()
-  local status_ok, autopairs = pcall(require, "nvim-autopairs")
-  if status_ok then
-    autopairs.setup({
-      check_ts = true,
-      enable_check_bracket_line = true,
-      ts_config = {
-        lua = { "string", "source" },
-        javascript = { "string", "template_string" },
-        java = false,
-      },
-      disable_filetype = { "TelescopePrompt", "spectre_panel" },
-      disable_in_macro = false,
-      ignored_next_char = string.gsub([[ [%w%%%'%[%"%.] ]], "%s+", ""),
-      enable_moveright = true,
-      enable_afterquote = true,
-      map_cr = true,
-      map_bs = true,
-      map_c_w = false,
-      map_c_h = false,
-      disable_in_visualblock = false,
-      fast_wrap = {
-        map = "<M-e>",
-        chars = { "{", "[", "(", '"', "'" },
-        pattern = string.gsub([[ [%'%"%)%>%]%)%}%,] ]], "%s+", ""),
-        offset = 0,
-        end_key = "$",
-        keys = "qwertyuiopzxcvbnmasdfghjkl",
-        check_comma = true,
-        highlight = "Search",
-        highlight_grey = "Comment",
-      },
-    })
+local M = {}
 
-    pcall(function()
-      local function on_confirm_done(...)
-        require("nvim-autopairs.completion.cmp").on_confirm_done()(...)
-      end
-      local _, cmp = pcall(require, "cmp")
-      cmp.event:off("confirm_done", on_confirm_done)
-      cmp.event:on("confirm_done", on_confirm_done)
-    end)
+local function setup_autopairs()
+  local status_ok, autopairs = pcall(require, "nvim-autopairs")
+  if not status_ok then
+    return
   end
+
+  autopairs.setup({
+    check_ts = true,
+    enable_check_bracket_line = true,
+    ts_config = {
+      lua = { "string", "source" },
+      javascript = { "string", "template_string" },
+      java = false,
+    },
+    disable_filetype = { "TelescopePrompt", "spectre_panel" },
+    disable_in_macro = false,
+    ignored_next_char = string.gsub([[ [%w%%%'%[%"%.] ]], "%s+", ""),
+    enable_moveright = true,
+    enable_afterquote = true,
+    map_cr = true,
+    map_bs = true,
+    map_c_w = false,
+    map_c_h = false,
+    disable_in_visualblock = false,
+    fast_wrap = {
+      map = "<M-e>",
+      chars = { "{", "[", "(", '"', "'" },
+      pattern = string.gsub([[ [%'%"%)%>%]%)%}%,] ]], "%s+", ""),
+      offset = 0,
+      end_key = "$",
+      keys = "qwertyuiopzxcvbnmasdfghjkl",
+      check_comma = true,
+      highlight = "Search",
+      highlight_grey = "Comment",
+    },
+  })
+
+  pcall(function()
+    local function on_confirm_done(...)
+      require("nvim-autopairs.completion.cmp").on_confirm_done()(...)
+    end
+
+    local _, cmp = pcall(require, "cmp")
+    cmp.event:off("confirm_done", on_confirm_done)
+    cmp.event:on("confirm_done", on_confirm_done)
+  end)
 end
 
-local formatting = function()
+local function formatting()
   local icons = require("utils.icons")
 
   local fields = { "abbr", "kind", "menu" }
@@ -51,16 +56,11 @@ local formatting = function()
   local min_width = 20
   local source_names = {
     nvim_lsp = "[LSP]",
-    emoji = "[Emoji]",
     path = "[Path]",
     calc = "[Calc]",
-    cmp_tabnine = "[Tabnine]",
-    vsnip = "[Snippet]",
     luasnip = "[Snippet]",
     buffer = "[Buffer]",
-    tmux = "[TMUX]",
     copilot = "[Copilot]",
-    treesitter = "[TreeSitter]",
   }
   local duplicates = {
     buffer = 1,
@@ -69,34 +69,8 @@ local formatting = function()
     luasnip = 1,
   }
   local duplicates_default = 0
+
   local format = function(entry, vim_item)
-    -- vim_item.kind = icons[vim_item.kind]
-
-    -- if entry.source.name == "copilot" then
-    --   vim_item.kind = icons.git.Octoface
-    --   vim_item.kind_hl_group = "CmpItemKindCopilot"
-    -- end
-
-    -- if entry.source.name == "cmp_tabnine" then
-    --   vim_item.kind = icons.misc.Robot
-    --   vim_item.kind_hl_group = "CmpItemKindTabnine"
-    -- end
-
-    -- if entry.source.name == "crates" then
-    --   vim_item.kind = icons.misc.Package
-    --   vim_item.kind_hl_group = "CmpItemKindCrate"
-    -- end
-
-    -- if entry.source.name == "lab.quick_data" then
-    --   vim_item.kind = icons.misc.CircuitBoard
-    --   vim_item.kind_hl_group = "CmpItemKindConstant"
-    -- end
-
-    -- if entry.source.name == "emoji" then
-    --   vim_item.kind = icons.misc.Smiley
-    --   vim_item.kind_hl_group = "CmpItemKindEmoji"
-    -- end
-
     vim_item.menu = source_names[entry.source.name]
     vim_item.dup = duplicates[entry.source.name] or duplicates_default
 
@@ -119,7 +93,7 @@ local formatting = function()
   }
 end
 
-local setup = function()
+function M.setup()
   local confirm_behavior = require("cmp.types.cmp").ConfirmBehavior
   local select_behavior = require("cmp.types.cmp").SelectBehavior
   local cmp = require("cmp")
@@ -208,7 +182,6 @@ local setup = function()
     sources = cmp.config.sources({
       {
         name = "copilot",
-        -- keyword_length = 0,
         max_item_count = 3,
         trigger_characters = {
           {
@@ -231,8 +204,6 @@ local setup = function()
             "+",
             "?",
             " ",
-            -- "\t",
-            -- "\n",
           },
         },
       },
@@ -248,14 +219,8 @@ local setup = function()
       },
       { name = "path" },
       { name = "luasnip" },
-      { name = "cmp_tabnine" },
-      { name = "nvim_lua" },
       { name = "buffer" },
       { name = "calc" },
-      { name = "emoji" },
-      { name = "treesitter" },
-      { name = "crates" },
-      { name = "tmux" },
     }, {
       { name = "buffer" },
     }),
@@ -280,4 +245,4 @@ local setup = function()
   setup_autopairs()
 end
 
-setup()
+return M

@@ -47,47 +47,6 @@ local options = {
   whichwrap = "<,>,[,],h,l",
 }
 
-local setup = function()
-  for k, v in pairs(options) do
-    vim.opt[k] = v
-  end
-
-  -- vim.opt.spelllang:append("cjk")
-  -- vim.opt.shortmess:append("c")
-  -- vim.opt.shortmess:append("I")
-  -- vim.opt.whichwrap:append("<,>,[,],h,l")
-
-  -- setup diagnostics
-  local icons = require("utils.icons")
-  local default_diagnostic_config = {
-    signs = {
-      active = true,
-      text = {
-        [vim.diagnostic.severity.ERROR] = icons.diagnostics.Error,
-        [vim.diagnostic.severity.WARN] = icons.diagnostics.Warning,
-        [vim.diagnostic.severity.INFO] = icons.diagnostics.Information,
-        [vim.diagnostic.severity.HINT] = icons.diagnostics.Hint,
-      },
-    },
-    virtual_text = true,
-    update_in_insert = false,
-    underline = true,
-    severity_sort = true,
-    float = {
-      focusable = true,
-      style = "minimal",
-      border = "single",
-      source = "always",
-      header = "",
-      prefix = "",
-    },
-  }
-  vim.diagnostic.config(default_diagnostic_config)
-
-  -- inlay hint enabled
-  if vim.lsp.inlay_hint then
-    vim.lsp.inlay_hint.enable(true, { 0 })
-  end
+for k, v in pairs(options) do
+  vim.opt[k] = v
 end
-
-setup()

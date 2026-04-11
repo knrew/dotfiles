@@ -1,6 +1,5 @@
 local setup = function()
   local actions = require("telescope.actions")
-  -- local icons = require("utils.icons")
 
   local mappings = {
     n = {
@@ -18,16 +17,9 @@ local setup = function()
 
   require("telescope").setup({
     defaults = {
-      -- prompt_prefix = icons.ui.Telescope .. " ",
-      -- selection_caret = icons.ui.Forward .. " ",
-      -- entry_prefix = "  ",
       initial_mode = "insert",
       selection_strategy = "reset",
-      -- sorting_strategy = nil,
-      -- layout_strategy = nil,
-      -- layout_config = {},
       vimgrep_arguments = {
-        -- NOTE: ここのオプションが効いてないのでkeymapで対処中
         "rg",
         "--files",
         "--color=never",
@@ -50,7 +42,6 @@ local setup = function()
       border = {},
       borderchars = nil,
       color_devicons = true,
-      -- set_env = { ["COLORTERM"] = "truecolor" }, -- default = nil,
     },
     pickers = {
       find_files = {

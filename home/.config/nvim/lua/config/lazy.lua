@@ -1,20 +1,22 @@
-local plugins = {
-  require("plugins.catppuccin"),
-  require("plugins.neo-tree"),
-  require("plugins.toggleterm"),
-  require("plugins.lualine"),
-  require("plugins.bufferline"),
-  require("plugins.lsp"),
-  require("plugins.cmp"),
-  require("plugins.comment"),
-  require("plugins.rainbow-delimiters"),
-  require("plugins.treesitter"),
-  require("plugins.indent-blankline"),
-  require("plugins.navic"),
-  require("plugins.telescope"),
-  require("plugins.diffview"),
-  require("plugins.markdown-preview"),
+local plugin_modules = {
+  "plugins.catppuccin",
+  "plugins.neo-tree",
+  "plugins.toggleterm",
+  "plugins.lualine",
+  "plugins.bufferline",
+  "plugins.lsp",
+  "plugins.cmp",
+  "plugins.comment",
+  "plugins.rainbow-delimiters",
+  "plugins.treesitter",
+  "plugins.indent-blankline",
+  "plugins.navic",
+  "plugins.telescope",
+  "plugins.diffview",
+  "plugins.markdown-preview",
 }
+
+local plugins = vim.tbl_map(require, plugin_modules)
 
 -- Bootstrap lazy.nvim
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
@@ -36,7 +38,7 @@ vim.opt.rtp:prepend(lazypath)
 
 -- Setup lazy.nvim
 require("lazy").setup({
-  spec = { plugins },
+  spec = plugins,
   ui = { border = "single" },
   checker = { enabled = false },
   lockfile = vim.fn.stdpath("config") .. "/lazy-lock.json",
