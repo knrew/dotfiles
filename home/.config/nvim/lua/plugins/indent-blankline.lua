@@ -1,7 +1,7 @@
-local setup = function()
+local opts = function()
   local icons = require("utils.icons")
 
-  require("ibl").setup({
+  return {
     indent = {
       char = icons.ui.LineLeft,
     },
@@ -34,17 +34,17 @@ local setup = function()
         "lazy",
       },
     },
-  })
-
-  local hooks = require("ibl.hooks")
-  hooks.register(hooks.type.WHITESPACE, hooks.builtin.hide_first_space_indent_level)
+  }
 end
 
 return {
   "lukas-reineke/indent-blankline.nvim",
   main = "ibl",
-  opts = {},
-  config = function()
-    setup()
+  opts = opts,
+  config = function(_, ibl_opts)
+    require("ibl").setup(ibl_opts)
+
+    local hooks = require("ibl.hooks")
+    hooks.register(hooks.type.WHITESPACE, hooks.builtin.hide_first_space_indent_level)
   end,
 }

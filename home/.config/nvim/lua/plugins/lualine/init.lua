@@ -1,4 +1,4 @@
-local setup = function()
+local opts = function()
   local components = require("plugins.lualine.components")
 
   local default_sections = {
@@ -40,7 +40,7 @@ local setup = function()
     lualine_z = { components.location },
   }
 
-  require("lualine").setup({
+  return {
     options = {
       icons_enabled = true,
       -- theme = "auto",
@@ -86,12 +86,10 @@ local setup = function()
         sections = toggleterm_sections,
       },
     },
-  })
+  }
 end
 
 return {
   "nvim-lualine/lualine.nvim",
-  config = function()
-    setup()
-  end,
+  opts = opts,
 }

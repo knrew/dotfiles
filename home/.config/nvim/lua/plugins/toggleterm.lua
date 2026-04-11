@@ -1,5 +1,6 @@
-local setup = function()
-  require("toggleterm").setup({
+return {
+  "akinsho/toggleterm.nvim",
+  opts = {
     open_mapping = [[<C-\>]],
     hide_numbers = false,
     shade_filetypes = {},
@@ -10,12 +11,5 @@ local setup = function()
     persist_size = true,
     direction = "float",
     close_on_exit = true,
-  })
-end
-
-return {
-  "akinsho/toggleterm.nvim",
-  config = function()
-    setup()
-  end,
+  },
 }

@@ -1,5 +1,7 @@
-local setup = function()
-  require("Comment").setup({
+return {
+  "numToStr/Comment.nvim",
+  main = "Comment",
+  opts = {
     padding = true,
     sticky = true,
     ignore = "^$",
@@ -28,14 +30,7 @@ local setup = function()
       end
     end,
     post_hook = nil,
-  })
-end
-
-return {
-  "numToStr/Comment.nvim",
-  config = function()
-    setup()
-  end,
+  },
   keys = {
     { "gc", mode = { "n", "v" } },
     { "gb", mode = { "n", "v" } },

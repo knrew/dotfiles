@@ -1,4 +1,4 @@
-local setup = function()
+local opts = function()
   local actions = require("telescope.actions")
 
   local mappings = {
@@ -15,7 +15,7 @@ local setup = function()
     n = {},
   }
 
-  require("telescope").setup({
+  return {
     defaults = {
       initial_mode = "insert",
       selection_strategy = "reset",
@@ -77,19 +77,20 @@ local setup = function()
         case_mode = "smart_case",
       },
     },
-  })
-
-  pcall(function()
-    require("telescope").load_extension("fzf")
-  end)
+  }
 end
 
 return {
   {
     "nvim-telescope/telescope.nvim",
     tag = "0.1.8",
-    config = function()
-      setup()
+    opts = opts,
+    config = function(_, telescope_opts)
+      require("telescope").setup(telescope_opts)
+
+      pcall(function()
+        require("telescope").load_extension("fzf")
+      end)
     end,
     lazy = true,
     cmd = "Telescope",

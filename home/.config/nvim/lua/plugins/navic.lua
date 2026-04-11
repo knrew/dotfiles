@@ -1,8 +1,9 @@
 local icons = require("utils.icons")
 
-local setup = function()
-  local navic = require("nvim-navic")
-  navic.setup({
+return {
+  "SmiteshP/nvim-navic",
+  main = "nvim-navic",
+  opts = {
     icons = {
       Array = icons.kind.Array .. " ",
       Boolean = icons.kind.Boolean .. " ",
@@ -43,13 +44,6 @@ local setup = function()
     separator = " " .. icons.ui.ChevronRight .. " ",
     depth_limit = 0,
     depth_limit_indicator = "..",
-  })
-end
-
-return {
-  "SmiteshP/nvim-navic",
-  config = function()
-    setup()
-  end,
+  },
   lazy = true,
 }
