@@ -73,12 +73,12 @@ end
 
 local function add_lsp_buffer_keybindings(bufnr)
   for key, remap in pairs(keymaps_normal) do
-    local opts = { buffer = bufnr, desc = remap[2], noremap = true, silent = true }
+    local opts = { buf = bufnr, desc = remap[2], noremap = true, silent = true }
     vim.keymap.set("n", key, remap[1], opts)
   end
 
   for key, remap in pairs(keymaps_insert_select) do
-    local opts = { buffer = bufnr, desc = remap[2], noremap = true, silent = true }
+    local opts = { buf = bufnr, desc = remap[2], noremap = true, silent = true }
     vim.keymap.set({ "i", "s" }, key, remap[1], opts)
   end
 end
