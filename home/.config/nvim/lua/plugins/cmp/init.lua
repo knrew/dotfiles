@@ -68,10 +68,6 @@ return {
     lazy = true,
   },
   {
-    "folke/neodev.nvim",
-    lazy = true,
-  },
-  {
     "windwp/nvim-autopairs",
     lazy = true,
     event = "InsertEnter",
