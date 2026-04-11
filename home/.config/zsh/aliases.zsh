@@ -45,6 +45,20 @@ alias oc=opencode
 # codex
 alias cx=codex
 
+# claude code
+alias cc=claude
+
+# claude code with glm
+zc() {
+  ANTHROPIC_AUTH_TOKEN="$ZAI_API_KEY" \
+    ANTHROPIC_BASE_URL="https://api.z.ai/api/anthropic" \
+    API_TIMEOUT_MS="3000000" \
+    ANTHROPIC_DEFAULT_HAIKU_MODEL="glm-4.7-flash" \
+    ANTHROPIC_DEFAULT_SONNET_MODEL="glm-4.7" \
+    ANTHROPIC_DEFAULT_OPUS_MODEL="glm-4.7" \
+    claude "$@"
+}
+
 # enable/disable backlight auto off
 alias enable_sleep="(xset s on +dpms)"
 alias disable_sleep="(xset s off -dpms)"
@@ -88,8 +102,8 @@ function cppc() { # clean
 #
 # rust
 #
-alias cc="cargo check"
-alias ccr="cargo check --release"
+# alias cc="cargo check"
+# alias ccr="cargo check --release"
 alias cb="cargo build"
 alias cbr="cargo build --release"
 alias cr="cargo run"
