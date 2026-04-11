@@ -44,7 +44,7 @@ local opts = function()
     options = {
       icons_enabled = true,
       -- theme = "auto",
-      theme = "catppuccin",
+      theme = "catppuccin-nvim",
       component_separators = { left = "", right = "" },
       section_separators = { left = "", right = "" },
       disabled_filetypes = {
