@@ -4,7 +4,7 @@ local M = {
   language_servers = {
     "rust_analyzer",
     "clangd",
-    "cmake",
+    -- "cmake",
     "lua_ls",
     "vimls",
     "bashls",
