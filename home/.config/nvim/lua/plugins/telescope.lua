@@ -1,6 +1,5 @@
-local setup = function()
+local opts = function()
   local actions = require("telescope.actions")
-  -- local icons = require("utils.icons")
 
   local mappings = {
     n = {
@@ -16,18 +15,11 @@ local setup = function()
     n = {},
   }
 
-  require("telescope").setup({
+  return {
     defaults = {
-      -- prompt_prefix = icons.ui.Telescope .. " ",
-      -- selection_caret = icons.ui.Forward .. " ",
-      -- entry_prefix = "  ",
       initial_mode = "insert",
       selection_strategy = "reset",
-      -- sorting_strategy = nil,
-      -- layout_strategy = nil,
-      -- layout_config = {},
       vimgrep_arguments = {
-        -- NOTE: ここのオプションが効いてないのでkeymapで対処中
         "rg",
         "--files",
         "--color=never",
@@ -50,7 +42,6 @@ local setup = function()
       border = {},
       borderchars = nil,
       color_devicons = true,
-      -- set_env = { ["COLORTERM"] = "truecolor" }, -- default = nil,
     },
     pickers = {
       find_files = {
@@ -86,22 +77,37 @@ local setup = function()
         case_mode = "smart_case",
       },
     },
-  })
-
-  pcall(function()
-    require("telescope").load_extension("fzf")
-  end)
+  }
 end
 
 return {
   {
     "nvim-telescope/telescope.nvim",
     tag = "0.1.8",
-    config = function()
-      setup()
+    opts = opts,
+    config = function(_, telescope_opts)
+      require("telescope").setup(telescope_opts)
+
+      pcall(function()
+        require("telescope").load_extension("fzf")
+      end)
     end,
     lazy = true,
     cmd = "Telescope",
+    keys = {
+      {
+        "<C-f>",
+        "<cmd>Telescope find_files find_command=rg,--files,--no-ignore,--hidden<cr>",
+        mode = "n",
+        desc = "Find files including hidden and ignored",
+      },
+      {
+        "<C-M-f>",
+        "<cmd>Telescope find_files find_command=rg,--files<cr>",
+        mode = "n",
+        desc = "Find files",
+      },
+    },
   },
   {
     "nvim-telescope/telescope-fzf-native.nvim",

@@ -1,15 +1,17 @@
 return {
   {
     "hrsh7th/nvim-cmp",
-    event = { "InsertEnter", "CmdlineEnter" },
-    lazy = true,
+    lazy = false,
+    config = function()
+      require("plugins.cmp.setup").setup()
+    end,
     dependencies = {
-      "cmp-nvim-lsp",
-      "cmp_luasnip",
-      "cmp-buffer",
-      "cmp-path",
-      "cmp-cmdline",
-      "cmp-calc",
+      "hrsh7th/cmp-nvim-lsp",
+      "saadparwaiz1/cmp_luasnip",
+      "hrsh7th/cmp-buffer",
+      "hrsh7th/cmp-path",
+      "hrsh7th/cmp-cmdline",
+      "hrsh7th/cmp-calc",
     },
   },
   {
@@ -66,10 +68,6 @@ return {
     lazy = true,
   },
   {
-    "folke/neodev.nvim",
-    lazy = true,
-  },
-  {
     "windwp/nvim-autopairs",
     lazy = true,
     event = "InsertEnter",
@@ -89,11 +87,6 @@ return {
       if status_ok then
         copilot.setup()
         require("copilot_cmp").setup()
-
-        -- vim.defer_fn(function()
-        --   copilot.setup()
-        --   require("copilot_cmp").setup()
-        -- end, 100)
       end
     end,
     dependencies = { "zbirenbaum/copilot.lua" },

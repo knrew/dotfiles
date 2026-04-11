@@ -15,6 +15,14 @@ local function diagnostics_indicator(_, _, diagnostics, _)
   return #result > 0 and result or ""
 end
 
+local function setup_keymaps()
+  local opts = { noremap = true, silent = true }
+
+  vim.keymap.set("n", "<C-PageDown>", "<cmd>BufferLineCycleNext<cr>", opts)
+  vim.keymap.set("n", "<C-PageUp>", "<cmd>BufferLineCyclePrev<cr>", opts)
+  vim.keymap.set("n", "<C-u>", "<cmd>BufferLineCloseOthers<cr>", opts)
+end
+
 local setup = function()
   local options = {
     numbers = "none",
@@ -26,20 +34,21 @@ local setup = function()
 
   local highlights = nil
 
-  local ok, catppuccin = pcall(require, "catppuccin.groups.integrations.bufferline")
+  local ok, catppuccin = pcall(require, "catppuccin.special.bufferline")
   if ok then
-    highlights = catppuccin.get()
+    highlights = catppuccin.get_theme()
   end
 
   require("bufferline").setup({
     options = options,
     highlights = highlights,
   })
+
+  setup_keymaps()
 end
 
 return {
   "akinsho/bufferline.nvim",
-  after = "catppuccin",
   config = function()
     setup()
   end,

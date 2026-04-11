@@ -1,13 +1,8 @@
-local options = {
+local global_options = {
   backup = false,
   clipboard = "unnamedplus",
   cmdheight = 1,
-  completeopt = { "menuone", "noselect" },
-  conceallevel = 0,
   encoding = "utf-8",
-  fileencoding = "utf-8",
-  foldmethod = "manual",
-  foldexpr = "",
   hidden = true,
   hlsearch = true,
   ignorecase = true,
@@ -15,20 +10,37 @@ local options = {
   pumheight = 10,
   showmode = false,
   smartcase = true,
-  smartindent = true,
   splitbelow = false,
   splitright = false,
-  swapfile = false,
   timeoutlen = 1000,
   title = true,
-  -- undodir = undodir,
-  undofile = true,
   updatetime = 100,
   writebackup = false,
+  showtabline = 2,
+  showcmd = false,
+  ruler = false,
+  laststatus = 3,
+  whichwrap = "<,>,[,],h,l",
+  shortmess = "cIF",
+}
+
+local buffer_local_options = {
+  completeopt = { "menuone", "noselect" },
+  fileencoding = "utf-8",
+  smartindent = true,
+  swapfile = false,
+  -- undodir = undodir,
+  undofile = true,
   expandtab = true,
   shiftwidth = 2,
   tabstop = 2,
-  showtabline = 2,
+  spelllang = "cjk",
+}
+
+local window_local_options = {
+  conceallevel = 0,
+  foldmethod = "manual",
+  foldexpr = "",
   cursorline = true,
   number = true,
   relativenumber = false,
@@ -38,56 +50,26 @@ local options = {
   -- shade_file=,
   scrolloff = 8,
   sidescrolloff = 8,
-  showcmd = false,
-  ruler = false,
-  laststatus = 3,
-
-  spelllang = "cjk",
-  shortmess = "cIF",
-  whichwrap = "<,>,[,],h,l",
 }
 
-local setup = function()
-  for k, v in pairs(options) do
-    vim.opt[k] = v
-  end
-
-  -- vim.opt.spelllang:append("cjk")
-  -- vim.opt.shortmess:append("c")
-  -- vim.opt.shortmess:append("I")
-  -- vim.opt.whichwrap:append("<,>,[,],h,l")
-
-  -- setup diagnostics
-  local icons = require("utils.icons")
-  local default_diagnostic_config = {
-    signs = {
-      active = true,
-      text = {
-        [vim.diagnostic.severity.ERROR] = icons.diagnostics.Error,
-        [vim.diagnostic.severity.WARN] = icons.diagnostics.Warning,
-        [vim.diagnostic.severity.INFO] = icons.diagnostics.Information,
-        [vim.diagnostic.severity.HINT] = icons.diagnostics.Hint,
-      },
-    },
-    virtual_text = true,
-    update_in_insert = false,
-    underline = true,
-    severity_sort = true,
-    float = {
-      focusable = true,
-      style = "minimal",
-      border = "single",
-      source = "always",
-      header = "",
-      prefix = "",
-    },
-  }
-  vim.diagnostic.config(default_diagnostic_config)
-
-  -- inlay hint enabled
-  if vim.lsp.inlay_hint then
-    vim.lsp.inlay_hint.enable(true, { 0 })
+local function set_options(target, values)
+  for key, value in pairs(values) do
+    target[key] = value
   end
 end
 
-setup()
+set_options(vim.opt, global_options)
+set_options(vim.opt_global, buffer_local_options)
+set_options(vim.opt_global, window_local_options)
+
+-- Apply local options to the current editing context without touching special
+-- buffers during config reload.
+if vim.bo.buftype == "" then
+  for key, value in pairs(buffer_local_options) do
+    if key ~= "fileencoding" or vim.bo.modifiable then
+      vim.opt_local[key] = value
+    end
+  end
+
+  set_options(vim.opt_local, window_local_options)
+end
