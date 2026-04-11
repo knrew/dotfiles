@@ -11,7 +11,6 @@ return {
     },
   },
   init = function()
-    vim.g.mkdp_auto_start = 1
     vim.g.mkdp_filetypes = { "markdown" }
   end,
   build = "cd app && npm install",
