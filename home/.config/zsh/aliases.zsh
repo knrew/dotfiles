@@ -46,7 +46,7 @@ alias oc=opencode
 alias cx=codex
 
 # claude code
-alias cc=claude
+alias cl=claude
 
 # claude code with glm
 zc() {
