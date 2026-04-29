@@ -8,7 +8,6 @@ concurrency:
   group: ${{ github.workflow }}-${{ github.head_ref || github.ref_name }}
   cancel-in-progress: true
 
-
 jobs:
   yaml:
     runs-on: ubuntu-24.04
