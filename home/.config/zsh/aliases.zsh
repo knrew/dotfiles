@@ -4,7 +4,7 @@ function loadrc() {
 }
 
 # ls -> eza
-if type eza &>/dev/null; then
+if type eza &> /dev/null; then
   alias ls=eza
 else
   alias ls="ls --color=auto"
@@ -17,7 +17,7 @@ alias l=ls
 # alias l="ls -CF"
 
 # nvim
-if type nvim &>/dev/null; then
+if type nvim &> /dev/null; then
   export EDITOR=nvim
   alias vim=nvim
   alias vi=nvim
@@ -25,13 +25,13 @@ if type nvim &>/dev/null; then
 fi
 
 # rm -> trash-put
-type trash-put &>/dev/null && alias rm=trash-put
+type trash-put &> /dev/null && alias rm=trash-put
 
 # grep -> ripgrep
-type rg &>/dev/null && alias grep=rg
+type rg &> /dev/null && alias grep=rg
 
 # cat -> bat
-type bat &>/dev/null && alias cat=bat
+type bat &> /dev/null && alias cat=bat
 
 # clipboard
 alias clip="xclip -selection c"

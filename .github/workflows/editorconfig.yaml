@@ -11,7 +11,7 @@ jobs:
 
       - uses: actions/setup-go@v6
         with:
-          go-version: "1.25.5"
+          go-version: 1.25.5
 
       - run: |
           go install github.com/editorconfig-checker/editorconfig-checker/v3/cmd/editorconfig-checker@v3.6.1
