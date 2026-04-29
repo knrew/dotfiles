@@ -1,18 +1,25 @@
-name: Lint yaml
+name: Yaml
 
 on:
   workflow_call:
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.head_ref || github.ref_name }}
+  cancel-in-progress: true
+
 
 jobs:
-  yamllint:
+  yaml:
     runs-on: ubuntu-24.04
+    env:
+      YAMLLINT_VERSION: 1.38.0
     steps:
       - uses: actions/checkout@v6
-
       - uses: actions/setup-python@v6
         with:
           python-version: "3.14"
-
-      - run: pip install yamllint==1.38.0
-
-      - run: yamllint .
+      - name: Install yamllint
+        run: pip install "yamllint==${YAMLLINT_VERSION}"
+      - name: Check YAML formatting
+        run: yamllint .
