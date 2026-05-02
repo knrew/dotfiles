@@ -47,7 +47,7 @@ is_shell_dotfile() {
   local file=$1
 
   case "${file##*/}" in
-    .bashrc | .bash_profile | .bash_login | .bash_logout | .bash_aliases | .profile | .xinitrc | .xprofile | .xsession | .xsessionrc)
+    .bashrc | .bash_profile | .bash_login | .bash_logout | .bash_aliases | .profile)
       return 0
       ;;
     *)
