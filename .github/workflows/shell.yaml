@@ -1,13 +1,18 @@
-name: Lint shell
+name: Shell lint
 
 on:
   workflow_call:
+  workflow_dispatch:
 
 jobs:
   shellcheck-and-shfmt:
     runs-on: ubuntu-24.04
+    permissions:
+      contents: read
     steps:
       - uses: actions/checkout@v6
+        with:
+          persist-credentials: false
       - run: |
           sudo apt update &&
           sudo apt install -y shellcheck shfmt

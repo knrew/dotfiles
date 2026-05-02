@@ -1,16 +1,20 @@
-name: Toml
+name: Toml lint
 
 on:
   workflow_call:
   workflow_dispatch:
 
 jobs:
-  toml:
+  taplo:
     runs-on: ubuntu-24.04
+    permissions:
+      contents: read
     env:
       TAPLO_VERSION: 0.10.0
     steps:
       - uses: actions/checkout@v6
+        with:
+          persist-credentials: false
       - name: Install taplo
         run: |
           mkdir -p "${RUNNER_TEMP}/bin"
@@ -18,5 +22,4 @@ jobs:
             | gzip -d - > "${RUNNER_TEMP}/bin/taplo"
           chmod +x "${RUNNER_TEMP}/bin/taplo"
           echo "${RUNNER_TEMP}/bin" >> "${GITHUB_PATH}"
-      - name: Check TOML formatting
-        run: taplo fmt --check
+      - run: taplo fmt --check
