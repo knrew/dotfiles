@@ -1,16 +1,20 @@
-name: Lint json
+name: Json lint
 
 on:
   workflow_call:
+  workflow_dispatch:
 
 jobs:
   prettier:
     runs-on: ubuntu-24.04
+    permissions:
+      contents: read
     steps:
       - uses: actions/checkout@v6
-
+        with:
+          persist-credentials: false
       - uses: actions/setup-node@v6
         with:
           node-version: 24
-
-      - run: npx prettier@3.8.1 --check "**/*.{json,jsonc}"
+      - name: Check JSON formatting
+        run: npx --yes prettier@3.8.3 --check "**/*.{json,jsonc}" --no-error-on-unmatched-pattern

@@ -1,10 +1,15 @@
-name: CI
+name: Lint
 
 on:
   push:
   pull_request:
   schedule:
-    - cron: "0 0 1 * *"
+    - cron: 0 0 1 * *
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.head_ref || github.ref_name }}
+  cancel-in-progress: true
 
 jobs:
   lua:
@@ -13,8 +18,10 @@ jobs:
     uses: ./.github/workflows/toml.yaml
   yaml:
     uses: ./.github/workflows/yaml.yaml
-  shell:
-    uses: ./.github/workflows/shell.yaml
+  sh-bash:
+    uses: ./.github/workflows/sh-bash.yaml
+  zsh:
+    uses: ./.github/workflows/zsh.yaml
   markdown:
     uses: ./.github/workflows/markdown.yaml
   json:

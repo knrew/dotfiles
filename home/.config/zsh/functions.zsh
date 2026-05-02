@@ -1,5 +1,5 @@
 function get_battery_level() {
-  if command -v acpi &>/dev/null; then
+  if command -v acpi &> /dev/null; then
     acpi -b | grep -o '[0-9]+%' | cut -d% -f1
   fi
 }

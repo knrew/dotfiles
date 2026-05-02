@@ -1,18 +1,23 @@
-name: Lint yaml
+name: Yaml lint
 
 on:
   workflow_call:
+  workflow_dispatch:
 
 jobs:
   yamllint:
     runs-on: ubuntu-24.04
+    permissions:
+      contents: read
+    env:
+      YAMLLINT_VERSION: 1.38.0
     steps:
       - uses: actions/checkout@v6
-
+        with:
+          persist-credentials: false
       - uses: actions/setup-python@v6
         with:
-          python-version: "3.14"
-
-      - run: pip install yamllint==1.38.0
-
+          python-version: 3.14
+      - name: Install yamllint
+        run: pip install "yamllint==${YAMLLINT_VERSION}"
       - run: yamllint .

@@ -1,19 +1,19 @@
-name: Lint Markdown
+name: Markdown Lint
 
 on:
   workflow_call:
+  workflow_dispatch:
 
 jobs:
-  markdownlint:
+  markdownlint-cli2:
     runs-on: ubuntu-24.04
-
+    permissions:
+      contents: read
     steps:
       - uses: actions/checkout@v6
-
-      - uses: actions/setup-node@v6
         with:
-          node-version: 24
-
-      - name: Run markdownlint
-        run: |
-          find . -type f -name "*md" -print0 | xargs -0 npx markdownlint-cli2@0.20.0 --config .markdownlint.json
+          persist-credentials: false
+      - uses: DavidAnson/markdownlint-cli2-action@v23
+        with:
+          config: .markdownlint.json
+          globs: "**/*.md"

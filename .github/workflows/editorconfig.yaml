@@ -1,19 +1,19 @@
-name: Check editorconfig
+name: Editorconfig lint
 
 on:
   workflow_call:
+  workflow_dispatch:
 
 jobs:
   editorconfig-checker:
     runs-on: ubuntu-24.04
+    permissions:
+      contents: read
     steps:
       - uses: actions/checkout@v6
-
-      - uses: actions/setup-go@v6
         with:
-          go-version: "1.25.5"
-
-      - run: |
-          go install github.com/editorconfig-checker/editorconfig-checker/v3/cmd/editorconfig-checker@v3.6.1
-
-      - run: editorconfig-checker -format github-actions
+          persist-credentials: false
+      - name: Set up editorconfig-checker
+        uses: editorconfig-checker/action-editorconfig-checker@v2
+      - name: Run editorconfig-checker
+        run: editorconfig-checker

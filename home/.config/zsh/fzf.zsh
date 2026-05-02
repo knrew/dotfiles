@@ -15,14 +15,14 @@ function fh() {
 # cd(without hidden directories)
 function fd() {
   local dir
-  dir=$(find ${1:-.} -path '*/\.*' -prune -o -type d -print 2>/dev/null | fzf +m) &&
+  dir=$(find ${1:-.} -path '*/\.*' -prune -o -type d -print 2> /dev/null | fzf +m) &&
     cd "$dir"
 }
 
 # cd(including hidden directories)
 function fda() {
   local dir
-  dir=$(find ${1:-.} -type d 2>/dev/null | fzf +m) && cd "$dir"
+  dir=$(find ${1:-.} -type d 2> /dev/null | fzf +m) && cd "$dir"
 }
 
 # cd(parent directories)
@@ -57,14 +57,14 @@ function cf() {
 # open file/directory with vim(without hidden files)
 function fe() {
   local file
-  file=$(find ${1:-.} -path '*/\.*' -prune -o -print 2>/dev/null | fzf +m) &&
+  file=$(find ${1:-.} -path '*/\.*' -prune -o -print 2> /dev/null | fzf +m) &&
     ${EDITOR:-vim} "$file"
 }
 
 # open file/directory with vim(including hidden files)
 function fea() {
   local file
-  file=$(find ${1:-.} 2>/dev/null | fzf +m) &&
+  file=$(find ${1:-.} 2> /dev/null | fzf +m) &&
     ${EDITOR:-vim} "$file"
 }
 

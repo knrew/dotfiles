@@ -1,4 +1,2 @@
-shell=bash
 color=always
 external-sources=true
-disable=SC1090,SC1091
