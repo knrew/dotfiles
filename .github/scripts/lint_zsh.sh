@@ -80,4 +80,4 @@ for file in "${files[@]}"; do
 done
 
 printf 'shfmt:\n'
-shfmt -ln zsh -d "${files[@]}"
+shfmt -d "${files[@]}"
