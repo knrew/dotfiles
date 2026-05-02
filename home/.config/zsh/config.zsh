@@ -28,7 +28,7 @@ ZSHDIR=$HOME/.config/zsh
 # starship
 STARSHIP_CONFIG=$HOME/.config/starship/starship2.toml
 [[ -f $STARSHIP_CONFIG ]] && export STARSHIP_CONFIG=$STARSHIP_CONFIG
-type starship &> /dev/null && eval "$(starship init zsh)"
+type starship &>/dev/null && eval "$(starship init zsh)"
 
 # Show warning if battery level is below 20%
-typeset -f alert_low_battery &> /dev/null && alert_low_battery 20
+typeset -f alert_low_battery &>/dev/null && alert_low_battery 20

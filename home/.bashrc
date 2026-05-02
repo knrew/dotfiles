@@ -1,3 +1,4 @@
+# shellcheck shell=bash
 #
 # ~/.bashrc
 #
@@ -11,6 +12,7 @@ export PATH=$PATH:$HOME/.local/bin
 
 # Rust
 if [ -f "$HOME/.cargo/env" ]; then
+  # shellcheck source=/dev/null
   source "$HOME/.cargo/env"
 fi
 

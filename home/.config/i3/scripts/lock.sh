@@ -1,4 +1,4 @@
-#!/bin/env sh
+#!/usr/bin/env sh
 
 BLANK='#00000000'
 CLEAR='#ffffff22'
