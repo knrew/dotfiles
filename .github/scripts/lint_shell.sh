@@ -1,24 +1,71 @@
-#!/bin/env bash
+#!/usr/bin/env bash
 
 set -euo pipefail
 
+has_shebang() {
+  local file=$1
+  local first_line
+
+  IFS= read -r first_line < "$file" || return 1
+
+  [[ $first_line == '#!'* ]]
+}
+
+is_sh_or_bash_shebang() {
+  local file=$1
+  local first_line
+
+  IFS= read -r first_line < "$file" || return 1
+
+  case "$first_line" in
+    '#!/bin/sh' | '#!/bin/sh '* | '#!/usr/bin/sh' | '#!/usr/bin/sh '* | \
+      '#!/usr/bin/env sh' | '#!/usr/bin/env sh '* | '#!/usr/bin/env -S sh' | '#!/usr/bin/env -S sh '* | \
+      '#!/bin/bash' | '#!/bin/bash '* | '#!/usr/bin/bash' | '#!/usr/bin/bash '* | \
+      '#!/usr/bin/env bash' | '#!/usr/bin/env bash '* | '#!/usr/bin/env -S bash' | '#!/usr/bin/env -S bash '*)
+      return 0
+      ;;
+    *)
+      return 1
+      ;;
+  esac
+}
+
+is_shell_extension() {
+  local file=$1
+
+  case "$file" in
+    *.sh | *.bash)
+      return 0
+      ;;
+    *)
+      return 1
+      ;;
+  esac
+}
+
+is_shell_dotfile() {
+  local file=$1
+
+  case "${file##*/}" in
+    .bashrc | .bash_profile | .bash_login | .bash_logout | .bash_aliases | .profile | .xinitrc | .xprofile | .xsession | .xsessionrc)
+      return 0
+      ;;
+    *)
+      return 1
+      ;;
+  esac
+}
+
 list_shell_files() {
-  find . \
-    -type d \( -name .git \) -prune -o \
-    -type f \( \
-    -name "*.sh" -o \
-    -name "*.bash" -o \
-    -name "*.bashrc" -o \
-    -name "*.bash_profile" -o \
-    -name "*.zsh" -o \
-    -name "*.zshrc" -o \
-    -name "*.zprofile" -o \
-    -name "*.xinitrc" \
-    \) \
-    ! \( \
-    -name "*fzf.zsh" \
-    \) \
-    -print0
+  git ls-files -z | while IFS= read -r -d '' file; do
+    if has_shebang "$file"; then
+      if is_sh_or_bash_shebang "$file"; then
+        printf '%s\0' "$file"
+      fi
+    elif is_shell_extension "$file" || is_shell_dotfile "$file"; then
+      printf '%s\0' "$file"
+    fi
+  done
 }
 
 mapfile -d '' -t files < <(list_shell_files)
@@ -28,14 +75,8 @@ if [[ ${#files[@]} -eq 0 ]]; then
   exit 0
 fi
 
-for f in "${files[@]}"; do
-  printf "shellcheck: \"%s\" ... " "$f"
-  shellcheck "$f"
-  printf "done\n"
-done
+printf 'shellcheck:\n'
+shellcheck "${files[@]}"
 
-for f in "${files[@]}"; do
-  printf "shfmt: \"%s\" ... " "$f"
-  shfmt -d "$f"
-  printf "done\n"
-done
+printf 'shfmt:\n'
+shfmt -d "${files[@]}"
