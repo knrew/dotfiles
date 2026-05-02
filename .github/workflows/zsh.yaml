@@ -1,0 +1,31 @@
+name: Zsh lint
+
+on:
+  workflow_call:
+  workflow_dispatch:
+
+jobs:
+  zsh:
+    runs-on: ubuntu-24.04
+    permissions:
+      contents: read
+    defaults:
+      run:
+        shell: bash
+    env:
+      SHFMT_VERSION: v3.13.1
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          persist-credentials: false
+      - uses: actions/setup-go@v6
+        with:
+          go-version: 1.25
+      - name: Check zsh availability
+        run: zsh --version
+      - name: Install shfmt
+        run: |
+          go install "mvdan.cc/sh/v3/cmd/shfmt@${SHFMT_VERSION}"
+          echo "$(go env GOPATH)/bin" >> "${GITHUB_PATH}"
+      - name: Run zsh lint
+        run: ./.github/scripts/lint_zsh.sh

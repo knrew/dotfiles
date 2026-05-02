@@ -71,7 +71,7 @@ list_shell_files() {
 mapfile -d '' -t files < <(list_shell_files)
 
 if [[ ${#files[@]} -eq 0 ]]; then
-  printf "No shell files found.\n"
+  printf "No sh/bash files found.\n"
   exit 0
 fi
 
