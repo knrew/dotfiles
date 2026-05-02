@@ -15,5 +15,4 @@ jobs:
           persist-credentials: false
       - uses: DavidAnson/markdownlint-cli2-action@v23
         with:
-          config: .markdownlint.json
           globs: "**/*.md"
