@@ -1,4 +1,4 @@
-name: Toml lint
+name: "Toml lint"
 
 on:
   workflow_call:
@@ -6,20 +6,20 @@ on:
 
 jobs:
   taplo:
-    runs-on: ubuntu-24.04
+    runs-on: "ubuntu-24.04"
     permissions:
-      contents: read
+      contents: "read"
     env:
-      TAPLO_VERSION: 0.10.0
+      TAPLO_VERSION: "0.10.0"
     steps:
-      - uses: actions/checkout@v6
+      - uses: "actions/checkout@v6"
         with:
           persist-credentials: false
-      - name: Install taplo
+      - name: "Install taplo"
         run: |
           mkdir -p "${RUNNER_TEMP}/bin"
           curl -fsSL "https://github.com/tamasfe/taplo/releases/download/${TAPLO_VERSION}/taplo-linux-x86_64.gz" \
             | gzip -d - > "${RUNNER_TEMP}/bin/taplo"
           chmod +x "${RUNNER_TEMP}/bin/taplo"
           echo "${RUNNER_TEMP}/bin" >> "${GITHUB_PATH}"
-      - run: taplo fmt --check
+      - run: "taplo fmt --check"

@@ -1,71 +1,71 @@
-name: Neovim
+name: "Neovim"
 
 on:
   push:
     branches:
-      - master
-      - main
+      - "master"
+      - "main"
     paths:
-      - home/.config/nvim/**
-      - .github/workflows/neovim.yaml
+      - "home/.config/nvim/**"
+      - ".github/workflows/neovim.yaml"
   pull_request:
     paths:
-      - home/.config/nvim/**
-      - .github/workflows/neovim.yaml
+      - "home/.config/nvim/**"
+      - ".github/workflows/neovim.yaml"
   schedule:
-    - cron: 0 0 * * 1
+    - cron: "0 0 * * 1"
   workflow_dispatch:
 
 jobs:
   neovim:
-    name: Neovim ${{ matrix.neovim }}
-    runs-on: ubuntu-24.04
+    name: "Neovim ${{ matrix.neovim }}"
+    runs-on: "ubuntu-24.04"
 
     permissions:
-      contents: read
+      contents: "read"
 
     container:
-      image: archlinux:latest
+      image: "archlinux:latest"
 
     strategy:
       fail-fast: false
       matrix:
         neovim:
-          - stable
-          - nightly
+          - "stable"
+          - "nightly"
 
-    continue-on-error: ${{ matrix.neovim == 'nightly' }}
+    continue-on-error: "${{ matrix.neovim == 'nightly' }}"
 
     defaults:
       run:
-        shell: zsh --no-rcs -e -o pipefail {0}
+        shell: "zsh --no-rcs -e -o pipefail {0}"
 
     env:
-      NVIM_CONFIG_DIR: home/.config/nvim
-      HOME: /tmp/neovim-${{ matrix.neovim }}/home
-      XDG_CONFIG_HOME: /tmp/neovim-${{ matrix.neovim }}/xdg-config
-      XDG_DATA_HOME: /tmp/neovim-${{ matrix.neovim }}/xdg-data
-      XDG_STATE_HOME: /tmp/neovim-${{ matrix.neovim }}/xdg-state
-      XDG_CACHE_HOME: /tmp/neovim-${{ matrix.neovim }}/xdg-cache
+      NVIM_CONFIG_DIR: "home/.config/nvim"
+      HOME: "/tmp/neovim-${{ matrix.neovim }}/home"
+      XDG_CONFIG_HOME: "/tmp/neovim-${{ matrix.neovim }}/xdg-config"
+      XDG_DATA_HOME: "/tmp/neovim-${{ matrix.neovim }}/xdg-data"
+      XDG_STATE_HOME: "/tmp/neovim-${{ matrix.neovim }}/xdg-state"
+      XDG_CACHE_HOME: "/tmp/neovim-${{ matrix.neovim }}/xdg-cache"
 
     steps:
-      - name: Install system dependencies
-        shell: bash
+      - name: "Install system dependencies"
+        shell: "bash"
         run: |
           pacman -Sy --noconfirm archlinux-keyring
           pacman -Syu --noconfirm --needed \
             bash zsh git nodejs npm python python-pip \
             base-devel cmake unzip tar gzip curl ripgrep fd
 
-      - name: Check zsh version
+      - name: "Check zsh version"
         run: |
           zsh --version
 
-      - uses: actions/checkout@v6
+      - uses: "actions/checkout@v6"
         with:
           persist-credentials: false
 
-      - name: Install Neovim ${{ matrix.neovim }}
+      - name: "Install Neovim ${{ matrix.neovim }}"
         run: |
           install_dir="/tmp/neovim-${{ matrix.neovim }}"
 
@@ -76,15 +76,15 @@ jobs:
           mv /tmp/nvim-linux-x86_64 "${install_dir}"
           echo "${install_dir}/bin" >> "${GITHUB_PATH}"
 
-      - name: Check Neovim version
+      - name: "Check Neovim version"
         run: |
           nvim --version
 
-      - name: Check lazy-lock.json exists
+      - name: "Check lazy-lock.json exists"
         run: |
           test -f "${NVIM_CONFIG_DIR}/lazy-lock.json"
 
-      - name: Prepare isolated config
+      - name: "Prepare isolated config"
         run: |
           mkdir -p \
             "${HOME}" \
@@ -94,23 +94,23 @@ jobs:
             "${XDG_CACHE_HOME}"
           cp -R "${NVIM_CONFIG_DIR}" "${XDG_CONFIG_HOME}/nvim"
 
-      - name: Restore lazy.nvim plugins from lockfile
+      - name: "Restore lazy.nvim plugins from lockfile"
         timeout-minutes: 10
         run: |
           nvim --headless "+Lazy! restore" "+qa"
 
-      - name: Load config after plugin restore
+      - name: "Load config after plugin restore"
         timeout-minutes: 10
         run: |
           nvim --headless "+qa"
 
-      - name: Check lazy-lock.json was not changed
+      - name: "Check lazy-lock.json was not changed"
         run: |
           diff -u \
             "${NVIM_CONFIG_DIR}/lazy-lock.json" \
             "${XDG_CONFIG_HOME}/nvim/lazy-lock.json"
 
-      - name: Smoke test representative filetypes
+      - name: "Smoke test representative filetypes"
         timeout-minutes: 10
         run: |
           tmpdir="$(mktemp -d)"
@@ -190,7 +190,7 @@ jobs:
           print -r -- '\documentclass{article}' > "${tmpdir}/smoke.tex"
           check_filetype "${tmpdir}/smoke.tex" tex
 
-      - name: Load important plugins
+      - name: "Load important plugins"
         timeout-minutes: 10
         run: |
           nvim --headless \

@@ -1,4 +1,4 @@
-name: Editorconfig lint
+name: "Editorconfig lint"
 
 on:
   workflow_call:
@@ -6,14 +6,14 @@ on:
 
 jobs:
   editorconfig-checker:
-    runs-on: ubuntu-24.04
+    runs-on: "ubuntu-24.04"
     permissions:
-      contents: read
+      contents: "read"
     steps:
-      - uses: actions/checkout@v6
+      - uses: "actions/checkout@v6"
         with:
           persist-credentials: false
-      - name: Set up editorconfig-checker
-        uses: editorconfig-checker/action-editorconfig-checker@v2
-      - name: Run editorconfig-checker
-        run: editorconfig-checker
+      - name: "Set up editorconfig-checker"
+        uses: "editorconfig-checker/action-editorconfig-checker@v2"
+      - name: "Run editorconfig-checker"
+        run: "editorconfig-checker"

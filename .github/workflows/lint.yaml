@@ -1,33 +1,33 @@
-name: Lint
+name: "Lint"
 
 on:
   push:
     branches:
-      - master
-      - main
+      - "master"
+      - "main"
   pull_request:
   schedule:
-    - cron: 0 0 1 * *
+    - cron: "0 0 1 * *"
   workflow_dispatch:
 
 concurrency:
-  group: ${{ github.workflow }}-${{ github.event_name }}-${{ github.ref }}
+  group: "${{ github.workflow }}-${{ github.event_name }}-${{ github.ref }}"
   cancel-in-progress: true
 
 jobs:
   lua:
-    uses: ./.github/workflows/lua.yaml
+    uses: "./.github/workflows/lua.yaml"
   toml:
-    uses: ./.github/workflows/toml.yaml
+    uses: "./.github/workflows/toml.yaml"
   yaml:
-    uses: ./.github/workflows/yaml.yaml
+    uses: "./.github/workflows/yaml.yaml"
   sh-bash:
-    uses: ./.github/workflows/sh-bash.yaml
+    uses: "./.github/workflows/sh-bash.yaml"
   zsh:
-    uses: ./.github/workflows/zsh.yaml
+    uses: "./.github/workflows/zsh.yaml"
   markdown:
-    uses: ./.github/workflows/markdown.yaml
+    uses: "./.github/workflows/markdown.yaml"
   json:
-    uses: ./.github/workflows/json.yaml
+    uses: "./.github/workflows/json.yaml"
   editorconfig:
-    uses: ./.github/workflows/editorconfig.yaml
+    uses: "./.github/workflows/editorconfig.yaml"

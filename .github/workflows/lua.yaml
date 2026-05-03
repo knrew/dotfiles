@@ -1,4 +1,4 @@
-name: Lua lint
+name: "Lua lint"
 
 on:
   workflow_call:
@@ -6,27 +6,27 @@ on:
 
 jobs:
   luacheck:
-    runs-on: ubuntu-24.04
+    runs-on: "ubuntu-24.04"
     permissions:
-      contents: read
+      contents: "read"
     steps:
-      - uses: actions/checkout@v6
+      - uses: "actions/checkout@v6"
         with:
           persist-credentials: false
-      - uses: lunarmodules/luacheck@v1
+      - uses: "lunarmodules/luacheck@v1"
         with:
-          args: --codes --ranges --no-color .
+          args: "--codes --ranges --no-color ."
 
   stylua:
-    runs-on: ubuntu-24.04
+    runs-on: "ubuntu-24.04"
     permissions:
-      contents: read
+      contents: "read"
     steps:
-      - uses: actions/checkout@v6
+      - uses: "actions/checkout@v6"
         with:
           persist-credentials: false
-      - uses: JohnnyMorganz/stylua-action@v5
+      - uses: "JohnnyMorganz/stylua-action@v5"
         with:
-          token: ${{ github.token }}
-          version: 2.4.1
-          args: --check --output-format=unified .
+          token: "${{ github.token }}"
+          version: "2.4.1"
+          args: "--check --output-format=unified ."

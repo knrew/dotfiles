@@ -1,4 +1,4 @@
-name: Markdown Lint
+name: "Markdown Lint"
 
 on:
   workflow_call:
@@ -6,13 +6,13 @@ on:
 
 jobs:
   markdownlint-cli2:
-    runs-on: ubuntu-24.04
+    runs-on: "ubuntu-24.04"
     permissions:
-      contents: read
+      contents: "read"
     steps:
-      - uses: actions/checkout@v6
+      - uses: "actions/checkout@v6"
         with:
           persist-credentials: false
-      - uses: DavidAnson/markdownlint-cli2-action@v23
+      - uses: "DavidAnson/markdownlint-cli2-action@v23"
         with:
           globs: "**/*.md"
