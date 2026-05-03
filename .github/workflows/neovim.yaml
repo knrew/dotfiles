@@ -189,3 +189,10 @@ jobs:
 
           print -r -- '\documentclass{article}' > "${tmpdir}/smoke.tex"
           check_filetype "${tmpdir}/smoke.tex" tex
+
+      - name: Load important plugins
+        timeout-minutes: 10
+        run: |
+          nvim --headless \
+            '+lua require("lazy").load({ plugins = { "mason.nvim", "mason-lspconfig.nvim", "none-ls.nvim", "mason-null-ls.nvim" } })' \
+            '+qa'
