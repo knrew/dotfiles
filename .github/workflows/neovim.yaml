@@ -109,3 +109,83 @@ jobs:
           diff -u \
             "${NVIM_CONFIG_DIR}/lazy-lock.json" \
             "${XDG_CONFIG_HOME}/nvim/lazy-lock.json"
+
+      - name: Smoke test representative filetypes
+        timeout-minutes: 10
+        run: |
+          tmpdir="$(mktemp -d)"
+
+          check_filetype() {
+            local file_path="$1"
+            local expected="$2"
+
+            nvim -n --headless "${file_path}" \
+              "+lua local expected = '${expected}'; assert(vim.bo.filetype == expected, vim.fn.expand('%:t') .. ': filetype=' .. vim.bo.filetype .. ', expected=' .. expected)" \
+              "+qa"
+          }
+
+          check_filetype_any() {
+            local file_path="$1"
+            local expected_csv="$2"
+
+            nvim -n --headless "${file_path}" \
+              "+lua local expected = vim.split('${expected_csv}', ','); assert(vim.tbl_contains(expected, vim.bo.filetype), vim.fn.expand('%:t') .. ': filetype=' .. vim.bo.filetype .. ', expected one of=' .. '${expected_csv}')" \
+              "+qa"
+          }
+
+          print -r -- 'print("hello")' > "${tmpdir}/smoke.lua"
+          check_filetype "${tmpdir}/smoke.lua" lua
+
+          print -r -- '# hello' > "${tmpdir}/smoke.md"
+          check_filetype "${tmpdir}/smoke.md" markdown
+
+          print -r -- 'name: smoke' > "${tmpdir}/smoke.yaml"
+          check_filetype "${tmpdir}/smoke.yaml" yaml
+
+          print -r -- 'name: smoke' > "${tmpdir}/smoke.yml"
+          check_filetype "${tmpdir}/smoke.yml" yaml
+
+          print -r -- '{"name":"smoke"}' > "${tmpdir}/smoke.json"
+          check_filetype "${tmpdir}/smoke.json" json
+
+          print -r -- '{ "name": "smoke" }' > "${tmpdir}/smoke.jsonc"
+          check_filetype "${tmpdir}/smoke.jsonc" jsonc
+
+          print -r -- 'name = "smoke"' > "${tmpdir}/smoke.toml"
+          check_filetype "${tmpdir}/smoke.toml" toml
+
+          print -r -- 'echo smoke' > "${tmpdir}/smoke.sh"
+          check_filetype "${tmpdir}/smoke.sh" sh
+
+          print -r -- 'echo smoke' > "${tmpdir}/smoke.bash"
+          check_filetype "${tmpdir}/smoke.bash" sh
+
+          print -r -- 'echo smoke' > "${tmpdir}/smoke.zsh"
+          check_filetype "${tmpdir}/smoke.zsh" zsh
+
+          print -r -- 'print("hello")' > "${tmpdir}/smoke.py"
+          check_filetype "${tmpdir}/smoke.py" python
+
+          print -r -- 'fn main() {}' > "${tmpdir}/smoke.rs"
+          check_filetype "${tmpdir}/smoke.rs" rust
+
+          print -r -- 'int main() { return 0; }' > "${tmpdir}/smoke.c"
+          check_filetype "${tmpdir}/smoke.c" c
+
+          print -r -- 'int smoke(void);' > "${tmpdir}/smoke.h"
+          check_filetype_any "${tmpdir}/smoke.h" c,cpp
+
+          print -r -- 'int main() { return 0; }' > "${tmpdir}/smoke.cpp"
+          check_filetype "${tmpdir}/smoke.cpp" cpp
+
+          print -r -- 'int smoke();' > "${tmpdir}/smoke.hpp"
+          check_filetype "${tmpdir}/smoke.hpp" cpp
+
+          print -r -- 'cmake_minimum_required(VERSION 3.20)' > "${tmpdir}/CMakeLists.txt"
+          check_filetype "${tmpdir}/CMakeLists.txt" cmake
+
+          print -r -- 'set number' > "${tmpdir}/smoke.vim"
+          check_filetype "${tmpdir}/smoke.vim" vim
+
+          print -r -- '\documentclass{article}' > "${tmpdir}/smoke.tex"
+          check_filetype "${tmpdir}/smoke.tex" tex
