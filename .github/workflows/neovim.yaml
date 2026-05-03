@@ -1,0 +1,198 @@
+name: Neovim
+
+on:
+  push:
+    branches:
+      - master
+      - main
+    paths:
+      - home/.config/nvim/**
+      - .github/workflows/neovim.yaml
+  pull_request:
+    paths:
+      - home/.config/nvim/**
+      - .github/workflows/neovim.yaml
+  schedule:
+    - cron: 0 0 * * 1
+  workflow_dispatch:
+
+jobs:
+  neovim:
+    name: Neovim ${{ matrix.neovim }}
+    runs-on: ubuntu-24.04
+
+    permissions:
+      contents: read
+
+    container:
+      image: archlinux:latest
+
+    strategy:
+      fail-fast: false
+      matrix:
+        neovim:
+          - stable
+          - nightly
+
+    continue-on-error: ${{ matrix.neovim == 'nightly' }}
+
+    defaults:
+      run:
+        shell: zsh --no-rcs -e -o pipefail {0}
+
+    env:
+      NVIM_CONFIG_DIR: home/.config/nvim
+      HOME: /tmp/neovim-${{ matrix.neovim }}/home
+      XDG_CONFIG_HOME: /tmp/neovim-${{ matrix.neovim }}/xdg-config
+      XDG_DATA_HOME: /tmp/neovim-${{ matrix.neovim }}/xdg-data
+      XDG_STATE_HOME: /tmp/neovim-${{ matrix.neovim }}/xdg-state
+      XDG_CACHE_HOME: /tmp/neovim-${{ matrix.neovim }}/xdg-cache
+
+    steps:
+      - name: Install system dependencies
+        shell: bash
+        run: |
+          pacman -Sy --noconfirm archlinux-keyring
+          pacman -Syu --noconfirm --needed \
+            bash zsh git nodejs npm python python-pip \
+            base-devel cmake unzip tar gzip curl ripgrep fd
+
+      - name: Check zsh version
+        run: |
+          zsh --version
+
+      - uses: actions/checkout@v6
+        with:
+          persist-credentials: false
+
+      - name: Install Neovim ${{ matrix.neovim }}
+        run: |
+          install_dir="/tmp/neovim-${{ matrix.neovim }}"
+
+          curl -fsSL \
+            "https://github.com/neovim/neovim-releases/releases/download/${{ matrix.neovim }}/nvim-linux-x86_64.tar.gz" \
+            | tar -xz -C /tmp
+
+          mv /tmp/nvim-linux-x86_64 "${install_dir}"
+          echo "${install_dir}/bin" >> "${GITHUB_PATH}"
+
+      - name: Check Neovim version
+        run: |
+          nvim --version
+
+      - name: Check lazy-lock.json exists
+        run: |
+          test -f "${NVIM_CONFIG_DIR}/lazy-lock.json"
+
+      - name: Prepare isolated config
+        run: |
+          mkdir -p \
+            "${HOME}" \
+            "${XDG_CONFIG_HOME}" \
+            "${XDG_DATA_HOME}" \
+            "${XDG_STATE_HOME}" \
+            "${XDG_CACHE_HOME}"
+          cp -R "${NVIM_CONFIG_DIR}" "${XDG_CONFIG_HOME}/nvim"
+
+      - name: Restore lazy.nvim plugins from lockfile
+        timeout-minutes: 10
+        run: |
+          nvim --headless "+Lazy! restore" "+qa"
+
+      - name: Load config after plugin restore
+        timeout-minutes: 10
+        run: |
+          nvim --headless "+qa"
+
+      - name: Check lazy-lock.json was not changed
+        run: |
+          diff -u \
+            "${NVIM_CONFIG_DIR}/lazy-lock.json" \
+            "${XDG_CONFIG_HOME}/nvim/lazy-lock.json"
+
+      - name: Smoke test representative filetypes
+        timeout-minutes: 10
+        run: |
+          tmpdir="$(mktemp -d)"
+
+          check_filetype() {
+            local file_path="$1"
+            local expected="$2"
+
+            nvim -n --headless "${file_path}" \
+              "+lua local expected = '${expected}'; assert(vim.bo.filetype == expected, vim.fn.expand('%:t') .. ': filetype=' .. vim.bo.filetype .. ', expected=' .. expected)" \
+              "+qa"
+          }
+
+          check_filetype_any() {
+            local file_path="$1"
+            local expected_csv="$2"
+
+            nvim -n --headless "${file_path}" \
+              "+lua local expected = vim.split('${expected_csv}', ','); assert(vim.tbl_contains(expected, vim.bo.filetype), vim.fn.expand('%:t') .. ': filetype=' .. vim.bo.filetype .. ', expected one of=' .. '${expected_csv}')" \
+              "+qa"
+          }
+
+          print -r -- 'print("hello")' > "${tmpdir}/smoke.lua"
+          check_filetype "${tmpdir}/smoke.lua" lua
+
+          print -r -- '# hello' > "${tmpdir}/smoke.md"
+          check_filetype "${tmpdir}/smoke.md" markdown
+
+          print -r -- 'name: smoke' > "${tmpdir}/smoke.yaml"
+          check_filetype "${tmpdir}/smoke.yaml" yaml
+
+          print -r -- 'name: smoke' > "${tmpdir}/smoke.yml"
+          check_filetype "${tmpdir}/smoke.yml" yaml
+
+          print -r -- '{"name":"smoke"}' > "${tmpdir}/smoke.json"
+          check_filetype "${tmpdir}/smoke.json" json
+
+          print -r -- '{ "name": "smoke" }' > "${tmpdir}/smoke.jsonc"
+          check_filetype "${tmpdir}/smoke.jsonc" jsonc
+
+          print -r -- 'name = "smoke"' > "${tmpdir}/smoke.toml"
+          check_filetype "${tmpdir}/smoke.toml" toml
+
+          print -r -- 'echo smoke' > "${tmpdir}/smoke.sh"
+          check_filetype "${tmpdir}/smoke.sh" sh
+
+          print -r -- 'echo smoke' > "${tmpdir}/smoke.bash"
+          check_filetype "${tmpdir}/smoke.bash" sh
+
+          print -r -- 'echo smoke' > "${tmpdir}/smoke.zsh"
+          check_filetype "${tmpdir}/smoke.zsh" zsh
+
+          print -r -- 'print("hello")' > "${tmpdir}/smoke.py"
+          check_filetype "${tmpdir}/smoke.py" python
+
+          print -r -- 'fn main() {}' > "${tmpdir}/smoke.rs"
+          check_filetype "${tmpdir}/smoke.rs" rust
+
+          print -r -- 'int main() { return 0; }' > "${tmpdir}/smoke.c"
+          check_filetype "${tmpdir}/smoke.c" c
+
+          print -r -- 'int smoke(void);' > "${tmpdir}/smoke.h"
+          check_filetype_any "${tmpdir}/smoke.h" c,cpp
+
+          print -r -- 'int main() { return 0; }' > "${tmpdir}/smoke.cpp"
+          check_filetype "${tmpdir}/smoke.cpp" cpp
+
+          print -r -- 'int smoke();' > "${tmpdir}/smoke.hpp"
+          check_filetype "${tmpdir}/smoke.hpp" cpp
+
+          print -r -- 'cmake_minimum_required(VERSION 3.20)' > "${tmpdir}/CMakeLists.txt"
+          check_filetype "${tmpdir}/CMakeLists.txt" cmake
+
+          print -r -- 'set number' > "${tmpdir}/smoke.vim"
+          check_filetype "${tmpdir}/smoke.vim" vim
+
+          print -r -- '\documentclass{article}' > "${tmpdir}/smoke.tex"
+          check_filetype "${tmpdir}/smoke.tex" tex
+
+      - name: Load important plugins
+        timeout-minutes: 10
+        run: |
+          nvim --headless \
+            '+lua require("lazy").load({ plugins = { "mason.nvim", "mason-lspconfig.nvim", "none-ls.nvim", "mason-null-ls.nvim" } })' \
+            '+qa'
