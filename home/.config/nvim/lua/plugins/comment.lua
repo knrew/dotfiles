@@ -26,7 +26,15 @@ return {
       local loaded, ts_comment =
         pcall(require, "ts_context_commentstring.integrations.comment_nvim")
       if loaded and ts_comment then
-        return ts_comment.create_pre_hook()(...)
+        local commentstring = ts_comment.create_pre_hook()(...)
+        if commentstring then
+          return commentstring
+        end
+      end
+
+      local commentstring = vim.bo.commentstring
+      if type(commentstring) == "string" and commentstring:find("%%s") then
+        return commentstring
       end
     end,
     post_hook = nil,
