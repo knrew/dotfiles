@@ -36,6 +36,10 @@ jobs:
 
     continue-on-error: ${{ matrix.neovim == 'nightly' }}
 
+    defaults:
+      run:
+        shell: zsh --no-rcs -e -o pipefail {0}
+
     env:
       NVIM_CONFIG_DIR: home/.config/nvim
       HOME: /tmp/neovim-${{ matrix.neovim }}/home
@@ -46,18 +50,22 @@ jobs:
 
     steps:
       - name: Install system dependencies
+        shell: bash
         run: |
           pacman -Sy --noconfirm archlinux-keyring
           pacman -Syu --noconfirm --needed \
             bash zsh git nodejs npm python python-pip \
             base-devel cmake unzip tar gzip curl ripgrep fd
 
+      - name: Check zsh version
+        run: |
+          zsh --version
+
       - uses: actions/checkout@v6
         with:
           persist-credentials: false
 
       - name: Install Neovim ${{ matrix.neovim }}
-        shell: bash
         run: |
           install_dir="/tmp/neovim-${{ matrix.neovim }}"
 
