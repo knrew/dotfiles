@@ -9,6 +9,8 @@ local managed_parsers = {
   "cmake",
   "bash",
   "lua",
+  "yaml",
+  "toml",
 }
 
 local highlight_disabled_filetypes = {
@@ -51,6 +53,11 @@ local function is_large_file(bufnr)
   return ok and stats and stats.size > max_filesize
 end
 
+local function has_parser(bufnr)
+  local ok, parser = pcall(vim.treesitter.get_parser, bufnr)
+  return ok and parser ~= nil
+end
+
 return {
   {
     "nvim-treesitter/nvim-treesitter",
@@ -85,17 +92,17 @@ return {
         callback = function(event)
           local bufnr = event.buf
           local filetype = vim.bo[bufnr].filetype
-          local has_parser = pcall(vim.treesitter.get_parser, bufnr)
+          local parser_available = has_parser(bufnr)
 
           if
-            has_parser
+            parser_available
             and not highlight_disabled_filetypes[filetype]
             and not is_large_file(bufnr)
           then
             pcall(vim.treesitter.start, bufnr)
           end
 
-          if has_parser and not indent_disabled_filetypes[filetype] then
+          if parser_available and not indent_disabled_filetypes[filetype] then
             vim.bo[bufnr].indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
           end
         end,
