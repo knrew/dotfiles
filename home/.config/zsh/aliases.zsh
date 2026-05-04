@@ -39,17 +39,10 @@ alias clip="xclip -selection c"
 # lazygit
 alias lg=lazygit
 
-# opencode
-alias oc=opencode
-
-# codex
 alias cx=codex
-
-# claude code
 alias cl=claude
-
-# claude code with glm
-zc() {
+alias oc=opencode
+zc() { # claude code with glm
   ANTHROPIC_AUTH_TOKEN="$ZAI_API_KEY" \
     ANTHROPIC_BASE_URL="https://api.z.ai/api/anthropic" \
     API_TIMEOUT_MS="3000000" \
@@ -62,9 +55,6 @@ zc() {
 # enable/disable backlight auto off
 alias enable_sleep="(xset s on +dpms)"
 alias disable_sleep="(xset s off -dpms)"
-
-# package manager(fzf functions for package manager are defined in fzf.zsh)
-alias pacman_update="sudo pacman -Syy"
 
 #
 # tex
@@ -102,8 +92,6 @@ function cppc() { # clean
 #
 # rust
 #
-# alias cc="cargo check"
-# alias ccr="cargo check --release"
 alias cb="cargo build"
 alias cbr="cargo build --release"
 alias cr="cargo run"
