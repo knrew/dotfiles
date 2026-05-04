@@ -1,4 +1,4 @@
-function __dotfiles_detect_os() {
+function __dotfiles_detect_os {
   DOTFILES_OS=unknown
   DOTFILES_OS_ID=
   DOTFILES_OS_ID_LIKE=

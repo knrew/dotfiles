@@ -1,3 +1,1 @@
-[[ -f ~/.zshrc ]] && . "$HOME/.zshrc"
-
-[[ -z $DISPLAY && $XDG_VTNR -eq 1 ]] && exec startx
+[[ -z $DISPLAY && ${XDG_VTNR:-0} -eq 1 ]] && (($+commands[startx])) && exec startx
