@@ -32,5 +32,8 @@ STARSHIP_CONFIG=$HOME/.config/starship/starship.toml
 [[ -f $STARSHIP_CONFIG ]] && export STARSHIP_CONFIG=$STARSHIP_CONFIG
 type starship &> /dev/null && eval "$(starship init zsh)"
 
+# zellij
+type zellij &> /dev/null && eval "$(zellij setup --generate-auto-start zsh)"
+
 # Show warning if battery level is below 20%
 typeset -f alert_low_battery &> /dev/null && alert_low_battery 20

@@ -1,0 +1,75 @@
+theme "catppuccin-latte"
+
+simplified_ui true
+pane_frames false
+auto_layout true
+default_mode "locked"
+mouse_mode true
+
+show_startup_tips false
+
+default_layout "compact"
+
+keybinds clear-defaults=true {
+  locked {
+    bind "Alt l" "Ctrl l" { SwitchToMode "locked"; }
+    bind "Alt n" "Ctrl n" { SwitchToMode "normal"; }
+    bind "Alt p" "Ctrl p" {SwitchToMode "pane"; }
+    bind "Alt r" "Ctrl r" { SwitchToMode "resize"; }
+
+    bind "Alt f" "Ctrl f" { ToggleFocusFullscreen; }
+    bind "Alt h" "Alt Left" "Ctrl Left" { MoveFocus "Left"; }
+    bind "Alt j" "Alt Down" "Ctrl Down" { MoveFocus "Down"; }
+    bind "Alt k" "Alt Up" "Ctrl Up"   { MoveFocus "Up"; }
+    bind "Alt l" "Alt Right" "Ctrl Right" { MoveFocus "Right"; }
+    bind "Alt Shift h" "Alt Shift Left"  { GoToNextTab; }
+    bind "Alt Shift l" "Alt Shift Right" { GoToPreviousTab; }
+  }
+
+  normal {
+    bind "Esc" "Alt l" "Ctrl l" { SwitchToMode "locked"; }
+    bind "Alt n" "Ctrl n" { SwitchToMode "normal"; }
+    bind "Alt p" "Ctrl p" {SwitchToMode "pane"; }
+    bind "Alt r" "Ctrl r" { SwitchToMode "resize"; }
+
+    bind "Alt f" "Ctrl f" { ToggleFocusFullscreen; }
+    bind "Alt h" "Alt Left" "Ctrl Left" { MoveFocus "Left"; }
+    bind "Alt j" "Alt Down" "Ctrl Down" { MoveFocus "Down"; }
+    bind "Alt k" "Alt Up" "Ctrl Up"   { MoveFocus "Up"; }
+    bind "Alt l" "Alt Right" "Ctrl Right" { MoveFocus "Right"; }
+    bind "Alt Shift h" "Alt Shift Left"  { GoToNextTab; }
+    bind "Alt Shift l" "Alt Shift Right" { GoToPreviousTab; }
+  }
+
+  pane {
+    bind "Esc" "Alt l" "Ctrl l" { SwitchToMode "locked"; }
+    bind "Alt n" "Ctrl n" { SwitchToMode "normal"; }
+    bind "Alt p" "Ctrl p" {SwitchToMode "pane"; }
+    bind "Alt r" "Ctrl r" { SwitchToMode "resize"; }
+
+    bind "Alt h" "Alt Left" "Ctrl Left" { MoveFocus "Left"; }
+    bind "Alt j" "Alt Down" "Ctrl Down" { MoveFocus "Down"; }
+    bind "Alt k" "Alt Up" "Ctrl Up"   { MoveFocus "Up"; }
+    bind "Alt l" "Alt Right" "Ctrl Right" { MoveFocus "Right"; }
+    bind "Alt Shift h" "Alt Shift Left"  { GoToNextTab; }
+    bind "Alt Shift l" "Alt Shift Right" { GoToPreviousTab; }
+
+    bind "Alt Enter" "Ctrl Enter" { NewPane; }
+    bind "Alt Shift Enter" "Ctrl Shift Enter" {NewPane "stacked"; }
+    bind "Alt q" "Ctrl q" { CloseFocus; }
+  }
+
+  tab {
+    bind "Esc" "Alt l" "Ctrl l" { SwitchToMode "locked"; }
+    bind "Alt n" "Ctrl n" { SwitchToMode "normal"; }
+    bind "Alt p" "Ctrl p" {SwitchToMode "pane"; }
+    bind "Alt r" "Ctrl r" { SwitchToMode "resize"; }
+  }
+
+  resize {
+    bind "Esc" "Alt l" "Ctrl l" { SwitchToMode "locked"; }
+    bind "Alt n" "Ctrl n" { SwitchToMode "normal"; }
+    bind "Alt p" "Ctrl p" {SwitchToMode "pane"; }
+    bind "Alt r" "Ctrl r" { SwitchToMode "resize"; }
+  }
+}
