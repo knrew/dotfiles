@@ -26,7 +26,7 @@ ZSHDIR=$HOME/.config/zsh
 [[ -f $ZSHDIR/local.zsh ]] && source "$ZSHDIR/local.zsh"
 
 # starship
-STARSHIP_CONFIG=$HOME/.config/starship/starship2.toml
+STARSHIP_CONFIG=$HOME/.config/starship/starship.toml
 [[ -f $STARSHIP_CONFIG ]] && export STARSHIP_CONFIG=$STARSHIP_CONFIG
 type starship &> /dev/null && eval "$(starship init zsh)"
 
