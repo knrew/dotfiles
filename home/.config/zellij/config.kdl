@@ -5,7 +5,8 @@ pane_frames false
 auto_layout true
 default_mode "locked"
 mouse_mode true
-
+session_serialization true
+serialization_interval 60
 show_startup_tips false
 
 default_layout "compact"
@@ -57,9 +58,16 @@ keybinds clear-defaults=true {
     bind "Alt Shift h" "Alt Shift Left"  { GoToNextTab; }
     bind "Alt Shift l" "Alt Shift Right" { GoToPreviousTab; }
 
-    bind "Alt Enter" "Ctrl Enter" { NewPane; }
-    bind "Alt Shift Enter" "Ctrl Shift Enter" {NewPane "stacked"; }
+    bind "Enter" "Alt Enter" "Ctrl Enter" { NewPane; }
+    bind "Shift Enter" "Alt Shift Enter" "Ctrl Shift Enter" {NewPane "stacked"; }
     bind "Alt q" "Ctrl q" { CloseFocus; }
+
+    bind "r" { SwitchToMode "renamepane"; PaneNameInput 0; }
+  }
+
+  renamepane {
+        bind "Enter" { SwitchToMode "pane"; }
+        bind "Esc" { UndoRenamePane; SwitchToMode "pane"; }
   }
 
   tab {
@@ -72,7 +80,7 @@ keybinds clear-defaults=true {
     bind "Alt Shift h" "Alt Shift Left"  { GoToNextTab; }
     bind "Alt Shift l" "Alt Shift Right" { GoToPreviousTab; }
 
-    bind "Alt Enter" "Ctrl Enter" { NewTab; }
+    bind "Enter" "Alt Enter" "Ctrl Enter" { NewTab; }
     bind "Alt q" "Ctrl q" { CloseTab; }
   }
 
