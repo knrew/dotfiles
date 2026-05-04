@@ -15,6 +15,7 @@ keybinds clear-defaults=true {
     bind "Alt l" "Ctrl l" { SwitchToMode "locked"; }
     bind "Alt n" "Ctrl n" { SwitchToMode "normal"; }
     bind "Alt p" "Ctrl p" {SwitchToMode "pane"; }
+    bind "Alt t" "Ctrl t" {SwitchToMode "tab"; }
     bind "Alt r" "Ctrl r" { SwitchToMode "resize"; }
 
     bind "Alt f" "Ctrl f" { ToggleFocusFullscreen; }
@@ -30,6 +31,7 @@ keybinds clear-defaults=true {
     bind "Esc" "Alt l" "Ctrl l" { SwitchToMode "locked"; }
     bind "Alt n" "Ctrl n" { SwitchToMode "normal"; }
     bind "Alt p" "Ctrl p" {SwitchToMode "pane"; }
+    bind "Alt t" "Ctrl t" {SwitchToMode "tab"; }
     bind "Alt r" "Ctrl r" { SwitchToMode "resize"; }
 
     bind "Alt f" "Ctrl f" { ToggleFocusFullscreen; }
@@ -45,6 +47,7 @@ keybinds clear-defaults=true {
     bind "Esc" "Alt l" "Ctrl l" { SwitchToMode "locked"; }
     bind "Alt n" "Ctrl n" { SwitchToMode "normal"; }
     bind "Alt p" "Ctrl p" {SwitchToMode "pane"; }
+    bind "Alt t" "Ctrl t" {SwitchToMode "tab"; }
     bind "Alt r" "Ctrl r" { SwitchToMode "resize"; }
 
     bind "Alt h" "Alt Left" "Ctrl Left" { MoveFocus "Left"; }
@@ -63,13 +66,21 @@ keybinds clear-defaults=true {
     bind "Esc" "Alt l" "Ctrl l" { SwitchToMode "locked"; }
     bind "Alt n" "Ctrl n" { SwitchToMode "normal"; }
     bind "Alt p" "Ctrl p" {SwitchToMode "pane"; }
+    bind "Alt t" "Ctrl t" {SwitchToMode "tab"; }
     bind "Alt r" "Ctrl r" { SwitchToMode "resize"; }
+
+    bind "Alt Shift h" "Alt Shift Left"  { GoToNextTab; }
+    bind "Alt Shift l" "Alt Shift Right" { GoToPreviousTab; }
+
+    bind "Alt Enter" "Ctrl Enter" { NewTab; }
+    bind "Alt q" "Ctrl q" { CloseTab; }
   }
 
   resize {
     bind "Esc" "Alt l" "Ctrl l" { SwitchToMode "locked"; }
     bind "Alt n" "Ctrl n" { SwitchToMode "normal"; }
     bind "Alt p" "Ctrl p" {SwitchToMode "pane"; }
+    bind "Alt t" "Ctrl t" {SwitchToMode "tab"; }
     bind "Alt r" "Ctrl r" { SwitchToMode "resize"; }
   }
 }
