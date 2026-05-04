@@ -5,14 +5,30 @@ rules:
 
   line-length: disable
 
-  empty-lines:
-    max: 1
+  indentation:
     level: error
+    spaces: 2
+    indent-sequences: true
+    check-multi-line-strings: false
+
+  comments-indentation: disable
+
+  empty-lines:
+    level: error
+    max: 1
 
   truthy:
-    check-keys: false
     level: error
+    allowed-values:
+      - "true"
+      - "false"
+    check-keys: false
 
   quoted-strings:
+    level: error
     quote-type: double
     required: only-when-needed
+
+  trailing-spaces: enable
+  key-duplicates: enable
+  new-line-at-end-of-file: enable
