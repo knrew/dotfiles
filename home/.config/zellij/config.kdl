@@ -13,10 +13,10 @@ default_layout "compact"
 keybinds clear-defaults=true {
   locked {
     bind "Alt l" "Ctrl l" { SwitchToMode "locked"; }
-    bind "Alt n" "Ctrl n" { SwitchToMode "normal"; }
+    bind "Alt n" { SwitchToMode "normal"; }
     bind "Alt p" "Ctrl p" {SwitchToMode "pane"; }
-    bind "Alt t" "Ctrl t" {SwitchToMode "tab"; }
-    bind "Alt r" "Ctrl r" { SwitchToMode "resize"; }
+    bind "Alt t" {SwitchToMode "tab"; }
+    bind "Alt r" { SwitchToMode "resize"; }
 
     bind "Alt f" "Ctrl f" { ToggleFocusFullscreen; }
     bind "Alt h" "Alt Left" "Ctrl Left" { MoveFocus "Left"; }
@@ -29,10 +29,10 @@ keybinds clear-defaults=true {
 
   normal {
     bind "Esc" "Alt l" "Ctrl l" { SwitchToMode "locked"; }
-    bind "Alt n" "Ctrl n" { SwitchToMode "normal"; }
+    bind "Alt n" { SwitchToMode "normal"; }
     bind "Alt p" "Ctrl p" {SwitchToMode "pane"; }
-    bind "Alt t" "Ctrl t" {SwitchToMode "tab"; }
-    bind "Alt r" "Ctrl r" { SwitchToMode "resize"; }
+    bind "Alt t" {SwitchToMode "tab"; }
+    bind "Alt r" { SwitchToMode "resize"; }
 
     bind "Alt f" "Ctrl f" { ToggleFocusFullscreen; }
     bind "Alt h" "Alt Left" "Ctrl Left" { MoveFocus "Left"; }
@@ -45,10 +45,10 @@ keybinds clear-defaults=true {
 
   pane {
     bind "Esc" "Alt l" "Ctrl l" { SwitchToMode "locked"; }
-    bind "Alt n" "Ctrl n" { SwitchToMode "normal"; }
+    bind "Alt n" { SwitchToMode "normal"; }
     bind "Alt p" "Ctrl p" {SwitchToMode "pane"; }
-    bind "Alt t" "Ctrl t" {SwitchToMode "tab"; }
-    bind "Alt r" "Ctrl r" { SwitchToMode "resize"; }
+    bind "Alt t" {SwitchToMode "tab"; }
+    bind "Alt r" { SwitchToMode "resize"; }
 
     bind "Alt h" "Alt Left" "Ctrl Left" { MoveFocus "Left"; }
     bind "Alt j" "Alt Down" "Ctrl Down" { MoveFocus "Down"; }
@@ -64,10 +64,10 @@ keybinds clear-defaults=true {
 
   tab {
     bind "Esc" "Alt l" "Ctrl l" { SwitchToMode "locked"; }
-    bind "Alt n" "Ctrl n" { SwitchToMode "normal"; }
+    bind "Alt n" { SwitchToMode "normal"; }
     bind "Alt p" "Ctrl p" {SwitchToMode "pane"; }
-    bind "Alt t" "Ctrl t" {SwitchToMode "tab"; }
-    bind "Alt r" "Ctrl r" { SwitchToMode "resize"; }
+    bind "Alt t" {SwitchToMode "tab"; }
+    bind "Alt r" { SwitchToMode "resize"; }
 
     bind "Alt Shift h" "Alt Shift Left"  { GoToNextTab; }
     bind "Alt Shift l" "Alt Shift Right" { GoToPreviousTab; }
