@@ -20,9 +20,11 @@ export PATH=$PATH:$HOME/.local/bin
 [[ -f $HOME/.cargo/env ]] && source "$HOME/.cargo/env"
 
 ZSHDIR=$HOME/.config/zsh
+[[ -f $ZSHDIR/os.zsh ]] && source "$ZSHDIR/os.zsh"
 [[ -f $ZSHDIR/aliases.zsh ]] && source "$ZSHDIR/aliases.zsh"
 [[ -f $ZSHDIR/functions.zsh ]] && source "$ZSHDIR/functions.zsh"
 [[ -f $ZSHDIR/fzf.zsh ]] && source "$ZSHDIR/fzf.zsh"
+[[ -n $DOTFILES_OS && -f $ZSHDIR/os/$DOTFILES_OS.zsh ]] && source "$ZSHDIR/os/$DOTFILES_OS.zsh"
 [[ -f $ZSHDIR/local.zsh ]] && source "$ZSHDIR/local.zsh"
 
 # starship
