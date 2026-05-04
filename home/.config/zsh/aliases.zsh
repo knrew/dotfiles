@@ -1,10 +1,10 @@
 # source zshrc
-function loadrc() {
+function loadrc {
   source "$HOME/.zshrc"
 }
 
 # ls -> eza
-if type eza &> /dev/null; then
+if ((${+commands[eza]})); then
   alias ls=eza
 else
   alias ls="ls --color=auto"
@@ -17,7 +17,7 @@ alias l=ls
 # alias l="ls -CF"
 
 # nvim
-if type nvim &> /dev/null; then
+if ((${+commands[nvim]})); then
   export EDITOR=nvim
   alias vim=nvim
   alias vi=nvim
@@ -25,13 +25,13 @@ if type nvim &> /dev/null; then
 fi
 
 # rm -> trash-put
-type trash-put &> /dev/null && alias rm=trash-put
+((${+commands["trash-put"]})) && alias rm=trash-put
 
 # grep -> ripgrep
-type rg &> /dev/null && alias grep=rg
+((${+commands[rg]})) && alias grep=rg
 
 # cat -> bat
-type bat &> /dev/null && alias cat=bat
+((${+commands[bat]})) && alias cat=bat
 
 # clipboard
 alias clip="xclip -selection c"
@@ -42,7 +42,7 @@ alias lg=lazygit
 alias cx=codex
 alias cl=claude
 alias oc=opencode
-zc() { # claude code with glm
+function zc { # claude code with glm
   ANTHROPIC_AUTH_TOKEN="$ZAI_API_KEY" \
     ANTHROPIC_BASE_URL="https://api.z.ai/api/anthropic" \
     API_TIMEOUT_MS="3000000" \
@@ -64,8 +64,8 @@ alias lm="latexmk -pvc -halt-on-error"
 #
 # c/cpp
 #
-function cppb() { # build(with cmake)
-  if [ ! -f CMakeLists.txt ]; then
+function cppb { # build(with cmake)
+  if [[ ! -f CMakeLists.txt ]]; then
     command echo "Error: No CMakeLists.txt" >&2
     return 1
   fi
@@ -74,15 +74,15 @@ function cppb() { # build(with cmake)
   cmake -B build -S . >&2
   cmake --build build -- "$1" >&2
 }
-function cppr() { # build and run target
-  if [ $# = 0 ]; then
+function cppr { # build and run target
+  if (($# == 0)); then
     cppb main >&2 && ./build/main
   else
     cppb "$1" >&2 && ./build/"$1" "${@:2}"
   fi
 }
-function cppc() { # clean
-  if [ ! -f CMakeLists.txt ]; then
+function cppc { # clean
+  if [[ ! -f CMakeLists.txt ]]; then
     command echo "Error: No CMakeLists.txt"
     return 1
   fi

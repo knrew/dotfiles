@@ -1,7 +1,7 @@
 # package manager
 alias pacman_update="sudo pacman -Syy"
 
-if type fzf &> /dev/null; then
+if ((${+commands[fzf]})); then
   alias pacmanls="pacman -Qn | fzf --preview \"pacman -Qi {1}\""
   alias aurls="pacman -Qm | fzf --preview \"pacman -Qi {1}\""
   alias pacmanrm="pacman -Qn | fzf --multi --preview \"pacman -Qi {1}\" | xargs -ro sudo pacman -Rns"
