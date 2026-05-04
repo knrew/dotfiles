@@ -40,7 +40,10 @@ function M.setup()
 
   require("mason-lspconfig").setup({ ensure_installed = servers.language_servers })
   require("null-ls").setup(common.default_options())
-  require("mason-null-ls").setup({ ensure_installed = require("plugins.lsp.tools") })
+  require("mason-null-ls").setup({
+    ensure_installed = require("plugins.lsp.tools"),
+    handlers = {},
+  })
 
   for _, server_name in ipairs(servers.language_servers) do
     vim.lsp.config(server_name, servers.get(server_name))
