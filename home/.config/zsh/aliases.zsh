@@ -25,7 +25,10 @@ if ((${+commands[nvim]})); then
 fi
 
 # rm -> trash-put
-((${+commands["trash-put"]})) && alias rm=trash-put
+# shfmt parses commands[trash-put] as commands[trash - put], so use a variable.
+_trash_cmd=trash-put
+(($+commands[$_trash_cmd])) && alias rm=$_trash_cmd
+unset _trash_cmd
 
 # grep -> ripgrep
 ((${+commands[rg]})) && alias grep=rg
