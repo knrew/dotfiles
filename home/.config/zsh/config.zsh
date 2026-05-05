@@ -11,13 +11,8 @@ setopt hist_ignore_dups
 setopt extended_history
 setopt incappendhistory
 
-export PATH=$PATH:$HOME/.local/bin
-
 # env
 [[ -f $HOME/.env ]] && source "$HOME/.env"
-
-# rust
-[[ -f $HOME/.cargo/env ]] && source "$HOME/.cargo/env"
 
 ZSHDIR=$HOME/.config/zsh
 [[ -f $ZSHDIR/os.zsh ]] && source "$ZSHDIR/os.zsh"
