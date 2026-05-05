@@ -1,3 +1,1 @@
-typeset -U path
-path=("$HOME/.local/bin" "$HOME/.cargo/bin" "${path[@]}")
-export PATH
+[[ -r "${XDG_CONFIG_HOME:-$HOME/.config}/zsh/.zshenv" ]] && source "${XDG_CONFIG_HOME:-$HOME/.config}/zsh/.zshenv"
