@@ -32,19 +32,6 @@
       "Bash(gh workflow list:*)",
       "Bash(gh workflow view:*)"
     ],
-    "deny": [
-      "Bash(sudo:*)",
-      "Bash(su:*)",
-      "Bash(gh auth login:*)",
-      "Bash(gh auth refresh:*)",
-      "Bash(gh auth token:*)",
-      "Bash(gh issue delete:*)",
-      "Bash(gh release delete-asset:*)",
-      "Bash(gh release delete:*)",
-      "Bash(gh repo delete:*)",
-      "Bash(gh run delete:*)",
-      "Bash(gh secret delete:*)"
-    ],
     "ask": [
       "Bash(git add:*)",
       "Bash(git commit:*)",
@@ -99,6 +86,19 @@
       "Bash(gh workflow disable:*)",
       "Bash(gh workflow enable:*)",
       "Bash(gh workflow run:*)"
+    ],
+    "deny": [
+      "Bash(sudo:*)",
+      "Bash(su:*)",
+      "Bash(gh auth login:*)",
+      "Bash(gh auth refresh:*)",
+      "Bash(gh auth token:*)",
+      "Bash(gh issue delete:*)",
+      "Bash(gh release delete-asset:*)",
+      "Bash(gh release delete:*)",
+      "Bash(gh repo delete:*)",
+      "Bash(gh run delete:*)",
+      "Bash(gh secret delete:*)"
     ],
     "defaultMode": "default"
   },
