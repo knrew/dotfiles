@@ -11,3 +11,6 @@ function zc { # claude code with glm
     ANTHROPIC_DEFAULT_OPUS_MODEL="glm-4.7" \
     claude "$@"
 }
+
+export CLAUDE_CODE_DISABLE_AUTO_MEMORY=1
+export CLAUDE_CODE_MAX_OUTPUT_TOKENS=64000

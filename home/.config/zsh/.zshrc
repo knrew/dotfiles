@@ -5,7 +5,6 @@ function __dotfiles_source_zsh {
 }
 
 __dotfiles_source_zsh os.zsh
-__dotfiles_source_zsh env.zsh
 __dotfiles_source_zsh options.zsh
 __dotfiles_source_zsh history.zsh
 __dotfiles_source_zsh completion.zsh

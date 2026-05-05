@@ -17,6 +17,9 @@ alias l=ls
 
 # nvim
 if ((${+commands[nvim]})); then
+  export EDITOR=nvim
+  export VISUAL=nvim
+
   alias vim=nvim
   alias vi=nvim
   alias v=nvim
@@ -34,10 +37,10 @@ unset _trash_cmd
 # cat -> bat
 ((${+commands[bat]})) && alias cat=bat
 
-alias lg=lazygit
+((${+commands[lazygit]})) && alias lg=lazygit
 
 # clipboard
-alias clip="xclip -selection c"
+((${+commands[xclip]})) && alias clip="xclip -selection c"
 
 # enable/disable backlight auto off
 alias enable_sleep="(xset s on +dpms)"
