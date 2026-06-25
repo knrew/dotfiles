@@ -15,7 +15,7 @@ jobs:
     env:
       SHFMT_VERSION: v3.13.1
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
         with:
           persist-credentials: false
       - uses: actions/setup-go@v6
