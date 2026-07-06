@@ -12,11 +12,11 @@ model_part="$model"
 
 metrics=""
 if [[ -n "$five_hour" ]]; then
-  five_hour_remaining=$(printf "%.0f" "$(echo "100 - $five_hour" | bc)")
+  five_hour_remaining=$(awk -v v="$five_hour" 'BEGIN { printf "%.0f", 100 - v }')
   metrics="5h ${five_hour_remaining}%"
 fi
 if [[ -n "$seven_day" ]]; then
-  seven_day_remaining=$(printf "%.0f" "$(echo "100 - $seven_day" | bc)")
+  seven_day_remaining=$(awk -v v="$seven_day" 'BEGIN { printf "%.0f", 100 - v }')
   metrics="${metrics:+$metrics / }7d ${seven_day_remaining}%"
 fi
 metrics="${metrics:+$metrics / }Ctx ${remaining}%"

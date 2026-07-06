@@ -1,0 +1,28 @@
+# herdr personal configuration
+
+onboarding = false
+
+[theme]
+name = "catppuccin-latte"
+
+[theme.custom]
+surface_dim = "#9ca0b0"
+
+[keys]
+prefix = "ctrl+b"
+
+[ui]
+pane_borders      = true
+pane_gaps         = false
+sidebar_max_width = 20
+sidebar_min_width = 12
+sidebar_width     = 18
+# Supported in Herdr next/master; ignored by stable 0.7.1.
+hide_tab_bar_when_single_tab = true
+
+agent_panel_sort = "priority"
+[ui.sound]
+enabled = false
+
+[ui.toast]
+delivery = "off"
