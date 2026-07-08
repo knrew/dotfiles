@@ -22,3 +22,6 @@ style  = "Italic"
 [font.bold_italic]
 family = "SauceCodeProNerdFont"
 style  = "Bold Italic"
+
+[keyboard]
+bindings = [{action = "ReceiveChar", key = "Enter", mods = "Alt"}]

@@ -11,12 +11,45 @@ surface_dim = "#9ca0b0"
 [keys]
 prefix = "ctrl+b"
 
+next_tab           = ["alt+right", "ctrl+right", "prefix+n"]
+next_workspace     = ["alt+down", "ctrl+down", "prefix+]"]
+previous_tab       = ["alt+left", "ctrl+left", "prefix+p"]
+previous_workspace = ["alt+up", "ctrl+up", "prefix+["]
+
+close_tab       = ["alt+q", "prefix+shift+x"]
+close_workspace = ["alt+shift+q", "prefix+shift+d"]
+new_tab         = ["alt+enter", "prefix+c"]
+new_workspace   = ["alt+shift+enter", "prefix+shift+n"]
+
+rename_tab       = ["alt+r", "prefix+shift+t"]
+rename_workspace = ["alt+shift+r", "prefix+shift+w"]
+
+switch_tab       = ["alt+1..9", "prefix+1..9"]
+switch_workspace = "alt+shift+1..9"
+
+focus_pane_down  = ["alt+j", "prefix+j"]
+focus_pane_left  = ["alt+h", "prefix+h"]
+focus_pane_right = ["alt+l", "prefix+l"]
+focus_pane_up    = ["alt+k", "prefix+k"]
+
+close_pane = ["alt+x", "prefix+x"]
+
+split_horizontal = ["alt+v", "prefix+minus"]
+split_vertical   = ["alt+c", "prefix+v"]
+
+zoom = ["alt+z", "prefix+z"]
+
+toggle_sidebar = ["alt+b", "prefix+b"]
+
+next_agent     = "alt+shift+down"
+previous_agent = "alt+shift+up"
+
 [ui]
 pane_borders      = true
 pane_gaps         = false
-sidebar_max_width = 20
-sidebar_min_width = 12
-sidebar_width     = 18
+sidebar_max_width = 36
+sidebar_min_width = 18
+sidebar_width     = 26
 # Supported in Herdr next/master; ignored by stable 0.7.1.
 hide_tab_bar_when_single_tab = true
 
@@ -25,4 +58,4 @@ agent_panel_sort = "priority"
 enabled = false
 
 [ui.toast]
-delivery = "off"
+delivery = "system"
