@@ -1,0 +1,10 @@
+[global]
+    font = JetBrainsMono Nerd Font Propo 10
+    enable_recursive_icon_lookup = true
+    markup = full
+    icon_theme = Papirus
+    default_icon = dialog-information
+
+[herdr]
+    body = "* · *"
+    new_icon = ~/.config/dunst/herdr.png
