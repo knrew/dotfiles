@@ -45,11 +45,12 @@ next_agent     = "alt+shift+down"
 previous_agent = "alt+shift+up"
 
 [ui]
-pane_borders      = true
-pane_gaps         = false
-sidebar_max_width = 36
-sidebar_min_width = 18
-sidebar_width     = 26
+pane_borders        = true
+pane_gaps           = false
+prompt_new_tab_name = false
+sidebar_max_width   = 36
+sidebar_min_width   = 18
+sidebar_width       = 26
 # Supported in Herdr next/master; ignored by stable 0.7.1.
 hide_tab_bar_when_single_tab = true
 
