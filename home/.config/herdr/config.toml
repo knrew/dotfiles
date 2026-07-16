@@ -44,22 +44,25 @@ toggle_sidebar = ["alt+b", "prefix+b"]
 next_agent     = "alt+shift+down"
 previous_agent = "alt+shift+up"
 
-[[keys.command]]
-command = "lazygit"
-key     = "alt+g"
-type    = "pane"
-
 [ui]
-pane_borders        = true
-pane_gaps           = false
-prompt_new_tab_name = false
-sidebar_max_width   = 36
-sidebar_min_width   = 18
-sidebar_width       = 26
-# Supported in Herdr next/master; ignored by stable 0.7.1.
 hide_tab_bar_when_single_tab = true
+pane_borders                 = true
+pane_gaps                    = false
+prompt_new_tab_name          = false
+sidebar_collapsed_mode       = "hidden"
+sidebar_max_width            = 36
+sidebar_min_width            = 18
+sidebar_width                = 26
 
 agent_panel_sort = "priority"
+
+[ui.sidebar.agents]
+row_gap = 1
+rows    = [["workspace", "tab"], ["agent"], ["state_icon", "state_text"]]
+
+[ui.sidebar.spaces]
+row_gap = 1
+
 [ui.sound]
 enabled = false
 
