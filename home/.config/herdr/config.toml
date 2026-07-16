@@ -44,6 +44,11 @@ toggle_sidebar = ["alt+b", "prefix+b"]
 next_agent     = "alt+shift+down"
 previous_agent = "alt+shift+up"
 
+[[keys.command]]
+key     = "alt+g"
+type    = "pane"
+command = "lazygit"
+
 [ui]
 pane_borders        = true
 pane_gaps           = false
