@@ -1,0 +1,9 @@
+agent_notes            = true
+exclude_untracked      = false
+line_numbers           = true
+menu_bar               = true
+mode                   = "auto"
+theme                  = "catppuccin-latte"
+transparent_background = false
+watch                  = true
+wrap_lines             = false
