@@ -1,8 +1,17 @@
+disableStartupPopups: true
 git:
   pagers:
     - colorArg: always
       useConfig: true
+os:
+  editPreset: nvim
+update:
+  method: never
 gui:
+  border: single
+  nerdFontsVersion: "3"
+  showRandomTip: false
+  filterMode: fuzzy
   # https://github.com/catppuccin/lazygit/blob/main/themes/latte/blue.yml
   theme:
     activeBorderColor:
