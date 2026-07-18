@@ -3,6 +3,10 @@ git:
   pagers:
     - colorArg: always
       useConfig: true
+os:
+  editPreset: nvim
+update:
+  method: never
 gui:
   border: single
   nerdFontsVersion: "3"
@@ -31,7 +35,3 @@ gui:
       - "#df8e1d"
 authorColors:
   "*": "#7287fd"
-os:
-  editPreset: nvim
-update:
-  method: never
