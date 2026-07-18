@@ -47,9 +47,10 @@ previous_agent = "alt+shift+up"
 copy_mode = "alt+s"
 
 [[keys.command]]
-command = "lazygit"
-key     = "alt+g"
-type    = "pane"
+command     = "sh \"$HOME/.config/herdr/scripts/toggle-lazygit.sh\""
+description = "toggle lazygit"
+key         = "alt+g"
+type        = "shell"
 
 [ui]
 hide_tab_bar_when_single_tab = true
