@@ -20,7 +20,7 @@ die() {
 [ -x "$HERDR_BIN_PATH" ] || die "HERDR_BIN_PATH is not executable: $HERDR_BIN_PATH"
 
 for dependency in jq flock lazygit cksum; do
-  command -v "$dependency" >/dev/null 2>&1 ||
+  command -v "$dependency" > /dev/null 2>&1 ||
     die "required command not found: $dependency"
 done
 
@@ -39,10 +39,10 @@ lock_key=${lock_key%% *}
 lock_file="$lock_root/herdr-lazygit-toggle-$lock_key.lock"
 
 umask 077
-if ! : >"$lock_file"; then
+if ! : > "$lock_file"; then
   die "failed to create lock file: $lock_file"
 fi
-exec 9>"$lock_file"
+exec 9> "$lock_file"
 if ! flock -x 9; then
   die "failed to lock: $lock_file"
 fi
@@ -53,7 +53,7 @@ load_managed_panes() {
   fi
 
   if ! printf '%s\n' "$panes_json" |
-    jq -e '.result.panes | type == "array"' >/dev/null; then
+    jq -e '.result.panes | type == "array"' > /dev/null; then
     die 'invalid pane list response'
   fi
 
@@ -122,7 +122,7 @@ fi
 
 rollback_created_pane() {
   [ -n "${created_pane_id:-}" ] || return 0
-  herdr_cli pane close "$created_pane_id" >/dev/null 2>&1 || :
+  herdr_cli pane close "$created_pane_id" > /dev/null 2>&1 || :
 }
 
 trap rollback_created_pane 0
@@ -134,7 +134,7 @@ if ! printf '%s\n' "$split_json" |
     --arg tab_id "$HERDR_ACTIVE_TAB_ID" '
       .result.pane.workspace_id == $workspace_id
       and .result.pane.tab_id == $tab_id
-    ' >/dev/null; then
+    ' > /dev/null; then
   die 'pane was created outside the active tab'
 fi
 
