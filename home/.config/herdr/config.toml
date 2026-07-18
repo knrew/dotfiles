@@ -46,6 +46,13 @@ previous_agent = "alt+shift+up"
 
 copy_mode = "alt+s"
 
+[[keys.command]]
+command = "lazygit"
+height  = "80%"
+key     = "alt+g"
+type    = "popup"
+width   = "80%"
+
 [ui]
 hide_tab_bar_when_single_tab = true
 mouse_capture                = true
