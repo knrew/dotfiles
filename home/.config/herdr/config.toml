@@ -44,8 +44,11 @@ toggle_sidebar = ["alt+b", "prefix+b"]
 next_agent     = "alt+shift+down"
 previous_agent = "alt+shift+up"
 
+copy_mode = "alt+s"
+
 [ui]
 hide_tab_bar_when_single_tab = true
+mouse_capture                = true
 pane_borders                 = true
 pane_gaps                    = false
 prompt_new_tab_name          = false
@@ -64,7 +67,7 @@ rows    = [["workspace", "tab"], ["agent"], ["state_icon", "state_text"]]
 row_gap = 1
 
 [ui.sound]
-enabled = false
+enabled = true
 
 [ui.toast]
 delivery = "system"
