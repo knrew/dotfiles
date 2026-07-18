@@ -144,6 +144,10 @@ if ! herdr_cli pane report-metadata "$created_pane_id" \
   die 'failed to mark lazygit pane'
 fi
 
+if ! herdr_cli pane zoom "$created_pane_id" --on; then
+  die 'failed to zoom lazygit pane'
+fi
+
 if ! herdr_cli pane run "$created_pane_id" 'exec lazygit'; then
   die 'failed to start lazygit'
 fi
