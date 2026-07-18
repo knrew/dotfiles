@@ -44,6 +44,8 @@ toggle_sidebar = ["alt+b", "prefix+b"]
 next_agent     = "alt+shift+down"
 previous_agent = "alt+shift+up"
 
+copy_mode = "alt+s"
+
 [ui]
 hide_tab_bar_when_single_tab = true
 pane_borders                 = true
