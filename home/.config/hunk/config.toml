@@ -6,4 +6,4 @@ mode                   = "auto"
 theme                  = "catppuccin-latte"
 transparent_background = false
 watch                  = true
-wrap_lines             = false
+wrap_lines             = true
