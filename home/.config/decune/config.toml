@@ -1,0 +1,199 @@
+version = 1
+
+[features."ghcr.io/devcontainers/features/github-cli:1"]
+
+[features."ghcr.io/anthropics/devcontainer-features/claude-code:1.0"]
+
+[compose.published_ports]
+automatic_relocation = true
+warn_on_relocation   = true
+
+[compose.clone_isolation]
+enabled = true
+
+[[dotfiles]]
+on_conflict = "replace-symlink"
+source      = "~/.config/nvim"
+target      = ".config/nvim"
+
+[[dotfiles]]
+on_conflict = "replace-symlink"
+read_only   = false
+source      = "~/.local/share/nvim"
+target      = ".local/share/nvim"
+
+[[dotfiles]]
+on_conflict = "replace-symlink"
+read_only   = false
+source      = "~/.local/state/nvim"
+target      = ".local/state/nvim"
+
+[[dotfiles]]
+on_conflict = "replace-symlink"
+read_only   = false
+source      = "~/.cache/nvim"
+target      = ".cache/nvim"
+
+[[dotfiles]]
+on_conflict = "replace-symlink"
+read_only   = false
+source      = "~/.claude"
+target      = ".claude"
+
+[[dotfiles]]
+on_conflict = "replace-symlink"
+read_only   = false
+source      = "~/.claude.json"
+target      = ".claude.json"
+
+[[dotfiles]]
+on_conflict = "replace-symlink"
+source      = "~/.config/lazygit"
+target      = ".config/lazygit"
+
+[[dotfiles]]
+on_conflict = "replace-symlink"
+source      = "~/.config/hunk"
+target      = ".config/hunk"
+
+[[dotfiles]]
+on_conflict = "replace-symlink"
+source      = "~/.config/git/ignore"
+target      = ".config/git/ignore"
+
+# neovim
+[[hooks.after_post_create]]
+command = '''
+local_opt="$HOME/.local/opt/nvim"
+local_bin="$HOME/.local/bin"
+tmp=$(mktemp -d)
+curl -L -o "$tmp/nvim.tar.gz" https://github.com/neovim/neovim/releases/latest/download/nvim-linux-x86_64.tar.gz
+mkdir -p "$local_opt" "$local_bin"
+tar xzf "$tmp/nvim.tar.gz" --strip-components=1 -C "$local_opt"
+rm -rf "$tmp"
+ln -sf "$local_opt/bin/nvim" "$local_bin/nvim"
+'''
+shell = true
+where = "container"
+
+# lazygit
+[[hooks.after_post_create]]
+command = '''
+tmp=$(mktemp -d)
+LAZYGIT_VERSION=$(curl -s "https://api.github.com/repos/jesseduffield/lazygit/releases/latest" | grep -Po '"tag_name": "v\K[^"]*')
+curl -L -o "$tmp/lazygit.tar.gz" "https://github.com/jesseduffield/lazygit/releases/latest/download/lazygit_${LAZYGIT_VERSION}_Linux_x86_64.tar.gz"
+tar xzf "$tmp/lazygit.tar.gz" -C "$tmp"
+install "$tmp/lazygit" "$HOME/.local/bin/lazygit"
+rm -rf "$tmp"
+'''
+shell = true
+where = "container"
+
+# hunk
+[[hooks.after_post_create]]
+command = '''
+sudo npm i -g hunkdiff
+'''
+shell = true
+where = "container"
+
+[[hooks.after_post_create]]
+command = "sudo claude update"
+shell   = true
+where   = "container"
+
+[[hooks.after_post_create]]
+command = "sudo apt update && sudo apt install -y trash-cli bc"
+shell   = true
+where   = "container"
+
+[[hooks.after_post_create]]
+command = '''
+git config user.name "Ryunosuke Sugawara"
+git config user.email "sugawara@close-r.com"
+'''
+shell = true
+where = "container"
+
+[[hooks.after_post_create]]
+command = '''
+{
+  echo 'alias v=nvim'
+  echo 'alias vi=nvim'
+  echo 'alias vim=nvim'
+  echo 'alias cl=claude'
+  echo 'alias lg=lazygit'
+  echo 'export PATH="$HOME/.local/bin:$PATH"'
+  echo 'export WIKI_DAILYLOG_LABEL=work'
+} >>"$HOME/.bashrc"
+'''
+shell = true
+where = "container"
+
+[[mounts]]
+read_only = true
+source    = "~/.config/herdr"
+target    = "/mnt/host-herdr"
+type      = "bind"
+
+[[mounts]]
+read_only = true
+source    = "~/.local/bin/herdr"
+target    = "/mnt/host-local-bin/herdr"
+type      = "bind"
+
+[[hooks.after_post_attach]]
+command = '''
+[ -n "${HERDR_PANE_ID:-}" ] || exit 0
+ctr=$(docker ps -q --filter "label=decune.workspace=$PWD" | head -n1)
+[ -n "$ctr" ] || exit 0
+mkdir -p "$HOME/.config/herdr/decune-attach" || exit 0
+printf '%s' "$HERDR_PANE_ID" > "$HOME/.config/herdr/decune-attach/$ctr" || true
+'''
+shell = true
+where = "host"
+
+[[hooks.after_post_create]]
+command = '''
+cat >>"$HOME/.bashrc" <<'DECUNE_HERDR_EOF'
+if [ -z "${HERDR_PANE_ID:-}" ] && [ -f "/mnt/host-herdr/decune-attach/$(hostname)" ]; then
+  export HERDR_PANE_ID="$(cat "/mnt/host-herdr/decune-attach/$(hostname)")"
+fi
+claude() {
+  if [ -n "${HERDR_PANE_ID:-}" ] && [ -S /mnt/host-herdr/herdr.sock ]; then
+    local hsock=/mnt/host-herdr/herdr.sock hbin=/mnt/host-local-bin/herdr
+    local shellpid=$$ relay rc
+    HERDR_SOCKET_PATH=$hsock $hbin pane report-agent "$HERDR_PANE_ID" \
+      --source decune-container --agent claude --state working >/dev/null 2>&1
+    relay=$(
+      {
+        last=working
+        while kill -0 "$shellpid" 2>/dev/null; do
+          sleep 1
+          s=$(HERDR_SOCKET_PATH=$hsock $hbin agent explain "$HERDR_PANE_ID" 2>/dev/null \
+              | awk '/^state:/{print $2; exit}')
+          case "$s" in idle|working|blocked) ;; *) continue ;; esac
+          if [ "$s" = "$last" ]; then
+            HERDR_SOCKET_PATH=$hsock $hbin agent list 2>/dev/null \
+              | grep -qF "\"pane_id\":\"$HERDR_PANE_ID\"" && continue
+          fi
+          HERDR_SOCKET_PATH=$hsock $hbin pane report-agent "$HERDR_PANE_ID" \
+            --source decune-container --agent claude --state "$s" >/dev/null 2>&1 && last=$s
+        done
+      } >/dev/null 2>&1 &
+      echo $!
+    )
+    command claude "$@"
+    rc=$?
+    kill "$relay" 2>/dev/null
+    HERDR_SOCKET_PATH=$hsock $hbin pane release-agent "$HERDR_PANE_ID" \
+      --source decune-container --agent claude >/dev/null 2>&1
+    return $rc
+  else
+    command claude "$@"
+  fi
+}
+DECUNE_HERDR_EOF
+'''
+shell = true
+where = "container"
