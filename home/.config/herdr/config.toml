@@ -52,6 +52,22 @@ description = "toggle lazygit"
 key         = "alt+g"
 type        = "shell"
 
+[[keys.command]]
+command     = "nvim ~/Documents/draft.md"
+description = "draftpad"
+height      = "80%"
+key         = "alt+n"
+type        = "popup"
+width       = "80%"
+
+[[keys.command]]
+command     = "$SHELL"
+description = "popup terminal"
+height      = "80%"
+key         = "alt+\\"
+type        = "popup"
+width       = "80%"
+
 [ui]
 hide_tab_bar_when_single_tab = true
 mouse_capture                = true
