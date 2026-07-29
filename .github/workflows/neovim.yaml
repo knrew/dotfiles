@@ -196,3 +196,51 @@ jobs:
           nvim --headless \
             '+lua require("lazy").load({ plugins = { "mason.nvim", "mason-lspconfig.nvim", "none-ls.nvim", "mason-null-ls.nvim" } })' \
             '+qa'
+
+      - name: Install CI Mason packages
+        timeout-minutes: 10
+        run: |
+          nvim --headless -e \
+            '+MasonInstall lua-language-server' \
+            '+lua assert(vim.v.errmsg == "", vim.v.errmsg)' \
+            '+qa'
+
+      - name: Smoke test lua_ls attach
+        timeout-minutes: 10
+        run: |
+          tmpdir="$(mktemp -d)"
+
+          print -r -- '{"runtime":{"version":"LuaJIT"},"diagnostics":{"globals":["vim"]}}' \
+            > "${tmpdir}/.luarc.json"
+          print -r -- 'vim.print(unknown_global_for_lsp_attach_smoke)' \
+            > "${tmpdir}/smoke.lua"
+
+          print -r -- 'lua << EOF' > "${tmpdir}/lsp_attach_smoke.vim"
+          print -r -- 'local bufnr = vim.api.nvim_get_current_buf()' >> "${tmpdir}/lsp_attach_smoke.vim"
+          print -r -- 'assert(vim.bo.filetype == "lua", "filetype=" .. vim.bo.filetype .. ", expected=lua")' >> "${tmpdir}/lsp_attach_smoke.vim"
+          print -r -- 'local attached = vim.wait(15000, function()' >> "${tmpdir}/lsp_attach_smoke.vim"
+          print -r -- '  return #vim.lsp.get_clients({ bufnr = bufnr, name = "lua_ls" }) > 0' >> "${tmpdir}/lsp_attach_smoke.vim"
+          print -r -- 'end, 200)' >> "${tmpdir}/lsp_attach_smoke.vim"
+          print -r -- 'assert(attached, "lua_ls did not attach")' >> "${tmpdir}/lsp_attach_smoke.vim"
+          print -r -- 'local keymaps = {}' >> "${tmpdir}/lsp_attach_smoke.vim"
+          print -r -- 'for _, map in ipairs(vim.api.nvim_buf_get_keymap(bufnr, "n")) do' >> "${tmpdir}/lsp_attach_smoke.vim"
+          print -r -- '  keymaps[map.lhs] = true' >> "${tmpdir}/lsp_attach_smoke.vim"
+          print -r -- 'end' >> "${tmpdir}/lsp_attach_smoke.vim"
+          print -r -- 'assert(keymaps.K, "K LSP keymap was not attached")' >> "${tmpdir}/lsp_attach_smoke.vim"
+          print -r -- 'assert(keymaps.gd, "gd LSP keymap was not attached")' >> "${tmpdir}/lsp_attach_smoke.vim"
+          print -r -- 'EOF' >> "${tmpdir}/lsp_attach_smoke.vim"
+          print -r -- 'qa' >> "${tmpdir}/lsp_attach_smoke.vim"
+
+          nvim -n --headless "${tmpdir}/smoke.lua" -S "${tmpdir}/lsp_attach_smoke.vim"
+
+      - name: Print Neovim logs on failure
+        if: failure()
+        run: |
+          for log_path in \
+            "${XDG_STATE_HOME}/nvim/lsp.log" \
+            "${XDG_STATE_HOME}/nvim/mason.log"; do
+            if test -f "${log_path}"; then
+              print -r -- "==> ${log_path}"
+              tail -n 200 "${log_path}"
+            fi
+          done
