@@ -1,0 +1,88 @@
+{
+  "layer": "top",
+  "position": "top",
+  "height": 30,
+  "spacing": 0,
+  "modules-left": ["niri/window"],
+  "modules-center": ["clock"],
+  "modules-right": [
+    "battery",
+    "cpu",
+    "memory",
+    "disk",
+    "network",
+    "backlight",
+    "wireplumber",
+    "tray",
+    "custom/power"
+  ],
+  "niri/window": {
+    "format": "{app_id}",
+    "max-length": 60,
+    "separate-outputs": true
+  },
+  "clock": {
+    "interval": 1,
+    "format": " {:%Y-%m-%d(%a)   %H:%M:%S}",
+    "tooltip-format": "<big>{:%Y-%m}</big>\n<tt><small>{calendar}</small></tt>"
+  },
+  "battery": {
+    "interval": 5,
+    "states": {
+      "warning": 30,
+      "critical": 15
+    },
+    "format": "{icon} {capacity:>2}%",
+    "format-charging": "󰂄 {capacity:>2}%",
+    "format-plugged": "󰂄 {capacity:>2}%",
+    "format-full": "󰁹 {capacity:>2}%",
+    "format-icons": ["󰁻", "󰁽", "󰁿", "󰂁", "󰁹"]
+  },
+  "cpu": {
+    "interval": 1,
+    "states": {
+      "warning": 80
+    },
+    "format": " {usage:>2}%",
+    "tooltip": false
+  },
+  "memory": {
+    "interval": 5,
+    "states": {
+      "warning": 90
+    },
+    "format": " {percentage:>2}%"
+  },
+  "disk": {
+    "path": "/",
+    "interval": 30,
+    "format": " {percentage_used:>2}%"
+  },
+  "network": {
+    "interval": 3,
+    "format-wifi": "{icon} {signalStrength:>2}% 󰕒 {bandwidthUpBits} 󰇚 {bandwidthDownBits}",
+    "format-ethernet": "󰈀 {ifname}",
+    "format-linked": "󰈀 {ifname}",
+    "format-disconnected": "󰖪 offline",
+    "format-icons": ["󰤯", "󰤟", "󰤢", "󰤥", "󰤨"],
+    "tooltip-format": "{ifname}: {ipaddr}"
+  },
+  "backlight": {
+    "format": "󰃞 {percent:>2}%",
+    "scroll-step": 5
+  },
+  "wireplumber": {
+    "format": "󰕾 {volume:>2}%",
+    "format-muted": "󰖁 {volume:>2}%",
+    "on-click": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
+  },
+  "tray": {
+    "icon-size": 16,
+    "spacing": 1
+  },
+  "custom/power": {
+    "format": "",
+    "tooltip-format": "Power menu",
+    "on-click": "sh \"$HOME/.config/waybar/power-menu.sh\""
+  }
+}
