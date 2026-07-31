@@ -3,7 +3,7 @@
   "position": "top",
   "height": 30,
   "spacing": 0,
-  "modules-left": ["niri/window"],
+  "modules-left": ["niri/workspaces", "niri/window"],
   "modules-center": ["clock"],
   "modules-right": [
     "battery",
@@ -20,6 +20,11 @@
     "format": "{app_id}",
     "max-length": 60,
     "separate-outputs": true
+  },
+  "niri/workspaces": {
+    "current-only": true,
+    "format": "{value}",
+    "disable-click": true
   },
   "clock": {
     "interval": 1,
