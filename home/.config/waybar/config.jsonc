@@ -37,10 +37,10 @@
       "warning": 30,
       "critical": 15
     },
-    "format": "{icon} {capacity:>2}%",
-    "format-charging": "󰂄 {capacity:>2}%",
-    "format-plugged": "󰂄 {capacity:>2}%",
-    "format-full": "󰁹 {capacity:>2}%",
+    "format": "{icon} {capacity:>3}%",
+    "format-charging": "󰂄 {capacity:>3}%",
+    "format-plugged": "󰂄 {capacity:>3}%",
+    "format-full": "󰁹 {capacity:>3}%",
     "format-icons": ["󰁻", "󰁽", "󰁿", "󰂁", "󰁹"]
   },
   "cpu": {
@@ -48,7 +48,7 @@
     "states": {
       "warning": 80
     },
-    "format": " {usage:>2}%",
+    "format": " {usage:>3}%",
     "tooltip": false
   },
   "memory": {
@@ -56,16 +56,16 @@
     "states": {
       "warning": 90
     },
-    "format": " {percentage:>2}%"
+    "format": " {percentage:>3}%"
   },
   "disk": {
     "path": "/",
     "interval": 30,
-    "format": " {percentage_used:>2}%"
+    "format": " {percentage_used:>3}%"
   },
   "network": {
     "interval": 3,
-    "format-wifi": "{icon} {signalStrength:>2}% 󰕒 {bandwidthUpBits} 󰇚 {bandwidthDownBits}",
+    "format-wifi": "{icon} {signalStrength:>3}% 󰕒 {bandwidthUpBits:>} 󰇚 {bandwidthDownBits:>}",
     "format-ethernet": "󰈀 {ifname}",
     "format-linked": "󰈀 {ifname}",
     "format-disconnected": "󰖪 offline",
@@ -73,12 +73,12 @@
     "tooltip-format": "{ifname}: {ipaddr}"
   },
   "backlight": {
-    "format": "󰃞 {percent:>2}%",
+    "format": "󰃞 {percent:>3}%",
     "scroll-step": 5
   },
   "wireplumber": {
-    "format": "󰕾 {volume:>2}%",
-    "format-muted": "󰖁 {volume:>2}%",
+    "format": "󰕾 {volume:>3}%",
+    "format-muted": "󰖁 {volume:>3}%",
     "on-click": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
   },
   "tray": {
