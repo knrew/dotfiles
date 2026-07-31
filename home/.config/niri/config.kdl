@@ -594,8 +594,8 @@ binds {
     // which ensures niri always processes them, even when an inhibitor is active.
     Mod+Escape allow-inhibiting=false { toggle-keyboard-shortcuts-inhibit; }
 
-    // Open the Waybar power menu.
-    Mod+Shift+E { spawn "sh" "-c" "$HOME/.config/waybar/power-menu.sh"; }
+    // Open the power menu.
+    Mod+Shift+E { spawn "sh" "-c" "$HOME/.config/niri/scripts/power-menu.sh"; }
 
     // Focus the persistent draftpad workspace, then return to the previous workspace.
     Mod+N hotkey-overlay-title="Open Draftpad" { focus-workspace "draft"; }
