@@ -37,7 +37,6 @@ window#waybar {
     padding: 0 8px;
     color: @text;
     border-bottom: 2px solid @lavender;
-    font-weight: bold;
 }
 
 #clock {
