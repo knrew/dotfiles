@@ -322,14 +322,12 @@ window-rule {
     default-column-width { proportion 1.0; }
 }
 
-// Show the draftpad as a centered floating window.
+// Show the draftpad as a full-width tiled window on its own workspace.
 window-rule {
     match app-id=r#"^draftpad$"#
     open-on-workspace "draft"
-    open-floating true
     open-focused false
-    default-column-width { proportion 0.8; }
-    default-window-height { proportion 0.8; }
+    default-column-width { proportion 1.0; }
 }
 
 // Example: block out two password managers from screen capture.
