@@ -30,7 +30,7 @@ window#waybar {
     padding: 0 8px;
     background: transparent;
     color: @text;
-    border-bottom: 2px solid @blue;
+    border-bottom: 2px solid @lavender;
 }
 
 #window {
