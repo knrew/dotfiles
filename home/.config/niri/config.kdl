@@ -312,8 +312,9 @@ animations {
 // Find more information on the wiki:
 // https://niri-wm.github.io/niri/Configuration:-Window-Rules
 
-// Keep a dedicated workspace where the draftpad can be parked.
-workspace "scratch"
+// Keep the draftpad alive on its own workspace without stealing startup focus.
+workspace "draft"
+spawn-sh-at-startup "exec alacritty --class draftpad,draftpad --title draftpad -e nvim \"$HOME/Documents/draft.md\""
 
 // Open new Alacritty windows at the full width of the output.
 window-rule {
@@ -324,7 +325,9 @@ window-rule {
 // Show the draftpad as a centered floating window.
 window-rule {
     match app-id=r#"^draftpad$"#
+    open-on-workspace "draft"
     open-floating true
+    open-focused false
     default-column-width { proportion 0.8; }
     default-window-height { proportion 0.8; }
 }
@@ -596,8 +599,9 @@ binds {
     // Open the Waybar power menu.
     Mod+Shift+E { spawn "sh" "-c" "$HOME/.config/waybar/power-menu.sh"; }
 
-    // Toggle the draftpad between the current workspace and "scratch".
-    Mod+N hotkey-overlay-title="Toggle Draftpad" { spawn "sh" "-c" "$HOME/.config/niri/scripts/toggle-draftpad.sh"; }
+    // Focus the persistent draftpad workspace, then return to the previous workspace.
+    Mod+N hotkey-overlay-title="Open Draftpad" { focus-workspace "draft"; }
+    Mod+Shift+N hotkey-overlay-title="Return from Draftpad" { focus-workspace-previous; }
 
     // Powers off the monitors. To turn them back on, do any input like
     // moving the mouse or pressing any other key.
