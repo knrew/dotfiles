@@ -20,10 +20,11 @@ choice=$(
   printf '%s\n' \
     "󰐥  Shutdown" \
     "󰜉  Reboot" \
+    "󰌾  Lock" \
     "󰤄  Suspend" \
     "󰍃  Log out" \
     "󰜺  Cancel" |
-    choose 5 "Power: "
+    choose 6 "Power: "
 )
 
 case "$choice" in
@@ -32,6 +33,9 @@ case "$choice" in
     ;;
   "󰜉  Reboot")
     confirm_action "Reboot" && systemctl reboot
+    ;;
+  "󰌾  Lock")
+    swaylock -f && niri msg action power-off-monitors
     ;;
   "󰤄  Suspend")
     systemctl suspend
