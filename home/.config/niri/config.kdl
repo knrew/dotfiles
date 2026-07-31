@@ -601,6 +601,10 @@ binds {
     Mod+N hotkey-overlay-title="Open Draftpad" { focus-workspace "draft"; }
     Mod+Shift+N hotkey-overlay-title="Return from Draftpad" { focus-workspace-previous; }
 
+    // Dismiss/restore mako notification popups.
+    Mod+B hotkey-overlay-title="Dismiss Notification" { spawn "makoctl" "dismiss"; }
+    Mod+Shift+B hotkey-overlay-title="Restore Notification" { spawn "makoctl" "restore"; }
+
     // Powers off the monitors. To turn them back on, do any input like
     // moving the mouse or pressing any other key.
     Mod+Shift+P { power-off-monitors; }
