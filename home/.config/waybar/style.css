@@ -23,6 +23,12 @@
 window#waybar {
     background: @crust;
     color: @text;
+    border-bottom: 1px solid @blue;
+}
+
+/* モジュールをblueの区切り線(最下段1px)に重ねない */
+window#waybar > box {
+    margin-bottom: 1px;
 }
 
 #workspaces button {
