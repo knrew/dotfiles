@@ -127,7 +127,7 @@
   "advisorModel": "opus",
   "language": "日本語",
   "spinnerTipsEnabled": false,
-    "promptSuggestionEnabled": false,
+  "promptSuggestionEnabled": false,
   "awaySummaryEnabled": false,
   "askUserQuestionTimeout": "never",
   "autoUpdatesChannel": "latest",
