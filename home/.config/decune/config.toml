@@ -11,6 +11,9 @@ warn_on_relocation   = true
 [compose.clone_isolation]
 enabled = true
 
+[credentials.git]
+copy_global_config = true
+
 [[dotfiles]]
 on_conflict = "replace-symlink"
 source      = "~/.config/nvim"
@@ -61,6 +64,12 @@ on_conflict = "replace-symlink"
 source      = "~/.config/git/ignore"
 target      = ".config/git/ignore"
 
+[[mounts]]
+read_only = false
+source    = "~/wiki"
+target    = "${remoteUserHome}/wiki"
+type      = "bind"
+
 # neovim
 [[hooks.after_post_create]]
 command = '''
@@ -106,14 +115,6 @@ where   = "container"
 command = "sudo apt update && sudo apt install -y trash-cli bc"
 shell   = true
 where   = "container"
-
-[[hooks.after_post_create]]
-command = '''
-git config user.name "Ryunosuke Sugawara"
-git config user.email "sugawara@close-r.com"
-'''
-shell = true
-where = "container"
 
 [[hooks.after_post_create]]
 command = '''
