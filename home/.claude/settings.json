@@ -116,9 +116,9 @@
       "Bash(gh workflow enable:*)",
       "Bash(gh workflow run:*)"
     ],
-    "defaultMode": "default"
+    "defaultMode": "auto"
   },
-  "model": "sonnet",
+  "model": "opus[1m]",
   "statusLine": {
     "type": "command",
     "command": "~/.claude/statusline.sh"
@@ -126,6 +126,7 @@
   "language": "日本語",
   "spinnerTipsEnabled": false,
   "effortLevel": "xhigh",
+  "advisorModel": "opus",
   "promptSuggestionEnabled": false,
   "awaySummaryEnabled": false,
   "askUserQuestionTimeout": "never",
