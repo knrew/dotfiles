@@ -1,4 +1,10 @@
 {
+  "cleanupPeriodDays": 60,
+  "attribution": {
+    "commit": "",
+    "pr": "",
+    "sessionUrl": false
+  },
   "permissions": {
     "allow": [
       "WebSearch",
@@ -113,20 +119,15 @@
     ],
     "defaultMode": "auto"
   },
-  "attribution": {
-    "commit": "",
-    "pr": "",
-    "sessionUrl": false
-  },
+  "model": "opus[1m]",
   "statusLine": {
     "type": "command",
     "command": "~/.claude/statusline.sh"
   },
-  "model": "opus[1m]",
-  "effortLevel": "xhigh",
-  "advisorModel": "opus",
   "language": "日本語",
   "spinnerTipsEnabled": false,
+  "effortLevel": "high",
+  "advisorModel": "opus",
   "promptSuggestionEnabled": false,
   "awaySummaryEnabled": false,
   "askUserQuestionTimeout": "never",
@@ -134,6 +135,5 @@
   "autoMemoryEnabled": false,
   "theme": "light",
   "editorMode": "vim",
-  "skipAutoPermissionPrompt": true,
-  "cleanupPeriodDays": 60
+  "skipAutoPermissionPrompt": true
 }
