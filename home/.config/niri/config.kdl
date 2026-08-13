@@ -316,6 +316,9 @@ animations {
 workspace "draft"
 spawn-sh-at-startup "exec alacritty --class draftpad,draftpad --title draftpad -e nvim \"$HOME/Documents/draft.md\""
 
+// Start with the default audio sink at 0% and muted.
+spawn-sh-at-startup "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0%; wpctl set-mute @DEFAULT_AUDIO_SINK@ 1"
+
 // Open new Alacritty windows at the full width of the output.
 window-rule {
     match app-id=r#"^Alacritty$"#
