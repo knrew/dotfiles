@@ -18,8 +18,8 @@ previous_workspace = ["alt+up", "ctrl+up", "prefix+["]
 
 close_tab       = ["alt+q", "prefix+shift+x"]
 close_workspace = ["alt+shift+q", "prefix+shift+d"]
-new_tab         = ["alt+enter", "prefix+c"]
-new_workspace   = ["alt+shift+enter", "prefix+shift+n"]
+new_tab         = ["alt+t", "prefix+c"]
+new_workspace   = ["alt+shift+t", "prefix+shift+n"]
 
 rename_tab       = ["alt+r", "prefix+shift+t"]
 rename_workspace = ["alt+shift+r", "prefix+shift+w"]
