@@ -1,0 +1,9 @@
+theme = catppuccin-latte
+collapsed = true
+word-diff = true
+line-numbers = true
+wrap = true
+cross-file-hunks = false
+vim-motion = true
+compact-context = 8
+untracked = true
