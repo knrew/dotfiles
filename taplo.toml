@@ -20,7 +20,7 @@ reorder_keys          = true
 trailing_newline      = true
 
 [[rule]]
-include = ["**/herdr/config.toml"]
+include = ["**/herdr/config.toml", "misc/codex/config.toml"]
 
 [rule.formatting]
 reorder_arrays = false
