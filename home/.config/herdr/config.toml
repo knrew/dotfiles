@@ -83,7 +83,20 @@ agent_panel_sort = "priority"
 
 [ui.sidebar.agents]
 row_gap = 1
-rows    = [["workspace", "tab"], ["agent"], ["state_icon", "state_text"]]
+rows = [
+  [
+    "machine",
+    "workspace",
+    "tab",
+  ],
+  [
+    "agent",
+  ],
+  [
+    "state_icon",
+    "state_text",
+  ],
+]
 
 [ui.sidebar.spaces]
 row_gap = 1
