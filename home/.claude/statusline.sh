@@ -31,22 +31,40 @@ refresh_usage() {
   tok=$(jq -r '.claudeAiOauth.accessToken // empty' "${HOME}/.claude/.credentials.json" 2> /dev/null)
   [[ -n "$tok" ]] || exit 0 # API キー運用などトークンが無い環境では何もしない
 
+  local version user_agent
+  version=$(claude --version 2> /dev/null)
+  version=${version%% *}
+  [[ "$version" =~ ^[0-9]+\.[0-9]+\.[0-9]+$ ]] || version=unknown
+  user_agent="claude-cli/${version} (external, cli)"
+
   local tmp code
   tmp=$(mktemp "${CACHE_DIR}/model-usage.raw.XXXXXX") || exit 0
-  code=$(curl -s -m 10 -o "$tmp" -w '%{http_code}' \
-    -H "Authorization: Bearer ${tok}" \
-    -H "Content-Type: application/json" \
-    https://api.anthropic.com/api/oauth/usage 2> /dev/null)
 
-  # 401(トークン期限切れ) / 429(レート制限) 等は旧キャッシュを温存して次回に回す
-  if [[ "$code" == "200" ]]; then
-    if jq -c --argjson now "$now" '
-          { fetched_at: $now,
-            models: [ .limits[]?
-                      | select(.kind == "weekly_scoped" and .scope.model.display_name != null)
-                      | { name:      .scope.model.display_name,
-                          percent:   .percent,
-                          resets_at: .resets_at } ] }' "$tmp" > "${USAGE_CACHE}.tmp" 2> /dev/null; then
+  # 通信失敗や 401 / 429 等は旧キャッシュを温存して次回に回す
+  if code=$(curl -s -m 10 -o "$tmp" -w '%{http_code}' \
+    -H "Authorization: Bearer ${tok}" \
+    -H "anthropic-beta: oauth-2025-04-20" \
+    -H "User-Agent: ${user_agent}" \
+    -H "Content-Type: application/json" \
+    https://api.anthropic.com/api/oauth/usage 2> /dev/null) &&
+    [[ "$code" == "200" ]]; then
+    # 空本文・エラー本文・不正な形式を拒否する。正常な limits: [] は許容する
+    if jq -ces --argjson now "$now" '
+          if length != 1 then error("Expected one usage response") else .[0] end
+          | if type != "object" or .error != null or (.limits | type) != "array"
+            then error("Invalid usage response") else . end
+          | { fetched_at: $now,
+              models: [ .limits[]
+                        | if type != "object" or (.kind | type) != "string"
+                          then error("Invalid usage limit") else . end
+                        | select(.kind == "weekly_scoped" and .scope.model != null)
+                        | if (.scope.model.display_name | type) != "string"
+                             or (.percent | type) != "number"
+                             or (.resets_at != null and (.resets_at | type) != "string")
+                          then error("Invalid model usage")
+                          else { name:      .scope.model.display_name,
+                                 percent:   .percent,
+                                 resets_at: .resets_at } end ] }' "$tmp" > "${USAGE_CACHE}.tmp" 2> /dev/null; then
       mv -f "${USAGE_CACHE}.tmp" "$USAGE_CACHE"
     fi
     rm -f "${USAGE_CACHE}.tmp"
