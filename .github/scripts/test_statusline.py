@@ -1,5 +1,4 @@
 #!/usr/bin/env python3
-"""Exercise usage refresh with isolated files, dummy credentials, and no network."""
 
 import json
 import os
