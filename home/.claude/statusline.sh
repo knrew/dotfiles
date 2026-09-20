@@ -59,12 +59,12 @@ refresh_usage() {
                           then error("Invalid usage limit") else . end
                         | select(.kind == "weekly_scoped" and .scope.model != null)
                         | if (.scope.model.display_name | type) != "string"
-                             or (.percent | type) != "number"
-                             or (.resets_at != null and (.resets_at | type) != "string")
+                            or (.percent | type) != "number"
+                            or (.resets_at != null and (.resets_at | type) != "string")
                           then error("Invalid model usage")
                           else { name:      .scope.model.display_name,
-                                 percent:   .percent,
-                                 resets_at: .resets_at } end ] }' "$tmp" > "${USAGE_CACHE}.tmp" 2> /dev/null; then
+                                percent:   .percent,
+                                resets_at: .resets_at } end ] }' "$tmp" > "${USAGE_CACHE}.tmp" 2> /dev/null; then
       mv -f "${USAGE_CACHE}.tmp" "$USAGE_CACHE"
     fi
     rm -f "${USAGE_CACHE}.tmp"
