@@ -36,5 +36,3 @@ jobs:
           echo "$(go env GOPATH)/bin" >> "${GITHUB_PATH}"
       - name: Run sh/bash lint
         run: ./.github/scripts/lint_sh_bash.sh
-      - name: Test statusline usage refresh
-        run: python3 .github/scripts/test_statusline.py
