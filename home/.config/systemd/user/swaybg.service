@@ -1,0 +1,12 @@
+[Unit]
+Description=Black background for the niri graphical session
+PartOf=graphical-session.target
+After=graphical-session.target
+Requisite=graphical-session.target
+
+[Service]
+ExecStart=/usr/bin/swaybg --color 000000
+Restart=on-failure
+
+[Install]
+WantedBy=graphical-session.target
