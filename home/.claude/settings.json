@@ -119,14 +119,19 @@
     ],
     "defaultMode": "auto"
   },
-  "model": "opus[1m]",
+  "model": "opus",
   "statusLine": {
     "type": "command",
-    "command": "~/.claude/statusline.sh"
+    "command": "~/.claude/statusline.sh",
+    "refreshInterval": 60
   },
   "language": "日本語",
   "spinnerTipsEnabled": false,
-  "effortLevel": "high",
+  "modelSettings": {
+    "claude-opus-5-5": {
+      "effortLevel": "high"
+    }
+  },
   "advisorModel": "opus",
   "promptSuggestionEnabled": false,
   "awaySummaryEnabled": false,
