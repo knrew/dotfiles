@@ -6,7 +6,10 @@
     "sessionUrl": false
   },
   "permissions": {
-    "allow": ["WebSearch", "WebFetch"],
+    "allow": [
+      "WebSearch",
+      "WebFetch"
+    ],
     "deny": [
       "Bash(sudo:*)",
       "Bash(su:*)",
@@ -69,6 +72,7 @@
     "command": "~/.claude/statusline.sh",
     "refreshInterval": 60
   },
+  "language": "Japanese",
   "spinnerTipsEnabled": false,
   "modelSettings": {
     "claude-opus-5-5": {
@@ -83,6 +87,7 @@
   "awaySummaryEnabled": false,
   "askUserQuestionTimeout": "never",
   "autoUpdatesChannel": "latest",
+  "timeFormat": "24-hour",
   "autoMemoryEnabled": false,
   "theme": "light",
   "editorMode": "vim",
