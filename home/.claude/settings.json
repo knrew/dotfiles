@@ -23,9 +23,6 @@
       "Bash(pip3:*)"
     ],
     "ask": [
-      "Bash(gh api *-X*)",
-      "Bash(gh api *--input*)",
-      "Bash(gh api *--method*)",
       "Bash(gh auth logout:*)",
       "Bash(gh issue close:*)",
       "Bash(gh issue lock:*)",
