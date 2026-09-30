@@ -6,10 +6,7 @@
     "sessionUrl": false
   },
   "permissions": {
-    "allow": [
-      "WebSearch",
-      "WebFetch"
-    ],
+    "allow": ["WebSearch", "WebFetch"],
     "deny": [
       "Bash(sudo:*)",
       "Bash(su:*)",
