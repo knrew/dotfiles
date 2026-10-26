@@ -5,7 +5,7 @@ import = ["~/.config/alacritty/catppuccin_latte.toml"]
 opacity = 1.0
 
 [font]
-size = 9
+size = 11
 
 [font.normal]
 family = "SauceCodeProNerdFont"
