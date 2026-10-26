@@ -6,7 +6,10 @@
     "sessionUrl": false
   },
   "permissions": {
-    "allow": ["WebSearch", "WebFetch"],
+    "allow": [
+      "WebSearch",
+      "WebFetch"
+    ],
     "deny": [
       "Bash(sudo:*)",
       "Bash(su:*)",
@@ -79,6 +82,7 @@
   "advisorModel": "opus",
   "promptSuggestionEnabled": false,
   "awaySummaryEnabled": false,
+  "idleCompaction": false,
   "askUserQuestionTimeout": "never",
   "autoUpdatesChannel": "latest",
   "timeFormat": "24-hour",
