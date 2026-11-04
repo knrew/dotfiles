@@ -1,0 +1,349 @@
+prefix_rule(
+    pattern = ["sudo"],
+    decision = "forbidden",
+    justification = "Do not run privilege escalation commands from Codex.",
+    match = ["sudo apt update"],
+)
+
+prefix_rule(
+    pattern = ["su"],
+    decision = "forbidden",
+    justification = "Do not switch users from Codex.",
+    match = ["su root"],
+)
+
+prefix_rule(
+    pattern = ["pip"],
+    decision = "forbidden",
+    justification = "Do not install Python packages directly from Codex.",
+    match = ["pip install package"],
+)
+
+prefix_rule(
+    pattern = ["pip3"],
+    decision = "forbidden",
+    justification = "Do not install Python packages directly from Codex.",
+    match = ["pip3 install package"],
+)
+
+prefix_rule(
+    pattern = ["gh", "auth", ["login", "refresh", "token"]],
+    decision = "forbidden",
+    justification = "Do not start or expose GitHub authentication flows from Codex.",
+    match = [
+        "gh auth login",
+        "gh auth refresh",
+        "gh auth token",
+    ],
+    not_match = ["gh auth status"],
+)
+
+prefix_rule(
+    pattern = ["gh", "issue", "delete"],
+    decision = "forbidden",
+    justification = "Deleting GitHub issues is destructive; use close/comment workflows instead.",
+    match = ["gh issue delete 123"],
+)
+
+prefix_rule(
+    pattern = ["gh", "release", ["delete-asset", "delete"]],
+    decision = "forbidden",
+    justification = "Deleting GitHub releases or assets is destructive.",
+    match = [
+        "gh release delete v1.0.0",
+        "gh release delete-asset 123",
+    ],
+)
+
+prefix_rule(
+    pattern = ["gh", "repo", "delete"],
+    decision = "forbidden",
+    justification = "Deleting GitHub repositories is destructive.",
+    match = ["gh repo delete owner/repo"],
+)
+
+prefix_rule(
+    pattern = ["gh", "run", "delete"],
+    decision = "forbidden",
+    justification = "Deleting GitHub workflow runs is destructive.",
+    match = ["gh run delete 123"],
+)
+
+prefix_rule(
+    pattern = ["gh", "secret", "delete"],
+    decision = "forbidden",
+    justification = "Deleting GitHub secrets is destructive.",
+    match = ["gh secret delete TOKEN"],
+)
+
+prefix_rule(
+    pattern = ["ls"],
+    decision = "allow",
+    justification = "Listing files is read-only.",
+    match = ["ls", "ls -la"],
+)
+
+prefix_rule(
+    pattern = ["git", ["add", "branch", "checkout", "cherry-pick", "commit", "diff", "fetch", "log", "merge", "pull", "rebase", "remote", "reset", "restore", "show", "stash", "status", "switch", "tag", "worktree"]],
+    decision = "allow",
+    justification = "Git commands allowed by the Claude permission settings.",
+    match = [
+        "git add .",
+        "git branch --list",
+        "git checkout main",
+        "git cherry-pick abc123",
+        "git commit -m update",
+        "git diff",
+        "git fetch origin",
+        "git log --oneline",
+        "git merge feature",
+        "git pull",
+        "git rebase main",
+        "git remote -v",
+        "git reset --hard HEAD",
+        "git restore file",
+        "git show HEAD",
+        "git stash",
+        "git status",
+        "git switch feature",
+        "git tag v1.0.0",
+        "git worktree list",
+    ],
+)
+
+prefix_rule(
+    pattern = ["gh", "--version"],
+    decision = "allow",
+    justification = "Checking the GitHub CLI version is read-only.",
+    match = ["gh --version"],
+)
+
+prefix_rule(
+    pattern = ["gh", "version"],
+    decision = "allow",
+    justification = "Checking the GitHub CLI version is read-only.",
+    match = ["gh version"],
+)
+
+prefix_rule(
+    pattern = ["gh", "auth", "status"],
+    decision = "allow",
+    justification = "Checking GitHub authentication status is read-only.",
+    match = ["gh auth status"],
+)
+
+prefix_rule(
+    pattern = ["gh", "issue", ["list", "status", "view"]],
+    decision = "allow",
+    justification = "Viewing GitHub issues is read-only.",
+    match = [
+        "gh issue list",
+        "gh issue status",
+        "gh issue view 123",
+    ],
+)
+
+prefix_rule(
+    pattern = ["gh", "label", "list"],
+    decision = "allow",
+    justification = "Listing GitHub labels is read-only.",
+    match = ["gh label list"],
+)
+
+prefix_rule(
+    pattern = ["gh", "milestone", "list"],
+    decision = "allow",
+    justification = "Listing GitHub milestones is read-only.",
+    match = ["gh milestone list"],
+)
+
+prefix_rule(
+    pattern = ["gh", "pr", ["checkout", "checks", "diff", "list", "status", "view"]],
+    decision = "allow",
+    justification = "Viewing or checking out GitHub pull requests is allowed by the Claude permission settings.",
+    match = [
+        "gh pr checkout 123",
+        "gh pr checks",
+        "gh pr diff 123",
+        "gh pr list",
+        "gh pr status",
+        "gh pr view 123",
+    ],
+)
+
+prefix_rule(
+    pattern = ["gh", "release", ["download", "list", "view"]],
+    decision = "allow",
+    justification = "Viewing or downloading GitHub releases is allowed by the Claude permission settings.",
+    match = [
+        "gh release download v1.0.0",
+        "gh release list",
+        "gh release view v1.0.0",
+    ],
+)
+
+prefix_rule(
+    pattern = ["gh", "repo", ["clone", "list", "view"]],
+    decision = "allow",
+    justification = "Viewing or cloning GitHub repositories is allowed by the Claude permission settings.",
+    match = [
+        "gh repo clone owner/repo",
+        "gh repo list",
+        "gh repo view owner/repo",
+    ],
+)
+
+prefix_rule(
+    pattern = ["gh", "run", ["download", "list", "view", "watch"]],
+    decision = "allow",
+    justification = "Viewing, watching, or downloading GitHub workflow runs is allowed by the Claude permission settings.",
+    match = [
+        "gh run download 123",
+        "gh run list",
+        "gh run view 123",
+        "gh run watch 123",
+    ],
+)
+
+prefix_rule(
+    pattern = ["gh", "search"],
+    decision = "allow",
+    justification = "GitHub search commands are read-only.",
+    match = [
+        "gh search issues test",
+        "gh search prs test",
+        "gh search repos openai/codex",
+    ],
+)
+
+prefix_rule(
+    pattern = ["gh", "workflow", ["list", "view"]],
+    decision = "allow",
+    justification = "Viewing GitHub workflows is read-only.",
+    match = [
+        "gh workflow list",
+        "gh workflow view build.yml",
+    ],
+)
+
+prefix_rule(
+    pattern = ["git", "push"],
+    decision = "prompt",
+    justification = "Pushing changes to a Git remote requires approval.",
+    match = ["git push"],
+)
+
+prefix_rule(
+    pattern = ["gh", "api"],
+    decision = "prompt",
+    justification = "GitHub API calls can mutate remote state depending on method and endpoint.",
+    match = ["gh api repos/owner/repo"],
+)
+
+prefix_rule(
+    pattern = ["gh", "auth", "logout"],
+    decision = "prompt",
+    justification = "Logging out changes local GitHub CLI authentication state.",
+    match = ["gh auth logout"],
+)
+
+prefix_rule(
+    pattern = ["gh", "issue", ["close", "comment", "create", "edit", "lock", "pin", "reopen", "transfer", "unlock", "unpin"]],
+    decision = "prompt",
+    justification = "Mutating GitHub issues requires approval.",
+    match = [
+        "gh issue close 123",
+        "gh issue comment 123 --body ok",
+        "gh issue create --title bug",
+        "gh issue edit 123 --title bug",
+        "gh issue lock 123",
+        "gh issue pin 123",
+        "gh issue reopen 123",
+        "gh issue transfer 123 owner/repo",
+        "gh issue unlock 123",
+        "gh issue unpin 123",
+    ],
+)
+
+prefix_rule(
+    pattern = ["gh", "pr", ["close", "comment", "create", "edit", "merge", "ready", "reopen", "revert", "review", "update-branch"]],
+    decision = "prompt",
+    justification = "Mutating GitHub pull requests requires approval.",
+    match = [
+        "gh pr close 123",
+        "gh pr comment 123 --body ok",
+        "gh pr create --title update --body body",
+        "gh pr edit 123 --title update",
+        "gh pr merge 123",
+        "gh pr ready 123",
+        "gh pr reopen 123",
+        "gh pr revert 123",
+        "gh pr review 123 --approve",
+        "gh pr update-branch 123",
+    ],
+)
+
+prefix_rule(
+    pattern = ["gh", "release", ["create", "edit", "upload"]],
+    decision = "prompt",
+    justification = "Creating, editing, or uploading GitHub release assets requires approval.",
+    match = [
+        "gh release create v1.0.0",
+        "gh release edit v1.0.0",
+        "gh release upload v1.0.0 dist/app.tar.gz",
+    ],
+)
+
+prefix_rule(
+    pattern = ["gh", "repo", ["archive", "create", "edit", "fork", "rename", "set-default", "sync", "unarchive"]],
+    decision = "prompt",
+    justification = "GitHub repository operations that can modify local or remote state require approval.",
+    match = [
+        "gh repo archive owner/repo",
+        "gh repo create owner/repo",
+        "gh repo edit owner/repo",
+        "gh repo fork owner/repo",
+        "gh repo rename new-name",
+        "gh repo set-default owner/repo",
+        "gh repo sync owner/repo",
+        "gh repo unarchive owner/repo",
+    ],
+)
+
+prefix_rule(
+    pattern = ["gh", "run", ["cancel", "rerun"]],
+    decision = "prompt",
+    justification = "GitHub workflow run operations that can change state require approval.",
+    match = [
+        "gh run cancel 123",
+        "gh run rerun 123",
+    ],
+)
+
+prefix_rule(
+    pattern = ["gh", "secret", "set"],
+    decision = "prompt",
+    justification = "Setting GitHub secrets changes sensitive remote configuration.",
+    match = ["gh secret set TOKEN"],
+)
+
+prefix_rule(
+    pattern = ["gh", "variable", ["delete", "set"]],
+    decision = "prompt",
+    justification = "Changing GitHub variables modifies remote configuration.",
+    match = [
+        "gh variable delete NAME",
+        "gh variable set NAME --body value",
+    ],
+)
+
+prefix_rule(
+    pattern = ["gh", "workflow", ["disable", "enable", "run"]],
+    decision = "prompt",
+    justification = "Changing or triggering GitHub workflows requires approval.",
+    match = [
+        "gh workflow disable build.yml",
+        "gh workflow enable build.yml",
+        "gh workflow run build.yml",
+    ],
+)
