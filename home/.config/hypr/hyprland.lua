@@ -84,15 +84,19 @@ hl.bind("SUPER + D", hl.dsp.exec_cmd("fuzzel"))
 hl.bind("SUPER + N", hl.dsp.workspace.toggle_special(draftpad))
 hl.bind("SUPER + Tab", hl.dsp.window.cycle_next({ tiled = true }))
 
-hl.bind("SUPER + E", function()
+local function set_workspace_layout(layout)
   local workspace = hl.get_active_workspace()
-  if not workspace then
-    return
+  if workspace then
+    hl.workspace_rule({ workspace = workspace.addressable_name, layout = layout })
   end
+end
 
-  local layout = workspace.tiled_layout == "monocle" and "master" or "monocle"
-  hl.workspace_rule({ workspace = workspace.addressable_name, layout = layout })
-end, { description = "Toggle Monocle and Master on this workspace" })
+hl.bind("SUPER + M", function()
+  set_workspace_layout("master")
+end, { description = "Set this workspace to Master" })
+hl.bind("SUPER + SHIFT + M", function()
+  set_workspace_layout("monocle")
+end, { description = "Set this workspace to Monocle" })
 
 for key, direction in pairs({ H = "left", J = "down", K = "up", L = "right" }) do
   hl.bind("SUPER + " .. key, hl.dsp.focus({ direction = direction }))
