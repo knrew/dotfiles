@@ -17,6 +17,10 @@ hl.config({
     gaps_in = 0,
     gaps_out = 0,
     border_size = 2,
+    col = {
+      active_border = "#1e66f5",
+      inactive_border = "#9ca0b0",
+    },
   },
   input = {
     kb_layout = "jp",
@@ -31,7 +35,7 @@ hl.config({
   animations = { enabled = false },
   decoration = {
     dim_inactive = true,
-    dim_strength = 0.2,
+    dim_strength = 0.08,
     blur = { enabled = false },
     shadow = { enabled = false },
   },
