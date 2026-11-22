@@ -125,3 +125,24 @@ hl.bind("SUPER + SHIFT + Q", hl.dsp.window.close())
 hl.bind("SUPER + CTRL + L", hl.dsp.exec_cmd("swaylock -f"))
 hl.bind("SUPER + SHIFT + E", hl.dsp.exec_cmd("sh " .. config_root .. "/wayland/power-menu.sh"))
 hl.bind("SUPER + SHIFT + Escape", hl.dsp.exit())
+
+for _, mode in ipairs({
+  { key = "Print", target = "region", description = "selected area" },
+  { key = "SHIFT + Print", target = "output", description = "focused monitor", active = true },
+  { key = "CTRL + Print", target = "window", description = "focused window", active = true },
+}) do
+  local screenshot = [[hyprshot -o "$HOME/Pictures/screenshots" -m ]] .. mode.target
+  if mode.active then
+    screenshot = screenshot .. " -m active"
+  end
+  hl.bind(
+    mode.key,
+    hl.dsp.exec_cmd(screenshot),
+    { description = "Screenshot: " .. mode.description }
+  )
+  hl.bind(
+    "SUPER + " .. mode.key,
+    hl.dsp.exec_cmd("sh " .. config_root .. "/hypr/record.sh " .. mode.target),
+    { description = "Toggle recording: " .. mode.description }
+  )
+end

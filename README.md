@@ -56,6 +56,20 @@ systemctl --user enable waybar.service swayidle.service mako.service swaybg.serv
 - 電源メニューはWaybarの右端または `Super+Shift+E` で開く。アイドル時には15分で画面を消灯し、30分でロックする。
 - Hyprlandで画面共有を使う場合は `xdg-desktop-portal-hyprland` を追加する。
 
+### Hyprlandのスクリーンショットと録画
+
+Archの `hyprshot` と `wf-recorder` を使う。
+
+| 撮影範囲 | スクリーンショット | 録画の開始・停止 |
+| --- | --- | --- |
+| 範囲選択 | `Print` | `Super+Print` |
+| フォーカス中のモニター全体 | `Shift+Print` | `Super+Shift+Print` |
+| フォーカス中のウィンドウ | `Ctrl+Print` | `Super+Ctrl+Print` |
+
+- 静止画は `~/Pictures/screenshots/` にPNGを保存し、画像をクリップボードにもコピーする。
+- 録画中はどの録画キーでも停止できる。映像のみのMP4を `~/Videos/recordings/` に保存し、停止時にファイルのURIをクリップボードへコピーする。
+- 範囲録画は1台のモニター内で行う。ウィンドウ録画は開始時の位置に固定され、窓を動かしても録画範囲は移動しない。
+
 ## 運用ルール
 
 - 新しいファイルの作成は，`.dotfiles/home/`以下で行う．$HOME以下に直接ファイル作成は行わない．ファイルを作成した場合，`dotkoke install`により展開する．
