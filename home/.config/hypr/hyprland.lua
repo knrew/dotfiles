@@ -117,7 +117,22 @@ for key, direction in pairs({ H = "left", J = "down", K = "up", L = "right" }) d
   hl.bind("SUPER + " .. key, hl.dsp.focus({ direction = direction }))
 end
 
-hl.bind("SUPER + SHIFT + space", hl.dsp.window.float())
+hl.bind("SUPER + SHIFT + space", function()
+  local window = hl.get_active_window()
+  if not window then
+    return
+  end
+
+  local was_floating = window.floating
+  hl.dispatch(hl.dsp.window.float())
+  if window.floating ~= was_floating then
+    hl.notification.create({
+      text = window.floating and "Floating" or "Tiled",
+      timeout = 1000,
+      icon = "info",
+    })
+  end
+end, { description = "Toggle floating" })
 hl.bind("SUPER + mouse:272", hl.dsp.window.drag(), { mouse = true })
 hl.bind("SUPER + mouse:273", hl.dsp.window.resize(), { mouse = true })
 hl.bind("SUPER + F", hl.dsp.window.fullscreen({ mode = "fullscreen" }))
