@@ -37,6 +37,8 @@ hl.config({
   misc = { disable_hyprland_logo = true },
 })
 
+hl.device({ name = "elecom-elecom-trackball-mouse-1", natural_scroll = true })
+
 hl.window_rule({ match = { class = "^herdr$" }, workspace = "1 silent" })
 hl.window_rule({
   match = { class = [[(?i)^(google-chrome(-stable)?|com\.google\.chrome)$]] },
