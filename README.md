@@ -62,13 +62,14 @@ systemctl --user enable waybar.service swayidle.service mako.service swaybg.serv
 
 | 撮影範囲 | スクリーンショット | 録画の開始・停止 |
 | --- | --- | --- |
-| フォーカス中のモニター全体 | `Super+Print` | `Super+R` |
-| 範囲選択 | `Super+Shift+Print` | `Super+Shift+R` |
-| フォーカス中のウィンドウ | `Super+Ctrl+Print` | `Super+Ctrl+R` |
+| フォーカス中のモニター全体 | `Super+Print` | `Super+Alt+Print` |
+| 範囲選択 | `Super+Shift+Print` | `Super+Alt+Shift+Print` |
+| フォーカス中のウィンドウ | `Super+Ctrl+Print` | `Super+Alt+Ctrl+Print` |
 
 - 静止画は `~/Pictures/screenshots/` にPNGを保存し、画像をクリップボードにもコピーする。
 - 録画中はどの録画キーでも停止できる。映像のみのMP4を `~/Videos/recordings/` に保存し、停止時にファイルのURIをクリップボードへコピーする。
 - 範囲録画は1台のモニター内で行う。ウィンドウ録画は開始時の位置に固定され、窓を動かしても録画範囲は移動しない。
+- Magic SysRq が有効な環境では、録画キーを押した後に `Super` などを押したまま `Alt` を先に離すと反応する場合がある。
 
 ## 運用ルール
 
