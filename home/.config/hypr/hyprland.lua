@@ -35,7 +35,7 @@ hl.config({
   animations = { enabled = false },
   decoration = {
     dim_inactive = true,
-    dim_strength = 0.02,
+    dim_strength = 0.05,
     blur = { enabled = false },
     shadow = { enabled = false },
   },
