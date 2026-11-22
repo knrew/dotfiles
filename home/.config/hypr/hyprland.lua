@@ -104,6 +104,14 @@ hl.bind("SUPER + SHIFT + M", function()
   set_workspace_layout("monocle")
 end, { description = "Set this workspace to Monocle" })
 
+hl.bind("SUPER + SHIFT + comma", function()
+  local workspace = hl.get_active_workspace()
+  local window = hl.get_active_window()
+  if workspace and workspace.tiled_layout == "master" and window and not window.floating then
+    hl.dispatch(hl.dsp.layout("swapwithmaster master"))
+  end
+end, { description = "Swap the focused window with Master" })
+
 for key, direction in pairs({ H = "left", J = "down", K = "up", L = "right" }) do
   hl.bind("SUPER + " .. key, hl.dsp.focus({ direction = direction }))
 end
