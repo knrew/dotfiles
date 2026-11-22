@@ -1,0 +1,16 @@
+{
+  "include": "./config.jsonc",
+  "name": "hyprland",
+  "modules-left": ["hyprland/workspaces", "hyprland/window"],
+  "modules-right": ["battery", "cpu", "memory", "disk", "network", "backlight", "wireplumber", "tray"],
+  "hyprland/workspaces": {
+    "format": "{name}",
+    "sort-by": "number",
+    "show-special": false
+  },
+  "hyprland/window": {
+    "format": "{class}",
+    "max-length": 60,
+    "separate-outputs": true
+  }
+}

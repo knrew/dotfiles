@@ -3,6 +3,9 @@
 local draftpad = "draftpad"
 local draftpad_workspace = "special:" .. draftpad
 local terminal = "alacritty"
+local config_dir = debug.getinfo(1, "S").source:match("^@(.*/)") or "./"
+local waybar_dir = (config_dir .. "../waybar"):gsub("'", "'\\''")
+local waybar = "cd '" .. waybar_dir .. "' && exec waybar -c ./config.hyprland.jsonc -s ./style.css"
 
 hl.monitor({ output = "", mode = "preferred", position = "auto", scale = 1 })
 
@@ -11,7 +14,7 @@ hl.env("QT_IM_MODULE", "fcitx")
 
 hl.config({
   general = {
-    layout = "monocle",
+    layout = "master",
     gaps_in = 0,
     gaps_out = 0,
     border_size = 2,
@@ -34,8 +37,6 @@ hl.config({
   misc = { disable_hyprland_logo = true },
 })
 
-hl.workspace_rule({ workspace = "2", layout = "master" })
-
 hl.window_rule({ match = { class = "^herdr$" }, workspace = "1 silent" })
 hl.window_rule({
   match = { class = [[(?i)^(google-chrome(-stable)?|com\.google\.chrome)$]] },
@@ -54,6 +55,7 @@ hl.window_rule({
 })
 
 hl.on("hyprland.start", function()
+  hl.exec_cmd(waybar)
   hl.exec_cmd("fcitx5 -d")
   hl.exec_cmd("alacritty --class herdr,herdr --title Herdr -e herdr")
   hl.exec_cmd(

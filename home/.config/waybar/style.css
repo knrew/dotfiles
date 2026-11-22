@@ -39,6 +39,27 @@ window#waybar > box {
     border-bottom: 2px solid @lavender;
 }
 
+window#waybar.hyprland #workspaces button {
+    padding: 0 12px;
+    box-shadow: none;
+}
+
+window#waybar.hyprland #workspaces button:hover {
+    background: @surface0;
+}
+
+window#waybar.hyprland #workspaces button.active {
+    background: @sky;
+    color: @mantle;
+    border-bottom-color: @sky;
+}
+
+window#waybar.hyprland #workspaces button.urgent {
+    background: @red;
+    color: @mantle;
+    border-bottom-color: @red;
+}
+
 #window {
     padding: 0 8px;
     color: @text;
