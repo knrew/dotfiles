@@ -64,6 +64,8 @@ hl.on("hyprland.start", function()
     hl.exec_cmd("sh " .. config_root .. "/waybar/start.sh")
   end
   hl.exec_cmd("fcitx5 -d")
+  hl.exec_cmd("blueman-applet")
+  hl.exec_cmd("nm-applet --indicator")
   hl.exec_cmd("alacritty --class herdr,herdr --title Herdr -e herdr")
   hl.exec_cmd(
     [[alacritty --class draftpad,draftpad --title draftpad -e nvim "$HOME/Documents/draft.md"]]

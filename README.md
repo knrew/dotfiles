@@ -52,6 +52,7 @@ systemctl --user enable waybar.service swayidle.service mako.service swaybg.serv
 - TTY1の起動先は、`.zprofile` の `tty1_session=hyprland` で指定する。`tty1_session=niri` に変更すると、次のログインからniriが自動起動する。
 - 一時的に切り替えるときは起動中のセッションからログアウトし、`Ctrl+Alt+F2` でTTY2にログインする。Hyprlandは `start-hyprland`、niriは `niri-session -l` で起動する。
 - Hyprlandを終了するには `Super+Shift+Esc` または電源メニューの Log out を使う。
+- Bluetoothとネットワークのトレイアイコンには `blueman` と `network-manager-applet` を使う。
 - 電源メニューはWaybarの右端または `Super+Shift+E` で開く。アイドル時には15分で画面を消灯し、30分でロックする。
 - Hyprlandで画面共有を使う場合は `xdg-desktop-portal-hyprland` を追加する。
 
