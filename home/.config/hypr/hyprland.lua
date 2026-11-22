@@ -4,8 +4,7 @@ local draftpad = "draftpad"
 local draftpad_workspace = "special:" .. draftpad
 local terminal = "alacritty"
 local config_dir = debug.getinfo(1, "S").source:match("^@(.*/)") or "./"
-local waybar_dir = (config_dir .. "../waybar"):gsub("'", "'\\''")
-local waybar = "cd '" .. waybar_dir .. "' && exec waybar -c ./config.hyprland.jsonc -s ./style.css"
+local config_root = "'" .. (config_dir .. ".."):gsub("'", "'\\''") .. "'"
 
 hl.monitor({ output = "", mode = "preferred", position = "auto", scale = 1 })
 
@@ -34,7 +33,11 @@ hl.config({
     blur = { enabled = false },
     shadow = { enabled = false },
   },
-  misc = { disable_hyprland_logo = true },
+  misc = {
+    disable_hyprland_logo = true,
+    key_press_enables_dpms = true,
+    mouse_move_enables_dpms = true,
+  },
 })
 
 hl.device({ name = "elecom-elecom-trackball-mouse-1", natural_scroll = true })
@@ -57,7 +60,9 @@ hl.window_rule({
 })
 
 hl.on("hyprland.start", function()
-  hl.exec_cmd(waybar)
+  if os.getenv("HYPRLAND_NO_SD_TARGET") == "1" then
+    hl.exec_cmd("sh " .. config_root .. "/waybar/start.sh")
+  end
   hl.exec_cmd("fcitx5 -d")
   hl.exec_cmd("alacritty --class herdr,herdr --title Herdr -e herdr")
   hl.exec_cmd(
@@ -97,4 +102,5 @@ hl.bind("SUPER + mouse:273", hl.dsp.window.resize(), { mouse = true })
 hl.bind("SUPER + F", hl.dsp.window.fullscreen({ mode = "fullscreen" }))
 hl.bind("SUPER + SHIFT + Q", hl.dsp.window.close())
 hl.bind("SUPER + CTRL + L", hl.dsp.exec_cmd("swaylock -f"))
+hl.bind("SUPER + SHIFT + E", hl.dsp.exec_cmd("sh " .. config_root .. "/wayland/power-menu.sh"))
 hl.bind("SUPER + SHIFT + Escape", hl.dsp.exit())

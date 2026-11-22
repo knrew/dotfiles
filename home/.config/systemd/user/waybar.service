@@ -1,12 +1,12 @@
 [Unit]
-Description=Waybar for the niri graphical session
+Description=Waybar for the graphical session
 Documentation=https://github.com/Alexays/Waybar/wiki/
 PartOf=graphical-session.target
 After=graphical-session.target
 Requisite=graphical-session.target
 
 [Service]
-ExecStart=/usr/bin/waybar
+ExecStart=/bin/sh %h/.config/waybar/start.sh
 ExecReload=kill -SIGUSR2 $MAINPID
 Restart=on-failure
 

@@ -38,6 +38,22 @@ cp ~/.dotfiles/home/.config/dotkoke/dotkoke_config_template.toml ~/.dotfiles/hom
 dotkoke install --config ~/.dotfiles/home/.config/dotkoke/dotkoke_config.toml
 ```
 
+## Waylandセッション（Arch Linux）
+
+Hyprland 0.57以降と、既存のWayland用パッケージ（Waybar、Fuzzel、Mako、Swaylock、Swayidle、Swaybg、Fcitx5）を使う。
+
+dotkokeで展開した後、ユーザーサービスの定義を読み直す。初回のみ、未設定のサービスを有効にする。
+
+```sh
+systemctl --user daemon-reload
+systemctl --user enable waybar.service swayidle.service mako.service swaybg.service
+```
+
+- TTY1にログインするとHyprlandが起動する。こちらを終了するには `Super+Shift+Esc` または電源メニューの Log out を使う。
+- niriを使うときは、Hyprlandからログアウトし、`Ctrl+Alt+F2` でTTY2に移ってからログインし、`niri-session -l` を実行する。
+- 電源メニューはWaybarの右端または `Super+Shift+E` で開く。アイドル時には15分で画面を消灯し、30分でロックする。
+- Hyprlandで画面共有を使う場合は `xdg-desktop-portal-hyprland` を追加する。
+
 ## 運用ルール
 
 - 新しいファイルの作成は，`.dotfiles/home/`以下で行う．$HOME以下に直接ファイル作成は行わない．ファイルを作成した場合，`dotkoke install`により展開する．

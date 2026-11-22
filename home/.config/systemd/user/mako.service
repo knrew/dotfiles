@@ -1,5 +1,5 @@
 [Unit]
-Description=Mako notification daemon for the niri graphical session
+Description=Mako notification daemon for the Wayland session
 PartOf=graphical-session.target
 After=graphical-session.target
 Requisite=graphical-session.target

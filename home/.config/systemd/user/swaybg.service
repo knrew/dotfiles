@@ -1,5 +1,5 @@
 [Unit]
-Description=Black background for the niri graphical session
+Description=Black background for the Wayland session
 PartOf=graphical-session.target
 After=graphical-session.target
 Requisite=graphical-session.target
