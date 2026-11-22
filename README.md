@@ -58,13 +58,13 @@ systemctl --user enable waybar.service swayidle.service mako.service swaybg.serv
 
 ### Hyprlandのスクリーンショットと録画
 
-Archの `hyprshot` と `wf-recorder` を使う。
+静止画には `grim`、範囲選択には `slurp`、クリップボードへのコピーには `wl-clipboard`、録画には `wf-recorder` を使う。
 
 | 撮影範囲 | スクリーンショット | 録画の開始・停止 |
 | --- | --- | --- |
-| 範囲選択 | `Print` | `Super+Print` |
-| フォーカス中のモニター全体 | `Shift+Print` | `Super+Shift+Print` |
-| フォーカス中のウィンドウ | `Ctrl+Print` | `Super+Ctrl+Print` |
+| フォーカス中のモニター全体 | `Super+Print` | `Super+R` |
+| 範囲選択 | `Super+Shift+Print` | `Super+Shift+R` |
+| フォーカス中のウィンドウ | `Super+Ctrl+Print` | `Super+Ctrl+R` |
 
 - 静止画は `~/Pictures/screenshots/` にPNGを保存し、画像をクリップボードにもコピーする。
 - 録画中はどの録画キーでも停止できる。映像のみのMP4を `~/Videos/recordings/` に保存し、停止時にファイルのURIをクリップボードへコピーする。
