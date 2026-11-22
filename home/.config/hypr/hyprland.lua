@@ -79,7 +79,7 @@ for number = 1, 10 do
   hl.bind("SUPER + SHIFT + " .. key, hl.dsp.window.move({ workspace = workspace, follow = false }))
 end
 
-hl.bind("SUPER + Return", hl.dsp.exec_cmd(terminal))
+hl.bind("SUPER + T", hl.dsp.exec_cmd(terminal))
 hl.bind("SUPER + D", hl.dsp.exec_cmd("fuzzel"))
 hl.bind("SUPER + N", hl.dsp.workspace.toggle_special(draftpad))
 hl.bind("SUPER + Tab", hl.dsp.window.cycle_next({ tiled = true }))
