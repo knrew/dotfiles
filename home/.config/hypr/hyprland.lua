@@ -117,7 +117,7 @@ for key, direction in pairs({ H = "left", J = "down", K = "up", L = "right" }) d
   hl.bind("SUPER + " .. key, hl.dsp.focus({ direction = direction }))
 end
 
-hl.bind("SUPER + SHIFT + space", function()
+hl.bind("SUPER + F", function()
   local window = hl.get_active_window()
   if not window then
     return
@@ -135,7 +135,7 @@ hl.bind("SUPER + SHIFT + space", function()
 end, { description = "Toggle floating" })
 hl.bind("SUPER + mouse:272", hl.dsp.window.drag(), { mouse = true })
 hl.bind("SUPER + mouse:273", hl.dsp.window.resize(), { mouse = true })
-hl.bind("SUPER + F", hl.dsp.window.fullscreen({ mode = "fullscreen" }))
+hl.bind("SUPER + SHIFT + F", hl.dsp.window.fullscreen({ mode = "fullscreen" }))
 hl.bind("SUPER + SHIFT + Q", hl.dsp.window.close())
 hl.bind("SUPER + CTRL + L", hl.dsp.exec_cmd("swaylock -f"))
 hl.bind("SUPER + SHIFT + E", hl.dsp.exec_cmd("sh " .. config_root .. "/wayland/power-menu.sh"))
