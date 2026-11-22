@@ -108,7 +108,7 @@ hl.bind("SUPER + SHIFT + comma", function()
   local workspace = hl.get_active_workspace()
   local window = hl.get_active_window()
   if workspace and workspace.tiled_layout == "master" and window and not window.floating then
-    hl.dispatch(hl.dsp.layout("swapwithmaster master"))
+    hl.dispatch(hl.dsp.layout("swapwithmaster master ignoremaster"))
   end
 end, { description = "Swap the focused window with Master" })
 
