@@ -136,9 +136,8 @@ for _, mode in ipairs({
     hl.dsp.exec_cmd("sh " .. config_root .. "/hypr/screenshot.sh " .. mode.target),
     { description = "Screenshot: " .. mode.description }
   )
-  -- Alt changes the Print keysym on the JP layout. Match the physical key.
   hl.bind(
-    "SUPER + ALT + " .. mode.modifiers .. "code:107",
+    "SUPER + " .. mode.modifiers .. "BackSpace",
     hl.dsp.exec_cmd("sh " .. config_root .. "/hypr/record.sh " .. mode.target),
     { description = "Toggle recording: " .. mode.description }
   )
