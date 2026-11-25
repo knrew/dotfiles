@@ -141,6 +141,51 @@ hl.bind("SUPER + CTRL + L", hl.dsp.exec_cmd("swaylock -f"))
 hl.bind("SUPER + SHIFT + E", hl.dsp.exec_cmd("sh " .. config_root .. "/wayland/power-menu.sh"))
 hl.bind("SUPER + SHIFT + Escape", hl.dsp.exit())
 
+for _, action in ipairs({
+  {
+    keys = { "F1", "XF86AudioMute" },
+    command = "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
+    description = "Toggle audio mute",
+  },
+  {
+    keys = { "F2", "XF86AudioLowerVolume" },
+    command = "wpctl set-volume @DEFAULT_AUDIO_SINK@ 2%-",
+    description = "Lower volume",
+    repeating = true,
+  },
+  {
+    keys = { "F3", "XF86AudioRaiseVolume" },
+    command = "wpctl set-volume -l 1.0 @DEFAULT_AUDIO_SINK@ 2%+",
+    description = "Raise volume",
+    repeating = true,
+  },
+  {
+    keys = { "F4", "XF86MonBrightnessDown" },
+    command = "brightnessctl --class=backlight set 5%-",
+    description = "Lower brightness",
+    repeating = true,
+  },
+  {
+    keys = { "F5", "XF86MonBrightnessUp" },
+    command = "brightnessctl --class=backlight set +5%",
+    description = "Raise brightness",
+    repeating = true,
+  },
+  {
+    keys = { "XF86AudioMicMute" },
+    command = "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle",
+    description = "Toggle microphone mute",
+  },
+}) do
+  for _, key in ipairs(action.keys) do
+    hl.bind(key, hl.dsp.exec_cmd(action.command), {
+      locked = true,
+      repeating = action.repeating or false,
+      description = action.description,
+    })
+  end
+end
+
 for _, mode in ipairs({
   { modifiers = "", target = "output", description = "focused monitor" },
   { modifiers = "SHIFT + ", target = "region", description = "selected area" },
