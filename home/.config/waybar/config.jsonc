@@ -74,12 +74,16 @@
   },
   "backlight": {
     "format": "󰃞 {percent:>3}%",
-    "scroll-step": 1
+    "scroll-step": 1,
+    "reverse-scrolling": true,
+    "reverse-mouse-scrolling": true
   },
   "wireplumber": {
     "format": "󰕾 {volume:>3}%",
     "format-muted": "󰖁 {volume:>3}%",
     "scroll-step": 1,
+    "reverse-scrolling": true,
+    "reverse-mouse-scrolling": true,
     "on-click": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
   },
   "tray": {
