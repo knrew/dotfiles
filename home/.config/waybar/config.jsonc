@@ -74,11 +74,12 @@
   },
   "backlight": {
     "format": "󰃞 {percent:>3}%",
-    "scroll-step": 5
+    "scroll-step": 1
   },
   "wireplumber": {
     "format": "󰕾 {volume:>3}%",
     "format-muted": "󰖁 {volume:>3}%",
+    "scroll-step": 1,
     "on-click": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
   },
   "tray": {
