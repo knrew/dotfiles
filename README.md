@@ -38,6 +38,38 @@ cp ~/.dotfiles/home/.config/dotkoke/dotkoke_config_template.toml ~/.dotfiles/hom
 dotkoke install --config ~/.dotfiles/home/.config/dotkoke/dotkoke_config.toml
 ```
 
+## Waylandセッション（Arch Linux）
+
+Hyprland 0.57以降と、既存のWayland用パッケージ（Waybar、Fuzzel、Mako、Swaylock、Swayidle、Swaybg、Fcitx5）を使う。
+
+dotkokeで展開した後、ユーザーサービスの定義を読み直す。初回のみ、未設定のサービスを有効にする。
+
+```sh
+systemctl --user daemon-reload
+systemctl --user enable waybar.service swayidle.service mako.service swaybg.service
+```
+
+- TTY1の起動先は、`.zprofile` の `tty1_session=hyprland` で指定する。`tty1_session=niri` に変更すると、次のログインからniriが自動起動する。
+- 一時的に切り替えるときは起動中のセッションからログアウトし、`Ctrl+Alt+F2` でTTY2にログインする。Hyprlandは `start-hyprland`、niriは `niri-session -l` で起動する。
+- Hyprlandを終了するには `Super+Shift+Esc` または電源メニューの Log out を使う。
+- Bluetoothとネットワークのトレイアイコンには `blueman` と `network-manager-applet` を使う。
+- 電源メニューはWaybarの右端または `Super+Shift+E` で開く。アイドル時には15分で画面を消灯し、30分でロックする。
+- Hyprlandで画面共有を使う場合は `xdg-desktop-portal-hyprland` を追加する。
+
+### Hyprlandのスクリーンショットと録画
+
+静止画には `grim`、範囲選択には `slurp`、クリップボードへのコピーには `wl-clipboard`、録画には `wf-recorder` を使う。
+
+| 撮影範囲 | スクリーンショット | 録画の開始・停止 |
+| --- | --- | --- |
+| フォーカス中のモニター全体 | `Super+Print` | `Super+Backspace` |
+| 範囲選択 | `Super+Shift+Print` | `Super+Shift+Backspace` |
+| フォーカス中のウィンドウ | `Super+Ctrl+Print` | `Super+Ctrl+Backspace` |
+
+- 静止画は `~/Pictures/screenshots/` にPNGを保存し、画像をクリップボードにもコピーする。
+- 録画中はどの録画キーでも停止できる。映像のみのMP4を `~/Videos/recordings/` に保存し、停止時にファイルのURIをクリップボードへコピーする。
+- 範囲録画は1台のモニター内で行う。ウィンドウ録画は開始時の位置に固定され、窓を動かしても録画範囲は移動しない。
+
 ## 運用ルール
 
 - 新しいファイルの作成は，`.dotfiles/home/`以下で行う．$HOME以下に直接ファイル作成は行わない．ファイルを作成した場合，`dotkoke install`により展開する．

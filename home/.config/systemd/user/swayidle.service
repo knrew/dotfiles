@@ -1,0 +1,16 @@
+[Unit]
+Description=Idle management for the Wayland session
+PartOf=graphical-session.target
+After=graphical-session.target
+Requisite=graphical-session.target
+
+[Service]
+ExecStart=/usr/bin/swayidle -w \
+  timeout 900 "sh '%h/.config/wayland/session-action.sh' power-off" \
+  resume "sh '%h/.config/wayland/session-action.sh' power-on" \
+  timeout 1800 "/usr/bin/swaylock -f" \
+  before-sleep "/usr/bin/swaylock -f"
+Restart=on-failure
+
+[Install]
+WantedBy=graphical-session.target

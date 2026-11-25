@@ -40,7 +40,13 @@ unset _trash_cmd
 ((${+commands[lazygit]})) && alias lg=lazygit
 
 # clipboard
-((${+commands[xclip]})) && alias clip="xclip -selection c"
+_wl_copy_cmd=wl-copy
+if [[ ${XDG_SESSION_TYPE-} == wayland ]] && (($+commands[$_wl_copy_cmd])); then
+  alias clip=$_wl_copy_cmd
+elif [[ ${XDG_SESSION_TYPE-} == x11 ]] && ((${+commands[xclip]})); then
+  alias clip="xclip -selection c"
+fi
+unset _wl_copy_cmd
 
 # enable/disable backlight auto off
 alias enable_sleep="(xset s on +dpms)"
